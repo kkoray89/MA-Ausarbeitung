@@ -11,8 +11,8 @@ MaxPos.x=-1
 MaxPos.y=-1
 NormalPos.left=4
 NormalPos.top=26
-NormalPos.right=1619
-NormalPos.bottom=685
+NormalPos.right=1242
+NormalPos.bottom=713
 Class=LaTeXView
 Document=ISYS_Thesis_Example_de.tex
 
@@ -29,8 +29,8 @@ MaxPos.x=-1
 MaxPos.y=-1
 NormalPos.left=4
 NormalPos.top=26
-NormalPos.right=1619
-NormalPos.bottom=685
+NormalPos.right=1242
+NormalPos.bottom=713
 Class=LaTeXView
 Document=chapters\chapter3_hauptteil.tex
 
@@ -38,7 +38,25 @@ Document=chapters\chapter3_hauptteil.tex
 TopLine=3
 Cursor=559
 
+[Frame2]
+Flags=0
+ShowCmd=1
+MinPos.x=-1
+MinPos.y=-1
+MaxPos.x=-1
+MaxPos.y=-1
+NormalPos.left=4
+NormalPos.top=26
+NormalPos.right=1242
+NormalPos.bottom=713
+Class=LaTeXView
+Document=chapters\chapter2_grundlagen.tex
+
+[Frame2_View0,0]
+TopLine=0
+Cursor=145
+
 [SessionInfo]
-FrameCount=2
-ActiveFrame=1
+FrameCount=3
+ActiveFrame=2
 
