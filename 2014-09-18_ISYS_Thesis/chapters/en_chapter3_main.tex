@@ -1,0 +1,42 @@
+\chapter{Main} \label{ch:ch3}
+
+Few words at the beginning of the chapter.
+
+
+\section{First Section}\label{sec:ch3_foobar}
+This has already been done by Fliess et~al. in 1995 \cite{Fliess.1995}.
+
+The logo of the institute is shown in figure~\ref{fig:logo_isys1}.
+
+\begin{figure} % avoid using additional specifiers for graphics position except for final tuning
+ \centering    % preferable over \begin{center}...\end{center} as the latter includes space before and after the figure 
+ \includegraphics[width=0.5\textwidth]{logos/logoISYS_deutsch}
+ \caption{Put figure captions \emph{below} the figure.}
+ \label{fig:logo_isys1} % always use \label AFTER \caption
+\end{figure}
+
+
+
+The results are summarized in table~\ref{fig:example_table1}
+
+\begin{table} % avoid using additional specifiers for graphics position except for final tuning
+	\caption{Put table captions \emph{above} the table. Put units in header. Avoid vertical lines in a table.}
+	\label{fig:example_table1}
+	\centering
+	\begin{tabular}{lll}
+		\toprule
+		Header & Header (\unit{unit}) & Header (\unitfrac{unit}{frac})   \\
+		\midrule
+		Content 1 & Content 2 & Content 3 \\
+		Content 1 & Content 2 & Content 3 \\
+		\bottomrule
+	\end{tabular}
+\end{table}
+
+
+\section{Second Section}
+
+\subsection{New Subsection}
+
+
+

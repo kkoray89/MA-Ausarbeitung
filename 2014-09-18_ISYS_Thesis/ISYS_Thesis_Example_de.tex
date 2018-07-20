@@ -1,0 +1,216 @@
+\documentclass[thesis=da, language=german, paper=a4]{isys}[2013/06/28]
+%
+% [2013/06/28] ensure that the newest isys.cls is used
+%              if an older version is used, latex issues a warning
+%
+% thesis   = sa       - Studienarbeit  / Student thesis 
+%            da       - Diplomarbeit   / Diploma thesis
+%            bachelor - Bachelorarbeit / Bachelor thesis
+%            master   - Masterarbeit   / Master thesis
+%            semester - Semesterarbeit / Semester thesis
+%
+% language = {english, german} 
+%            Set default language of document. The class file isys.cls loads the babel
+%              package with both options [english, ngerman]. For text that shall be 
+%              typeset in a different language than the default language, the 
+%              environment 'otherlanguage' or the command '\foreignlanguage' may be used
+%              with either of these options (see babel package documentation)
+%
+% paper    = {a4, letter} - paper size
+%
+% thesisdraft - mark document as draft without passing "draft" option to 
+%                 other packages (e.g. pictures are shown in the document, etc.)
+%
+% oneside - this option avoids empty pages in the document output 
+%                which are necessary for twoside printing, which is useful for 
+%                draft versions. 
+%                DO NOT USE THIS OPTION WHEN SUBMITTING YOUR THESIS!
+%
+
+% mark overful boxes by a 2pt wide rule 
+% -- FIX ALL OVERFULL BOXES BEFORE SUBMITTING YOUR THESIS!
+\overfullrule=2pt 
+
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+% Load packages - useful packages, adapt to your own needs
+%
+% isys.cls loads the "graphicx" package, so \includegraphics can 
+%  directly be used to include figures.
+%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+% input encoding - UTF8 or latin1 allow directly typing german umlauts
+% make sure the file encoding of all files matches this encoding!
+\usepackage[utf8]{inputenc}
+% font enconding - do not change this unless you exactly know what you're doing!
+\usepackage[T1]{fontenc}
+
+% automatically use correct quotes for the current language: \enquote{text in quotes}
+\usepackage{csquotes}
+\MakeAutoQuote{»}{«}  % input »text in quotes« is equivalent to \enquote{text in quotes}
+\let\q=\enquote 			% use \q{text in quotes}, which is shorter than \enquote{text in quotes}
+
+% better math-commands (e.q.: \dddots, \eqref{})
+\usepackage{amsmath,amssymb}                                 
+
+% better-looking rules in tabulars, \toprule, \midrule, \bottomrule
+\usepackage{booktabs}
+
+% use consistent style for units (upright shape)
+% \unit[value]{unit}, \unitfrac[value]{unit_numerator}{unit_denominator}
+\usepackage{units}
+
+% tables with fixed table width 
+\usepackage{tabularx, tabulary}
+% improve ragged right alignment with \RaggedRight
+\usepackage{ragged2e}
+% enable import of eps pictures using pdflatex
+%\usepackage{epstopdf}
+
+% enable hyperlinks and bookmarks in PDF file (must typically be loaded as LAST package)
+% if used, print hyperlinks in black and suppress boxes around them 
+\usepackage[colorlinks=true, allcolors=black, bookmarksnumbered=true]{hyperref}
+% to set bookmarks on the first latex run (hyperref needs two),
+% provides addtional options for bookmarks (use carefully!)
+\usepackage{bookmark}
+
+
+% Bibliography using classical bibtex
+%\bibliographystyle{alphadin}
+
+% better: use biblatex! provides much more options
+% use \printbibliography to print the bibliography 
+% (search for \printbibliography in this document and uncomment the line, 
+%  comment out the line for bibtex)
+\usepackage[style=alphabetic,
+						backend=bibtex8,		% or use biber or bibtex?
+						bibencoding=latin1,	% .bib file in latin1 or utf8 encoding?
+						maxbibnames=99			% give full list of authors (up to 99) in bibliography
+						]{biblatex}
+\bibliography{references}
+
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+% Information for title page 
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+% title in the language in which the thesis is written
+\title{Dies soll eine großartige Arbeit werden mit einem extrem langen Titel}
+\subtitle{Manche Arbeiten haben sogar einen Untertitel}
+% title in foreign language (german or english, depending on the language of the thesis)
+\foreigntitle{This shall be a great thesis paper with an extremely long title}
+\foreignsubtitle{Some theses even have subtitles}
+
+\author{Max Mustermann}
+\major{Technische Kybernetik}
+%\date{01.08.2000}		% use either ISO format YYYY-MM-DD or german format DD.MM.YYYY
+										% default: current date
+
+\examiner{Prof. Dr.-Ing. Oliver Sawodny}
+%\examiner{Prof. Dr.-Ing. Cristina Tar\'{i}n}
+\supervisor{Dipl.-Ing. Supervisor 1}		% give max. 4 \supervisor {...} commands
+\supervisor{M.Sc. Supervisor 2}
+\supervisor{Dipl.-Ing. Supervisor 3}
+\supervisor{M.Sc. Supervisor 4}
+
+%% if work on thesis has been conducted with a partner company/institute
+%% use \partner and (if desired also \partnerLogo)
+% \partnerLogo has no effect as long as no \partner{...} is given
+%\partner{Example company name\\
+%			Second line company name}
+%\partnerLogo{\includegraphics[height=1.4cm, clip, viewport=0 0 30 10]{logos/logoISYS_deutsch}}
+
+
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+% Start of document output
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\begin{document}
+
+% Titelblatt ausgeben / print title page
+\pdfbookmark{Titelseite}{title}
+\maketitle
+
+%% Englisches Titelblatt in deutschsprachiger Arbeit erstellen
+%\begin{otherlanguage}{english}\maketitle \end{otherlanguage}
+
+%% Create german title page in english theses
+%\begin{otherlanguage}{ngerman}\maketitle \end{otherlanguage}
+
+
+	
+% Kurzfassung in der Dokumentensprache / Abstract in default document language
+\pdfbookmark{Kurzfassung}{abstract-de}
+\begin{abstract}
+Kurzfassung
+\end{abstract}
+
+% Falls gewuenscht, englischen Abstract in deutschsprachiger Arbeit einbinden
+\newpage
+\begin{otherlanguage}{english}
+\pdfbookmark{Abstract}{abstract-en}
+\begin{abstract}
+Abstract 
+\end{abstract}
+\end{otherlanguage}
+
+%% Inhalts-/Abbildungs-/Tabellenverzeichnis
+%% Table of contents, List of Figures/Tables
+
+	
+	
+%% If subsections shall also be included in the table of contents
+%% uncomment next line. Default: only sections are included.
+\setcounter{tocdepth}{1} % include only chapters and sections (1.1) - default
+%\setcounter{tocdepth}{2} % also include subsections - use only if told to do so by your advisor!
+\cleardoublepage
+\pdfbookmark{\contentsname}{toc}
+\tableofcontents
+
+\input{chapters/Kurzzeichenverzeichnis}
+
+%% Chapters and sections without numbering but included in running heading
+%\addchap{Chapter without numbering, included in table of contents}
+%\addchap*{Chapter without numbering, not included in table of contents}
+%\addsec{Section without numbering, included in table of contents}
+%\addsec*{Section without numbering, not included in table of contents}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+% Beginn des Textes Inhalts / Start of thesis content
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+	
+% It may be helpful to put each chapter into a separate file. 
+% \includeonly{...} allows to restrict the files that are included,
+% which may speed up the document creation process.
+% \include always starts a new odd page before including the file 
+% contents. If this is not desired, \input can be used.
+\include{chapters/chapter1_introduction}
+\include{chapters/chapter2_grundlagen}
+\include{chapters/chapter3_hauptteil}
+\include{chapters/chapter4_zusammenfassung}
+\cleardoublepage
+
+\appendix
+\include{chapters/appendix1}
+
+% List of tables and list of figures at end
+\listoffigures
+\listoftables
+
+% Literaturverzeichnis
+% classical bibtex
+%\bibliography{references}
+
+% modern biblatex
+\printbibliography[heading=bibintoc]
+
+% in any case ...
+\label{ch:bib}
+
+
+
+% Erklaerung des Autors, netig fuer Bachelor-/Master-Arbeiten der Universitaet Stuttgart
+% Declaration of authorship, necessary for bachelor and master thesis at University of Stuttgart
+\DeclarationOfAuthorship
+\end{document}
