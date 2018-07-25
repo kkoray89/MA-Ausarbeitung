@@ -8,8 +8,6 @@
 \babel@toc {ngerman}{}
 \babel@toc {english}{}
 \babel@toc {ngerman}{}
-\babel@toc {english}{}
-\babel@toc {ngerman}{}
 \defcounter {refsection}{0}\relax 
 \contentsline {chapter}{\nonumberline Abk\IeC {\"u}rzungen und Formelzeichen}{7}{chapter*.2}
 \defcounter {refsection}{0}\relax 
@@ -34,8 +32,6 @@
 \contentsline {chapter}{\nonumberline Abbildungsverzeichnis}{19}{chapter*.5}
 \defcounter {refsection}{0}\relax 
 \contentsline {chapter}{\nonumberline Tabellenverzeichnis}{21}{chapter*.6}
-\defcounter {refsection}{0}\relax 
-\contentsline {chapter}{\nonumberline Literatur}{23}{chapter*.7}
 \babel@toc {ngerman}{}
 \babel@toc {ngerman}{}
 \defcounter {refsection}{0}\relax 

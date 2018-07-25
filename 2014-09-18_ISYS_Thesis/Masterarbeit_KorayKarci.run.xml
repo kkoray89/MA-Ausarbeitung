@@ -44,11 +44,11 @@
   <internal package="biblatex" priority="9" active="1">
     <generic>latex</generic>
     <provides type="dynamic">
-      <file>ISYS_Thesis_Example_de.aux</file>
-      <file>ISYS_Thesis_Example_de-blx.bib</file>
+      <file>Masterarbeit_KorayKarci.aux</file>
+      <file>Masterarbeit_KorayKarci-blx.bib</file>
     </provides>
     <requires type="dynamic">
-      <file>ISYS_Thesis_Example_de.bbl</file>
+      <file>Masterarbeit_KorayKarci.bbl</file>
     </requires>
     <requires type="static">
       <file>blx-dm.def</file>
@@ -64,26 +64,26 @@
       <file>english.lbx</file>
     </requires>
   </internal>
-  <external package="biblatex" priority="5" active="0">
+  <external package="biblatex" priority="5" active="1">
     <generic>bibtex</generic>
     <cmdline>
       <binary>bibtex8</binary>
       <option>--wolfgang</option>
       <option>--min_crossrefs 2</option>
-      <infile>ISYS_Thesis_Example_de</infile>
+      <infile>Masterarbeit_KorayKarci</infile>
     </cmdline>
     <input>
-      <file>ISYS_Thesis_Example_de.aux</file>
+      <file>Masterarbeit_KorayKarci.aux</file>
     </input>
     <output>
-      <file>ISYS_Thesis_Example_de.bbl</file>
+      <file>Masterarbeit_KorayKarci.bbl</file>
     </output>
     <provides type="dynamic">
-      <file>ISYS_Thesis_Example_de.bbl</file>
+      <file>Masterarbeit_KorayKarci.bbl</file>
     </provides>
     <requires type="dynamic">
-      <file>ISYS_Thesis_Example_de.aux</file>
-      <file>ISYS_Thesis_Example_de-blx.bib</file>
+      <file>Masterarbeit_KorayKarci.aux</file>
+      <file>Masterarbeit_KorayKarci-blx.bib</file>
     </requires>
     <requires type="editable">
       <file>references.bib</file>
