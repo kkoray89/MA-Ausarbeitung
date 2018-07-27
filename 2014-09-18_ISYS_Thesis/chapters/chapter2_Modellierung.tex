@@ -1,0 +1,92 @@
+\chapter{Modellierung}\label{ch:ch2}
+In diesem Kapitel wird ein für die Simulation verwendetes detailliertes Modell des Antriebsstrangs hergeleitet. Hierfür wird ein vorhandenes, starres Modell um Elastizitäten der Seitenwellen ergänzt. Für die Herleitung wird dabei der Lagrange Formalismus verwendet, welcher daher auch kurz beschrieben wird. Im weiteren werden aus dem detaillierten Modell vereinfachte Modelle hergeleitet, welche dem Entwurf der Beobachter im Kapitel~\ref{ch:ch4} dienen.
+
+
+\section{Modellierung des Antriebsstranges}
+Zur Modellierung des Antriebsstranges wird zunächst die Getriebedynamik mittels der Newton-Euler Gleichungen berechnet. Dazu wird zu Beginn kurz auf die Herleitung dieser Gleichungen eingegangen. Danach wird dieses um die Elastizitäten der Seitenwellen ergänzt, woraus sich ein schwingfähiges System ergibt.  
+
+\subsection{Herleitung der Newton-Euler Gleichungen}
+Die Position und Orientierung von jedem Körper $i$ eines holonomen Mehrkörpersystems mit $p$ Körpern und $f$ Freiheitsgraden, kann in Abhängigkeit der verallgemeinerten Koordinaten \textbf{y} $\in \mathbb{R}^f$ angegeben werden mit
+\begin{align}
+\pmb{r}_i &= \pmb{r}_i(\pmb{y},t)\quad i = 1(1)p\\
+\pmb{s}_i &= \pmb{s}_i(\pmb{y},t).
+\end{align}
+Durch die zeitliche Ableitung dieser ergeben sich die translatorischen und rotatorischen Geschwindigkeiten
+\begin{align}\label{vi}
+\pmb{v}_i &=  \dot{\pmb{r}}_i = \frac{\partial\pmb{r}_i}{\partial\pmb{y}}\cdot \dot{\pmb{y}} + \frac{\partial\pmb{r}_i}{\partial\pmb{t}} = \pmb{J}_{Ti}(\pmb{y},t)\cdot \dot{\pmb{y}} + \overline{\pmb{v}}_i(\pmb{y},t)\\
+\pmb{\omega}_i &=  \dot{\pmb{s}}_i = \frac{\partial\pmb{s}_i}{\partial\pmb{y}}\cdot \dot{\pmb{y}} + \frac{\partial\pmb{s}_i}{\partial\pmb{t}} = \pmb{J}_{Ri}(\pmb{y},t)\cdot \dot{\pmb{y}} + \overline{\pmb{\omega}}_i(\pmb{y},t)
+\end{align}
+mit der Jacobi-Matrix der Translation $\pmb{J}_{Ti}$ und der Rotation $\pmb{J}_{Ri}$. Die lokalen Geschwindigkeitsvektoren $\overline{\pmb{v}}_i(\pmb{y},t)$ und $\overline{\pmb{\omega}}_i(\pmb{y},t)$ treten nur bei Systemen mit rheonomen Bindungen auf. Nach erneuter zeitlicher Ableitung ergeben sich die Beschleunigungen 
+\begin{align}
+\pmb{a}_i = \dot{\pmb{v}}_i &= \pmb{J}_{Ti} \cdot \ddot{\pmb{y}} + \dot{\pmb{J}}_{Ti} \cdot \dot{\pmb{y}} + \dot{\overline{\pmb{v}}}_i = \pmb{J}_{Ti}(\pmb{y},t) \cdot \ddot{\pmb{y}} + \overline{\pmb{a}}_i(\pmb{y},\dot{\pmb{y}},t)\\
+\pmb{\alpha}_i = \dot{\pmb{\omega}}_i &= \pmb{J}_{Ri} \cdot \ddot{\pmb{y}} + \dot{\pmb{J}}_{Ri} \cdot \dot{\pmb{y}} + \dot{\overline{\pmb{\omega}}}_i = \pmb{J}_{Ri}(\pmb{y},t) \cdot \ddot{\pmb{y}} + \overline{\pmb{\alpha}}_i(\pmb{y},\dot{\pmb{y}},t)\label{alphai}
+\end{align}
+mit den lokalen Beschleunigungsvektoren $\overline{\pmb{a}}_i$ und $ \overline{\pmb{\alpha}}_i$. 
+Des weiteren lassen sich für die Dynamik eines Systems virtuelle Bewegungen definieren. Diese sind willkürliche, infinitesimale Bewegungen des Systems, welche mit den skleronomen und den rheonomen Bindungen verträglich sind. Für virtuelle Bewegungen an holonomen Bindungen gilt
+\begin{align}
+\delta \pmb{r} &\neq \pmb{0},\\
+\delta \pmb{r} &= \pmb{0},\label{VB0}\\
+\delta t &= 0.
+\end{align} 
+Damit lassen sich die virtuellen Bewegungen der einzelnen Körper $i$ definieren zu
+\begin{align}\label{VBr}
+\delta \pmb{r}_i = \frac{\partial\pmb{r}_i}{\partial\pmb{y}}\cdot \delta\pmb{y} &= \pmb{J}_{Ti}(\pmb{y},t)\cdot\delta\pmb{y}\\
+\delta \pmb{s}_i = \frac{\partial\pmb{s}_i}{\partial\pmb{y}}\cdot \delta\pmb{y} &= \pmb{J}_{Ri}(\pmb{y},t)\cdot\delta\pmb{y}.\label{VBs}
+\end{align}
+Die Kinetik eines Körpers $i$ wird durch die Newtonschen- und Eulerschen-Gleichungen beschrieben. 
+Die Newtonschen-Gleichungen eines Körpers $i$ lassen sich angeben als
+\begin{equation}\label{NewtonGl}
+m_i \pmb{a}_i(t) = \pmb{f}_i(t)
+\end{equation}
+wobei $m_i$ die Masse des Körpers angibt und $\pmb{f}_i(t)$ die Summe der angreifenden Kräfte. Diese lassen sich wiederum einteilen in eingeprägte Kräfte $\pmb{f}^e$ und Reaktionskräfte $\pmb{f}^r$.
+Die Eulerschen Gleichungen lauten
+\begin{equation}\label{EulerGl}
+\pmb{I}_i(t)\cdot\pmb{\alpha}_i(t) + \tilde{\pmb{\omega}}_i(t)\cdot \pmb{I}_i(t)\pmb{\omega}_i(t)= \pmb{l}_i(t)
+\end{equation}
+mit dem Trägheitstensor $\pmb{I}_i(t)$ und den äußeren Momenten $\pmb{l}_i(t)$ bezogen auf den Massenmittelpunkt des Körpers $i$ im Inertialsystem und dem schiefsymmetrische 3x3-Tensor $\tilde{\pmb{\omega}}_i(t)$. Die äußeren Momenten $\pmb{l}_i(t)$ lassen sich äquivalent zum translatorischen Fall wieder in eingeprägte Momente $\pmb{l}^e$ und Reaktionsmomente $\pmb{l}^r$ aufteilen. Der schiefsymmetrische 3x3-Tensor ist für ein beliebigen Vektor 
+\begin{equation}
+\pmb{v} = [v_1 \quad v_2 \quad v_3]^T
+\end{equation}
+definiert als
+\begin{equation}
+\tilde{\pmb{v}} = \begin{bmatrix} 0 & -v_3 & v_2 \\ v_3 & 0 & -v_1 \\ -v_2 & v_1 & 0 \end{bmatrix}.
+\end{equation}
+Darüber hinaus kann mit den virtuellen Bewegungen aus (\ref{VBr}) und (\ref{VBs}) die virtuelle Arbeit $\delta \pmb{W}$ definiert werden. Da es, wie in (\ref{VB0}) definiert, in Richtung der Bindungen keine virtuellen Bewegungen geben kann, ergibt sich für die virtuelle Arbeit der Reaktionskräfte
+\begin{equation}\label{VA}
+\delta\pmb{W}^r = \sum_{i=1}^p(\pmb{f}_i^r\cdot \delta \pmb{r}_i + \pmb{l}^r_i\cdot\delta\pmb{s}_i)=0.
+\end{equation}
+Mit den Gleichungen \ref{NewtonGl}, \ref{EulerGl} und der beschriebenen Aufteilung der äußeren Kräfte in eingeprägte Kräfte und Reaktionskräfte, folgt aus (\ref{VA}) das d’Alembertsche Prinzip für Mehrkörpersysteme
+\begin{equation}\label{VA}
+\sum_{i=1}^p\left[ (m_i\pmb{a}_i-\pmb{f}_i^e)\cdot \delta \pmb{r}_i + (\pmb{I_i}\cdot \pmb{\alpha}_i + \tilde{\pmb{\omega}}\cdot\pmb{I}_i\cdot\pmb{\omega}_i-\pmb{l}^e_i)\cdot\delta\pmb{s}_i\right] =0.
+\end{equation}
+Durch einsetzten der virtuellen Bewegungen (\ref{VBr}) und (\ref{VBs}) ergibt sich daraus
+\begin{equation}
+\delta\pmb{y}\sum_{i=1}^p\left[\pmb{J}^T_{Ti}\cdot(m_i\pmb{a}_i-\pmb{f}_i^e)+ \pmb{J}^T_{Ri}\cdot(\pmb{I_i}\cdot \pmb{\alpha}_i + \tilde{\pmb{\omega}}\cdot\pmb{I}_i\cdot\pmb{\omega}_i-\pmb{l}^e_i)\right]=0.
+\end{equation}
+Das einarbeiten der kinematischen Gleichungen (\ref{vi}) -- (\ref{alphai}) in ... führt zur Bewegungsgleichung für holonome Mehrkörpersysteme (MKS) 
+\begin{align}\label{Bwg_lang}
+\begin{split}
+\sum_{i=1}^p\left[\pmb{J}_{Ti}^T\cdot m_i \cdot \pmb{J}_{Ti} + \pmb{J}_{Ri}^T\cdot \pmb{I}_i \cdot \pmb{J}_{Ri}\right]\ddot{\pmb{y}}+\sum_{i=1}^p\left[\pmb{J}_{Ti}^T\cdot m_i \cdot \overline{\pmb{a}}_i + \pmb{J}^T_{Ri}\cdot\pmb{I}_i\cdot\overline{\pmb{\alpha}}_i+\pmb{J}^T_{Ri}\cdot\tilde{\pmb{\omega}}_i\cdot\pmb{I}_i\cdot\pmb{\omega_i}\right]=\\ \sum_{i=1}^p\left[\pmb{J}^T_{Ti}\cdot\pmb{f}_i^e + \pmb{J}_{Ri}^T\cdot\pmb{I}_i^e\right].
+\end{split}
+\end{align}
+Darin lässt sich die erste Summe zur Massenmatrix $\pmb{M}(\pmb{y},t)$, die zweite Summe zum Vektor der verallgemeinerten Zentrifugal-- und Coriloriskräfte $\pmb{k}(\pmb{y},\dot{\pmb{y}},t)$ und die dritte Summe zum Vektor der verallgemeinerten Kräfte $\pmb{q}(\pmb{y},\dot{\pmb{y}},t)$ zusammenfassen, wodurch sich (\ref{Bwg_lang}) schreiben lässt als
+\begin{equation}\label{Bwg}
+\pmb{M}(\pmb{y},t)\cdot\ddot{\pmb{y}}+\pmb{k}(\pmb{y},\dot{\pmb{y}},t) = \pmb{q}(\pmb{y},\dot{\pmb{y}},t).
+\end{equation}
+  
+
+\subsection{Berechnung der Getriebedynamik}
+Mit der allgemeinen Bewegungsgleichung für MKS (\ref{Bwg}) kann die Getriebedynamik berechnet werde. Das in dieser Arbeit betrachtete Getriebe besteht im wesentlichen aus vier hintereinander liegenden Umlaufgetrieben. Der schematische Aufbau eines Umlaufgetriebes ist in Abbildung ??? zu sehen. Dieses besteht aus dem Sonnenrad in der Mitte, den darum gleichmäßig verteilten Planetenrädern, welche auf dem Planetenträger drehbar gelagert sind und dem Hohlrad. Der Zusammenhang der einzelnen Drehzahlen ist gegeben durch die beiden Zwangsbedingungen
+\begin{align}
+\mathrm{Sonne - Planeten}:\quad &r_S\omega_S - r_T\omega_T+ r_P\omega_P=0 \\
+\mathrm{Planeten - Hohlrad}:\quad &r_H\omega_H - r_T\omega_T- r_P\omega_P=0.
+\end{align}
+Dabei gilt, dass die Verhältnisse des der Rollradien denen der Zähnezahlen einer Zahnradverbindung entsprechen. Der Rollradius des Planetenträger entspricht somit der Summe der Zähnezahl der Sonne $z_S$ und des Planeten $z_P$ und es ergibt sich
+\begin{align}
+\mathrm{Sonne - Planeten}:\quad &z_S\omega_S - (z_S + z_P)\omega_T+ z_P\omega_P=0 \\
+\mathrm{Planeten - Hohlrad}:\quad &z_H\omega_H - (z_S + z_P)\omega_T- z_P\omega_P=0.
+\end{align}
+
+\subsection{Erweiterung um elastische Seitenwellen}
+
+\section{Modellierung der Reibung an Kupplungen und Bremsen}

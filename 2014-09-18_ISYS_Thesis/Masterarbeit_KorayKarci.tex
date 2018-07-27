@@ -52,7 +52,7 @@
 
 % better math-commands (e.q.: \dddots, \eqref{})
 \usepackage{amsmath,amssymb}                                 
-
+\usepackage{bm}
 % better-looking rules in tabulars, \toprule, \midrule, \bottomrule
 \usepackage{booktabs}
 
@@ -186,9 +186,10 @@ Abstract
 % \include always starts a new odd page before including the file 
 % contents. If this is not desired, \input can be used.
 \include{chapters/chapter1_introduction}
-\include{chapters/chapter2_grundlagen}
-\include{chapters/chapter3_hauptteil}
-\include{chapters/chapter4_zusammenfassung}
+\include{chapters/chapter2_Modellierung}
+\include{chapters/chapter3_Sensitivitaetsanalyse}
+\include{chapters/chapter4_Beobachterentwurf}
+\include{chapters/chapter5_zusammenfassung}
 \cleardoublepage
 
 \appendix
@@ -200,7 +201,7 @@ Abstract
 
 % Literaturverzeichnis
 % classical bibtex
-%\bibliography{references}
+% \bibliography{references}
 
 % modern biblatex
 \printbibliography[heading=bibintoc]
