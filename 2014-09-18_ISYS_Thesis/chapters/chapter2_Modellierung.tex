@@ -2,18 +2,18 @@
 In diesem Kapitel wird ein für die Simulation verwendetes detailliertes Modell des Antriebsstrangs hergeleitet. Hierfür wird ein vorhandenes, starres Modell um Elastizitäten der Seitenwellen ergänzt. Für die Herleitung wird dabei der Lagrange Formalismus verwendet, welcher daher auch kurz beschrieben wird. Im weiteren werden aus dem detaillierten Modell vereinfachte Modelle hergeleitet, welche dem Entwurf der Beobachter im Kapitel~\ref{ch:ch4} dienen.
 
 
-\section{Modellierung des Antriebsstranges}
+\section{Modellierung des Antriebsstrangs}
 Zur Modellierung des Antriebsstranges wird zunächst die Getriebedynamik mittels der Newton-Euler Gleichungen berechnet. Dazu wird zu Beginn kurz auf die Herleitung dieser Gleichungen eingegangen. Danach wird dieses um die Elastizitäten der Seitenwellen ergänzt, woraus sich ein schwingfähiges System ergibt.  
 
-\subsection{Herleitung der Newton-Euler Gleichungen}
-Die Position und Orientierung von jedem Körper $i$ eines holonomen Mehrkörpersystems mit $p$ Körpern und $f$ Freiheitsgraden, kann in Abhängigkeit der verallgemeinerten Koordinaten \textbf{y} $\in \mathbb{R}^f$ angegeben werden mit
+\subsection{Beschreibung des allgemeinen Newton-Euler-Formalismus}
+Die Position und Orientierung von jedem Körper $i$ eines holonomen Mehrkörpersystems mit $p$ Körpern und $f$ Freiheitsgraden (FHG), kann in Abhängigkeit der verallgemeinerten Koordinaten $\pmb{y}\in \mathbb{R}^f$ angegeben werden mit
 \begin{align}
 \pmb{r}_i &= \pmb{r}_i(\pmb{y},t)\quad i = 1(1)p\\
 \pmb{s}_i &= \pmb{s}_i(\pmb{y},t).
 \end{align}
 Durch die zeitliche Ableitung dieser ergeben sich die translatorischen und rotatorischen Geschwindigkeiten
 \begin{align}\label{vi}
-\pmb{v}_i &=  \dot{\pmb{r}}_i = \frac{\partial\pmb{r}_i}{\partial\pmb{y}}\cdot \dot{\pmb{y}} + \frac{\partial\pmb{r}_i}{\partial\pmb{t}} = \pmb{J}_{Ti}(\pmb{y},t)\cdot \dot{\pmb{y}} + \overline{\pmb{v}}_i(\pmb{y},t)\\
+\pmb{v}_i &=  \dot{\pmb{r}}_i = \frac{\partial\pmb{r}_i}{\partial\pmb{y}}\cdot \dot{\pmb{y}} + \frac{\partial\pmb{r}_i}{\partial\pmb{t}} = \pmb{J}_{Ti}(\pmb{y},t)\cdot \dot{\pmb{y}} + \overline{\pmb{v}}_i(\pmb{y},t)\\\label{omegai}
 \pmb{\omega}_i &=  \dot{\pmb{s}}_i = \frac{\partial\pmb{s}_i}{\partial\pmb{y}}\cdot \dot{\pmb{y}} + \frac{\partial\pmb{s}_i}{\partial\pmb{t}} = \pmb{J}_{Ri}(\pmb{y},t)\cdot \dot{\pmb{y}} + \overline{\pmb{\omega}}_i(\pmb{y},t)
 \end{align}
 mit der Jacobi-Matrix der Translation $\pmb{J}_{Ti}$ und der Rotation $\pmb{J}_{Ri}$. Die lokalen Geschwindigkeitsvektoren $\overline{\pmb{v}}_i(\pmb{y},t)$ und $\overline{\pmb{\omega}}_i(\pmb{y},t)$ treten nur bei Systemen mit rheonomen Bindungen auf. Nach erneuter zeitlicher Ableitung ergeben sich die Beschleunigungen 
@@ -71,22 +71,257 @@ Das einarbeiten der kinematischen Gleichungen (\ref{vi}) -- (\ref{alphai}) in ..
 \end{align}
 Darin lässt sich die erste Summe zur Massenmatrix $\pmb{M}(\pmb{y},t)$, die zweite Summe zum Vektor der verallgemeinerten Zentrifugal-- und Coriloriskräfte $\pmb{k}(\pmb{y},\dot{\pmb{y}},t)$ und die dritte Summe zum Vektor der verallgemeinerten Kräfte $\pmb{q}(\pmb{y},\dot{\pmb{y}},t)$ zusammenfassen, wodurch sich (\ref{Bwg_lang}) schreiben lässt als
 \begin{equation}\label{Bwg}
-\pmb{M}(\pmb{y},t)\cdot\ddot{\pmb{y}}+\pmb{k}(\pmb{y},\dot{\pmb{y}},t) = \pmb{q}(\pmb{y},\dot{\pmb{y}},t).
-\end{equation}
+\pmb{M}(\pmb{y},t)\cdot\ddot{\pmb{y}}+\pmb{k}(\pmb{y},\dot{\pmb{y}},t) = \pmb{q}(\pmb{y},\dot{\pmb{y}},t)
+\end{equation} 
   
-
-\subsection{Berechnung der Getriebedynamik}
-Mit der allgemeinen Bewegungsgleichung für MKS (\ref{Bwg}) kann die Getriebedynamik berechnet werde. Das in dieser Arbeit betrachtete Getriebe besteht im wesentlichen aus vier hintereinander liegenden Umlaufgetrieben. Der schematische Aufbau eines Umlaufgetriebes ist in Abbildung ??? zu sehen. Dieses besteht aus dem Sonnenrad in der Mitte, den darum gleichmäßig verteilten Planetenrädern, welche auf dem Planetenträger drehbar gelagert sind und dem Hohlrad. Der Zusammenhang der einzelnen Drehzahlen ist gegeben durch die beiden Zwangsbedingungen
+\subsection{Beschreibung des Getriebeaufbaus}
+Mit der allgemeinen Bewegungsgleichung für MKS (\ref{Bwg}) kann die Getriebedynamik berechnet werde. Das in dieser Arbeit betrachtete Getriebe besteht im wesentlichen aus vier hintereinander liegenden Umlaufgetrieben. Der schematische Aufbau eines Umlaufgetriebes ist in Abbildung ??? zu sehen. Dieses besteht aus dem Sonnenrad in der Mitte, den darum gleichmäßig verteilten Planetenrädern, welche auf dem Planetenträger drehbar gelagert sind und dem Hohlrad. Der Zusammenhang der einzelnen Drehzahlen ist gegeben durch die beiden Zwangsbedingungen (ZB)
 \begin{align}
-\mathrm{Sonne - Planeten}:\quad &r_S\omega_S - r_T\omega_T+ r_P\omega_P=0 \\
-\mathrm{Planeten - Hohlrad}:\quad &r_H\omega_H - r_T\omega_T- r_P\omega_P=0.
+\mathrm{Sonne - Planeten}:\quad &r_{\mathrm{S},j}\omega_{\mathrm{S},j} - r_{\mathrm{T},j}\omega_{\mathrm{T},j}+ r_{\mathrm{P},j}\omega_{\mathrm{P},j}=0 \\
+\mathrm{Planeten - Hohlrad}:\quad &r_{\mathrm{H},j}\omega_{\mathrm{H},j} - r_{\mathrm{T},j}\omega_{\mathrm{T},j}- r_{\mathrm{P},j}\omega_{\mathrm{P},j}=0
 \end{align}
-Dabei gilt, dass die Verhältnisse des der Rollradien denen der Zähnezahlen einer Zahnradverbindung entsprechen. Der Rollradius des Planetenträger entspricht somit der Summe der Zähnezahl der Sonne $z_S$ und des Planeten $z_P$ und es ergibt sich
-\begin{align}
-\mathrm{Sonne - Planeten}:\quad &z_S\omega_S - (z_S + z_P)\omega_T+ z_P\omega_P=0 \\
-\mathrm{Planeten - Hohlrad}:\quad &z_H\omega_H - (z_S + z_P)\omega_T- z_P\omega_P=0.
+mit den Rollradien $r_{S,j}$, $r_{P,j}$, $r_{T,j}$ und $r_{H,j}$ des Sonnenrads, des Planetenrads, des Planententrägers und des Hohlrades im $j$-ten Planetensatz. Entsprechenden gelten die Indizes auch für die Winkelgeschwindigkeiten $\omega_{S,j}$, $\omega_{P,j}$, $\omega_{T,j}$ und $\omega_{H,j}$
+Dabei gilt, dass die Verhältnisse der Rollradien denen der Zähnezahlen einer Zahnradverbindung entsprechen. Der Rollradius des Planetenträger entspricht somit der Summe der Zähnezahl der Sonne $z_{S,j}$ und des Planeten $z_{P,j}$ und es ergibt sich
+\begin{align}\label{ZB_zahnS}
+\mathrm{Sonne - Planeten}:\quad &z_{\mathrm{S},j}\omega_\mathrm{S} - (z_{\mathrm{S},j} + z_{\mathrm{P},j})\omega_{\mathrm{T},j}+ z_{\mathrm{P},j}\omega_{\mathrm{P},j}=0 \\ \label{ZB_zahnH}
+\mathrm{Planeten - Hohlrad}:\quad &z_{\mathrm{H},j}\omega_{\mathrm{H},j} - (z_\mathrm{S} + z_{\mathrm{P},j})\omega_{\mathrm{T},j}- z_{P,j}\omega_{\mathrm{P},j}=0.
 \end{align}
+Die Größe  $z_{S,j}$ entspricht der Zähnezahl am Hohlrad im $j$-ten Planetensatz. Die Verschaltung der vier Planetensätze zeigt Abbildung ???. Aus den acht Wellen ergeben sich entsprechende acht FHG im des MKS. Vier weitere kommen durch die Planten der einzelnen Planetensätze hinzu. Somit hat des freie MKS $f_{\textrm{free}}=12$ FHG. Unter Berücksichtigung der beiden Zwangsbedinungen (\ref{ZB_zahnS}) und (\ref{ZB_zahnH}) ergibt sich somit die Anzahl der FHG des beschränkten MKS zu
+\begin{equation}
+f=f_{\textrm{free}}-4q = 12-8 = 4
+\end{equation}
+mit der Anzahl der ZB in jedem Planetensatz $q$. Weiterhin ergeben sich durch die ZB an den einzelnen Planetensätzen die Zusammenhänge
+\begin{subequations}\label{eq:zwangsbedingungen}
+	\begin{align} 
+\mathrm{Planetensatz\ 1}: \quad z_{\mathrm{S},1} \omega_{1}  &= (z_{\mathrm{S},1} + z_\mathrm{P}) \omega_{8} - z_{\mathrm{P},1} \omega_{9}\\
+z_{\mathrm{H},1} \omega_{4}  &= (z_{\mathrm{H},1} - z_\mathrm{P}) \omega_{8} + z_{\mathrm{P},1} \omega_{9} \\
+\mathrm{Planetensatz\ 2}: \quad z_{\mathrm{S},2} \omega_{5}  &= (z_{\mathrm{S},2} + z_\mathrm{P}) \omega_{4} - z_{\mathrm{P},2} \omega_{10} \\
+z_{\mathrm{H},2} \omega_{3}  &= (z_{\mathrm{H},2} - z_\mathrm{P}) \omega_{4} + z_{\mathrm{P},2} \omega_{10} \\
+\mathrm{Planetensatz\ 3}: \quad z_{\mathrm{S},3} \omega_{3}  &= (z_{\mathrm{S},3} + z_\mathrm{P}) \omega_{2} - z_{\mathrm{P},3} \omega_{11} \\
+z_{\mathrm{H},3} \omega_{6}  &= (z_{\mathrm{H},3} - z_\mathrm{P}) \omega_{2} + z_{\mathrm{P},3} \omega_{11} \\
+\mathrm{Planetensatz\ 4}: \quad z_{\mathrm{S},4} \omega_{3}  &= (z_{\mathrm{S},4} + z_\mathrm{P}) \omega_{1} - z_{\mathrm{P},4} \omega_{12} \\
+z_{\mathrm{H},4} \omega_{7}  &= (z_{\mathrm{H},4} - z_\mathrm{P}) \omega_{1} + z_{\mathrm{P},4} \omega_{12}.
+	\end{align}
+\end{subequations} 
+\\
+Die Gangschaltung erfolgt im Getriebe über jeweils drei Lamellenkupplungen und Lamellenbremsen. Mit Hilfe der Kupplungen lassen sich die Wellen 1 und 8, 8 und 3 und 2 und 7 verkoppeln. Über die drei Bremsen können die Wellen 8, 5 und 6 gegen das Gehäuse abgestützt werden. Um einen Gang zu schalten müssen drei der Schaltelemente betätigt sein. Dadurch verbleibt nur noch ein FHG der Getriebedynamik und es ergibt sich eine eindeutige Übersetzung zwischen Eingangsdrehzahl $\omega_{1}$ und Ausgangsdrehzahl $\omega_2$. Die sich durch die jeweiligen Schaltungen ergebenden Übersetzungen können Tabelle ??? entnommen werden.
+\begin{table}
+	\caption{Übersetzung und aktive Schaltelemente je Gang.}
+	\label{tbl:clutches}
+	\centering
+	\begin{tabular}{l*{7}{c}} 
+		\toprule
+		& & \multicolumn{6}{c}{Schaltelement} \\
+		\cmidrule{3-8}
+		Gang & Übersetzung & K81 & B05 & B08 & K38 & K27 & B06 \\
+		\midrule 
+		1. Gang & 5,354 &           & $\bullet$ &           & $\bullet$ &           & $\bullet$ \\
+		2. Gang & 3,243 & $\bullet$ &           &           & $\bullet$ &           & $\bullet$ \\
+		3. Gang & 2,252 & $\bullet$ & $\bullet$ &           &           &           & $\bullet$ \\
+		4. Gang & 1,636 &           & $\bullet$ &           &           & $\bullet$ & $\bullet$ \\
+		5. Gang & 1,211 & $\bullet$ & $\bullet$ &           &           & $\bullet$ &           \\
+		6. Gang & 1,000 & $\bullet$ &           &           & $\bullet$ & $\bullet$ &           \\
+		7. Gang & 0,865 &           & $\bullet$ &           & $\bullet$ & $\bullet$ &           \\
+		8. Gang & 0,717 &           &           & $\bullet$ & $\bullet$ & $\bullet$ &           \\
+		9. Gang & 0,601 &           & $\bullet$ & $\bullet$ &           & $\bullet$ &           \\
+		N       & $-$   &           & $\bullet$ &           &           &           & $\bullet$ \\
+		R       & -4,798&           & $\bullet$ & $\bullet$ &           &           & $\bullet$ \\
+		\bottomrule 
+	\end{tabular} 
+\end{table}
 
+\subsection{Anwendung des Newton-Euler-Formalismus}\label{ssec:AnwNE}
+Die Wellen und Planeten rotieren alle nur um eine Achse bzw. bewegen sich nur auf einer Kreisbahn. Daher werden die Orientierungen und Ortsvektoren des einzelnen Körper als skalare angegeben. Die Ortsvektoren werden als Zylinderkoordinaten geschrieben. Somit ergibt sich der Vektor der Orientierungen der einzelnen Wellen und der Planeten zu 
+\begin{equation}
+\pmb{s} = \begin{bmatrix} s_{1}\quad s_{2}\quad \dots \quad s_{12} \end{bmatrix}^T = \begin{bmatrix} \phi_{1}\quad \phi_{2}\quad \dots \quad \phi_{12} \end{bmatrix}^T
+\end{equation}
+angegeben. 
+Die Ortsvektoren der Wellen 1-8 können aufgrund der nicht vorhanden translatorischen Bewegung gleich Null gesetzt werden. Lediglich die Planeten haben durch die Bewegung auf den Planetenträgern um die Drehachse der Wellen~ 1-8 einen translatorischen Anteil. Die Position der Planeten ergibt sich somit aus den entsprechenden Radien der Planetenträgern $r_{T,j}$ und der Orientierung der Planetenträgern. Daraus ergibt sich der Orstvektor des Systems zu
+\begin{equation}
+\pmb{r} = \begin{bmatrix} r_{1}\; r_{2}\; \dots \; r_{12} \end{bmatrix}^T = \begin{bmatrix} 0\; \dots \; 0 \quad r_{T,1}\,\phi_8 \quad r_{T,2}\,\phi_4 \quad r_{T,3}\,\phi_2 \quad r_{T,4}\,\phi_1 \end{bmatrix}^T
+\end{equation}
+Da das MKS $f=4$ FHG hat lässt sich nach \cite{Schiehlen.2017} dieses durch verallgemeinerte Koordinaten $\pmb{y}\in \mathbb{R}^f$ beschreiben. Dabei liegt es nahe, die zu den am Getriebe gemessenen Winkelgeschwindigkeiten gehörigen Winkel $\phi_{1}$, $\phi_{2}$ und $\phi_{8}$ zu verwenden. Zusätzlich soll dazu $\phi_{3}$ verwendet werden. Dadurch ergibt sich der Vektor der verallgemeinerten Koordinaten zu
+\begin{equation}
+\pmb{y} = \begin{bmatrix} \phi_{1}\quad \phi_{2}\quad \phi_{3}\quad \phi_{8} \end{bmatrix}^T.
+\end{equation}
+Die Zusammenhänge in (\ref{eq:zwangsbedingungen}) gelten auch für die zugehörigen Winkel. Damit können $\pmb{s}$ und $\pmb{r}$ in Abhängigkeit der verallgemeinerten Koordinaten angegeben werden. Die Einträge von $\pmb{s}(\pmb{y})$ ergeben sich zu 
+\begin{subequations}\label{eq:zwangsbedingungen_aufgelöst}
+	\begin{align}
+	 	\phi_1 &= \phi_1 \\
+	 	\phi_2 &= \phi_2 \\
+	 	\phi_3 &= \phi_3 \\ \label{eq:s4}
+		\phi_{4} &= -\frac{z_{\mathrm{S,1}} }{z_{\mathrm{H,1}} } \phi_1 +\left(\frac{z_{\mathrm{S,1}} }{z_{\mathrm{H,1}} }+1\right) \phi_8 \\
+		\phi_{5} &= \left(-\frac{z_\mathrm{S,1} }{z_\mathrm{H,1} }-\frac{z_\mathrm{H,2} z_\mathrm{S,1}}{z_\mathrm{H,1} z_\mathrm{S,2}} \right) \phi_1
+			-\frac{z_\mathrm{H,2} }{z_\mathrm{S,2}} \phi_3
+			+\left(\frac{z_{\mathrm{S,1}} }{z_{\mathrm{H,1}} }+\frac{z_{\mathrm{H,2}} }{z_{\mathrm{S,2}} }+\frac{z_{\mathrm{H,2}} z_{\mathrm{S,1}}}{z_{\mathrm{H,1}} z_{\mathrm{S,2}}} +1\right) \phi_8 \\
+		\phi_{6} &= \left(\frac{z_{\mathrm{S,3}} }{z_{\mathrm{H,3}} }+1\right) \phi_2 - \frac{z_{\mathrm{S,3}} }{z_{\mathrm{H,3}} } \phi_3 \\
+		\phi_{7} &= \left(\frac{z_{\mathrm{S,4}} }{z_{\mathrm{H,4}} }+1\right) \phi_1 - \frac{z_{\mathrm{S,4}} }{z_{\mathrm{H,4}} } \phi_3 \\
+		\phi_8 &= \phi_8 \\
+		\phi_{9} &= -\frac{z_{\mathrm{S,1}} }{z_\mathrm{P,1} } \phi_1 +\left(\frac{z_\mathrm{S,1} }{z_\mathrm{P,1}} +1\right) \phi_8 \\
+		\phi_{10} &= \left(\frac{z_\mathrm{H,2} z_\mathrm{S,1}}{z_\mathrm{H,1} z_\mathrm{P,2}} + \frac{z_\mathrm{S,1}}{z_\mathrm{H,1}} \right) \omega_1
+			+\frac{z_\mathrm{H,2}}{z_\mathrm{P,2}} \phi_3
+			+\left(\frac{z_\mathrm{S,1}}{z_\mathrm{H,1}} -\frac{z_\mathrm{H,2} }{z_\mathrm{P,2} }-\frac{z_\mathrm{H,2}  z_\mathrm{S,1}}{z_\mathrm{H,1}  z_\mathrm{P,2}} + 1\right) \phi_8 \\
+		\phi_{11} &= \left( \frac{z_{\mathrm{S,3}}}{z_{\mathrm{P,3}}} + 1 \right) \phi_2 -\frac{z_{\mathrm{S,3}}}{z_{\mathrm{P,3}}} \phi_3 \\
+		\phi_{12} &= \left( \frac{z_{\mathrm{S,4}}}{z_{\mathrm{P,4}}} + 1 \right) \phi_1 -\frac{z_{\mathrm{S,4}}}{z_{\mathrm{P,4}}} \phi_3
+	\end{align}
+\end{subequations}
+Die Einträge von $\pmb{r}$ sind bis auf den Zehnten bereits in Abhängigkeit von $\pmb{y}$ angegeben. Der verbleibende Eintrag kann mit (\ref{eq:s4}) wie folgt angegeben werden
+\begin{equation}
+r_{10}(\pmb{y}) = r_{T,2}\,\phi_4 = r_{T,2}\,\left(-\frac{z_{\mathrm{S,1}} }{z_{\mathrm{H,1}} } \phi_1 +\left(\frac{z_{\mathrm{S,1}} }{z_{\mathrm{H,1}} }+1\right) \phi_8\right).
+\end{equation}
+Durch die zeitliche Ableitung von $\pmb{r}(\pmb{y})$ und $\pmb{s}(\pmb{y})$ gemäß (\ref{vi}) und \ref{omegai} erhält man die Jacobi-Matrizen der Translation $\pmb{J}_\mathrm{T}$ und Rotation $\pmb{J}_\mathrm{R}$. Die Terme $\overline{\pmb{v}}$ und $\overline{\pmb{\omega}}$ verschwinden, da es sich um skleronome Bindungen handelt und die ZB (\ref{eq:zwangsbedingungen}) nicht explizit zeitabhängig sind. Auch die lokalen Beschleunigungsvektoren $\overline{\pmb{a}}$ und $\overline{\pmb{\omega}}$ verschwinden, da $\pmb{J}_\mathrm{T}$ und $\pmb{J}_\mathrm{R}$ zeitlich konstant sind. In der allgemeinen Bewegungsgleichung für holonome MKS (\ref{Bwg}) verschwinden somit die Zentrifugalkräfte in $\pmb{k}(\pmb{y},\dot{\pmb{y}},t)$. Auch die Corioliskräfte verschwinden, da für alle Körper das Inertialsystem als Referenzsystem verwendet wird.%??? siehe TechDyn Seite 78 %
+ Im Vektor der verallgemeinerten Kräfte $\pmb{q}(\pmb{y},\dot{\pmb{y}},t)$ werden die eingeprägten Kräfte $\pmb{f}^e_i$ vernachlässigt da die translatorischen Bewegungen im Getriebe sehr klein gegenüber der rotatorischen Bewegungen sind. Somit reduziert sich (\ref{Bwg}) auf
+\begin{equation}
+\pmb{M}(\pmb{y},t)\cdot\ddot{\pmb{y}} = \pmb{q}(\pmb{y},\dot{\pmb{y}},t).
+\end{equation}  
+Die eingeprägten Momente sind die von den Schaltelementen aufgebrachten Momente $\mathrm{T}_{\mathrm{B05}}$, $\mathrm{T}_{\mathrm{B06}}$, $\mathrm{T}_{\mathrm{B08}}$, $\mathrm{T}_{\mathrm{K81}}$, $\mathrm{T}_{\mathrm{K38}}$ und $\mathrm{T}_{\mathrm{K27}}$. Desweitern wirken am Getriebeeingang $\mathrm{T}_{\mathrm{In}}$ und am Getriebeausgang $\mathrm{T}_{\mathrm{Out}}$. Damit ergibt sich der Vektor der eingeprägten Momente zu
+\begin{equation}\label{eq:le}
+\mathrm{\pmb{l}}^e = \begin{bmatrix} \mathrm{T}_{\mathrm{In}}+\mathrm{T}_{\mathrm{K81}} \\ -\mathrm{T}_{\mathrm{K27}}-\mathrm{T}_{\mathrm{Out}} \\ -\mathrm{T}_{\mathrm{K38}} \\ 0 \\ \mathrm{T}_{\mathrm{B05}} \\ \mathrm{T}_{\mathrm{B06}} \\ \mathrm{T}_{\mathrm{K27}} \\ \mathrm{T}_{\mathrm{B08}}+\mathrm{T}_{\mathrm{K38}}-\mathrm{T}_{\mathrm{K81}} \\ 0 \\ 0 \\ 0 \\ 0 \end{bmatrix}.
+\end{equation}
+Das Eingangsmoment $\mathrm{T}_{\mathrm{In}}$ wird vom Verbrennungsmotor und einem Elektromotor gestellt. Das Ausgangssmoment $\mathrm{T}_{\mathrm{Out}}$ wird an die Kardanwelle übertragen. Andere eingeprägte Momente, wie Schleppmomente oder Reibungen an den Lagern werden vernachlässigt. Mit Hilfe der ersten Summe von (\ref{Bwg_lang}) können die Einträge der 4x4-Massenmatrix $\pmb{M}$ berechnet werden. Diese ergeben sich zu
+\begin{align*}
+	\pmb{M}_{(1,1)} &=  J_1+J_7\left(\frac{z_\mathrm{S,4}}{z_\mathrm{H,4}}+1\right)^2+J_{12} \left(\frac{z_\mathrm{S,4}}{z_\mathrm{P,4}}+1\right)^2+J_{10} {\left(\frac{z_\mathrm{S,1}}{z_\mathrm{H,1}} - \sigma_{5}\right)}^2+J_{5} \left(\frac{z_\mathrm{S,1}}{z_\mathrm{H,1}}+\sigma_{4}\right)^2 \\
+		&\qquad + m_\mathrm{P,4} {r_\mathrm{T,4}}^2+\frac{J_{4} {z_\mathrm{S,1}}^2}{{z_\mathrm{H,1}}^2}+\frac{J_{9} {z_\mathrm{S,1}}^2}{{z_\mathrm{P,1}}^2}+\frac{m_\mathrm{P,2} {r_\mathrm{T,2}}^2 {z_\mathrm{S,1}}^2}{{z_\mathrm{H,1}}^2}\\
+	%
+	\pmb{M}_{(1,3)} &= \frac{J_{5} z_\mathrm{H,2} \left(\frac{z_\mathrm{S,1}}{z_\mathrm{H,1}}+\sigma_{4}\right)}{z_\mathrm{S,2}}-\frac{J_{12} z_\mathrm{S,4} \left(\frac{z_\mathrm{S,4}}{z_\mathrm{P,4}}+1\right)}{z_\mathrm{P,4}}-\frac{J_{10} z_\mathrm{H,2} \left(\frac{z_\mathrm{S,1}}{z_\mathrm{H,1}} - \sigma_{5}\right)}{z_\mathrm{P,2}}-\frac{J_{7} z_\mathrm{S,4} \left(\frac{z_\mathrm{S,4}}{z_\mathrm{H,4}}+1\right)}{z_\mathrm{H,4}}\\
+	%
+	\pmb{M}_{(1,4)} &= J_{10} \left(\frac{z_\mathrm{S,1}}{z_\mathrm{H,1}}-\sigma_{5}\right) \sigma_{3} - J_{5} \left(\frac{z_\mathrm{S,1}}{z_\mathrm{H,1}}+\sigma_{4}\right) \sigma_{2} -\frac{J_{4} z_\mathrm{S,1} \left(\frac{z_\mathrm{S,1}}{z_\mathrm{H,1}}+1\right)}{z_\mathrm{H,1}}\\
+		&\qquad-\frac{J_{9} z_\mathrm{S,1} \left(\frac{z_\mathrm{S,1}}{z_\mathrm{P,1}}+1\right)}{z_\mathrm{P,1}}-\frac{m_\mathrm{P,2} {r_\mathrm{T,2}}^2 z_\mathrm{S,1} \left(\frac{z_\mathrm{S,1}}{z_\mathrm{H,1}}+1\right)}{z_\mathrm{H,1}}\\
+	%
+	\pmb{M}_{(2,2)} &= J_2+J_6 \left(\frac{z_\mathrm{S,3}}{z_\mathrm{H,3}}+1\right)^2+J_{11} \left(\frac{z_\mathrm{S,3}}{z_\mathrm{P,3}}+1\right)^2+m_\mathrm{P,3} {r_\mathrm{T,3}}^2\\
+	%
+	\pmb{M}_{(2,3)} &= -\frac{J_{6} z_\mathrm{S,3} \left(\frac{z_\mathrm{S,3}}{z_\mathrm{H,3}}+1\right)}{z_\mathrm{H,3}}-\frac{J_{11} z_\mathrm{S,3} \left(\frac{z_\mathrm{S,3}}{z_\mathrm{P,3}}+1\right)}{z_\mathrm{P,3}}\\
+	\pmb{M}_{(3,1)} &= \pmb{M}_{(1,3)}\\
+	\pmb{M}_{(3,2)} &= \pmb{M}_{(2,3)}\\
+	\pmb{M}_{(3,3)} &= J_{3}+\frac{J_{10} {z_\mathrm{H,2}}^2}{{z_\mathrm{P,2}}^2}+\frac{J_{5} {z_\mathrm{H,2}}^2}{{z_\mathrm{S,2}}^2}+\frac{J_{6} {z_\mathrm{S,3}}^2}{{z_\mathrm{H,3}}^2}+\frac{J_{7} {z_\mathrm{S,4}}^2}{{z_\mathrm{H,4}}^2}+\frac{J_{11} {z_\mathrm{S,3}}^2}{{z_\mathrm{P,3}}^2}+\frac{J_{12} {z_\mathrm{S,4}}^2}{{z_\mathrm{P,4}}^2} \\
+	%
+	\pmb{M}_{(3,4)} &= -\frac{J_{10} z_\mathrm{H,2} \sigma_{3}}{z_\mathrm{P,2}} - \frac{J_{5} z_\mathrm{H,2} \sigma_{2}}{z_\mathrm{S,2}}\\
+	\pmb{M}_{(4,1)} &= \pmb{M}_{(1,4)}\\
+	\pmb{M}_{(4,3)} &= \pmb{M}_{(3,4)}\\
+	%
+	\pmb{M}_{(4,4)} &= J_8+J_4 \left(\frac{z_\mathrm{S,1}}{z_\mathrm{H,1}}+1\right)^2+J_{9} \left(\frac{z_\mathrm{S,1}}{z_\mathrm{P,1}}+1\right)^2+m_\mathrm{P,1} {r_\mathrm{T,1}}^2+J_{10} \sigma_{3}^2+J_5 \sigma_{2}^2 \\
+		&\qquad + m_\mathrm{P,2} {r_\mathrm{T,2}}^2 \left(\frac{z_\mathrm{S,1}}{z_\mathrm{H,1}}+1\right)^2\\
+	%
+	\sigma_1 &= \left(\frac{z_{\mathrm{S,4}}}{z_{\mathrm{H,4}}}+1\right) \\
+	\sigma_{2} &= \left(\frac{z_\mathrm{S,1}}{z_\mathrm{H,1}}+\frac{z_\mathrm{H,2}}{z_\mathrm{S,2}}+\frac{z_\mathrm{H,2} z_\mathrm{S,1}}{z_\mathrm{H,1} z_\mathrm{S,2}}+1\right)\\
+	\sigma_{3} &= \left(\frac{z_\mathrm{H,2}}{z_\mathrm{P,2}}-\frac{z_\mathrm{S,1}}{z_\mathrm{H,1}}+\frac{z_\mathrm{H,2} z_\mathrm{S,1}}{z_\mathrm{H,1} z_\mathrm{P,2}}-1\right) \\
+	\sigma_{5} &= \frac{z_\mathrm{H,2} z_\mathrm{S,1}}{z_\mathrm{H,1} z_\mathrm{P,2}} \\
+	\sigma_{4} &= \frac{z_\mathrm{H,2} z_\mathrm{S,1}}{z_\mathrm{H,1} z_\mathrm{S,2}}
+\end{align*}
+wobei $J_{1-12}$ die Massenträgheitsmomente der entsprechenden Wellen sind und $m_{\mathrm{P},1-4}$ die gesamt Masse der Planeten eines Planetensatzes. Durch einsetzten von $\pmb{M}$ und \eqref{eq:le} in \eqref{Bwg_lang} ergeben sich die vier Gleichungen der Getriebedynamik
+\begin{subequations} \label{eq:bewegungs_gleichungen}
+	\begin{align}
+		\pmb{M}_{(1,1)} \dot{\omega}_1 + \Vec{M}_{(1,3)} \dot{\omega}_3 +\pmb{M}_{(1,4)} \dot{\omega}_8
+		&= T_{\mathrm{K81}} +T_{\mathrm{in}} + \sigma_1 T_{\mathrm{K27}}-T_{\mathrm{B05}} {\left(\frac{z_{\mathrm{S,1}} }{z_{\mathrm{H,1}}}+\sigma_{4} \right)}\\
+		%
+		\pmb{M}_{(2,2)} \dot{\omega}_2 + \pmb{M}_{(2,3)} \dot{\omega}_3
+		&= T_{\mathrm{B06}} {\left(\frac{z_{\mathrm{S,3}} }{z_{\mathrm{H,3}} }+1\right)}-T_{\mathrm{out}} -T_{\mathrm{K27}} \\
+		%
+		\pmb{M}_{(3,1)} \dot{\omega}_1 + \pmb{M}_{(3,2)} \dot{\omega}_2 + \pmb{M}_{(3,3)} \dot{\omega}_3 + \pmb{M}_{(3,4)} \dot{\omega}_8
+		&= -T_{\mathrm{K38}} -\frac{ z_{\mathrm{H,2}} }{z_{\mathrm{S,2}} }T_{\mathrm{B05}}-\frac{z_{\mathrm{S,3}}}{z_{\mathrm{H,3}}}T_{\mathrm{B06}}-\frac{z_{\mathrm{S,4}} }{z_{\mathrm{H,4}}}T_{\mathrm{K27}}\\
+		%
+		\pmb{M}_{(4,1)} \dot{\omega}_1 + \pmb{M}_{(4,3)} \dot{\omega}_3 + \pmb{M}_{(4,4)} \dot{\omega}_8
+		&= T_{\mathrm{B08}} +T_{\mathrm{K38}} -T_{\mathrm{K81}} +\sigma_{2} T_{\mathrm{B05}}.
+	\end{align}
+\end{subequations}
+Mit Hilfe der Definition des Eingangsvektors
+\begin{equation}\label{eq:u}
+\pmb{u} = \begin{bmatrix} \mathrm{T}_{\mathrm{In}} \quad \mathrm{T}_{\mathrm{Out}} \quad \mathrm{T}_{\mathrm{K81}} \quad \mathrm{T}_{\mathrm{K38}} \quad \mathrm{T}_{\mathrm{B08}} \quad \mathrm{T}_{\mathrm{B05}} \quad \mathrm{T}_{\mathrm{B06}} \quad \mathrm{T}_{\mathrm{K27}} \end{bmatrix}^T
+\end{equation}
+lassen sich die Gleichungen \eqref{eq:bewegungs_gleichungen} schreiben als
+\begin{equation}
+\pmb{M}\,\ddot{\pmb{y}} = \tilde{\pmb{B}}\,\pmb{u}.
+\end{equation}
+Dieses Differentialgleichungssystem kann mit der Definition des Zustands
+\begin{equation}
+\pmb{x} = \dot{\pmb{y}} = \begin{bmatrix} \omega_1 \\ \omega_2 \\ \omega_3 \\ \omega_8\end{bmatrix}
+\end{equation}
+und der Invertierung von $\pmb{M}$ in die Zustandsraumdarstellung 
+\begin{equation}
+\dot{\pmb{x}} = \pmb{M}^{-1}\tilde{\pmb{B}}\,\pmb{u} = \pmb{B}\,\pmb{u}
+\end{equation}
+transformiert werden. In dieser Darstellung ist leicht ersichtlich, dass das System aufgrund der fehlenden Systemmatrix zustandsunabhängig ist.
 \subsection{Erweiterung um elastische Seitenwellen}
+Aufgrund der relativ elastischen Seitenwellen kann es im Antriebsstrang zu erheblichen Schwingungen kommen. Um diese bei der Simulation eines Schaltvorgang mit berücksichtigen zu können, soll das in \ref{ssec:AnwNE} hergeleitete Zustandsraummodell um die Elastizitäten erweitert werden. Die Seitenwellen werden dabei als Feder-Dämpfer-Systeme modelliert. Die Kardanwelle wird hingegen als starrer Körper betrachtet. Ein schematischen Aufbau des Antriebsstrangs zeigt Abbildung ???. Zunächst wird der Zustandsvektor um die Verdrehung der Seitenwellen~$\psi$ und die Raddrehzahl~$\omega_\mathrm{C}$ ergänzt, sodass sich der erweiterte Zustandsvektor
+\begin{equation}
+\pmb{x}_\mathrm{ex} = \begin{bmatrix} \omega_1 \\ \omega_2 \\ \omega_3 \\ \omega_8 \\ \phi \\ \omega_\mathrm{C} \end{bmatrix}
+\end{equation}
+ergibt. Wie in Abbildung ??? veranschaulicht, ergibt sich die $\phi$ aus der Differenz der Verdrehung am linken Schnittufer der Seitenweillen $\phi_\mathrm{ss,p}$ und der des Rades $\phi_\mathrm{C}$, am rechten Schnittufer. Unter Berücksichtigung der starren Kardanwelle ergibt sich somit für die Verdrehung der Seitenwellen
+\begin{equation}
+\phi = \frac{\phi_2}{i_{\mathrm{D}}} - \phi_\mathrm{C}
+\end{equation}  
+wobei $i_{\mathrm{D}}$ die Übersetzungen des Differentials angibt. Entsprechend gilt der Zusammenhang auch für die Winkelgeschwindigkeiten
+\begin{equation}\label{eq:dynphi}
+\dot{\phi} = \frac{\omega_2}{i_{\mathrm{D}}} - \omega_\mathrm{C}.
+\end{equation}
+Des weiteren kann am Rad das Momentengleichgewicht
+\begin{equation}\label{eq:MggRad}
+I^\mathrm{eff}_\mathrm{C}\,\dot{\omega}_\mathrm{C} = 2\,T_\mathrm{ss} - T_\mathrm{res}
+\end{equation}
+aufgestellt werden. Das effektive Massenträgheitsmomentes des Rads $I^\mathrm{eff}_\mathrm{C}$ setzt sich wie folgt zusammen
+\begin{equation}
+I^\mathrm{eff}_\mathrm{C} = I_\mathrm{ss} + m_\mathrm{C}\,r_\mathrm{dyn}.
+\end{equation}
+Dabei ist $I_\mathrm{ss}$ das Massenträgheitsmoment einer Seitenwelle, $m_\mathrm{C}$ die Masse des Rads und $r_\mathrm{dyn}$ der dynamische Radradius. Desweiteren ist $T_\mathrm{ss}$ das von den Seitenwellen übertragene Moment und kann mit dem Steifigkeitskoeffizient $k_\mathrm{ss}$ und dem Dämpfungskoeffizient $d_\mathrm{ss}$ berechnet werden zu
+\begin{equation}\label{eq:Tss}
+T_\mathrm{ss} = k_\mathrm{ss}\left(\frac{\phi_2}{i_{\mathrm{D}}} - \phi_\mathrm{C}\right) + d_\mathrm{ss}\left(\frac{\omega_2}{i_{\mathrm{D}}} - \omega_\mathrm{C}\right).
+\end{equation}
+Das Widerstandsmoment berechnet sich als Summe der berücksichtigten äußeren Widerstände zu
+\begin{equation}\label{eq:Tres}
+T_\mathrm{res} = r_\mathrm{dyn}\left(F_\mathrm{r}(v) + F_\mathrm{ad}(v) + F_\mathrm{g}\right). 
+\end{equation}
+Die berücksichtigten Widerstände sind der Rollwiderstand $F_\mathrm{r}(v)$, der Luftwiderstand $F_\mathrm{ad}(v)$ und die Hangabtriebskraft $F_\mathrm{g}$ und werden wie folgt berechnet
+\begin{subequations}
+\begin{align}
+F_\mathrm{r}(v) &= v \cdot f_\mathrm{Roll}(v)\cdot \cos\left(\zeta(t)\right)\cdot m_\mathrm{veh}\cdot g \\
+F_\mathrm{ad}(v) &= \frac{1}{2}\cdot v^2\cdot\rho_\mathrm{Air}\cdot c_\mathrm{W}\cdot A_\mathrm{front}\\
+F_\mathrm{g} &= \sin\left(\zeta(t)\right)\cdot m_\mathrm{veh}\cdot g.
+\end{align}
+\end{subequations}
+Dabei ist $v = \omega_\mathrm{C}\,r_\mathrm{dyn}$ die Fahrzeuggeschwindigkeit, $f_\mathrm{Roll}(v)$ der von der Geschwindigkeit abhängige Faktor
+des Rollwiderstands, $\zeta$ die Steigung der Straße in rad, $g$ die Erdbeschleunigung, $\rho_\mathrm{Air}$ die Luftdichte, $c_\mathrm{W}$ der Widerstandsbeiwert des Fahrzeugs, $A_\mathrm{front}$ die Frontfläche des
+Fahrzeugs und $m_\mathrm{veh}$ die Gesamtmasse des Fahrzeugs \cite[S.~3ff]{Naunheimer.2007}.
+Durch Einsetzten von \eqref{eq:Tss} und \eqref{eq:Tres} in \eqref{eq:MggRad} und anschließender Auflösung nach $\dot{\omega}_\mathrm{C}$ erhält man die Dynamik des Rades
+\begin{equation}\label{eq:dynwc}
+\dot{\omega}_\mathrm{C} = \left[ 2\,\left(k_\mathrm{ss}\left(\frac{\phi_2}{i_{\mathrm{D}}} - \phi_\mathrm{C}\right) + d_\mathrm{ss}\left(\frac{\omega_2}{i_{\mathrm{D}}} - \omega_\mathrm{C}\right)\right) - r_\mathrm{dyn}\left(F_\mathrm{r}(v) + F_\mathrm{ad}(v) + F_\mathrm{g}\right)\right]/I^\mathrm{eff}_\mathrm{C}.
+\end{equation}
+Aufgrund der starren Verbindung von Welle 2, der Kardanwelle und des Differentials, werden die Massenträgheitsmomente dieser Bauteile zusammengefasst zu
+\begin{equation}
+J^\mathrm{eff}_2 = J_2 + J^\mathrm{eff}_\mathrm{cs} + \frac{J^\mathrm{eff}_\mathrm{cs}}{i_\mathrm{D}^2}
+\end{equation}
+wobei in das effektive Massenträgheitsmoment der Kardanwelle $J^\mathrm{eff}_\mathrm{cs} = J_\mathrm{cs} + 0,5\,J_\mathrm{D}$ die eine Hälfte des Massenträgheitsmoments des Differentials miteinbezogen wird. Die andere Hälfte wird aufgrund der Drehzahldifferenz nach dem Differential mit dem Massenträgheitsmoment der zweiten Seitenwelle $J^\mathrm{eff}_\mathrm{ss} =  0,5\,J_\mathrm{D} + J_\mathrm{ss}$ zusammen gefasst. Für das erweiterte System wird $J_2$ in $\pmb{M}_(2,2)$ dann durch $J^\mathrm{eff}_2$ ersetzt. Des weiteren wird in Abbildung ??? ersichtlich, dass für das Ausgangsmoment 
+\begin{equation}
+T_\mathrm{out} = \frac{2\,T_\mathrm{ss}}{i_\mathrm{D}} = \frac{2}{i_\mathrm{D}}\,\left[ k_\mathrm{ss}\left(\frac{\phi_2}{i_{\mathrm{D}}} - \phi_\mathrm{C}\right) + d_\mathrm{ss}\left(\frac{\omega_2}{i_{\mathrm{D}}} - \omega_\mathrm{C}\right)\right]
+\end{equation}
+gilt und dieses in \eqref{eq:le} dementsprechend ersetzt werden kann.
+
+Zu beachten ist hier, dass $v(\omega_\mathrm{C})$ zustandsabhängig ist und sowohl in $F_\mathrm{r}(v)$ als auch in $F_\mathrm{ad}(v)$ nichtlinear eingeht, wodurch das gesamt System nichtlinear wird. Auch die Eingangsgröße $\zeta(t)$ geht nichtlinear in die Widerstand ein. Da Fahrbahnen im Straßenverkehr auf maximal $20^\circ$ beschränkt sind werden hier die Vereinfachungen
+\begin{equation}
+\sin(\zeta) = \zeta \quad \mathrm{und} \quad \cos(\zeta) = 1
+\end{equation}  
+getroffen. Damit lässt sich das erweiterte Modell mit dem ergänzten Eingangsvektor
+\begin{equation}\label{eq:uex}
+\pmb{u}_\mathrm{ex,nl} = \begin{bmatrix} \mathrm{T}_{\mathrm{In}} & \mathrm{T}_{\mathrm{K81}} & \mathrm{T}_{\mathrm{K38}} & \mathrm{T}_{\mathrm{B08}} & \mathrm{T}_{\mathrm{B05}} & \mathrm{T}_{\mathrm{B06}} & \mathrm{T}_{\mathrm{K27}} & \zeta \end{bmatrix}^T,
+\end{equation}
+den Gleichungen \eqref{eq:dynphi} und \eqref{eq:dynwc} in der Form 
+\begin{equation}
+\dot{\pmb{x}}_\mathrm{ex} = \pmb{f}(\pmb{x}_\mathrm{ex}) + \pmb{B}_\mathrm{ex,nl}\,\pmb{u}_\mathrm{ex,nl}
+\end{equation}
+schreiben.
+
+Des weiteren kann durch die Betrachtung der Widerstandskräfte $F_\mathrm{r}(v)$ und $F_\mathrm{ad}(v)$ als Eingangsgrößen, das System weiterhin in lineare Form
+\begin{equation}
+\dot{\pmb{x}}_\mathrm{ex} = \pmb{A}_\mathrm{ex}\,\pmb{x}_\mathrm{ex} + \pmb{B}_\mathrm{ex}\,\pmb{u}_\mathrm{ex}
+\end{equation}
+angegeben werden. Hierfür werden die beiden Widerstandskräfte in \eqref{eq:dynwc} durch $T^*_\mathrm{res}$ ersetzt, sodass sich 
+\begin{equation}\label{eq:dynwc_lin}
+\dot{\omega}_\mathrm{C} = \left[ 2\,\left(k_\mathrm{ss}\left(\frac{\phi_2}{i_{\mathrm{D}}} - \phi_\mathrm{C}\right) + d_\mathrm{ss}\left(\frac{\omega_2}{i_{\mathrm{D}}} - \omega_\mathrm{C}\right)\right) - T^*_\mathrm{res} - r_\mathrm{dyn}\, F_\mathrm{g}\right]/I^\mathrm{eff}_\mathrm{C}.
+\end{equation}
+ ergibt. Der Eingangsvektor des linearen Systems ist dann definiert als 
+\begin{equation}\label{eq:uex}
+\pmb{u}_\mathrm{ex} = \begin{bmatrix} \mathrm{T}_{\mathrm{In}} & T^*_\mathrm{res} & \mathrm{T}_{\mathrm{K81}} & \mathrm{T}_{\mathrm{K38}} & \mathrm{T}_{\mathrm{B08}} & \mathrm{T}_{\mathrm{B05}} & \mathrm{T}_{\mathrm{B06}} & \mathrm{T}_{\mathrm{K27}} & \zeta \end{bmatrix}^T.
+\end{equation}
+
+Die Funktion $\pmb{f}(\pmb{x}_\mathrm{ex})$ und die Eingangmatrix $\pmb{B}_\mathrm{ex,nl}$ des nichtlinearen Systems, sowie die Systemmatrix $\pmb{A}_\mathrm{ex}$ und die Eingangmatrix $\pmb{B}_\mathrm{ex}$ des linearen Systems sind im Anhang mit numerischen Werten für die Zähnezahlen der Zahnräder und der Massenträgheitsmomente angegeben.
 
 \section{Modellierung der Reibung an Kupplungen und Bremsen}
