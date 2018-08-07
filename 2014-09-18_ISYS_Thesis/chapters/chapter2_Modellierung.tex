@@ -241,6 +241,7 @@ und der Invertierung von $\pmb{M}$ in die Zustandsraumdarstellung
 \dot{\pmb{x}} = \pmb{M}^{-1}\tilde{\pmb{B}}\,\pmb{u} = \pmb{B}\,\pmb{u}
 \end{equation}
 transformiert werden. In dieser Darstellung ist leicht ersichtlich, dass das System aufgrund der fehlenden Systemmatrix zustandsunabhängig ist.
+
 \subsection{Erweiterung um elastische Seitenwellen}
 Aufgrund der relativ elastischen Seitenwellen kann es im Antriebsstrang zu erheblichen Schwingungen kommen. Um diese bei der Simulation eines Schaltvorgang mit berücksichtigen zu können, soll das in \ref{ssec:AnwNE} hergeleitete Zustandsraummodell um die Elastizitäten erweitert werden. Die Seitenwellen werden dabei als Feder-Dämpfer-Systeme modelliert. Die Kardanwelle wird hingegen als starrer Körper betrachtet. Ein schematischen Aufbau des Antriebsstrangs zeigt Abbildung ???. Zunächst wird der Zustandsvektor um die Verdrehung der Seitenwellen~$\psi$ und die Raddrehzahl~$\omega_\mathrm{C}$ ergänzt, sodass sich der erweiterte Zustandsvektor
 \begin{equation}
@@ -325,3 +326,7 @@ angegeben werden. Hierfür werden die beiden Widerstandskräfte in \eqref{eq:dyn
 Die Funktion $\pmb{f}(\pmb{x}_\mathrm{ex})$ und die Eingangmatrix $\pmb{B}_\mathrm{ex,nl}$ des nichtlinearen Systems, sowie die Systemmatrix $\pmb{A}_\mathrm{ex}$ und die Eingangmatrix $\pmb{B}_\mathrm{ex}$ des linearen Systems sind im Anhang mit numerischen Werten für die Zähnezahlen der Zahnräder und der Massenträgheitsmomente angegeben.
 
 \section{Modellierung der Reibung an Kupplungen und Bremsen}
+Die im Abschnitt \ref{ssec:AnwNE} eingeführten Momente der Schaltelemente werden über Lamellenkupplungen beziehungsweise -bremsen an den Wellen angebracht. Dabei werden die Lamellenpakete über einen hydraulischen Druck zusammengepresst wodurch eine kraftschlüssige Verbindung der Innen- und Außenlamellen entsteht. Die kraftschlüssige Verbindung basiert auf Reibkräften, für deren Modellierung es verschiedene Ansätze gibt. Im Wesentlichen können diese in statische und dynamische Reibmodelle eingeteilt werden. Im Folgenden werden diese Ansätze erläutert.
+
+\subsection{Statische Reibmodelle}
+Die einfachste Art der Reibungsmodellierung ist die Coulombsche Reibung. Dabei ist die Reibkraft proportional zur Normalkraft $F_\mathrm{N}$ und einem konstanten Reibungskoeffizienten $\mue_\mathrm{C}$. 

@@ -1,9 +1,8 @@
-This is pdfTeX, Version 3.14159265-2.6-1.40.19 (MiKTeX 2.9.6700 64-bit) (preloaded format=pdflatex 2018.7.20)  3 AUG 2018 17:15
+This is pdfTeX, Version 3.14159265-2.6-1.40.19 (MiKTeX 2.9.6745 64-bit) (preloaded format=pdflatex 2018.7.20)  4 AUG 2018 11:19
 entering extended mode
 **./Masterarbeit_KorayKarci.tex
 (Masterarbeit_KorayKarci.tex
 LaTeX2e <2018-04-01> patch level 5
-Babel <3.20> and hyphenation patterns for 75 language(s) loaded.
 (isys.cls
 Document Class: isys 2013/12/09 v0.104 LaTeX document class for ISYS thesis
 
@@ -36,15 +35,15 @@ File: pdftex.def 2018/01/08 v1.0l Graphics/color driver for pdftex
 \Gin@req@width=\dimen103
 )
 ("C:\Program Files\MiKTeX 2.9\tex\generic\babel\babel.sty"
-Package: babel 2018/05/02 3.20 The Babel package
+Package: babel 2018/06/05 3.22 The Babel package
 
 ("C:\Program Files\MiKTeX 2.9\tex\generic\babel\switch.def"
-File: switch.def 2018/05/02 3.20 Babel switching mechanism
+File: switch.def 2018/06/05 3.22 Babel switching mechanism
 )
 *************************************
 * Local config file bblopts.cfg used
 *
-(C:\Users\msb86538\AppData\Roaming\MiKTeX\2.9\tex\latex\arabi\bblopts.cfg
+("C:\Program Files\MiKTeX 2.9\tex\latex\arabi\bblopts.cfg"
 File: bblopts.cfg 2005/09/08 v0.1 add Arabic and Farsi to "declared" options of
  babel
 )
@@ -52,7 +51,7 @@ File: bblopts.cfg 2005/09/08 v0.1 add Arabic and Farsi to "declared" options of
 Language: english 2017/06/06 v3.3r English support from the babel system
 
 ("C:\Program Files\MiKTeX 2.9\tex\generic\babel\babel.def"
-File: babel.def 2018/05/02 3.20 Babel common definitions
+File: babel.def 2018/06/05 3.22 Babel common definitions
 \babel@savecnt=\count80
 \U@D=\dimen104
 
@@ -107,22 +106,22 @@ LaTeX Font Info:    Overwriting math alphabet `\mathit' in version `bold'
 LaTeX Font Info:    Overwriting math alphabet `\mathtt' in version `bold'
 (Font)                  OT1/cmtt/m/n --> OT1/lmtt/m/n on input line 38.
 )
-(C:\Users\msb86538\AppData\Roaming\MiKTeX\2.9\tex\latex\isodate\isodate.sty
+("C:\Program Files\MiKTeX 2.9\tex\latex\isodate\isodate.sty"
 Package: isodate 2010/01/03 v2.30 Print dates with different formats (HH)
 
 ("C:\Program Files\MiKTeX 2.9\tex\latex\base\ifthen.sty"
 Package: ifthen 2014/09/29 v1.1c Standard LaTeX ifthen package (DPC)
 )
-(C:\Users\msb86538\AppData\Roaming\MiKTeX\2.9\tex\latex\substr\substr.sty
+("C:\Program Files\MiKTeX 2.9\tex\latex\substr\substr.sty"
 Package: substr 2009/10/20 v1.2 Handle substrings
 \c@su@anzahl=\count82
 )
-(C:\Users\msb86538\AppData\Roaming\MiKTeX\2.9\tex\latex\isodate\english.idf
+("C:\Program Files\MiKTeX 2.9\tex\latex\isodate\english.idf"
 File: english.idf 2010/01/03 v2.30 Language definitions for isodate package (HH
 )
 
 Define commands for English date format
-) (C:\Users\msb86538\AppData\Roaming\MiKTeX\2.9\tex\latex\isodate\german.idf
+) ("C:\Program Files\MiKTeX 2.9\tex\latex\isodate\german.idf"
 File: german.idf 2010/01/03 v2.30 Language definitions for isodate package (HH)
 
 
@@ -136,25 +135,20 @@ Define commands for German date format (ngerman)
 \c@iso@@slash=\count88
 \c@iso@@minus=\count89
 \c@iso@@dot=\count90
-)
-(C:\Users\msb86538\AppData\Roaming\MiKTeX\2.9\tex\latex\koma-script\scrbook.cls
+) ("C:\Program Files\MiKTeX 2.9\tex\latex\koma-script\scrbook.cls"
 Document Class: scrbook 2018/03/30 v3.25 KOMA-Script document class (book)
-
-(C:\Users\msb86538\AppData\Roaming\MiKTeX\2.9\tex\latex\koma-script\scrkbase.st
-y
+("C:\Program Files\MiKTeX 2.9\tex\latex\koma-script\scrkbase.sty"
 Package: scrkbase 2018/03/30 v3.25 KOMA-Script package (KOMA-Script-dependent b
 asics and keyval usage)
 
-(C:\Users\msb86538\AppData\Roaming\MiKTeX\2.9\tex\latex\koma-script\scrbase.sty
+("C:\Program Files\MiKTeX 2.9\tex\latex\koma-script\scrbase.sty"
 Package: scrbase 2018/03/30 v3.25 KOMA-Script package (KOMA-Script-independent 
 basics and keyval usage)
 
-(C:\Users\msb86538\AppData\Roaming\MiKTeX\2.9\tex\latex\koma-script\scrlfile.st
-y
+("C:\Program Files\MiKTeX 2.9\tex\latex\koma-script\scrlfile.sty"
 Package: scrlfile 2018/03/30 v3.25 KOMA-Script package (loading files)
 )))
-(C:\Users\msb86538\AppData\Roaming\MiKTeX\2.9\tex\latex\koma-script\tocbasic.st
-y
+("C:\Program Files\MiKTeX 2.9\tex\latex\koma-script\tocbasic.sty"
 Package: tocbasic 2018/03/30 v3.25 KOMA-Script package (handling toc-files)
 \scr@dte@tocline@numberwidth=\skip41
 \scr@dte@tocline@numbox=\box26
@@ -167,13 +161,11 @@ Package tocbasic Info: defining new hook before heading of `' on input line 166
 Class scrbook Info: File `scrsize11pt.clo' used to setup font sizes on input li
 ne 2331.
 
-(C:\Users\msb86538\AppData\Roaming\MiKTeX\2.9\tex\latex\koma-script\scrsize11pt
-.clo
+("C:\Program Files\MiKTeX 2.9\tex\latex\koma-script\scrsize11pt.clo"
 File: scrsize11pt.clo 2018/03/30 v3.25 KOMA-Script font size class option (11pt
 )
 )
-(C:\Users\msb86538\AppData\Roaming\MiKTeX\2.9\tex\latex\koma-script\typearea.st
-y
+("C:\Program Files\MiKTeX 2.9\tex\latex\koma-script\typearea.sty"
 Package: typearea 2018/03/30 v3.25 KOMA-Script package (type area)
 \ta@bcor=\skip42
 \ta@div=\count91
@@ -183,7 +175,8 @@ Package: typearea 2018/03/30 v3.25 KOMA-Script package (type area)
 \footheight=\skip46
 LaTeX Font Info:    Try loading font information for OT1+lmr on input line 1706
 .
- ("C:\Program Files\MiKTeX 2.9\tex\latex\lm\ot1lmr.fd"
+
+("C:\Program Files\MiKTeX 2.9\tex\latex\lm\ot1lmr.fd"
 File: ot1lmr.fd 2009/10/30 v1.6 Font defs for Latin Modern
 )
 Package typearea Info: These are the values describing the layout:
@@ -238,8 +231,7 @@ Package scrkbase Info: You've told me to extend the font selection of the
 (scrkbase)             element `sectioning' that is an alias of element
 (scrkbase)             `disposition' on input line 151.
 
-(C:\Users\msb86538\AppData\Roaming\MiKTeX\2.9\tex\latex\koma-script\scrpage2.st
-y
+("C:\Program Files\MiKTeX 2.9\tex\latex\koma-script\scrpage2.sty"
 Package: scrpage2 2018/03/30 v3.25 KOMA-Script package (page head and foot)
 
 
@@ -267,10 +259,10 @@ Package: fontenc 2017/04/05 v2.0i Standard LaTeX package
 File: t1enc.def 2017/04/05 v2.0i Standard LaTeX file
 LaTeX Font Info:    Redeclaring font encoding T1 on input line 48.
 ))
-(C:\Users\msb86538\AppData\Roaming\MiKTeX\2.9\tex\latex\csquotes\csquotes.sty
+("C:\Program Files\MiKTeX 2.9\tex\latex\csquotes\csquotes.sty"
 Package: csquotes 2018/04/13 v5.2d context-sensitive quotations (JAW)
 
-(C:\Users\msb86538\AppData\Roaming\MiKTeX\2.9\tex\latex\etoolbox\etoolbox.sty
+("C:\Program Files\MiKTeX 2.9\tex\latex\etoolbox\etoolbox.sty"
 Package: etoolbox 2018/02/11 v2.5e e-TeX tools for LaTeX (JAW)
 \etb@tempcnta=\count103
 )
@@ -282,17 +274,18 @@ Package: etoolbox 2018/02/11 v2.5e e-TeX tools for LaTeX (JAW)
 \csq@tshold=\count109
 \csq@ltx@everypar=\toks17
 
-(C:\Users\msb86538\AppData\Roaming\MiKTeX\2.9\tex\latex\csquotes\csquotes.def
+("C:\Program Files\MiKTeX 2.9\tex\latex\csquotes\csquotes.def"
 File: csquotes.def 2018/04/13 v5.2d csquotes generic definitions (JAW)
 )
 Package csquotes Info: Trying to load configuration file 'csquotes.cfg'...
 Package csquotes Info: ... configuration file loaded successfully.
 
-(C:\Users\msb86538\AppData\Roaming\MiKTeX\2.9\tex\latex\csquotes\csquotes.cfg
+("C:\Program Files\MiKTeX 2.9\tex\latex\csquotes\csquotes.cfg"
 File: csquotes.cfg 
 ))
 Package csquotes Info: Allocating character u8:194:187.
 Package csquotes Info: Allocating character u8:194:171.
+
 ("C:\Program Files\MiKTeX 2.9\tex\latex\amsmath\amsmath.sty"
 Package: amsmath 2017/09/02 v2.17a AMS math features
 \@mathmargin=\skip58
@@ -369,7 +362,7 @@ Package: bm 2017/01/16 v1.2c Bold Symbol Support (DPC/FMi)
 LaTeX Font Info:    Redeclaring math alphabet \mathbf on input line 141.
 LaTeX Info: Redefining \bm on input line 207.
 )
-(C:\Users\msb86538\AppData\Roaming\MiKTeX\2.9\tex\latex\booktabs\booktabs.sty
+("C:\Program Files\MiKTeX 2.9\tex\latex\booktabs\booktabs.sty"
 Package: booktabs 2005/04/14 v1.61803 publication quality tables
 \heavyrulewidth=\dimen115
 \lightrulewidth=\dimen116
@@ -389,10 +382,10 @@ Package: booktabs 2005/04/14 v1.61803 publication quality tables
 \@lastruleclass=\count125
 \@thisrulewidth=\dimen127
 )
-(C:\Users\msb86538\AppData\Roaming\MiKTeX\2.9\tex\latex\units\units.sty
+("C:\Program Files\MiKTeX 2.9\tex\latex\units\units.sty"
 Package: units 1998/08/04 v0.9b Typesetting units
 
-(C:\Users\msb86538\AppData\Roaming\MiKTeX\2.9\tex\latex\units\nicefrac.sty
+("C:\Program Files\MiKTeX 2.9\tex\latex\units\nicefrac.sty"
 Package: nicefrac 1998/08/04 v0.9b Nice fractions
 \L@UnitsRaiseDisplaystyle=\skip61
 \L@UnitsRaiseTextstyle=\skip62
@@ -419,7 +412,7 @@ Package: array 2018/04/30 v2.4h Tabular extension package (FMi)
 \TX@cols=\count126
 \TX@ftn=\toks24
 )
-(C:\Users\msb86538\AppData\Roaming\MiKTeX\2.9\tex\latex\tabulary\tabulary.sty
+("C:\Program Files\MiKTeX 2.9\tex\latex\tabulary\tabulary.sty"
 Package: tabulary 2014/06/11 v0.10 tabulary package (DPC)
 \TY@count=\count127
 \TY@linewidth=\dimen135
@@ -427,10 +420,10 @@ Package: tabulary 2014/06/11 v0.10 tabulary package (DPC)
 \tymax=\dimen137
 \TY@tablewidth=\dimen138
 )
-(C:\Users\msb86538\AppData\Roaming\MiKTeX\2.9\tex\latex\ms\ragged2e.sty
+("C:\Program Files\MiKTeX 2.9\tex\latex\ms\ragged2e.sty"
 Package: ragged2e 2009/05/21 v2.1 ragged2e Package (MS)
 
-(C:\Users\msb86538\AppData\Roaming\MiKTeX\2.9\tex\latex\ms\everysel.sty
+("C:\Program Files\MiKTeX 2.9\tex\latex\ms\everysel.sty"
 Package: everysel 2011/10/28 v1.2 EverySelectfont Package (MS)
 )
 \CenteringLeftskip=\skip66
@@ -529,7 +522,7 @@ Package hyperref Info: Implicit mode ON; LaTeX internals redefined.
 Package hyperref Info: Bookmarks ON on input line 4762.
 \c@Hy@tempcnt=\count131
 
-(C:\Users\msb86538\AppData\Roaming\MiKTeX\2.9\tex\latex\url\url.sty
+("C:\Program Files\MiKTeX 2.9\tex\latex\url\url.sty"
 \Urlmuskip=\muskip11
 Package: url 2013/09/16  ver 3.4  Verb mode for urls, etc.
 )
@@ -575,15 +568,15 @@ File: bkm-pdftex.def 2016/05/17 v1.26 bookmark driver for pdfTeX (HO)
 ("C:\Program Files\MiKTeX 2.9\tex\latex\biblatex\biblatex.sty"
 Package: biblatex 2018/03/04 v3.11 programmable bibliographies (PK/MW)
 
-(C:\Users\msb86538\AppData\Roaming\MiKTeX\2.9\tex\latex\logreq\logreq.sty
+("C:\Program Files\MiKTeX 2.9\tex\latex\logreq\logreq.sty"
 Package: logreq 2010/08/04 v1.0 xml request logger
 \lrq@indent=\count139
 
-(C:\Users\msb86538\AppData\Roaming\MiKTeX\2.9\tex\latex\logreq\logreq.def
+("C:\Program Files\MiKTeX 2.9\tex\latex\logreq\logreq.def"
 File: logreq.def 2010/08/04 v1.0 logreq spec v1.0
 ))
-(C:\Users\msb86538\AppData\Roaming\MiKTeX\2.9\tex\latex\xstring\xstring.sty
-(C:\Users\msb86538\AppData\Roaming\MiKTeX\2.9\tex\generic\xstring\xstring.tex
+("C:\Program Files\MiKTeX 2.9\tex\latex\xstring\xstring.sty"
+("C:\Program Files\MiKTeX 2.9\tex\generic\xstring\xstring.tex"
 \@xs@message=\write3
 \integerpart=\count140
 \decimalpart=\count141
@@ -643,6 +636,7 @@ Package: xstring 2013/10/13  v1.7c  String manipulations (C Tellechea)
 \c@mincompwidth=\count182
 Package biblatex Info: Trying to load biblatex default data model...
 Package biblatex Info: ... file 'blx-dm.def' found.
+
 ("C:\Program Files\MiKTeX 2.9\tex\latex\biblatex\blx-dm.def"
 File: blx-dm.def 2018/03/04 v3.11 biblatex localization (PK/MW)
 )
@@ -867,7 +861,7 @@ LaTeX Font Info:    Try loading font information for T1+lmr on input line 128.
 ("C:\Program Files\MiKTeX 2.9\tex\latex\lm\t1lmr.fd"
 File: t1lmr.fd 2009/10/30 v1.6 Font defs for Latin Modern
 )
-(C:\Users\msb86538\AppData\Roaming\MiKTeX\2.9\tex\context\base\supp-pdf.mkii
+("C:\Program Files\MiKTeX 2.9\tex\context\base\supp-pdf.mkii"
 [Loading MPS to PDF converter (version 2006.09.02).]
 \scratchcounter=\count326
 \scratchdimen=\dimen143
@@ -1007,8 +1001,8 @@ Package babel Info: Redefining ngerman shorthand "~
 
 
 
-{C:/Users/msb86538/AppData/Local/MiKTeX/2.9/pdftex/config/pdftex.map} <./logos/
-logoISYS_deutsch.pdf> <./logos/logoUniversitaetStuttgart.pdf>]
+{C:/Users/karci/AppData/Local/MiKTeX/2.9/pdftex/config/pdftex.map} <./logos/log
+oISYS_deutsch.pdf> <./logos/logoUniversitaetStuttgart.pdf>]
 Package babel Info: Redefining ngerman shorthand "|
 (babel)             in language  on input line 133.
 Package babel Info: Redefining ngerman shorthand "~
@@ -1050,12 +1044,11 @@ Package babel Info: Redefining ngerman shorthand "|
 (babel)             in language  on input line 167.
 Package babel Info: Redefining ngerman shorthand "~
 (babel)             in language  on input line 167.
-
-(Masterarbeit_KorayKarci.toc)
+ (Masterarbeit_KorayKarci.toc)
 \tf@toc=\write5
 \openout5 = `Masterarbeit_KorayKarci.toc'.
 
- (chapters/Kurzzeichenverzeichnis.tex
+(chapters/Kurzzeichenverzeichnis.tex
 Package babel Info: Redefining ngerman shorthand "|
 (babel)             in language  on input line 1.
 Package babel Info: Redefining ngerman shorthand "~
@@ -1594,10 +1587,10 @@ Package logreq Info: Writing requests to 'Masterarbeit_KorayKarci.run.xml'.
 
  ) 
 Here is how much of TeX's memory you used:
- 17936 strings out of 492974
- 305740 string characters out of 3135938
- 759741 words of memory out of 100000000
- 21320 multiletter control sequences out of 15000+200000
+ 17936 strings out of 492973
+ 304721 string characters out of 3135932
+ 760062 words of memory out of 3000000
+ 21321 multiletter control sequences out of 15000+200000
  86560 words of font info for 61 fonts, out of 3000000 for 9000
  1143 hyphenation exceptions out of 8191
  47i,20n,68p,9179b,2180s stack positions out of 5000i,500n,10000p,200000b,50000s
