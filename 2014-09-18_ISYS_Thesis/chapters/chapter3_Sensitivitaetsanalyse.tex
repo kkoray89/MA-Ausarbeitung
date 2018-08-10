@@ -1,47 +1,21 @@
-\chapter{Sensitivitätsanalyse}\label{ch:ch3}
-Der Hauptteil kann aus mehreren Kapiteln bestehen. Hier soll auf die Vorgehensweise sowie die Ergebnisse der Arbeit eingegangen werden. Dabei ist auf eine schlüssige und klare Strukturierung zu achten, die den roten Faden der Arbeit verdeutlicht. 
+\chapter{Sensitivitätsanalyse}\label{ch:Sensitivity}\label{ch:ch3}
+In diesem Kapitel wird das in Kapitel \cite{ch:ch3} hergeleitete lineare Modell des Antriebsstrangs auf die Sensitivität verschiedener Parameter und Eingänge untersucht. Damit soll die Relevanz für eine Parameter- und Eingangsschätzung im folgenden Kapitel belegt und unterstrichen werden.
+Eine mögliche Definition für eine Sensitivitätsanalyse ist die folgende: \emph{The study of how uncertainty in the output of a model (numerical or otherwise) can be apportioned to different sources of uncertainty in the model input} \cite{Saltelli.2004}.
+Für die Analyse gibt es verschiedene Methoden. Dabei ist die OAT(one-at-a-time)-Methode wohl die einfachste. Dabei wird pro Simulationsdurchlauf lediglich eine Eingangsgröße geändert während alle anderen auf den nominal Werten gehalten werden. Die Methode liefert aber nur eine sehr beschränkte Aussage über den gesamten Eingangsraum. Jedoch kann sie für die Abschätzung einer ersten Untergruppe an relevanten Eingängen hilfreich sein.    
 
-Kurzer einleitender Text nach jedem Kapitelbeginn und vor Beginn der \texttt{sections}. Es stehen also nie zwei Überschriften direkt hintereinander. An dieser Stelle soll dem Leser ein Überblick über das folgende Kapitel gegeben werden.
+ Die in der Literatur am häufigsten diskutierten Ansätze basieren auf partiellen Ableitungen der Art $\partial y_i/\partial x_i$ wobei $y$ ein beliebiger Ausgang und $x_i$ ein beliebiger Eingang des Systems ist. Ein Eingang kann hierbei auch ein variierender Parameter sein. Dieses Vorgehen wird vor allem bei relativ einfachen, mathematisch wohlbestimmten und stetigen Modellen verwendet. Der Vorteil dabei ist, dass die Sensitvitätsfunktionen sobald sie einmal berechnet sind leicht an Veränderungen anpassbar sind und auch für ähnliche Systeme verwendet werden können \cite{Karnavas.1993}. Jedoch werden die partiellen Ableitung immer in einem bestimmen Arbeitspunkt berechnet d.h. die Aussagen der Sensitvitätsfunktionen gelten für nichtlineare Systeme nur lokal um diesen den Arbeitspunkt. Des weiteren ist es oft sehr schwer oder gar unmöglich die benötigten Ableitungen für komplexe Modelle zu berechnen.
 
-Hier habe ich etwas geändert
-\section{Erstes Unterkapitel}\label{sec:ch3_foobar}
-Dies wurde bereits von Fliess et~al. im Jahre 1995 gezeigt~\cite{Fliess.1995}.
+Eine Alternative zur Berechnung der partiellen Ableitungen sind globale Methoden. Hierbei werden die Modelleingänge stochstisch varriert, woraus sich nach vielen Simulationen eine Strichprobe für die Modellausgänge ergibt. Dieses Methode der mehrfachen Simulation wird auch Monte-Carlo-Methode genannt. Wie der Name schon sagt ist der grundlegende Vorteil dabei, dass durch eine genügend große Stichprobe eine globale Aussage zur Sensitivität gegeben werden kann. Des weiteren erlaubt die Methode auch Aussagen über die verkoppelte Wirkung von Eingangsänderungen ohne spezielles Vorwissen über die Struktur des Modells. Der entscheidende Nachteil liegt je nach Stichprobengröße und Komplexität des Modells in der Rechenzeit.      
 
-Mit \texttt{biblatex}-Befehlen: Dies wurde bereits von \citeauthor{Fliess.1995} im Jahre~\citeyear{Fliess.1995} gezeigt~\cite{Fliess.1995}.
-
-
-Das Logo des Instituts ist in Abbildung~\ref{fig:logo_isys1} dargestellt. 
-
-  
-\begin{figure} % avoid using additional specifiers for graphics position except for final tuning
- \centering    % preferable over \begin{center}...\end{center} as the latter includes space before and after the figure 
- \includegraphics[width=0.5\textwidth]{logos/logoISYS_deutsch}
- \caption{Put figure captions \emph{below} the figure.}
- \label{fig:logo_isys1} % always use \label AFTER \caption
-\end{figure}
-
-Die erzielten Ergebnisse sind in Tabelle~\ref{fig:example_table1} zusammengefasst.
-
-\begin{table} % avoid using additional specifiers for graphics position except for final tuning
-	\caption{Put table captions \emph{above} the table. Put units in header. Avoid vertical lines in a table.}
-	\label{fig:example_table1}
-	\centering
-	\begin{tabular}{lll}
-		\toprule
-		Header & Header (\unit{unit}) & Header (\unitfrac{unit}{frac})   \\
-		\midrule
-		Content 1 & Content 2 & Content 3 \\
-		Content 1 & Content 2 & Content 3 \\
-		\bottomrule
-	\end{tabular}
-\end{table}
-
+Aufgrund des linearen und stetigen Charakters von \eqref{eq:sys_linex} werden für diese Arbeit die partiellen Ableitungen für die Sensitivitätsanalyse verwendet.
+Hierfür wird zuerst ein idealer Schaltvorgang beschrieben um die Sensitivitätsfunktionen in verschieden Schaltphasen auswerten zukönnen. Des weiteren wird mit der Berechnung der Fisher-Informationsmatrix eine Abschätzung für die erreichbare Genauigkeit der Schätzungen geliefert.
    
+\section{Beschreibung eines Gangwechsels}
+Bei einem Gangwechsel wird durch die Betätigung von Schaltelementen die Übersetzung des Getriebes geändert. Dies soll zum einen in jedem Fall möglichst ohne für den Fahrer spürbare unerwünschte Beschleunigungen am Getriebeabtrieb passieren. Zum anderen soll der Gangwechsel aber auch so schnell wie möglich und ohne Momentenunterbrechung vollzogen werden. Es besteht also eine Zielkonflikt zwischen den Komfortansprüchen des Fahrers und der Dauer eines Schaltvorgangs. Grundsätzlich wird zwischen vier verschieden Schaltvorgängen unterschieden. 
+Bei dem in dieser Arbeit betrachteten Getriebe geschieht ein Gangwechsel mittels der Schließung und der simultanen Öffnung einer Bremse bzw. Kupplung. In der   
+\section{Anwendung der Paramater- und Eingangssensitivitätsanalyse}
 
-\section{Zweites Unterkapitel}
-
-
-\subsection{Neuer Abschnitt}
+\section{Fisher-Informationsmatrix}
 
 
 

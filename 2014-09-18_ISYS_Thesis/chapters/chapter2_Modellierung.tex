@@ -133,9 +133,8 @@ Die Gangschaltung erfolgt im Getriebe über jeweils drei Lamellenkupplungen und 
 \subsection{Anwendung des Newton-Euler-Formalismus}\label{ssec:AnwNE}
 Die Wellen und Planeten rotieren alle nur um eine Achse bzw. bewegen sich nur auf einer Kreisbahn. Daher werden die Orientierungen und Ortsvektoren des einzelnen Körper als skalare angegeben. Die Ortsvektoren werden als Zylinderkoordinaten geschrieben. Somit ergibt sich der Vektor der Orientierungen der einzelnen Wellen und der Planeten zu 
 \begin{equation}
-\pmb{s} = \begin{bmatrix} s_{1}\quad s_{2}\quad \dots \quad s_{12} \end{bmatrix}^T = \begin{bmatrix} \phi_{1}\quad \phi_{2}\quad \dots \quad \phi_{12} \end{bmatrix}^T
-\end{equation}
-angegeben. 
+\pmb{s} = \begin{bmatrix} s_{1}\quad s_{2}\quad \dots \quad s_{12} \end{bmatrix}^T = \begin{bmatrix} \phi_{1}\quad \phi_{2}\quad \dots \quad \phi_{12} \end{bmatrix}^T.
+\end{equation} 
 Die Ortsvektoren der Wellen 1-8 können aufgrund der nicht vorhanden translatorischen Bewegung gleich Null gesetzt werden. Lediglich die Planeten haben durch die Bewegung auf den Planetenträgern um die Drehachse der Wellen~ 1-8 einen translatorischen Anteil. Die Position der Planeten ergibt sich somit aus den entsprechenden Radien der Planetenträgern $r_{T,j}$ und der Orientierung der Planetenträgern. Daraus ergibt sich der Orstvektor des Systems zu
 \begin{equation}
 \pmb{r} = \begin{bmatrix} r_{1}\; r_{2}\; \dots \; r_{12} \end{bmatrix}^T = \begin{bmatrix} 0\; \dots \; 0 \quad r_{T,1}\,\phi_8 \quad r_{T,2}\,\phi_4 \quad r_{T,3}\,\phi_2 \quad r_{T,4}\,\phi_1 \end{bmatrix}^T
@@ -169,11 +168,31 @@ Die Einträge von $\pmb{r}$ sind bis auf den Zehnten bereits in Abhängigkeit vo
 \begin{equation}
 r_{10}(\pmb{y}) = r_{T,2}\,\phi_4 = r_{T,2}\,\left(-\frac{z_{\mathrm{S,1}} }{z_{\mathrm{H,1}} } \phi_1 +\left(\frac{z_{\mathrm{S,1}} }{z_{\mathrm{H,1}} }+1\right) \phi_8\right).
 \end{equation}
-Durch die zeitliche Ableitung von $\pmb{r}(\pmb{y})$ und $\pmb{s}(\pmb{y})$ gemäß (\ref{vi}) und \ref{omegai} erhält man die Jacobi-Matrizen der Translation $\pmb{J}_\mathrm{T}$ und Rotation $\pmb{J}_\mathrm{R}$. Die Terme $\overline{\pmb{v}}$ und $\overline{\pmb{\omega}}$ verschwinden, da es sich um skleronome Bindungen handelt und die ZB (\ref{eq:zwangsbedingungen}) nicht explizit zeitabhängig sind. Auch die lokalen Beschleunigungsvektoren $\overline{\pmb{a}}$ und $\overline{\pmb{\omega}}$ verschwinden, da $\pmb{J}_\mathrm{T}$ und $\pmb{J}_\mathrm{R}$ zeitlich konstant sind. In der allgemeinen Bewegungsgleichung für holonome MKS (\ref{Bwg}) verschwinden somit die Zentrifugalkräfte in $\pmb{k}(\pmb{y},\dot{\pmb{y}},t)$. Auch die Corioliskräfte verschwinden, da für alle Körper das Inertialsystem als Referenzsystem verwendet wird.%??? siehe TechDyn Seite 78 %
+Durch die zeitliche Ableitung von $\pmb{r}(\pmb{y})$ und $\pmb{s}(\pmb{y})$ gemäß (\ref{vi}) und \ref{omegai} erhält man die Jacobi-Matrizen der Translation
+\begin{equation}
+\pmb{J}_\mathrm{T} = \begin{bmatrix}
+J_\mathrm{T1} & J_\mathrm{T2} & \cdots & J_\mathrm{T12}
+\end{bmatrix}^T
+\end{equation}  
+und der Rotation 
+\begin{equation}
+\pmb{J}_\mathrm{R} = \begin{bmatrix}
+J_\mathrm{R1} & J_\mathrm{R2} & \cdots & J_\mathrm{R12}
+\end{bmatrix}^T,
+\end{equation} 
+welche die einzelnen Jacobi-Matrizen der Körper enthalten. Die Terme $\overline{\pmb{v}}$ und $\overline{\pmb{\omega}}$ verschwinden, da es sich um skleronome Bindungen handelt und die ZB (\ref{eq:zwangsbedingungen}) nicht explizit zeitabhängig sind. Auch die lokalen Beschleunigungsvektoren $\overline{\pmb{a}}$ und $\overline{\pmb{\omega}}$ verschwinden, da $\pmb{J}_\mathrm{T}$ und $\pmb{J}_\mathrm{R}$ zeitlich konstant sind. In der allgemeinen Bewegungsgleichung für holonome MKS (\ref{Bwg}) verschwinden somit die Zentrifugalkräfte in $\pmb{k}(\pmb{y},\dot{\pmb{y}},t)$. Auch die Corioliskräfte verschwinden, da für alle Körper das Inertialsystem als Referenzsystem verwendet wird.%??? siehe TechDyn Seite 78 %
  Im Vektor der verallgemeinerten Kräfte $\pmb{q}(\pmb{y},\dot{\pmb{y}},t)$ werden die eingeprägten Kräfte $\pmb{f}^e_i$ vernachlässigt da die translatorischen Bewegungen im Getriebe sehr klein gegenüber der rotatorischen Bewegungen sind. Somit reduziert sich (\ref{Bwg}) auf
 \begin{equation}
-\pmb{M}(\pmb{y},t)\cdot\ddot{\pmb{y}} = \pmb{q}(\pmb{y},\dot{\pmb{y}},t).
-\end{equation}  
+\pmb{M}(\pmb{y},t)\cdot\ddot{\pmb{y}} = \pmb{q}(\pmb{y},\dot{\pmb{y}},t)
+\end{equation}
+wobei die Massenmatrix mit $\pmb{J}_\mathrm{T}$ und $\pmb{J}_\mathrm{R}$ jetzt angegeben werden kann als 
+  \begin{equation}
+\pmb{M}(\pmb{y},t) = \pmb{J}_\mathrm{T}^T\cdot\mathrm{diag}(m_i)\cdot\pmb{J}_\mathrm{T}+\pmb{J}_\mathrm{R}^T\cdot\mathrm{diag}(I_i)\cdot\pmb{J}_\mathrm{R}
+\end{equation}
+und der Vektor der verallgemeinerten Kräfte als
+  \begin{equation}
+\pmb{q}(\pmb{y},\dot{\pmb{y}},t) = \pmb{J}_\mathrm{R}^T\cdot\mathrm{\pmb{l}}^e 
+\end{equation}
 Die eingeprägten Momente sind die von den Schaltelementen aufgebrachten Momente $\mathrm{T}_{\mathrm{B05}}$, $\mathrm{T}_{\mathrm{B06}}$, $\mathrm{T}_{\mathrm{B08}}$, $\mathrm{T}_{\mathrm{K81}}$, $\mathrm{T}_{\mathrm{K38}}$ und $\mathrm{T}_{\mathrm{K27}}$. Desweitern wirken am Getriebeeingang $\mathrm{T}_{\mathrm{In}}$ und am Getriebeausgang $\mathrm{T}_{\mathrm{Out}}$. Damit ergibt sich der Vektor der eingeprägten Momente zu
 \begin{equation}\label{eq:le}
 \mathrm{\pmb{l}}^e = \begin{bmatrix} \mathrm{T}_{\mathrm{In}}+\mathrm{T}_{\mathrm{K81}} \\ -\mathrm{T}_{\mathrm{K27}}-\mathrm{T}_{\mathrm{Out}} \\ -\mathrm{T}_{\mathrm{K38}} \\ 0 \\ \mathrm{T}_{\mathrm{B05}} \\ \mathrm{T}_{\mathrm{B06}} \\ \mathrm{T}_{\mathrm{K27}} \\ \mathrm{T}_{\mathrm{B08}}+\mathrm{T}_{\mathrm{K38}}-\mathrm{T}_{\mathrm{K81}} \\ 0 \\ 0 \\ 0 \\ 0 \end{bmatrix}.
@@ -311,7 +330,7 @@ den Gleichungen \eqref{eq:dynphi} und \eqref{eq:dynwc} in der Form
 schreiben.
 
 Des weiteren kann durch die Betrachtung der Widerstandskräfte $F_\mathrm{r}(v)$ und $F_\mathrm{ad}(v)$ als Eingangsgrößen, das System weiterhin in lineare Form
-\begin{equation}
+\begin{equation}\label{eq:sys_linex}
 \dot{\pmb{x}}_\mathrm{ex} = \pmb{A}_\mathrm{ex}\,\pmb{x}_\mathrm{ex} + \pmb{B}_\mathrm{ex}\,\pmb{u}_\mathrm{ex}
 \end{equation}
 angegeben werden. Hierfür werden die beiden Widerstandskräfte in \eqref{eq:dynwc} durch $T^*_\mathrm{res}$ ersetzt, sodass sich 
@@ -326,7 +345,59 @@ angegeben werden. Hierfür werden die beiden Widerstandskräfte in \eqref{eq:dyn
 Die Funktion $\pmb{f}(\pmb{x}_\mathrm{ex})$ und die Eingangmatrix $\pmb{B}_\mathrm{ex,nl}$ des nichtlinearen Systems, sowie die Systemmatrix $\pmb{A}_\mathrm{ex}$ und die Eingangmatrix $\pmb{B}_\mathrm{ex}$ des linearen Systems sind im Anhang mit numerischen Werten für die Zähnezahlen der Zahnräder und der Massenträgheitsmomente angegeben.
 
 \section{Modellierung der Reibung an Kupplungen und Bremsen}
-Die im Abschnitt \ref{ssec:AnwNE} eingeführten Momente der Schaltelemente werden über Lamellenkupplungen beziehungsweise -bremsen an den Wellen angebracht. Dabei werden die Lamellenpakete über einen hydraulischen Druck zusammengepresst wodurch eine kraftschlüssige Verbindung der Innen- und Außenlamellen entsteht. Die kraftschlüssige Verbindung basiert auf Reibkräften, für deren Modellierung es verschiedene Ansätze gibt. Im Wesentlichen können diese in statische und dynamische Reibmodelle eingeteilt werden. Im Folgenden werden diese Ansätze erläutert.
+Die im Abschnitt \ref{ssec:AnwNE} eingeführten Momente der Schaltelemente werden über Lamellenkupplungen beziehungsweise -bremsen an den Wellen angebracht. Dabei werden die Lamellenpakete über einen hydraulischen Druck zusammengepresst, sodass zwischen den Flächen Reibkräfte wirken. Solang die aus dem Druck resultierende Normalkraft an Lamellenpaketen nicht ausreicht um die Scheiben gegeneinander abzustützen, wirkt die Reibkraft entgegen der Differnzdrehzahl $\Delta \omega$ der drehenden Scheiben. Ist die Normalkraft groß genug entsteht eine kraftschlüssige Verbindung zwischen Innen- und Außenlamellen. In diesem Fall ist $\Delta \omega = 0$ und der Betrag der Reibkraft entspricht dem der Reaktionskraft und wirkt dieser entgegen.   
+
+Zur Ermittlung der auf die Wellen wirkenden Reaktionsmomente bedarf es eines Reibmodells. Im Wesentlichen können diese in statische und dynamische Reibmodelle eingeteilt werden. Dynamische Reibmodelle unterscheiden sich dadurch, dass sie über mindestens einen weiteren Zustand verfügen. Dies ermöglicht die Simulation von weiteren Reibeffekten wie Hysteresen, variierende Losbrechkräfte oder nicht-gleitende Auslenkungen \cite{Schroeder.2015}. Im folgenden werden statische und dynamische Reibmodelle erläutert.
 
 \subsection{Statische Reibmodelle}
-Die einfachste Art der Reibungsmodellierung ist die Coulombsche Reibung. Dabei ist die Reibkraft proportional zur Normalkraft $F_\mathrm{N}$ und einem konstanten Reibungskoeffizienten $\mue_\mathrm{C}$. 
+Die einfachste Art der Reibungsmodellierung ist die Coulombsche Reibung. Dabei ist die Reibkraft proportional zur Normalkraft $F_\mathrm{N}$ und einem konstanten Reibungskoeffizienten $\mu_\mathrm{C}$. Nach \cite{Schroeder.2015} ist diese definiert als
+\begin{equation}
+F_\mathrm{C} = F_\mathrm{N}\,\mu_\mathrm{C}\;\mathrm{sign}(\Delta \omega)=F_\mathrm{N}\,\mu_\mathrm{C}\begin{cases}1&\quad,\Delta \omega>0\\0&\quad,\Delta \omega=0\\-1&\quad,\Delta \omega<0 \end{cases}
+\end{equation}
+Durch die Erweiterung um einen Haftreibungsbeiwert $\mu_\mathrm{S}$, wird eine benötigte Losbrechkraft mit berücksichtigt. Der Haftreibungsbeiwert $\mu_\mathrm{S}$ ist im Normalfall größer als $\mu_\mathrm{C}$, sodass eine größere Kraft notwendig ist um einen reibungsbehafteten Körper aus der ruhe zu bringen. Für die Haftreibung gilt
+\begin{equation}
+F_\mathrm{S} = \begin{cases}F_\mathrm{A}&,\vert F_\mathrm{A}\vert < F_\mathrm{N}\,\mu_\mathrm{S} (\wedge\Delta \omega = 0)
+\\ F_\mathrm{N}\,\mu_\mathrm{S}\,\mathrm{sign}(F_\mathrm{A})&,\vert F_\mathrm{A}\vert \geq F_\mathrm{N}\,\mu_\mathrm{S} (\wedge\Delta \omega = 0) \end{cases}
+\end{equation}
+wobei $F_\mathrm{A}$ die Summe der äußeren Kräfte ist. Sind die Reibflächen geschmiert, ist eine Änderung der Reibkennlinie über  die $\Delta \omega$ zu beobachten. Dieses Phänomen berücksichtigt die viskose Reibung. Diese ist definiert als
+\begin{equation}
+F_\mathrm{V}=\nu\vert\Delta\omega\vert^{\delta_\mathrm{V}}\mathrm{sign}(\Delta\omega)
+\end{equation}
+mit dem viskosen Reibungsexponenten $\delta_\mathrm{V}$ und dem Reibkoeffizienten $\nu$. Des weiteren lässt sich $F_\mathrm{C}$ durch die Stribeck-Funktion erweitern. Damit wird das rapide Abfallen der Reibkraft bei kleinen Geschwindigkeiten berücksichtigt. Dieser Effekt entsteht durch das Aufbrechen von Kontaktstellen und der anschließenden Bildung eines Schmierfilms \cite{Stribeck.1903}. Eine übliche Modellierung der Stribeck-Funktion ist
+\begin{equation}
+F_\mathrm{Stribeck} = F_\mathrm{C} + F_\mathrm{N}(\mu_\mathrm{S}-\mu_\mathrm{C})\mathrm{exp}\left[-\left(\frac{\vert\Delta \omega \vert}{\omega_\mathrm{S}}\right)^{\delta_\mathrm{S}}\right]
+\end{equation} 
+mit der Stribeck-Geschwindigkeit $\omega_\mathrm{S}$ und dem Stribeck-Exponent $\delta_\mathrm{S}$. Die verschiedene statischen Reibmodelle lassen sich zum "Kinetischen Reibmodell" 
+\begin{equation}
+F_\mathrm{Kin} = \begin{cases}F_\mathrm{A} &,\Delta \omega=0 \\
+ F_\mathrm{Stribeck}\; \mathrm{sign}(\Delta \omega)+F_\mathrm{V} &, \Delta \omega \neq 0\end{cases}
+\end{equation}
+zusammenfassen \cite{Altpeter.1999}.
+
+Eine Schwäche dieses Modells ist der unstetige Verlauf der Reibkennlinie bei $\Delta \omega=0$. Diese Schwäche kann durch die Annäherung der Reibkennlinie über eine stetige atan-Funktion behoben werden. Dennoch bedarf es weiterhin der Unterscheidung zwischen Haft- und Gleitbereich. Hierfür ist entweder eine variable Zeitschrittweite des Solvers notwendig oder die Definition eines Geschwindigkeitbandes um $\Delta\omega=0$. Des weiteren ist die Reibkraft im Haftbereich von den äußeren Kräften abhängig, welche hier nicht bekannt sind und durch das Modell berechnet werden sollen. Aus diesen Gründen werden im Folgenden dynamische Reibmodelle betrachtet, welche diese Schwächen nicht aufweisen. 
+
+\subsection{Dynamische Reibmodelle}
+Um die dynamischen Reibeffekte vorallem um $\Delta\omega=0$ mit berücksichtigen zu können werden dynamische Reibmodelle benötigt. Einen ersten Ansatz dazu liefert das Reibmodell von Dahl. Dieses beschreibt die dynamischen Reibeffekte für kleine Auslenkungen mit kleinen Federn in den Kontaktbereichen von Körpern und geht anschließend in die Coulombschen-Reibung über\cite{Schroeder.2015}. Die Reibdynamik des Dahlschen-Modells wird definiert durch die Differentialgleichung
+\begin{equation}
+F_\mathrm{R,Dahl} = \left[\sigma_0\vert 1-\frac{F_\mathrm{R,Dahl}}{F_\mathrm{C}}\mathrm{sign}(\Delta\omega)\vert^\beta\ \mathrm{sign}\left( 1-\frac{F_\mathrm{R,Dahl}}{F_\mathrm{C}}\mathrm{sign}(\Delta\omega)\right)\right]\Delta\omega
+\end{equation}
+mit der zuvor definierten Coulomschen-Reibkraft $F_\mathrm{C}$, der Federsteifigkeit $\sigma_0$ und dem Formparameter der Hysterese $\beta$. Das Lund-Grenoble (LuGre) Reibmodell erweitert das Modell von Dahl um einen Dämpfungsanteil und ersetzt die Coulombsche-Kraft durch einen beliebige Reibkraftkennlinie $F_\mathrm{SS}$. Die Kontaktstellen der Reibflächen werden dabei als "Borsten"  modelliert, welche die Borstensteifigkeit $\sigma_0$ und die Borstendämpfung $sigma_1$ besitzen. Mit der Borstenauslenkung $z$ lässt sich die LuGre-Reibkraft angeben als
+\begin{equation}
+F_\mathrm{R,LuGre} = \sigma_0\, z + \sigma_1 \dot{z} + \sigma_2\, \Delta \omega\quad \mathrm{mit}\  \dot{z}=\Delta\omega\left(1-\frac{\sigma_0 z}{F_\mathrm{SS}}\right)
+\end{equation} 
+wobei $\sigma_2$ der Steigungskoeffizienten der viskosen Reibung ist [Quelle aus Mahl ???]. Jedoch wird in \cite{Dupont.2002} gezeigt, dass dieses Modell kein elasto-plastisches Presliding abbilden kann. Daher führt jede nichtkonstante Reibkraft zu einem sogenannten plastischen Presliding von $z$ wodurch es besonders bei periodischen Kräften zu einem physikalisch nicht existierenden Drift kommt. Das Elasto-Plastische Modell erweitert das LuGre-Modell um einen elastischen Bereich für kleine $z$. Nach \cite{Dupont.2000} ergibt sich die Dynamik der Auslenkung zu 
+\begin{equation}
+\dot{z} = \Delta \omega \left(1-\alpha(z,\Delta \omega)\frac{\sigma_0\,z}{F_\mathrm{SS}}\right)^i,\quad i\in \mathbb{Z}
+\end{equation}
+wobei $i=1$ gesetzt wird und die Funktion $\alpha(z,\Delta \omega)$ ein elastische Bereich für kleine $z$ erzeugt.
+
+Aufgrund der erläuterten Vorteile wird das Elasto-Plastische-Modell für das Simulationsmodell verwendet. Mit dem mittleren Radius $r_\mathrm{m}$ der Kupplungs- und Bremsscheiben und der Anzahl der Scheiben pro Schaltelement $N_\mathrm{disc}$  lassen sich die oben beschrieben Kräfte in Momente umrechnen. Letztendlich ergibt sich das an der Welle angreifende Reibmoment des Schaltelements $k$ zu
+\begin{align}
+T_{\mathrm{Cl},k} = \sigma_0\,z + \sigma_1\,\dot{z} + \sigma_2 \Delta\omega
+\end{align}
+mit
+\begin{align}
+\dot{z} = \Delta \omega \left(1-\alpha\frac{\sigma_0\,z}{T_\mathrm{Cl,ss}}\right)\\
+T_\mathrm{Cl,ss} = 2\,N_{\mathrm{Disc},k}\,r_{\mathrm{m},k}\,F_\mathrm{Stribeck}.
+\end{align}
+Die Reibwerte $\mu_\mathrm{S}$ und $\mu_\mathrm{C}$ werden aus Kennfeldern in Abhängigkeit der des Drucks an den Scheiben $p_\mathrm{N}$, der Öltemperatur $T_\mathrm{Oil}$ und $\Delta \omega$ gewonnen. Die Normalkraft $F_\mathrm{N}$ ergibt sich aus $p_\mathrm{N}$ und der Fläche der Scheiben $A_\mathrm{Disc}$ und wird vorgegeben. 
