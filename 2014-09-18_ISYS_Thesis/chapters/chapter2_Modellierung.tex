@@ -344,6 +344,50 @@ angegeben werden. Hierfür werden die beiden Widerstandskräfte in \eqref{eq:dyn
 
 Die Funktion $\pmb{f}(\pmb{x}_\mathrm{ex})$ und die Eingangmatrix $\pmb{B}_\mathrm{ex,nl}$ des nichtlinearen Systems, sowie die Systemmatrix $\pmb{A}_\mathrm{ex}$ und die Eingangmatrix $\pmb{B}_\mathrm{ex}$ des linearen Systems sind im Anhang mit numerischen Werten für die Zähnezahlen der Zahnräder und der Massenträgheitsmomente angegeben.
 
+Da in den weiteren Betrachtungen die Dynamik des Getriebes während eines Gangwechsels betrachtet wird, können das lineare und nichtlineare Modell auf zwei Gänge reduziert werden. In dieser Arbeit werden die Betrachtungen auf die Schaltungen zwischen dem zweiten und dem dritten Gang konzentriert. Wie Tabelle \ref{tbl:clutches} entnommen werden kann, sind die Schaltelemete B08 und K27 während beiden Gängen geöffnet daher gilt  
+\begin{subequations}
+\begin{align*}
+T_\mathrm{K27} &= 0 \\
+T_\mathrm{B08} &= 0.
+\end{align*}
+\end{subequations}
+Des Weiteren sind in beiden Gängen die Schaltelemente K81 und B06 geschlossen. Daher gelten für beide Gänge die zusätzlichen Zwangsbedingungen
+\begin{subequations}
+\begin{align}
+\omega_6 &= 0\\
+\omega_1 &= \omega_8.
+\end{align}
+\end{subequations}
+Damit ergeben sich die Eingänge des reduzierten nichtlinearen und linearen Systems zu 
+\begin{subequations}
+\begin{align}
+\pmb{u}_\mathrm{ex,nl,23} &= \begin{bmatrix} \mathrm{T}_{\mathrm{In}} & \mathrm{T}_{\mathrm{K38}} & \mathrm{T}_{\mathrm{B05}} & \zeta \end{bmatrix}^T\\
+\pmb{u}_\mathrm{ex,23} &= \begin{bmatrix} \mathrm{T}_{\mathrm{In}} & T^*_\mathrm{res} & \mathrm{T}_{\mathrm{K38}} & \mathrm{T}_{\mathrm{B05}} & \zeta \end{bmatrix}^T.
+\end{align}
+\end{subequations}
+Durch Einsetzten der Zwangsbedingungen in \eqref{eq:zwangsbedingungen_aufgelöst} und der Berücksichtigung der reduzierten Eingangsvektoren ist das nichtlineare reduzierte System
+\begin{equation}
+\dot{\pmb{x}}_\mathrm{ex} = \pmb{f}(\pmb{x}_\mathrm{ex}) + \pmb{B}_\mathrm{ex,nl23}\,\pmb{u}_\mathrm{ex,nl23}
+\end{equation}
+und das lineare reduzierte System 
+\begin{equation}\label{eq:sys_ex23lin}
+\dot{\pmb{x}}_\mathrm{ex} = \pmb{A}_\mathrm{ex,23} + \pmb{B}_\mathrm{ex,23}\,\pmb{u}_\mathrm{ex,23}.
+\end{equation}
+
+Mit den eingesetzten numerischen Werten der Zahnräder, der Massenträgheitsmomente, der Übersetzung der Differentials und dem dynamischen Radius der Räder ergeben sich die Systemmatrizen zu
+\begin{align}
+\pmb{A}_\mathrm{ex,23} &= \begin{bmatrix} 0 & -0,799\,d_\mathrm{ss} & -1,97\,k_\mathrm{ss} & 1,97\,d_\mathrm{ss} \\
+0 & -0,248\,d_\mathrm{ss} & -0,612\,k_\mathrm{ss} & 0,612\,d_\mathrm{ss}\\
+0 & 0,405 & 0 & -1,0\\
+0 & \frac{0,81\,d_\mathrm{ss}}{m_\mathrm{veh}\,0,108 + 6,4} & \frac{2,0\,k_\mathrm{ss}}{m_\mathrm{veh}\,0,108 + 6,4} & \frac{-2,0\,d_\mathrm{ss}}{m_\mathrm{veh}\,0,108 + 6,4})\end{bmatrix}\\
+\nonumber \\
+\pmb{B}_\mathrm{ex,23} &= \begin{bmatrix} 10,7 & -2,79 & -17,0 & 0 & 0\\
+2,44 & 0,0135 & -2,41 & 0 & 0 \\
+0 & 0 & 0 & 0 & 0\\
+0 & 0 & 0 & \frac{-1}{0,108\,m_\mathrm{veh} + 6,4} & \frac{-3,22\,m_\mathrm{veh}}{0,108\,m_\mathrm{veh} + 6,4} \end{bmatrix}
+\end{align}
+
+
 \section{Modellierung der Reibung an Kupplungen und Bremsen}
 Die im Abschnitt \ref{ssec:AnwNE} eingeführten Momente der Schaltelemente werden über Lamellenkupplungen beziehungsweise -bremsen an den Wellen angebracht. Dabei werden die Lamellenpakete über einen hydraulischen Druck zusammengepresst, sodass zwischen den Flächen Reibkräfte wirken. Solang die aus dem Druck resultierende Normalkraft an Lamellenpaketen nicht ausreicht um die Scheiben gegeneinander abzustützen, wirkt die Reibkraft entgegen der Differnzdrehzahl $\Delta \omega$ der drehenden Scheiben. Ist die Normalkraft groß genug entsteht eine kraftschlüssige Verbindung zwischen Innen- und Außenlamellen. In diesem Fall ist $\Delta \omega = 0$ und der Betrag der Reibkraft entspricht dem der Reaktionskraft und wirkt dieser entgegen.   
 

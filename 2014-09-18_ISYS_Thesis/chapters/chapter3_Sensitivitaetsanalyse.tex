@@ -10,10 +10,50 @@ Eine Alternative zur Berechnung der partiellen Ableitungen sind globale Methoden
 Aufgrund des linearen und stetigen Charakters von \eqref{eq:sys_linex} werden für diese Arbeit die partiellen Ableitungen für die Sensitivitätsanalyse verwendet.
 Hierfür wird zuerst ein idealer Schaltvorgang beschrieben um die Sensitivitätsfunktionen in verschieden Schaltphasen auswerten zukönnen. Des weiteren wird mit der Berechnung der Fisher-Informationsmatrix eine Abschätzung für die erreichbare Genauigkeit der Schätzungen geliefert.
    
-\section{Beschreibung eines Gangwechsels}
+\section{Beschreibung eines Gangwechsels}\label{sec:Gangwechsel}
 Bei einem Gangwechsel wird durch die Betätigung von Schaltelementen die Übersetzung des Getriebes geändert. Dies soll zum einen in jedem Fall möglichst ohne für den Fahrer spürbare unerwünschte Beschleunigungen am Getriebeabtrieb passieren. Zum anderen soll der Gangwechsel aber auch so schnell wie möglich und ohne Momentenunterbrechung vollzogen werden. Es besteht also eine Zielkonflikt zwischen den Komfortansprüchen des Fahrers und der Dauer eines Schaltvorgangs. Grundsätzlich wird zwischen vier verschieden Schaltvorgängen unterschieden. 
 Bei dem in dieser Arbeit betrachteten Getriebe geschieht ein Gangwechsel mittels der Schließung und der simultanen Öffnung einer Bremse bzw. Kupplung. In der   
+
 \section{Anwendung der Paramater- und Eingangssensitivitätsanalyse}
+Wie einleitend erläutert werden die Sensitiviäten in dieser Arbeit mittels partiellen Differentialen berechnet. Nach \cite{Hearne.1985} ist für ein nichtlineares System erster Ordnung
+\begin{equation}
+\mathrm{d} x_i/\mathrm{d} t = f_i(\pmb{x},\pmb{p},\pmb{u})\quad i=1,2,\,\dots\, ,n 
+\end{equation}
+mit dem Zustandsvektor $\pmb{x} = [x_1, x_2,\, \dots\, ,x_n]^T$, dem Parametervektor $\pmb{p} = [p_1, p_2,\, \dots\, ,p_m]^T$, dem Eingangsvektor $\pmb{u} = [u_1, u_2,\, \dots\, ,p_l]^T$ und der differenzierbaren Funktion $f_i$ die absolute Parametersensitivitätsfunktion definiert als
+\begin{equation}\label{eq:abs_psens}
+S_{ij} = \partial x_i/\partial p_j \quad i=1,2,\,\dots\, ,n \quad j=1,2,\,\dots\, ,m.
+\end{equation}
+Die entsprechende normalisierte Parametersensitivitätsfunktion ist 
+\begin{equation}
+S_{\mathrm{N},ij} = \partial x_i/\partial p_j\ p_{j0}/x_{i0}.
+\end{equation}
+Die normalisierte Parametersensitivitätsfunktion $S_{ij}$ kann interpretiert werden, als approximierte prozentuale Änderung des Zustandes $x_i$ für eine $1\%$-ige Änderung des Parameters $p_j$. Dem entsprechend sind auch die absolute Eingangssensitivitätsfunktion
+\begin{equation}\label{eq:abs_usens}
+S_{ik} = \partial x_i/\partial u_k \quad i=1,2,\,\dots\, ,n \quad k=1,2,\,\dots\, ,l
+\end{equation}
+und die normalisierte Eingangssensitivitätsfunktion
+\begin{equation}\label{eq:abs_usens}
+S_{ik} = \partial x_i/\partial u_k\ u_{k0}/x_{i0}
+\end{equation}
+definiert.
+Wendet man \eqref{eq:abs_psens} auf das lineare System 
+\begin{equation}
+\mathrm{d} \pmb{x}/\mathrm{d} t = \pmb{A}(\pmb{p})\,\pmb{x}+\pmb{B}(\pmb{p})\,\pmb{u}
+\end{equation}
+an, erhält man
+\begin{equation}
+\mathrm{d} \pmb{S}_j/\mathrm{d} t = \dot{\pmb{S}}_j= \pmb{A}(\pmb{p})\,\pmb{S}_j+\partial/\partial p_j\ \pmb{B}(\pmb{p})\,\pmb{u}.
+\end{equation}
+Für die Eingangssensitivität ergibt sich 
+\begin{equation}
+\mathrm{d} \pmb{S}_k/\mathrm{d} t = \dot{\pmb{S}}_k= \partial/\partial u_i\ \pmb{B}(\pmb{p})\,\pmb{u}.
+\end{equation}
+Die Parameter- und Eingangsensitivitätsfunktion werden im Folgenden anhand \eqref{eq:sys_ex23lin} für $m_\mathrm{veh}$, $k_\mathrm{ss}$, $d_\mathrm{ss}$, $\mu_{38}$ und $\zeta$ gebildet und die zeitlichen Verläufe von $\pmb{S}$ für einen Schaltvorgang gemäß \ref{sec:Gangwechsel} interpretiert.
+
+\subsection{Sensitivität des Zustandes $\pmb{x}$ von $k_\mathrm{ss}$}
+
+kann die Sensitivitätsfunktion wie fo 
+
 
 \section{Fisher-Informationsmatrix}
 

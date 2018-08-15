@@ -8,7 +8,7 @@
     </bcf:option>
     <bcf:option type="singlevalued">
       <bcf:key>input_encoding</bcf:key>
-      <bcf:value>utf8</bcf:value>
+      <bcf:value>latin1</bcf:value>
     </bcf:option>
     <bcf:option type="singlevalued">
       <bcf:key>debug</bcf:key>
@@ -1986,6 +1986,7 @@
     <bcf:citekey order="10">ch:ch3</bcf:citekey>
     <bcf:citekey order="11">Saltelli.2004</bcf:citekey>
     <bcf:citekey order="12">Karnavas.1993</bcf:citekey>
+    <bcf:citekey order="13">Hearne.1985</bcf:citekey>
   </bcf:section>
   <!-- SORTING TEMPLATES -->
   <bcf:sortingtemplate name="anyt">
