@@ -1987,6 +1987,8 @@
     <bcf:citekey order="11">Saltelli.2004</bcf:citekey>
     <bcf:citekey order="12">Karnavas.1993</bcf:citekey>
     <bcf:citekey order="13">Hearne.1985</bcf:citekey>
+    <bcf:citekey order="14">Majer.1998</bcf:citekey>
+    <bcf:citekey order="15">Majer.1998</bcf:citekey>
   </bcf:section>
   <!-- SORTING TEMPLATES -->
   <bcf:sortingtemplate name="anyt">

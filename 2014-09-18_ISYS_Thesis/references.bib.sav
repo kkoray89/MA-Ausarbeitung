@@ -147,3 +147,22 @@ type = {Hochschulschrift},
 note = {UB Stadtmitte},
 note = {UB Vaihingen},
 }
+
+@book {Goodwin.1977,
+author = {Goodwin, Graham C. and Payne, Robert L.},
+title = {Dynamic system identification: experiment design and data analysis},
+series = {Mathematics in science and engineering ; 136},
+address = {New York [u.a.]},
+publisher = {Acad. Pr.},
+year = {1977},
+pages = {X, 291 Seiten},
+ISBN = {0-12-289750-1},
+language = {Englisch},
+keywords = {Versuchsanlage. Systemanalyse},
+note = {UB Stadtmitte},
+note = {Betriebswirtschaftliches Institut - BWI-Bibliothek},
+note = {Geodätisches Institut},
+note = {Institut für Navigation},
+}
+
+@Comment{jabref-meta: databaseType:bibtex;}

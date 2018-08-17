@@ -1,0 +1,27 @@
+This is BibTeX, Version 0.99dThe top-level auxiliary file: Masterarbeit_KorayKarci.aux
+The style file: biblatex.bst
+A level-1 auxiliary file: chapters/chapter1_introduction.aux
+A level-1 auxiliary file: chapters/chapter2_Modellierung.aux
+A level-1 auxiliary file: chapters/chapter3_Sensitivitaetsanalyse.aux
+A level-1 auxiliary file: chapters/chapter4_Beobachterentwurf.aux
+A level-1 auxiliary file: chapters/chapter5_zusammenfassung.aux
+A level-1 auxiliary file: chapters/appendix1.aux
+Database file #1: Masterarbeit_KorayKarci-blx.bib
+Database file #2: references.bib
+Warning--I'm ignoring Schroeder.2015's extra "isbn" field
+--line 42 of file references.bib
+Warning--I'm ignoring Schroeder.2015's extra "url" field
+--line 47 of file references.bib
+Warning--I'm ignoring Schroeder.2015's extra "url" field
+--line 48 of file references.bib
+Warning--I'm ignoring Majer.1998's extra "note" field
+--line 148 of file references.bib
+Warning--I'm ignoring Goodwin.1977's extra "note" field
+--line 163 of file references.bib
+Warning--I'm ignoring Goodwin.1977's extra "note" field
+--line 164 of file references.bib
+Warning--I'm ignoring Goodwin.1977's extra "note" field
+--line 165 of file references.bib
+Warning--I didn't find a database entry for "ch:ch3"
+Biblatex version: 3.8
+(There were 8 warnings)

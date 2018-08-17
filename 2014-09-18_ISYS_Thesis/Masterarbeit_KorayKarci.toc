@@ -25,31 +25,41 @@
 \defcounter {refsection}{0}\relax 
 \contentsline {subsection}{\numberline {2.1.4}Erweiterung um elastische Seitenwellen}{19}{subsection.2.1.4}
 \defcounter {refsection}{0}\relax 
-\contentsline {section}{\numberline {2.2}Modellierung der Reibung an Kupplungen und Bremsen}{22}{section.2.2}
+\contentsline {section}{\numberline {2.2}Modellierung der Reibung an Kupplungen und Bremsen}{21}{section.2.2}
 \defcounter {refsection}{0}\relax 
-\contentsline {subsection}{\numberline {2.2.1}Statische Reibmodelle}{23}{subsection.2.2.1}
+\contentsline {subsection}{\numberline {2.2.1}Statische Reibmodelle}{22}{subsection.2.2.1}
 \defcounter {refsection}{0}\relax 
-\contentsline {subsection}{\numberline {2.2.2}Dynamische Reibmodelle}{24}{subsection.2.2.2}
+\contentsline {subsection}{\numberline {2.2.2}Dynamische Reibmodelle}{23}{subsection.2.2.2}
 \defcounter {refsection}{0}\relax 
-\contentsline {chapter}{\numberline {3}Sensitivit\IeC {\"a}tsanalyse}{27}{chapter.3}
+\contentsline {chapter}{\numberline {3}Sensitivit\IeC {\"a}tsanalyse}{25}{chapter.3}
 \defcounter {refsection}{0}\relax 
-\contentsline {section}{\numberline {3.1}Beschreibung eines Gangwechsels}{28}{section.3.1}
+\contentsline {section}{\numberline {3.1}Beschreibung eines Gangwechsels}{26}{section.3.1}
 \defcounter {refsection}{0}\relax 
-\contentsline {section}{\numberline {3.2}Anwendung der Paramater- und Eingangssensitivit\IeC {\"a}tsanalyse}{28}{section.3.2}
+\contentsline {section}{\numberline {3.2}Anwendung der Paramater- und Eingangssensitivit\IeC {\"a}tsanalyse}{26}{section.3.2}
 \defcounter {refsection}{0}\relax 
-\contentsline {subsection}{\numberline {3.2.1}Sensitivit\IeC {\"a}t des Zustandes $\pmb {x}$ von $k_\mathrm {ss}$}{29}{subsection.3.2.1}
+\contentsline {subsection}{\numberline {3.2.1}Sensitivit\IeC {\"a}t des Zustandes $\pmb {x}$ von $k_\mathrm {ss}$}{27}{subsection.3.2.1}
 \defcounter {refsection}{0}\relax 
-\contentsline {section}{\numberline {3.3}Fisher-Informationsmatrix}{29}{section.3.3}
+\contentsline {subsection}{\numberline {3.2.2}Sensitivit\IeC {\"a}t des Zustandes $\pmb {x}$ von $d_\mathrm {ss}$}{27}{subsection.3.2.2}
+\defcounter {refsection}{0}\relax 
+\contentsline {subsection}{\numberline {3.2.3}Sensitivit\IeC {\"a}t des Zustandes $\pmb {x}$ von $m_\mathrm {veh}$}{27}{subsection.3.2.3}
+\defcounter {refsection}{0}\relax 
+\contentsline {section}{\numberline {3.3}Fisher-Informationsmatrix}{28}{section.3.3}
+\defcounter {refsection}{0}\relax 
+\contentsline {subsection}{\numberline {3.3.1}Berechnung der Fisher-Informationsmatrix im 2. Gang}{29}{subsection.3.3.1}
+\defcounter {refsection}{0}\relax 
+\contentsline {subsection}{\numberline {3.3.2}Berechnung der Fisher-Informationsmatrix w\IeC {\"a}hrend der Momenten\IeC {\"u}bergabe}{29}{subsection.3.3.2}
+\defcounter {refsection}{0}\relax 
+\contentsline {subsection}{\numberline {3.3.3}Berechnung der Fisher-Informationsmatrix w\IeC {\"a}hrend der Synchronisation}{29}{subsection.3.3.3}
 \defcounter {refsection}{0}\relax 
 \contentsline {chapter}{\numberline {4}Beobachterentwurf}{31}{chapter.4}
 \defcounter {refsection}{0}\relax 
-\contentsline {section}{\numberline {4.1}Kalman-Filter}{31}{section.4.1}
+\contentsline {section}{\numberline {4.1}Kalman-Filter}{32}{section.4.1}
 \defcounter {refsection}{0}\relax 
-\contentsline {section}{\numberline {4.2}Extented Kalman-Filter}{31}{section.4.2}
+\contentsline {section}{\numberline {4.2}Extented Kalman-Filter}{32}{section.4.2}
 \defcounter {refsection}{0}\relax 
-\contentsline {section}{\numberline {4.3}Unknown Input Observer}{31}{section.4.3}
+\contentsline {section}{\numberline {4.3}Unknown Input Observer}{32}{section.4.3}
 \defcounter {refsection}{0}\relax 
-\contentsline {section}{\numberline {4.4}Extended Unknown Input Observers}{31}{section.4.4}
+\contentsline {section}{\numberline {4.4}Extended Unknown Input Observers}{32}{section.4.4}
 \defcounter {refsection}{0}\relax 
 \contentsline {chapter}{\numberline {5}Zusammenfassung und Ausblick}{33}{chapter.5}
 \defcounter {refsection}{0}\relax 
@@ -60,6 +70,8 @@
 \contentsline {chapter}{\nonumberline Abbildungsverzeichnis}{37}{chapter*.5}
 \defcounter {refsection}{0}\relax 
 \contentsline {chapter}{\nonumberline Tabellenverzeichnis}{39}{chapter*.6}
+\defcounter {refsection}{0}\relax 
+\contentsline {chapter}{\nonumberline Literatur}{41}{chapter*.7}
 \babel@toc {ngerman}{}
 \babel@toc {ngerman}{}
 \defcounter {refsection}{0}\relax 
