@@ -1,4 +1,4 @@
-\chapter{Sensitivitätsanalyse}\label{ch:Sensitivity}\label{ch:ch3}
+\chapter{Sensitivitätsanalyse}\label{ch:Sensitivity}
 In diesem Kapitel wird das in Kapitel \ref{ch:ch2} hergeleitete lineare Modell des Antriebsstrangs auf die Sensitivität verschiedener Parameter und Eingänge untersucht. Damit soll die Relevanz für eine Parameter- und Eingangsschätzung im folgenden Kapitel belegt und unterstrichen werden.
 Eine mögliche Definition für eine Sensitivitätsanalyse ist die folgende: \emph{The study of how uncertainty in the output of a model (numerical or otherwise) can be apportioned to different sources of uncertainty in the model input} \cite{Saltelli.2004}.
 Für die Analyse gibt es verschiedene Methoden. Dabei ist die OAT(one-at-a-time)-Methode wohl die einfachste. Dabei wird pro Simulationsdurchlauf lediglich eine Eingangsgröße geändert während alle anderen auf den nominal Werten gehalten werden. Die Methode liefert aber nur eine sehr beschränkte Aussage über den gesamten Eingangsraum. Jedoch kann sie für die Abschätzung einer ersten Untergruppe an relevanten Eingängen hilfreich sein.    
@@ -11,8 +11,27 @@ Aufgrund des linearen und stetigen Charakters von \eqref{eq:sys_linex} werden f�
 Hierfür wird zuerst ein idealer Schaltvorgang beschrieben um die Sensitivitätsfunktionen in verschieden Schaltphasen auswerten zukönnen. Des weiteren wird mit der Berechnung der Fisher-Informationsmatrix eine Abschätzung für die erreichbare Genauigkeit der Schätzungen geliefert.
    
 \section{Beschreibung eines Gangwechsels}\label{sec:Gangwechsel}
-Bei einem Gangwechsel wird durch die Betätigung von Schaltelementen die Übersetzung des Getriebes geändert. Dies soll zum einen in jedem Fall möglichst ohne für den Fahrer spürbare unerwünschte Beschleunigungen am Getriebeabtrieb passieren. Zum anderen soll der Gangwechsel aber auch so schnell wie möglich und ohne Momentenunterbrechung vollzogen werden. Es besteht also eine Zielkonflikt zwischen den Komfortansprüchen des Fahrers und der Dauer eines Schaltvorgangs. Grundsätzlich wird zwischen vier verschieden Schaltvorgängen unterschieden. 
-Bei dem in dieser Arbeit betrachteten Getriebe geschieht ein Gangwechsel mittels der Schließung und der simultanen Öffnung einer Bremse bzw. Kupplung. In der   
+Bei einem Gangwechsel wird durch die Betätigung von Schaltelementen die Übersetzung des Getriebes geändert. Dies soll zum Einen in jedem Fall möglichst ohne für den Fahrer spürbare unerwünschte Beschleunigungen am Getriebeabtrieb passieren. Zum Anderen soll der Gangwechsel aber auch so schnell wie möglich und ohne Momentenunterbrechung vollzogen werden. Es besteht also eine Zielkonflikt zwischen den Komfortansprüchen des Fahrers und der Dauer eines Schaltvorgangs. Grundsätzlich wird ein Gangwechsel auf zwei Ebenen unterschieden. Zum einen die Richtung der Übersetzung $i_\mathrm{Gang}$. Bei einer Hochschaltung wird $i_\mathrm{Gang}$ kleiner und entsprechend bei einer Rückschaltung größer. Zum anderen die Richtung der Last am Getriebeeingang. Ist diese positiv spricht man von einer Zugschaltung bei negativem Antriebsmoment von einer Schubschaltung \cite{Fischer.2016}.
+In dieser Arbeit werden die Betrachtungen auf eine Zug-Hoch-Schaltung zwischen dem zweitem und dem dritten Gang reduziert. Dies hat zum Einen den Grund, dass in diesen Gängen der Drehmomentenwandler überbrückt und die Trennkupplung geschlossen ist, sodass deren Dynamik vernachlässigt werden kann. Zum Anderen ist dies eine häufige Schaltung im Fahrzeugbetrieb. Die Erkenntnisse können jedoch auch auf andere Gangwechsel übertragen werden.
+
+Bei dem in dieser Arbeit betrachteten Getriebe wird ein Gangwechsel mittels der Schließung und der simultanen Öffnung einer Bremse bzw. Kupplung realisiert. Bei der Schaltung zwischen dem zweiten und dritten Gang sind dies die Bremse $B_\mathrm{05}$ und die Kupplung $K_\mathrm{38}$. Der Gangwechsel wird in die in Abbildung \ref{fig:23zughoch_schema} gezeigten vier Phasen 2. Gang, Momentenübergabe, Drehzahlsynchronisation und 3. Gang eingeteilt.
+
+Im 2. Gang ist die Kupplung $K_\mathrm{38}$ geschlossen und überträgt das volle Antriebsmoment. Die Differenzdrehzahl $\Delta \omega_{38}$ der Wellen 3 und 8 ist somit gleich Null. Die Bremse $B_\mathrm{05}$ ist geöffnet und überträgt kein Drehmoment. Vor dem Gangwechsel wird die Kupplung $K_\mathrm{38}$ durch eine Reduzierung des anliegenden Drucks ins Schleifen gebracht, sodass sich an der Kupplung eine minimale Drehzahldifferenz ergibt. Dadurch wirkt an den Scheiben der Kupplung die Gleitreibung, welche somit der Reaktionskraft an den Kupplungen entspricht. Der Betrag der Geleitreibung kann, wie in \ref{sec:mod_reib} beschrieben, mit dem Reibungskoeffizient und der Normalkraft berechnet werden.
+
+Somit kann während der Momentenübergabe das Drehmoment an $K_\mathrm{38}$ abgesenkt werden, während gleichzeitig $B_\mathrm{05}$ mit Hilfe eine Vorsteuerung derart geschlossenen wird, dass stets das volle Antriebsmoment übertragen wird und $K_\mathrm{38}$ im Schleifen gehalten wird. Die Herleitung einer derartigen Vorsteuerung kann \cite{Weber.2018} entnommen werden.    
+  
+Wenn $K_\mathrm{38}$ vollständig geöffnet ist d.h. kein Drehmoment mehr übertragen wird beginnt die Drehzahlsynchronisation. Diese kann auf zwei Arten vollzogen werden. Zum einen kann das Drehmoment an $B_\mathrm{05}$ überhöht werden, wodurch die Differenzdrehzahl $\Delta \omega_{05}$ auf Null gebracht wird und die Antriebsdrehzahl abgesenkt wird. Eine weitere Möglichkeit, die sich besonders bei Hybridgetrieben anbietet, ist die Drehzahlsynchronisation mittels einer Absenkung des Antriebsmomentes herzustellen. Mit einer E-Maschine kann die Absetzung schneller und genauer vollzogen werden, als mit einem Verbrennungsmotor. Bei dem in dieser Arbeit betrachteten Gangwechsel werden beide Möglichkeiten gleichzeitig genutzt.
+
+Am Ende der Drehzahlsynchronisation ist $\Delta \omega_{05}=0$ und die Getriebeübersetzung liegt auf dem Niveau des dritten Gangs.
+
+In Abbildung (???) sind die Drehzahlgeschwindigkeiten $\omega_1$, $\omega_2$, $\omega_\mathrm{C}$ und die Verdrehung der Seitenwelle $\phi$ für den in dieser Arbeit verwendeten Gangwechsel zu sehen. Zusätzlich zeigt Abbildung (???) die dazugehörigen Beschleunigungen $\dot{\omega_1}$, $\dot{\omega_2}$, $\dot{\omega_\mathrm{C}}$ und die Verdrehgeschwindigkeit $\dot{\phi}$.
+
+\begin{figure}[t]
+	\centering 
+	\includegraphics[scale=1]{figures/03_Sensitivitaetsanalyse/01_Gangwechsel/23Shift}
+	\caption{Schematische Darstellung des Gangwechsels aus dem zweiten in den dritten Gang.}
+	\label{fig:23zughoch_schema} % always use \label AFTER \caption
+\end{figure}
 
 \section{Anwendung der Paramater- und Eingangssensitivitätsanalyse}\label{sec:para_sens}
 Wie einleitend erläutert werden die Sensitiviäten in dieser Arbeit mittels partiellen Differentialen berechnet. Nach \cite{Hearne.1985} ist für ein nichtlineares System erster Ordnung
@@ -27,29 +46,15 @@ Die entsprechende normalisierte Parametersensitivitätsfunktion ist
 \begin{equation}
 S_{\mathrm{N},ij} = \partial x_i/\partial p_j\ p_{j0}/x_{i0}.
 \end{equation}
-Die normalisierte Parametersensitivitätsfunktion $S_{ij}$ kann interpretiert werden, als approximierte prozentuale Änderung des Zustandes $x_i$ für eine $1\%$-ige Änderung des Parameters $p_j$. Dem entsprechend sind auch die absolute Eingangssensitivitätsfunktion
-\begin{equation}\label{eq:abs_usens}
-S_{ik} = \partial x_i/\partial u_k \quad i=1,2,\,\dots\, ,n \quad k=1,2,\,\dots\, ,l
-\end{equation}
-und die normalisierte Eingangssensitivitätsfunktion
-\begin{equation}\label{eq:abs_usens}
-S_{ik} = \partial x_i/\partial u_k\ u_{k0}/x_{i0}
-\end{equation}
-definiert.
-Wendet man \eqref{eq:abs_psens} auf das lineare System 
+Die normalisierte Parametersensitivitätsfunktion $S_{ij}$ kann interpretiert werden, als approximierte prozentuale Änderung des Zustandes $x_i$ für eine $1\%$-ige Änderung des Parameters $p_j$. Das Modell des Antriebsstrangs ist mit \eqref{eq:sys_linex} in der Form
 \begin{equation}
-\mathrm{d} \pmb{x}/\mathrm{d} t = \pmb{A}(\pmb{p})\,\pmb{x}+\pmb{B}(\pmb{p})\,\pmb{u}
+\dot{\pmb{x}} = \pmb{f}(t,\pmb{x}(t,\pmb{p}),\pmb{p})+ \pmb{B}(\pmb{p})\pmb{u}(t) 
+\end{equation} 
+gegeben. Wendet man \eqref{eq:abs_psens} auf diese Gleichung an erhält man unter Berücksichtigung der Kettenregel
+\begin{equation}\label{eq:Sens_eq}
+\mathrm{d} \pmb{S}_j/\mathrm{d} t = \dot{\pmb{S}}_j= \frac{\partial\pmb{f}(t,\pmb{x}(t,\pmb{p}),\pmb{p})}{\partial \pmb{x}}\,\pmb{S}_j+\frac{\partial\pmb{f}(t,\pmb{x}(t,\pmb{p}),\pmb{p})}{\partial \pmb{p}}+\frac{\partial \pmb{B}(\pmb{p})}{\partial \pmb{p}}\,\pmb{u}(t).
 \end{equation}
-an, erhält man
-\begin{equation}\label{eq:Sens_lineq}
-\mathrm{d} \pmb{S}_j/\mathrm{d} t = \dot{\pmb{S}}_j= \pmb{A}(\pmb{p}_0)\,\pmb{S}_j+\partial\pmb{A}(\pmb{p})/\partial p_j\ \pmb{x}+\partial/\partial p_j\ \pmb{B}(\pmb{p})\,\pmb{u}.
-\end{equation}
-mit den Nominalwerten der Parameter $\pmb{p}_0$.
-Für die Eingangssensitivität ergibt sich 
-\begin{equation}
-\mathrm{d} \pmb{S}_k/\mathrm{d} t = \dot{\pmb{S}}_k= \partial/\partial u_i\, \pmb{B}(\pmb{p})\,\pmb{u}.
-\end{equation}
-Die Parameter- und Eingangsensitivitätsfunktion werden im Folgenden anhand \eqref{eq:sys_ex23lin} für $m_\mathrm{veh}$, $k_\mathrm{ss}$, $d_\mathrm{ss}$, $\mu_{38}$ und $\zeta$ gebildet und die zeitlichen Verläufe von $\pmb{S}$ für einen Schaltvorgang gemäß \ref{sec:Gangwechsel} interpretiert.
+Die Parametersensitivitätsfunktion werden im Folgenden anhand \eqref{eq:sys_nl} für $m_\mathrm{veh}$, $k_\mathrm{ss}$, $d_\mathrm{ss}$, $\mu_{38}$ und $\zeta$ gebildet und die zeitlichen Verläufe von $\pmb{S}$ für einen Schaltvorgang gemäß \ref{sec:Gangwechsel} interpretiert.
 
 \subsection{Sensitivität des Zustandes $\pmb{x}$ von $k_\mathrm{ss}$}
 Die Sensitivität von \eqref{eq:sys_ex23lin} vom Parameter $k_\mathrm{ss}$ ergibt sich mit \eqref{eq:Sens_lineq} zu 

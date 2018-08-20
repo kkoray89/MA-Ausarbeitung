@@ -324,12 +324,12 @@ getroffen. Damit lässt sich das erweiterte Modell mit dem ergänzten Eingangsve
 \pmb{u}_\mathrm{ex,nl} = \begin{bmatrix} \mathrm{T}_{\mathrm{In}} & \mathrm{T}_{\mathrm{K81}} & \mathrm{T}_{\mathrm{K38}} & \mathrm{T}_{\mathrm{B08}} & \mathrm{T}_{\mathrm{B05}} & \mathrm{T}_{\mathrm{B06}} & \mathrm{T}_{\mathrm{K27}}\end{bmatrix}^T,
 \end{equation}
 den Gleichungen \eqref{eq:dynphi} und \eqref{eq:dynwc} in der Form 
-\begin{equation}
+\begin{equation}\label{eq:sys_nl}
 \dot{\pmb{x}}_\mathrm{ex} = \pmb{f}(\pmb{x}_\mathrm{ex}) + \pmb{B}_\mathrm{ex,nl}\,\pmb{u}_\mathrm{ex,nl}
 \end{equation}
 schreiben.
 
-\section{Modellierung der Reibung an Kupplungen und Bremsen}
+\section{Modellierung der Reibung an Kupplungen und Bremsen} \label{sec:mod_reib}
 Die im Abschnitt \ref{ssec:AnwNE} eingeführten Momente der Schaltelemente werden über Lamellenkupplungen beziehungsweise -bremsen an den Wellen angebracht. Dabei werden die Lamellenpakete über einen hydraulischen Druck zusammengepresst, sodass zwischen den Flächen Reibkräfte wirken. Solang die aus dem Druck resultierende Normalkraft an Lamellenpaketen nicht ausreicht um die Scheiben gegeneinander abzustützen, wirkt die Reibkraft entgegen der Differnzdrehzahl $\Delta \omega$ der drehenden Scheiben. Ist die Normalkraft groß genug entsteht eine kraftschlüssige Verbindung zwischen Innen- und Außenlamellen. In diesem Fall ist $\Delta \omega = 0$ und der Betrag der Reibkraft entspricht dem der Reaktionskraft und wirkt dieser entgegen.   
 
 Zur Ermittlung der auf die Wellen wirkenden Reaktionsmomente bedarf es eines Reibmodells. Im Wesentlichen können diese in statische und dynamische Reibmodelle eingeteilt werden. Dynamische Reibmodelle unterscheiden sich dadurch, dass sie über mindestens einen weiteren Zustand verfügen. Dies ermöglicht die Simulation von weiteren Reibeffekten wie Hysteresen, variierende Losbrechkräfte oder nicht-gleitende Auslenkungen \cite{Schroeder.2015}. Im folgenden werden statische und dynamische Reibmodelle erläutert.
