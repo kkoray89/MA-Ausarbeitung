@@ -7,33 +7,60 @@ Für die Analyse gibt es verschiedene Methoden. Dabei ist die OAT(one-at-a-time)
 
 Eine Alternative zur Berechnung der partiellen Ableitungen sind globale Methoden. Hierbei werden die Modelleingänge stochstisch varriert, woraus sich nach vielen Simulationen eine Strichprobe für die Modellausgänge ergibt. Dieses Methode der mehrfachen Simulation wird auch Monte-Carlo-Methode genannt. Wie der Name schon sagt ist der grundlegende Vorteil dabei, dass durch eine genügend große Stichprobe eine globale Aussage zur Sensitivität gegeben werden kann. Des weiteren erlaubt die Methode auch Aussagen über die verkoppelte Wirkung von Eingangsänderungen ohne spezielles Vorwissen über die Struktur des Modells. Der entscheidende Nachteil liegt je nach Stichprobengröße und Komplexität des Modells in der Rechenzeit.      
 
-Aufgrund des linearen und stetigen Charakters von \eqref{eq:sys_linex} werden für diese Arbeit die partiellen Ableitungen für die Sensitivitätsanalyse verwendet.
-Hierfür wird zuerst ein idealer Schaltvorgang beschrieben um die Sensitivitätsfunktionen in verschieden Schaltphasen auswerten zukönnen. Des weiteren wird mit der Berechnung der Fisher-Informationsmatrix eine Abschätzung für die erreichbare Genauigkeit der Schätzungen geliefert.
+Aufgrund stetigen Charakters von \eqref{eq:sys_nl23} werden für diese Arbeit die partiellen Ableitungen für die Sensitivitätsanalyse verwendet.
+Hierfür wird zuerst ein idealer Schaltvorgang beschrieben um die Sensitivitätsfunktionen in verschieden Schaltphasen auswerten zu können. Des weiteren werden die Ergebnisse der Sensitivitätsanalyse für die Berechnung der Fisher-Informationsmatrix genutzt. Diese liefert eine Abschätzung für die erreichbare Genauigkeit einer Parameterschätzung.
    
 \section{Beschreibung eines Gangwechsels}\label{sec:Gangwechsel}
-Bei einem Gangwechsel wird durch die Betätigung von Schaltelementen die Übersetzung des Getriebes geändert. Dies soll zum Einen in jedem Fall möglichst ohne für den Fahrer spürbare unerwünschte Beschleunigungen am Getriebeabtrieb passieren. Zum Anderen soll der Gangwechsel aber auch so schnell wie möglich und ohne Momentenunterbrechung vollzogen werden. Es besteht also eine Zielkonflikt zwischen den Komfortansprüchen des Fahrers und der Dauer eines Schaltvorgangs. Grundsätzlich wird ein Gangwechsel auf zwei Ebenen unterschieden. Zum einen die Richtung der Übersetzung $i_\mathrm{Gang}$. Bei einer Hochschaltung wird $i_\mathrm{Gang}$ kleiner und entsprechend bei einer Rückschaltung größer. Zum anderen die Richtung der Last am Getriebeeingang. Ist diese positiv spricht man von einer Zugschaltung bei negativem Antriebsmoment von einer Schubschaltung \cite{Fischer.2016}.
-In dieser Arbeit werden die Betrachtungen auf eine Zug-Hoch-Schaltung zwischen dem zweitem und dem dritten Gang reduziert. Dies hat zum Einen den Grund, dass in diesen Gängen der Drehmomentenwandler überbrückt und die Trennkupplung geschlossen ist, sodass deren Dynamik vernachlässigt werden kann. Zum Anderen ist dies eine häufige Schaltung im Fahrzeugbetrieb. Die Erkenntnisse können jedoch auch auf andere Gangwechsel übertragen werden.
+Bei einem Gangwechsel wird durch die Betätigung von Schaltelementen die Übersetzung des Getriebes geändert. Dies soll zum einen in jedem Fall möglichst ohne für den Fahrer spürbare unerwünschte Beschleunigungen am Getriebeabtrieb passieren. Zum anderen soll der Gangwechsel aber auch so schnell wie möglich und ohne Momentenunterbrechung vollzogen werden. Es besteht also eine Zielkonflikt zwischen den Komfortansprüchen des Fahrers und der Dauer eines Schaltvorgangs. 
 
-Bei dem in dieser Arbeit betrachteten Getriebe wird ein Gangwechsel mittels der Schließung und der simultanen Öffnung einer Bremse bzw. Kupplung realisiert. Bei der Schaltung zwischen dem zweiten und dritten Gang sind dies die Bremse $B_\mathrm{05}$ und die Kupplung $K_\mathrm{38}$. Der Gangwechsel wird in die in Abbildung \ref{fig:23zughoch_schema} gezeigten vier Phasen 2. Gang, Momentenübergabe, Drehzahlsynchronisation und 3. Gang eingeteilt.
+Grundsätzlich wird ein Gangwechsel auf zwei Ebenen unterschieden. Zum einen die Richtung der Übersetzung $i_\mathrm{Gang}$. Bei einer Hochschaltung wird $i_\mathrm{Gang}$ kleiner und entsprechend bei einer Rückschaltung größer. Zum anderen die Richtung des Antriebsmoments am Getriebeeingang. Ist dieses positiv spricht man von einer Zugschaltung bei negativem Antriebsmoment von einer Schubschaltung \cite{Fischer.2016}.
+In dieser Arbeit werden die Betrachtungen auf eine Zug-Hoch-Schaltung zwischen dem zweitem und dem dritten Gang reduziert. Dies hat zum einen den Grund, dass in diesen Gängen der Drehmomentenwandler überbrückt und die Trennkupplung geschlossen ist, sodass deren Dynamik vernachlässigt werden kann. Zum anderen ist dies eine häufige Schaltung im Fahrzeugbetrieb. Die Erkenntnisse können jedoch auch auf andere Gangwechsel übertragen werden.
+
+Bei dem in dieser Arbeit betrachteten Getriebe wird ein Gangwechsel mittels der Schließung und der simultanen Öffnung einer Bremse bzw. Kupplung realisiert. Bei der Schaltung zwischen dem zweiten und dritten Gang sind dies die Bremse $B_\mathrm{05}$ und die Kupplung $K_\mathrm{38}$. Der Gangwechsel wird in die vier Phasen 2. Gang, Momentenübergabe, Drehzahlsynchronisation und 3. Gang eingeteilt. Die Abbildungen \ref{fig:Gang23_Geschw}-\ref{fig:Gang23_Tandw} zeigen die vier Phasen des Gangwechsels der zur Auswertung der Sensitivitäten im Folgenden verwendet wird.
 
 Im 2. Gang ist die Kupplung $K_\mathrm{38}$ geschlossen und überträgt das volle Antriebsmoment. Die Differenzdrehzahl $\Delta \omega_{38}$ der Wellen 3 und 8 ist somit gleich Null. Die Bremse $B_\mathrm{05}$ ist geöffnet und überträgt kein Drehmoment. Vor dem Gangwechsel wird die Kupplung $K_\mathrm{38}$ durch eine Reduzierung des anliegenden Drucks ins Schleifen gebracht, sodass sich an der Kupplung eine minimale Drehzahldifferenz ergibt. Dadurch wirkt an den Scheiben der Kupplung die Gleitreibung, welche somit der Reaktionskraft an den Kupplungen entspricht. Der Betrag der Geleitreibung kann, wie in \ref{sec:mod_reib} beschrieben, mit dem Reibungskoeffizient und der Normalkraft berechnet werden.
 
-Somit kann während der Momentenübergabe das Drehmoment an $K_\mathrm{38}$ abgesenkt werden, während gleichzeitig $B_\mathrm{05}$ mit Hilfe eine Vorsteuerung derart geschlossenen wird, dass stets das volle Antriebsmoment übertragen wird und $K_\mathrm{38}$ im Schleifen gehalten wird. Die Herleitung einer derartigen Vorsteuerung kann \cite{Weber.2018} entnommen werden.    
+Somit kann während der Momentenübergabe das Drehmoment an $K_\mathrm{38}$ abgesenkt werden, während gleichzeitig $B_\mathrm{05}$ mit Hilfe einer Vorsteuerung derart geschlossenen wird, dass stets das volle Antriebsmoment übertragen wird und $K_\mathrm{38}$ im Schleifen gehalten wird. Die Herleitung einer derartigen Vorsteuerung kann \cite{Weber.2018} entnommen werden.    
   
-Wenn $K_\mathrm{38}$ vollständig geöffnet ist d.h. kein Drehmoment mehr übertragen wird beginnt die Drehzahlsynchronisation. Diese kann auf zwei Arten vollzogen werden. Zum einen kann das Drehmoment an $B_\mathrm{05}$ überhöht werden, wodurch die Differenzdrehzahl $\Delta \omega_{05}$ auf Null gebracht wird und die Antriebsdrehzahl abgesenkt wird. Eine weitere Möglichkeit, die sich besonders bei Hybridgetrieben anbietet, ist die Drehzahlsynchronisation mittels einer Absenkung des Antriebsmomentes herzustellen. Mit einer E-Maschine kann die Absetzung schneller und genauer vollzogen werden, als mit einem Verbrennungsmotor. Bei dem in dieser Arbeit betrachteten Gangwechsel werden beide Möglichkeiten gleichzeitig genutzt.
+Wenn $K_\mathrm{38}$ vollständig geöffnet ist d.h. kein Drehmoment mehr übertragen wird beginnt die Drehzahlsynchronisation. Diese kann auf zwei Arten vollzogen werden. Zum einen kann das Drehmoment an $B_\mathrm{05}$ überhöht werden, wodurch die Differenzdrehzahl $\Delta \omega_{05}$ auf Null gebracht wird und die Antriebsdrehzahl abgesenkt wird. Eine weitere Möglichkeit, die sich besonders bei Hybridgetrieben anbietet, ist die Drehzahlsynchronisation mittels einer Absenkung des Antriebsmomentes herzustellen. Mit einer E-Maschine kann die Absetzung dabei schneller und genauer vollzogen werden, als mit einem Verbrennungsmotor. Bei dem in dieser Arbeit betrachteten Gangwechsel werden beide Möglichkeiten gleichzeitig genutzt.
 
-Am Ende der Drehzahlsynchronisation ist $\Delta \omega_{05}=0$ und die Getriebeübersetzung liegt auf dem Niveau des dritten Gangs.
+Am Ende der Drehzahlsynchronisation ist $\Delta \omega_{05}=0$ und die Getriebeübersetzung $i_\textrm{Gang}$ in \ref{fig:Gang23_Geschw} liegt auf dem Niveau des dritten Gangs.
 
-In Abbildung (???) sind die Drehzahlgeschwindigkeiten $\omega_1$, $\omega_2$, $\omega_\mathrm{C}$ und die Verdrehung der Seitenwelle $\phi$ für den in dieser Arbeit verwendeten Gangwechsel zu sehen. Zusätzlich zeigt Abbildung (???) die dazugehörigen Beschleunigungen $\dot{\omega_1}$, $\dot{\omega_2}$, $\dot{\omega_\mathrm{C}}$ und die Verdrehgeschwindigkeit $\dot{\phi}$.
-
-\begin{figure}[t]
-	\centering 
-	\includegraphics[scale=1]{figures/03_Sensitivitaetsanalyse/01_Gangwechsel/23Shift}
-	\caption{Schematische Darstellung des Gangwechsels aus dem zweiten in den dritten Gang.}
-	\label{fig:23zughoch_schema} % always use \label AFTER \caption
+\begin{figure}[h]
+\centering
+\newlength\fheight 
+\setlength\fheight{8cm}
+\newlength\fwidth 
+\setlength\fwidth{13cm}
+\input{figures/03_Sensitivitaetsanalyse/01_Gangwechsel/Gang23_Geschw.tex}
+\caption{Zeitlicher Verlauf der Drehzahlen und Verdrehung der Seitenwellen beim Gangwechsel}
+\label{fig:Gang23_Geschw}
 \end{figure}
 
-\section{Anwendung der Paramater- und Eingangssensitivitätsanalyse}\label{sec:para_sens}
+\begin{figure}[h]
+\centering
+\newlength\aheight 
+\setlength\aheight{8cm}
+\newlength\awidth 
+\setlength\awidth{13cm}
+\input{figures/03_Sensitivitaetsanalyse/01_Gangwechsel/Gang23_Besch.tex}
+\caption{Zeitlicher Verlauf der Beschleunigungen und Verdrehungsgeschwindigkeit der Seitenwellen  beim Gangwechsel}
+\label{fig:Gang23_Besch}
+\end{figure}
+
+\begin{figure}[h]
+\centering
+\newlength\bheight 
+\setlength\bheight{16cm}
+\newlength\bwidth 
+\setlength\bwidth{13cm}
+\input{figures/03_Sensitivitaetsanalyse/01_Gangwechsel/Gang23_Tandw.tex}
+\caption{Zeitlicher Verlauf der übertragenen Drehmomenten und der Differenzgeschwindigkeiten an $K_{38}$ und $B_{05}$, des Eingangsmoments $T_{\textrm{In}}$ und des Widerstandsmoments $T_{\textrm{res}}$ beim Gangswechsel.}
+\label{fig:Gang23_Tandw}
+\end{figure}
+
+\newpage
+\section{Anwendung der Parametersitivitätsanalyse}\label{sec:para_sens}
 Wie einleitend erläutert werden die Sensitiviäten in dieser Arbeit mittels partiellen Differentialen berechnet. Nach \cite{Hearne.1985} ist für ein nichtlineares System erster Ordnung
 \begin{equation}
 \mathrm{d} x_i/\mathrm{d} t = f_i(\pmb{x},\pmb{p},\pmb{u})\quad i=1,2,\,\dots\, ,n 
@@ -44,41 +71,128 @@ S_{ij} = \partial x_i/\partial p_j \quad i=1,2,\,\dots\, ,n \quad j=1,2,\,\dots\
 \end{equation}
 Die entsprechende normalisierte Parametersensitivitätsfunktion ist 
 \begin{equation}
-S_{\mathrm{N},ij} = \partial x_i/\partial p_j\ p_{j0}/x_{i0}.
+S_{\mathrm{N},ij} = \frac{\partial x_i}{\partial p_j}\, \frac{p_{j0}}{x_{i0}} = \frac{\partial x_{\mathrm{N},i}}{p_{\mathrm{N},j}}
 \end{equation}
-Die normalisierte Parametersensitivitätsfunktion $S_{ij}$ kann interpretiert werden, als approximierte prozentuale Änderung des Zustandes $x_i$ für eine $1\%$-ige Änderung des Parameters $p_j$. Das Modell des Antriebsstrangs ist mit \eqref{eq:sys_linex} in der Form
+mit den normalisierten Zuständen $x_{\mathrm{N},i}$ und Parametern $p_{\mathrm{N},j}$, dem Nominalwert $p_{j0}$ des Parametern $p_{j}$ und dem Nominalwert $x_{i0}$ des  Zustandes $x_{i}$, welcher definiert wird als
+\begin{equation}
+ x_{i0} = \mathrm{max}\left( \left|x_{i}(t)\right|\right),\quad t_\mathrm{Start}\leq t \leq t_\mathrm{End}
+\end{equation}
+wobei $t_\mathrm{Start}$ bis $t_\mathrm{End}$ das ausgewertet Zeitfenster ist.
+Die normalisierte Parametersensitivitätsfunktion $S_{\mathrm{N},ij}$ kann interpretiert werden, als approximierte prozentuale Änderung des Zustandes $x_i$ für eine $1\%$-ige Änderung des Parameters $p_j$. Das Modell des Antriebsstrangs ist mit \eqref{eq:sys_linex} in der Form
 \begin{equation}
 \dot{\pmb{x}} = \pmb{f}(t,\pmb{x}(t,\pmb{p}),\pmb{p})+ \pmb{B}(\pmb{p})\pmb{u}(t) 
 \end{equation} 
-gegeben. Wendet man \eqref{eq:abs_psens} auf diese Gleichung an erhält man unter Berücksichtigung der Kettenregel
-\begin{equation}\label{eq:Sens_eq}
-\mathrm{d} \pmb{S}_j/\mathrm{d} t = \dot{\pmb{S}}_j= \frac{\partial\pmb{f}(t,\pmb{x}(t,\pmb{p}),\pmb{p})}{\partial \pmb{x}}\,\pmb{S}_j+\frac{\partial\pmb{f}(t,\pmb{x}(t,\pmb{p}),\pmb{p})}{\partial \pmb{p}}+\frac{\partial \pmb{B}(\pmb{p})}{\partial \pmb{p}}\,\pmb{u}(t).
+gegeben. Wendet man \eqref{eq:abs_psens} auf diese Gleichung an erhält man
+\begin{equation}\label{eq:Sens_eq1}
+\partial\dot{\pmb{x}}/\partial p_j = \partial/\partial p_j\left(\pmb{f}(t,\pmb{x}(t,\pmb{p}),\pmb{p})+ \pmb{B}(\pmb{p})\pmb{u}(t)\right)
 \end{equation}
-Die Parametersensitivitätsfunktion werden im Folgenden anhand \eqref{eq:sys_nl} für $m_\mathrm{veh}$, $k_\mathrm{ss}$, $d_\mathrm{ss}$, $\mu_{38}$ und $\zeta$ gebildet und die zeitlichen Verläufe von $\pmb{S}$ für einen Schaltvorgang gemäß \ref{sec:Gangwechsel} interpretiert.
+und unter Berücksichtigung der Kettenregel
+\begin{equation}\label{eq:Sens_eq}
+\mathrm{d} \pmb{x}/\mathrm{d} t\,\partial/ \partial p_j = \dot{\pmb{S}}_j= \frac{\partial\pmb{f}(t,\pmb{x}(t,\pmb{p}),\pmb{p})}{\partial \pmb{x}}\,\pmb{S}_j+\frac{\partial\pmb{f}(t,\pmb{x}(t,\pmb{p}),\pmb{p})}{\partial \pmb{p}}+\frac{\partial \pmb{B}(\pmb{p})}{\partial \pmb{p}}\,\pmb{u}(t).
+\end{equation}
+Die Gleichung \eqref{eq:Sens_eq1} kann auch als implizite Berechnung der Sensitivität der zeitlichen Ableitung von $\pmb{x}$ angesehen werden. Da für die Bewertung des Gangwechsels vor allem die Drehzahlbeschleunigungen betrachtet werden, wird im Folgenden der zeitliche Verlauf von $\dot{\pmb{S}}_j$ interpretiert. Dafür werden die Parametersensitivitätsfunktion anhand \eqref{eq:sys_nl23} für $m_\mathrm{veh}$, $k_\mathrm{ss}$, $d_\mathrm{ss}$, $\mu_{38}$ und $\zeta$ gebildet und für den in \ref{sec:Gangwechsel} definierten Schaltvorgang berechnet. Dabei ist der erste Term in \eqref{eq:Sens_eq} unabhängig vom betrachteten Parameter und kann daher pauschal für alle Parameter angegeben werden zu
+\begin{equation}
+\frac{\partial\pmb{f}(t,\pmb{x}(t,\pmb{p}),\pmb{p})}{\partial \pmb{x}} = \begin{bmatrix} 0 & -0,799\,d_\mathrm{ss} & -1,97\,k_\mathrm{ss} & 1,97\,d_\mathrm{ss} \\  0 & -0,248\,d_\mathrm{ss} & -0,612\,k_\mathrm{ss} & 0,612\,d_\mathrm{ss} \\0 & 0,405 & 0 & -1,0 \\ 0 & \frac{42,6\,d_\mathrm{ss}}{5.69\,m_\mathrm{veh} + 337} & \frac{105\,k_\mathrm{ss}}{569\,m_\mathrm{veh}+337} & -\frac{1052\,d_\mathrm{ss} + 14,7\,\omega_\mathrm{C} + 558\,\partial f_{Roll}/\partial \omega_\mathrm{C}\,m_\mathrm{veh}\,\cos(\zeta)}{56,9\,m_\mathrm{veh} + 3370}\end{bmatrix}
+\end{equation}
 
 \subsection{Sensitivität des Zustandes $\pmb{x}$ von $k_\mathrm{ss}$}
-Die Sensitivität von \eqref{eq:sys_ex23lin} vom Parameter $k_\mathrm{ss}$ ergibt sich mit \eqref{eq:Sens_lineq} zu 
+Die Sensitivität von \eqref{eq:sys_nl23} zum Parameter $k_\mathrm{ss}$ ergibt sich mit \eqref{eq:Sens_eq} zu 
 \begin{align}
-\dot{\pmb{S}}_{k_\mathrm{ss}} &= \begin{bmatrix} 0 & -0,799\, d_\mathrm{ss,0} & -1,97\, k_\mathrm{ss,0} & 1,97\, d_\mathrm{ss,0} \\ 0 & -0,248\, d_\mathrm{ss,0} & -0,612\, k_\mathrm{ss,0} & 0,612\, d_\mathrm{ss,0} \\ 0 & 0,405 & 0 & -1,0 \\ 0 & \frac{0,81\, d_\mathrm{ss,0}}{0,108 \, m_\mathrm{veh,0} + 6,4} & \frac{2,0\, k_\mathrm{ss,0}}{0,108\, m_\mathrm{veh,0} + 6,4} & -\frac{2,0\, d_\mathrm{ss,0}}{0,108\, m_\mathrm{veh,0}+6,4}\end{bmatrix} \pmb{S}_{k_\mathrm{ss}} \\
-&+ \begin{bmatrix} 0 & 0 & -1,97 & 0 \\ 0 & 0 & -0,612 & 0 \\ 0 & 0 & 0 & 0 \\ 0 & 0 & \frac{2,0}{0,108\, m_\mathrm{veh,0} + 6,4}  & 0 \end{bmatrix}\pmb{x}_\mathrm{ex}.
+\dot{\pmb{S}}_{k_\mathrm{ss}} = \frac{\partial\pmb{f}(t,\pmb{x}(t,\pmb{p}),\pmb{p})}{\partial \pmb{x}} \pmb{S}_{k_\mathrm{ss}} 
++ \begin{bmatrix} -1,97\,\phi \\ -0,612\,\phi \\ 0 \\ \frac{105\,\phi}{5,69\,m_\mathrm{veh} + 337} \end{bmatrix}.
 \end{align}
+
+\begin{figure}
+\centering
+\newlength\kheight 
+\setlength\kheight{8cm}
+\newlength\kwidth 
+\setlength\kwidth{13cm}
+\input{figures/03_Sensitivitaetsanalyse/02_Sensitivitaet/Sens_k.tex}
+\caption{Normierte Sensitivitäten der Zustände und deren Ableitungen von $k_\mathrm{ss}$}
+\label{fig:Sens_k}
+\end{figure}
 
 
 \subsection{Sensitivität des Zustandes $\pmb{x}$ von $d_\mathrm{ss}$}
-Die Sensitivität von \eqref{eq:sys_ex23lin} vom Parameter $d_\mathrm{ss}$ ergibt sich mit \eqref{eq:Sens_lineq} zu
+Die Sensitivität von \eqref{eq:sys_nl23} vom Parameter $d_\mathrm{ss}$ ergibt sich mit \eqref{eq:Sens_eq} zu
 \begin{align}
-\dot{\pmb{S}}_{d_\mathrm{ss}} &= \begin{bmatrix} 0 & -0,799\, d_\mathrm{ss,0} & -1,97\, k_\mathrm{ss,0} & 1,97\, d_\mathrm{ss,0} \\ 0 & -0,248\, d_\mathrm{ss,0} & -0,612\, k_\mathrm{ss,0} & 0,612\, d_\mathrm{ss,0} \\ 0 & 0,405 & 0 & -1,0 \\ 0 & \frac{0,81\, d_\mathrm{ss,0}}{0,108 \, m_\mathrm{veh,0} + 6,4} & \frac{2,0\, k_\mathrm{ss,0}}{0,108\, m_\mathrm{veh,0} + 6,4} & -\frac{2,0\, d_\mathrm{ss,0}}{0,108\, m_\mathrm{veh,0}+6,4}\end{bmatrix} \pmb{S}_{k_\mathrm{ss}}\\ 
-&+ \begin{bmatrix} 0 & -0,799 & 0 & 1.973 \\ 0 & -0,248 & 0 & 0,612 \\ 0 & 0 & 0 & 0 \\ 0 & \frac{0,81}{0,108 \, m_\mathrm{veh,0} + 6,4} & 0 & -\frac{2,0}{0,108\, m_\mathrm{veh,0}+6,4} \end{bmatrix}\pmb{x}_\mathrm{ex}.
+\dot{\pmb{S}}_{d_\mathrm{ss}} = \frac{\partial\pmb{f}(t,\pmb{x}(t,\pmb{p}),\pmb{p})}{\partial \pmb{x}} \pmb{S}_{d_\mathrm{ss}} 
++ \begin{bmatrix} 1,97\,\omega_\mathrm{C} - 0,799\,\omega_\mathrm{2}\\
+                  0,612\,\omega_\mathrm{C} - 0,248\,\omega_\mathrm{2}\\
+                                                       0\\
+ \frac{1052\,d_\mathrm{ss}}{56,9\,m_\mathrm{veh} + 3370}\,\omega_\mathrm{C}\end{bmatrix}.
 \end{align}
 
+\begin{figure}
+\centering
+\newlength\dheight 
+\setlength\dheight{8cm}
+\newlength\dwidth 
+\setlength\dwidth{13cm}
+\input{figures/03_Sensitivitaetsanalyse/02_Sensitivitaet/Sens_d.tex}
+\caption{Normierte Sensitivitäten der Zustände und deren Ableitungen von $d_\mathrm{ss}$}
+\label{fig:Sens_d}
+\end{figure}
+
 \subsection{Sensitivität des Zustandes $\pmb{x}$ von $m_\mathrm{veh}$}
-Die Sensitivität von \eqref{eq:sys_ex23lin} vom Parameter $m_\mathrm{veh}$ ergibt sich mit \eqref{eq:Sens_lineq} zu
+Die Sensitivität von \eqref{eq:sys_nl23} vom Parameter $m_\mathrm{veh}$ ergibt sich mit \eqref{eq:Sens_eq} zu
 \begin{align}
-\dot{\pmb{S}}_{m_\mathrm{veh}} &= \begin{bmatrix} 0 & -0,799\, d_\mathrm{ss,0} & -1,97\, k_\mathrm{ss,0} & 1,97\, d_\mathrm{ss,0} \\ 0 & -0,248\, d_\mathrm{ss,0} & -0,612\, k_\mathrm{ss,0} & 0,612\, d_\mathrm{ss,0} \\ 0 & 0,405 & 0 & -1,0 \\ 0 & \frac{0,81\, d_\mathrm{ss,0}}{0,108 \, m_\mathrm{veh,0} + 6,4} & \frac{2,0\, k_\mathrm{ss,0}}{0,108\, m_\mathrm{veh,0} + 6,4} & -\frac{2,0\, d_\mathrm{ss,0}}{0,108\, m_\mathrm{veh,0}+6,4}\end{bmatrix} \pmb{S}_{m_\mathrm{veh}}\\
-&+\begin{bmatrix} 0 & 0 & 0 & 0\\ 0 & 0 & 0 & 0\\ 0 & 0 & 0 & 0\\ 0 & -\frac{0,0875\, d_\mathrm{ss,0}}{(0,108\, m_\mathrm{veh,0} + 6,4)^2} & -\frac{0,216\, k_\mathrm{ss,0}}{(0,108\, m_\mathrm{veh,0} + 6,4)^2} & \frac{0,216\, d_\mathrm{ss,0}}{(0,108\, m_\mathrm{veh,0} + 6,4)^2}\end{bmatrix}\pmb{x}_\mathrm{ex}\\
-&+\begin{bmatrix}0 & 0 & 0 & 0 & 0\\ 0 & 0 & 0 & 0 & 0\\ 0 & 0 & 0 & 0 & 0\\ 0 & 0 & 0 & 0 & 0\\
-0 & 0 & 0 & \frac{0,108}{(0,108\, m_\mathrm{veh,0} + 6,4)^2} & \frac{0,348\, m_\mathrm{veh,0}}{(0.108\, m_\mathrm{veh,0} + 6,4)^2} - \frac{3,22}{0,108\, m_\mathrm{veh,0} + 6,4}\end{bmatrix} \pmb{u}_\mathrm{ex,23}
+&\dot{\pmb{S}}_{m_\mathrm{veh}} = \frac{\partial\pmb{f}(t,\pmb{x}(t,\pmb{p}),\pmb{p})}{\partial \pmb{x}} \pmb{S}_{m_\mathrm{veh}} \\
+&+ \begin{bmatrix} 0 \\ 0 \\ 0 \\ -\frac{5,72\cdot 10^{-6}\,\sin(\zeta) + 5,99\cdot 10^{-8}\,\phi\,k_\mathrm{ss} + 2,42\cdot 10^{-8}\,d_\mathrm{ss}\,\omega_2 - 5,99\cdot 10^{-8}\,\omega_\mathrm{C} - 4,18\cdot 10^{-10}\,\omega_\mathrm{C}^2 + 1,88\cdot 10^{-6}\,f_\mathrm{Roll}\,\omega_\mathrm{C}\,\cos(\zeta)}{(5.69\,m_\mathrm{veh} + 337)^2}\end{bmatrix}.
 \end{align}
+
+\begin{figure}
+\centering
+\newlength\mheight 
+\setlength\mheight{8cm}
+\newlength\mwidth 
+\setlength\mwidth{13cm}
+\input{figures/03_Sensitivitaetsanalyse/02_Sensitivitaet/Sens_m.tex}
+\caption{Normierte Sensitivitäten der Zustände und deren Ableitungen von $m_\mathrm{veh}$}
+\label{fig:Sens_m}
+\end{figure}
+
+\subsection{Sensitivität des Zustandes $\pmb{x}$ von $\zeta$}
+Die Sensitivität von \eqref{eq:sys_nl23} vom Parameter $\zeta$ ergibt sich mit \eqref{eq:Sens_eq} zu
+\begin{align}
+\dot{\pmb{S}}_{\zeta} = \frac{\partial\pmb{f}(t,\pmb{x}(t,\pmb{p}),\pmb{p})}{\partial \pmb{x}} \pmb{S}_{\zeta}
++ \begin{bmatrix} 0 \\ 0 \\ 0 \\ \frac{-m_\mathrm{veh}\,(170\,\cos(\zeta) - 55,8\,f_\mathrm{Roll}\,\omega_\mathrm{C}\,\sin(\zeta))}{5,69\,m_\mathrm{veh} + 337}\end{bmatrix}.
+\end{align}
+
+\begin{figure}
+\centering
+\newlength\zheight 
+\setlength\zheight{8cm}
+\newlength\zwidth 
+\setlength\zwidth{13cm}
+\input{figures/03_Sensitivitaetsanalyse/02_Sensitivitaet/Sens_z.tex}
+\caption{Normierte Sensitivitäten der Zustände und deren Ableitungen von $\zeta$}
+\label{fig:Sens_m}
+\end{figure}
+
+\subsection{Sensitivität des Zustandes $\pmb{x}$ von $\mu_{38}$}
+Wie in \ref{sec:mod_reib} beschrieben konvergiert \eqref{eq:T_Cl} im Gleitbereich gegen das statische Reibmoment \eqref{eq:T_ClSS}. Somit kann $T_{38}$ in \eqref{eq:uex} ersetzt werden durch
+\begin{equation}
+T_\mathrm{Cl,SS,38} = k_\mathrm{sign}(\Delta \omega_{38},z_{38})\,2\,N_{\mathrm{Disc,38}}\,r_{\mathrm{m},38}\,\mu(p_\mathrm{N,38},T_\mathrm{Oil},\Delta \omega_{38})F_\mathrm{N,38}.
+\end{equation}
+und dann wie oben Sensitvitätsdifferentialgleichung (SDG) bezüglich des Parameters $\mu_{38}$ berechnet werden. Da die Richtung der Reibkraft bekannt ist wird dabei $k_\mathrm{sign}(\Delta \omega_{38},z_{38})$ vernachlässigt. Damit ergibt sich die SDG zu
+\begin{align}
+\dot{\pmb{S}}_{\mu_{38}} = \frac{\partial\pmb{f}(t,\pmb{x}(t,\pmb{p}),\pmb{p})}{\partial \pmb{x}} \pmb{S}_{\mu_{38}}
++ \begin{bmatrix} -5,58\,N_\mathrm{disc,38}\,r_{\mathrm{m},38} \\ 0,0270\,N_\mathrm{disc,38}\,r_{\mathrm{m},38} \\ 0 \\ 0 \end{bmatrix}\,F_\mathrm{N,38}.
+\end{align}
+wobei diese Gleichung wie oben beschrieben nur im Gleitbereich mit $\Delta \omega_{38}\neq 0$ gültig ist.
+
+\begin{figure}
+\centering
+\newlength\muheight 
+\setlength\muheight{8cm}
+\newlength\muwidth 
+\setlength\muwidth{13cm}
+\input{figures/03_Sensitivitaetsanalyse/02_Sensitivitaet/Sens_mu.tex}
+\caption{Normierte Sensitivitäten der Zustände und deren Ableitungen von $\mu_{38}$}
+\label{fig:Sens_mu}
+\end{figure}
 
 \section{Fisher-Informationsmatrix}
 Im Abschnitt \ref{sec:para_sens} wurde gezeigt welche Auswirkung Ungenauigkeiten einer Parameter bzw. in den Eingangsgrößen auf die Systemausgänge haben können. Die Fisher-Informationsmatrix liefert mit Hilfe der Sensitivitäten und der Varianz der Messgrößen eine obere Schranke der Genauigkeit der Parameterschätzung. Außerdem können nicht-sensitive Parameter und linear abhängige Grandientenverläufe für bestimmte Parameterkombinationen bestimmt werden \cite{Majer.1998}. Aus diesem Grund wird im Folgenden die Fisher-Informationsmatrix für einen Gangwechsel berechnet um so die Schätzbarkeit der Parameter mit den vorhandenen Messgrößen zu überprüfen. Das Vorgehen orientiert sich an \cite{Majer.1998}. Dabei wird angenommen, dass die Messdaten der $N$ Zeitpunkte um den stochastischen Anteil $\epsilon_i(t_k)$ von den $n$ Systemausgängen abweichen, sodass diese angeben werden können als
@@ -109,7 +223,7 @@ ist. Damit gilt
 \begin{equation}
 \pmb{C}_p \geq \pmb{F}^{-1}(\pmb{p}^*)
 \end{equation}
-und für die Diagonalelemente der Matrizen, welche die Varianzen der einzelnen Parameterabweichungen sind
+und für die Elemente der Matrizen, welche die Varianzen bzw. Korrelationen der einzelnen Parameterabweichungen sind
 \begin{equation}
 \sigma_{ijp} \geq s_{ij}
 \end{equation}
@@ -125,8 +239,13 @@ Dabei ist $\left.\frac{\partial y_i}{\partial \pmb{p}}\right|_{\pmb{p}^*,t_k}$ d
 \begin{equation}
 \sigma_{ii}(t_k)=r_i^2\cdot\left(\mathrm{max}\left(y_i(t_k),x_i^\mathrm{min}\right)\right)^2
 \end{equation}
-berechnet. Dabei ist $r_i$ der relative Fehler und $y_i^\mathrm{min}$ der kleinste absolute Fehler, welcher festgelegt wird auf $1\%$ der maximalen der Messdaten $z^\mathrm{max}_{ik}$. 
+berechnet. Dabei ist $r_i$ der relative Fehler und $y_i^\mathrm{min}$ der kleinste absolute Fehler, welcher festgelegt wird auf $1\%$ des maximalen Messdatenwertes $z^\mathrm{max}_{ik}$. 
 
 \subsection{Berechnung der Fisher-Informationsmatrix im 2. Gang}
+Die Parameter $k_\mathrm{ss}$, $d_\mathrm{ss}$ und $\mu_{38}$ werden bei der Betrachtung im zweiten Gang von Anfang an vernachlässigt, da aus den Abbildungen \ref{fig:Sens_k}, \ref{fig:Sens_d} und \ref{fig:Sens_mu} ersichtlich ist, dass die Messgrößen in diesem Zustand nicht sensitiv sind für Änderungen dieser Parameter. Daraus folgt direkt, dass diese Parameter mit den gegebenen Messgrößen in diesem Zustand nicht identifizierbar sind. 
+
 \subsection{Berechnung der Fisher-Informationsmatrix während der Momentenübergabe}
+
+
 \subsection{Berechnung der Fisher-Informationsmatrix während der Synchronisation}
+kein $\mu_{38}$

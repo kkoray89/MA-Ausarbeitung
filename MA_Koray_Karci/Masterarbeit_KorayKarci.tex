@@ -77,6 +77,19 @@
 % für mehrere Grafiken nebeneinander
 \usepackage{subcaption}
 \usepackage{svg} % um SVGs direkt einbinden zu können
+\usepackage{tikz}
+\usepackage{pgfplots} 
+\usepackage{pgfgantt}
+\usepackage{pdflscape}
+\pgfplotsset{compat=newest} 
+\pgfplotsset{plot coordinates/math parser=false}
+
+%% the following commands are needed for some matlab2tikz features
+\usetikzlibrary{plotmarks}
+\usetikzlibrary{arrows.meta}
+\usepgfplotslibrary{patchplots}
+\usepackage{grffile}
+\usepackage{amsmath}
 
 % Bibliography using classical bibtex
 %\bibliographystyle{alphadin}
@@ -101,7 +114,7 @@
 \title{Schätzverfahren für adaptive Regelung von Hybridgetrieben}
 %\subtitle{ }
 % title in foreign language (german or english, depending on the language of the thesis)
-\foreigntitle{Estimation Procedure for Adaptive Control of Hybrid Gearboxes}
+\foreigntitle{Estimation Methods for Adaptive Control of Hybrid Gearboxes}
 %\foreignsubtitle{Estimation Procedure for Adaptive Control of Hybrid Gearboxes}
 
 \author{Koray Karci}

@@ -1,9 +1,9 @@
 \chapter{Modellierung}\label{ch:ch2}
-In diesem Kapitel wird ein für die Simulation verwendetes detailliertes Modell des Antriebsstrangs hergeleitet. Hierfür wird ein vorhandenes, starres Modell um Elastizitäten der Seitenwellen ergänzt. Für die Herleitung wird dabei der Lagrange Formalismus verwendet, welcher daher auch kurz beschrieben wird. Im weiteren werden aus dem detaillierten Modell vereinfachte Modelle hergeleitet, welche dem Entwurf der Beobachter im Kapitel~\ref{ch:ch4} dienen.
+In diesem Kapitel wird ein für die Simulation verwendetes detailliertes Modell des Antriebsstrangs hergeleitet. Hierfür wird ein vorhandenes, starres Modell um Elastizitäten der Seitenwellen ergänzt. Außerdem wird die Reibung an den Schaltelementen mit einem dynamischen Reibmodell modelliert.
 
 
 \section{Modellierung des Antriebsstrangs}
-Zur Modellierung des Antriebsstranges wird zunächst die Getriebedynamik mittels der Newton-Euler Gleichungen berechnet. Dazu wird zu Beginn kurz auf die Herleitung dieser Gleichungen eingegangen. Danach wird dieses um die Elastizitäten der Seitenwellen ergänzt, woraus sich ein schwingfähiges System ergibt. Anschließend wird die Reibung der Schaltelemente modelliert.  
+Zur Modellierung des Antriebsstrangs wird die Getriebedynamik mittels der Newton-Euler Gleichungen berechnet. Dazu wird zu Beginn kurz auf die Herleitung dieser Gleichungen eingegangen. Danach werden die Zwangsbedingungen im Getriebe anhand des schematischen Getriebeaufbaus hergeleitet und somit die Getriebedynamik berechnet. Des weiteren wird der Abtriebsstrang um die Elastizitäten der Seitenwellen ergänzt. Durch die zusätzliche Berücksichtigung der zustandsabhängigen Widerstandsmomente am Rad ergibt sich somit ein schwingfähiges nichtlineares System. 
 
 \subsection{Beschreibung des allgemeinen Newton-Euler-Formalismus}
 Die Position und Orientierung von jedem Körper $i$ eines holonomen Mehrkörpersystems mit $p$ Körpern und $f$ Freiheitsgraden (FHG), kann in Abhängigkeit der verallgemeinerten Koordinaten $\pmb{y}\in \mathbb{R}^f$ angegeben werden mit
@@ -309,25 +309,46 @@ Aufgrund der starren Verbindung von Welle 2, der Kardanwelle und des Differentia
 \begin{equation}
 J^\mathrm{eff}_2 = J_2 + J^\mathrm{eff}_\mathrm{cs} + \frac{J^\mathrm{eff}_\mathrm{cs}}{i_\mathrm{D}^2}
 \end{equation}
-wobei in das effektive Massenträgheitsmoment der Kardanwelle $J^\mathrm{eff}_\mathrm{cs} = J_\mathrm{cs} + 0,5\,J_\mathrm{D}$ die eine Hälfte des Massenträgheitsmoments des Differentials miteinbezogen wird. Die andere Hälfte wird aufgrund der Drehzahldifferenz nach dem Differential mit dem Massenträgheitsmoment der zweiten Seitenwelle $J^\mathrm{eff}_\mathrm{ss} =  0,5\,J_\mathrm{D} + J_\mathrm{ss}$ zusammen gefasst. Für das erweiterte System wird $J_2$ in $\pmb{M}_(2,2)$ dann durch $J^\mathrm{eff}_2$ ersetzt. Des weiteren wird in Abbildung ??? ersichtlich, dass für das Ausgangsmoment 
+wobei in das effektive Massenträgheitsmoment der Kardanwelle $J^\mathrm{eff}_\mathrm{cs} = J_\mathrm{cs} + 0,5\,J_\mathrm{D}$ die eine Hälfte des Massenträgheitsmoments des Differentials miteinbezogen wird. Die andere Hälfte wird aufgrund der Drehzahldifferenz nach dem Differential mit dem Massenträgheitsmoment der zweiten Seitenwelle $J^\mathrm{eff}_\mathrm{ss} =  0,5\,J_\mathrm{D} + J_\mathrm{ss}$ zusammen gefasst. Für das erweiterte System wird $J_2$ in $\pmb{M}(2,2)$ dann durch $J^\mathrm{eff}_2$ ersetzt. Des weiteren wird in Abbildung ??? ersichtlich, dass für das Ausgangsmoment 
 \begin{equation}
 T_\mathrm{out} = \frac{2\,T_\mathrm{ss}}{i_\mathrm{D}} = \frac{2}{i_\mathrm{D}}\,\left[ k_\mathrm{ss}\left(\frac{\phi_2}{i_{\mathrm{D}}} - \phi_\mathrm{C}\right) + d_\mathrm{ss}\left(\frac{\omega_2}{i_{\mathrm{D}}} - \omega_\mathrm{C}\right)\right]
 \end{equation}
 gilt und dieses in \eqref{eq:le} dementsprechend ersetzt werden kann.
 
-Zu beachten ist hier, dass $v(\omega_\mathrm{C})$ zustandsabhängig ist und sowohl in $F_\mathrm{r}(v)$ als auch in $F_\mathrm{ad}(v)$ nichtlinear eingeht, wodurch das gesamt System nichtlinear wird. Auch die Eingangsgröße $\zeta(t)$ geht nichtlinear in die Widerstand ein. Da Fahrbahnen im Straßenverkehr auf maximal $20^\circ$ beschränkt sind werden hier die Vereinfachungen
-\begin{equation}
-\sin(\zeta) = \zeta \quad \mathrm{und} \quad \cos(\zeta) = 1
-\end{equation}  
-getroffen. Damit lässt sich das erweiterte Modell mit dem ergänzten Eingangsvektor
-\begin{equation}\label{eq:uex}
-\pmb{u}_\mathrm{ex,nl} = \begin{bmatrix} \mathrm{T}_{\mathrm{In}} & \mathrm{T}_{\mathrm{K81}} & \mathrm{T}_{\mathrm{K38}} & \mathrm{T}_{\mathrm{B08}} & \mathrm{T}_{\mathrm{B05}} & \mathrm{T}_{\mathrm{B06}} & \mathrm{T}_{\mathrm{K27}}\end{bmatrix}^T,
-\end{equation}
+Zu beachten ist hier, dass $v(\omega_\mathrm{C})$ zustandsabhängig ist und sowohl in $F_\mathrm{r}(v)$ als auch in $F_\mathrm{ad}(v)$ nichtlinear eingeht, wodurch das gesamt System nichtlinear wird. Auch die Eingangsgröße $\zeta(t)$ geht nichtlinear in die Widerstand ein. Damit lässt sich das erweiterte Modell mit 
 den Gleichungen \eqref{eq:dynphi} und \eqref{eq:dynwc} in der Form 
 \begin{equation}\label{eq:sys_nl}
 \dot{\pmb{x}}_\mathrm{ex} = \pmb{f}(\pmb{x}_\mathrm{ex}) + \pmb{B}_\mathrm{ex,nl}\,\pmb{u}_\mathrm{ex,nl}
 \end{equation}
 schreiben.
+
+Da in den weiteren Betrachtungen die Dynamik des Getriebes während eines Gangwechsels analysiert wird, kann das Modell auf zwei Gänge reduziert werden. In dieser Arbeit sind dies die Gänge Zwei und Drei. Wie Tabelle \ref{tbl:clutches} entnommen werden kann, sind die Schaltelemete B08 und K27 während beiden Gängen geöffnet daher gilt  
+\begin{subequations}
+\begin{align*}
+T_\mathrm{K27} &= 0 \\
+T_\mathrm{B08} &= 0.
+\end{align*}
+\end{subequations}
+Des Weiteren sind in beiden Gängen die Schaltelemente K81 und B06 geschlossen. Daher gelten für beide Gänge die zusätzlichen Zwangsbedingungen
+\begin{subequations}
+\begin{align}
+\omega_6 &= 0\\
+\omega_1 &= \omega_8.
+\end{align}
+\end{subequations}
+Damit ergeben sich der reduzierte Zustand und der reduzierte Eingang zu
+\begin{equation}
+\pmb{x}_\mathrm{ex,nl,23} = \begin{bmatrix} \omega_1 & \omega_2 & \phi & \omega_\mathrm{C}\end{bmatrix}^T
+\end{equation}
+und
+\begin{equation}
+\pmb{u}_\mathrm{ex,nl,23} = \begin{bmatrix} \mathrm{T}_{\mathrm{In}} & \mathrm{T}_{\mathrm{K38}} & \mathrm{T}_{\mathrm{B05}} \end{bmatrix}^T.
+\end{equation}
+Durch Einsetzten der Zwangsbedingungen in \eqref{eq:zwangsbedingungen_aufgelöst} und der Berücksichtigung des reduzierten Zustands- und  Eingangsvektors ist das nichtlineare reduzierte System
+\begin{equation}\label{eq:sys_nl23}
+\dot{\pmb{x}}_\mathrm{ex,23} = \pmb{f}_{23}(\pmb{x}_\mathrm{ex,23}) + \pmb{B}_\mathrm{ex,nl23}\,\pmb{u}_\mathrm{ex,nl23}.
+\end{equation}
+
 
 \section{Modellierung der Reibung an Kupplungen und Bremsen} \label{sec:mod_reib}
 Die im Abschnitt \ref{ssec:AnwNE} eingeführten Momente der Schaltelemente werden über Lamellenkupplungen beziehungsweise -bremsen an den Wellen angebracht. Dabei werden die Lamellenpakete über einen hydraulischen Druck zusammengepresst, sodass zwischen den Flächen Reibkräfte wirken. Solang die aus dem Druck resultierende Normalkraft an Lamellenpaketen nicht ausreicht um die Scheiben gegeneinander abzustützen, wirkt die Reibkraft entgegen der Differnzdrehzahl $\Delta \omega$ der drehenden Scheiben. Ist die Normalkraft groß genug entsteht eine kraftschlüssige Verbindung zwischen Innen- und Außenlamellen. In diesem Fall ist $\Delta \omega = 0$ und der Betrag der Reibkraft entspricht dem der Reaktionskraft und wirkt dieser entgegen.   
@@ -366,27 +387,30 @@ Um die dynamischen Reibeffekte vorallem um $\Delta\omega=0$ mit berücksichtigen
 \begin{equation}
 F_\mathrm{R,Dahl} = \left[\sigma_0\ \vert 1-\frac{F_\mathrm{R,Dahl}}{F_\mathrm{C}}\mathrm{sign}(\Delta\omega)\vert^\beta\ \mathrm{sign}\left( 1-\frac{F_\mathrm{R,Dahl}}{F_\mathrm{C}}\mathrm{sign}(\Delta\omega)\right)\right]\Delta\omega
 \end{equation}
-mit der zuvor definierten Coulomschen-Reibkraft $F_\mathrm{C}$, der Federsteifigkeit $\sigma_0$ und dem Formparameter der Hysterese $\beta$. Das Lund-Grenoble (LuGre) Reibmodell erweitert das Modell von Dahl um einen Dämpfungsanteil und ersetzt die Coulombsche-Kraft durch einen beliebige Reibkraftkennlinie $F_\mathrm{SS}$. Die Kontaktstellen der Reibflächen werden dabei als "Borsten"  modelliert, welche die Borstensteifigkeit $\sigma_0$ und die Borstendämpfung $sigma_1$ besitzen. Mit der Borstenauslenkung $z$ lässt sich die LuGre-Reibkraft angeben als
+mit der zuvor definierten Coulomschen-Reibkraft $F_\mathrm{C}$, der Federsteifigkeit $\sigma_0$ und dem Formparameter der Hysterese $\beta$. Das Lund-Grenoble (LuGre) Reibmodell erweitert das Modell von Dahl um einen Dämpfungsanteil und ersetzt die Coulombsche-Kraft durch einen beliebige Reibkraftkennlinie $F_\mathrm{SS}$. Die Kontaktstellen der Reibflächen werden dabei als "Borsten"  modelliert, welche die Borstensteifigkeit $\sigma_0$ und die Borstendämpfung $\sigma_1$ besitzen. Mit der Borstenauslenkung $z$ lässt sich die LuGre-Reibkraft angeben als
 \begin{equation}
 F_\mathrm{R,LuGre} = \sigma_0\, z + \sigma_1 \dot{z} + \sigma_2\, \Delta \omega\quad \mathrm{mit}\  \dot{z}=\Delta\omega\left(1-\frac{\sigma_0 z}{F_\mathrm{SS}}\right)
 \end{equation} 
-wobei $\sigma_2$ der Steigungskoeffizienten der viskosen Reibung ist [Quelle aus Mahl ???]. Jedoch wird in \cite{Dupont.2002} gezeigt, dass dieses Modell kein elasto-plastisches Presliding abbilden kann. Daher führt jede nichtkonstante Reibkraft zu einem sogenannten plastischen Presliding von $z$ wodurch es besonders bei periodischen Kräften zu einem physikalisch nicht existierenden Drift kommt. Das Elasto-Plastische Modell erweitert das LuGre-Modell um einen elastischen Bereich für kleine $z$. Nach \cite{Dupont.2000} ergibt sich die Dynamik der Auslenkung zu 
+wobei $\sigma_2$ der Steigungskoeffizienten der viskosen Reibung ist und $z_\mathrm{SS} = F_\mathrm{SS}/\sigma_0$ die maximale Borstenauslenkung[Quelle aus Mahl ???]. Jedoch wird in \cite{Dupont.2002} gezeigt, dass dieses Modell kein elasto-plastisches Presliding abbilden kann. Daher führt jede nichtkonstante Reibkraft zu einem sogenannten plastischen Presliding von $z$ wodurch es besonders bei periodischen Kräften zu einem physikalisch nicht existierenden Drift kommt. Das Elasto-Plastische Modell erweitert das LuGre-Modell um einen elastischen Bereich für kleine $z$. Nach \cite{Dupont.2000} ergibt sich die Dynamik der Auslenkung zu 
 \begin{equation}
 \dot{z} = \Delta \omega \left(1-\alpha(z,\Delta \omega)\frac{\sigma_0\,z}{F_\mathrm{SS}}\right)^i,\quad i\in \mathbb{Z}
 \end{equation}
-wobei $i=1$ gesetzt wird und die Funktion $\alpha(z,\Delta \omega)$ ein elastische Bereich für kleine $z$ erzeugt.
+wobei $i=1$ gesetzt wird und die Funktion $\alpha(z)\in\left[0,1\right]$ ein elastische Bereich für kleine $z$ erzeugt. 
 
-Aufgrund der erläuterten Vorteile wird das Elasto-Plastische-Modell für das Simulationsmodell verwendet. Mit dem mittleren Radius $r_\mathrm{m}$ der Kupplungs- und Bremsscheiben und der Anzahl der Scheiben pro Schaltelement $N_\mathrm{disc}$  lassen sich die oben beschrieben Kräfte in Momente umrechnen. Letztendlich ergibt sich das an der Welle angreifende Reibmoment des Schaltelements $k$ zu
-\begin{align}
-T_{\mathrm{Cl},k} = \sigma_0\,z + \sigma_1\,\dot{z} + \sigma_2 \Delta\omega
+Aufgrund der erläuterten Vorteile wird das Elasto-Plastische-Modell für das Simulationsmodell verwendet. Dabei wird der viskose Reibungsanteil vernachlässigt ($\sigma_2 = 0$). Mit dem mittleren Radius $r_\mathrm{m}$ der Kupplungs- und Bremsscheiben und der Anzahl der Scheiben pro Schaltelement $N_\mathrm{disc}$  lassen sich die oben beschrieben Kräfte in Momente umrechnen. Letztendlich ergibt sich das an der Welle angreifende Reibmoment des Schaltelements $k$ zu
+\begin{align}\label{eq:T_Cl}
+T_{\mathrm{Cl},k} = \sigma_0\,z + \sigma_1\,\dot{z}
 \end{align}
 mit
 \begin{align}
 \dot{z} &= \Delta \omega \left(1-\alpha\frac{\sigma_0\,z}{T_\mathrm{Cl,ss}}\right)\\
-T_\mathrm{Cl,ss} &= k_\mathrm{sign}(\Delta \omega,z)\,sign2\,N_{\mathrm{Disc},k}\,r_{\mathrm{m},k}\,\mu(p_\mathrm{N},T_\mathrm{Oil},\Delta \omega)F_\mathrm{N}.
+T_\mathrm{Cl,SS} &= k_\mathrm{sign}(\Delta \omega,z)\,2\,N_{\mathrm{Disc},k}\,r_{\mathrm{m},k}\,\mu(p_\mathrm{N},T_\mathrm{Oil},\Delta \omega)F_\mathrm{N}.\label{eq:T_ClSS}
 \end{align}
-Die Reibwerte $\mu_\mathrm{S}$ und $\mu_\mathrm{C}$ werden aus Kennfeldern in Abhängigkeit der des Drucks an den Scheiben $p_\mathrm{N}$, der Öltemperatur $T_\mathrm{Oil}$ und $\Delta \omega$ gewonnen. Die Größe $k_\mathrm{sign}(\Delta \omega,z)$ definiert das Vorzeichen der Reibkraft. Zur Optimierung des numerischen Verhaltens des Simulationsmodells bei geschlossener Kupplung d.h. $\Delta \omega = 0$ wird dieser definiert zu 
+Der Reibwert $\mu(p_\mathrm{N},T_\mathrm{Oil},\Delta \omega)$ wird aus einem Kennfeld in Abhängigkeit der des Drucks an den Scheiben $p_\mathrm{N}$, der Öltemperatur $T_\mathrm{Oil}$ und $\Delta \omega$ gewonnen. Die Größe $k_\mathrm{sign}(\Delta \omega,z)$ definiert das Vorzeichen der Reibkraft. Zur Optimierung des numerischen Verhaltens des Simulationsmodells bei geschlossener Kupplung d.h. $\Delta \omega = 0$ wird dieser definiert zu 
 \begin{equation}
 k_\mathrm{sign}(\Delta \omega,z)=\begin{cases} \mathrm{sign}(z)\quad &,z\neq 0\\\mathrm{sign}(\Delta \omega)\quad &,z = 0\end{cases}.
 \end{equation}
-Die Normalkraft $F_\mathrm{N}$ ergibt sich aus $p_\mathrm{N}$ und der Fläche der Scheiben $A_\mathrm{Disc}$ und wird vorgegeben. 
+Die Normalkraft $F_\mathrm{N}$ ergibt sich aus $p_\mathrm{N}$ und der Fläche der Scheiben $A_\mathrm{Disc}$ und wird im Simulationsmodell vorgegeben. 
+
+Mit $z_\mathrm{SS} = T_\mathrm{Cl,SS}/\sigma_0$ und $\lim_{z \rightarrow z_\mathrm{SS}}\alpha(z)=1$ konvergiert \eqref{eq:T_Cl} im Gleitbereich ($\Delta \omega \neq 0$) gegen $T_\mathrm{Cl,SS}$. 
+

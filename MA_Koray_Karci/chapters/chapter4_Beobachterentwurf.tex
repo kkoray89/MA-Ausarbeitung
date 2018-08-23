@@ -10,41 +10,13 @@ angegeben werden. Hierfür werden die beiden Widerstandskräfte in \eqref{eq:dyn
 \dot{\omega}_\mathrm{C} = \left[ 2\,\left(k_\mathrm{ss}\left(\frac{\phi_2}{i_{\mathrm{D}}} - \phi_\mathrm{C}\right) + d_\mathrm{ss}\left(\frac{\omega_2}{i_{\mathrm{D}}} - \omega_\mathrm{C}\right)\right) - T^*_\mathrm{res} - r_\mathrm{dyn}\, F_\mathrm{g}\right]/I^\mathrm{eff}_\mathrm{C}.
 \end{equation}
  ergibt. Der Eingangsvektor des linearen Systems ist dann definiert als 
-\begin{equation}\label{eq:uex}
+\begin{equation}
 \pmb{u}_\mathrm{ex} = \begin{bmatrix} \mathrm{T}_{\mathrm{In}} & T^*_\mathrm{res} & \mathrm{T}_{\mathrm{K81}} & \mathrm{T}_{\mathrm{K38}} & \mathrm{T}_{\mathrm{B08}} & \mathrm{T}_{\mathrm{B05}} & \mathrm{T}_{\mathrm{B06}} & \mathrm{T}_{\mathrm{K27}} & \zeta \end{bmatrix}^T.
 \end{equation}
 
 Die Funktion $\pmb{f}(\pmb{x}_\mathrm{ex})$ und die Eingangmatrix $\pmb{B}_\mathrm{ex,nl}$ des nichtlinearen Systems, sowie die Systemmatrix $\pmb{A}_\mathrm{ex}$ und die Eingangmatrix $\pmb{B}_\mathrm{ex}$ des linearen Systems sind im Anhang mit numerischen Werten für die Zähnezahlen der Zahnräder und der Massenträgheitsmomente angegeben.
 
-Da in den weiteren Betrachtungen die Dynamik des Getriebes während eines Gangwechsels betrachtet wird, können das lineare und nichtlineare Modell auf zwei Gänge reduziert werden. In dieser Arbeit werden die Betrachtungen auf die Schaltungen zwischen dem zweiten und dem dritten Gang konzentriert. Wie Tabelle \ref{tbl:clutches} entnommen werden kann, sind die Schaltelemete B08 und K27 während beiden Gängen geöffnet daher gilt  
-\begin{subequations}
-\begin{align*}
-T_\mathrm{K27} &= 0 \\
-T_\mathrm{B08} &= 0.
-\end{align*}
-\end{subequations}
-Des Weiteren sind in beiden Gängen die Schaltelemente K81 und B06 geschlossen. Daher gelten für beide Gänge die zusätzlichen Zwangsbedingungen
-\begin{subequations}
-\begin{align}
-\omega_6 &= 0\\
-\omega_1 &= \omega_8.
-\end{align}
-\end{subequations}
-Damit ergeben sich die Eingänge des reduzierten nichtlinearen und linearen Systems zu 
-\begin{subequations}
-\begin{align}
-\pmb{u}_\mathrm{ex,nl,23} &= \begin{bmatrix} \mathrm{T}_{\mathrm{In}} & \mathrm{T}_{\mathrm{K38}} & \mathrm{T}_{\mathrm{B05}} & \zeta \end{bmatrix}^T\\
-\pmb{u}_\mathrm{ex,23} &= \begin{bmatrix} \mathrm{T}_{\mathrm{In}} & T^*_\mathrm{res} & \mathrm{T}_{\mathrm{K38}} & \mathrm{T}_{\mathrm{B05}} & \zeta \end{bmatrix}^T.
-\end{align}
-\end{subequations}
-Durch Einsetzten der Zwangsbedingungen in \eqref{eq:zwangsbedingungen_aufgelöst} und der Berücksichtigung der reduzierten Eingangsvektoren ist das nichtlineare reduzierte System
-\begin{equation}
-\dot{\pmb{x}}_\mathrm{ex} = \pmb{f}(\pmb{x}_\mathrm{ex}) + \pmb{B}_\mathrm{ex,nl23}\,\pmb{u}_\mathrm{ex,nl23}
-\end{equation}
-und das lineare reduzierte System 
-\begin{equation}\label{eq:sys_ex23lin}
-\dot{\pmb{x}}_\mathrm{ex} = \pmb{A}_\mathrm{ex,23} + \pmb{B}_\mathrm{ex,23}\,\pmb{u}_\mathrm{ex,23}.
-\end{equation}
+
 
 Mit den eingesetzten numerischen Werten der Zahnräder, der Massenträgheitsmomente, der Übersetzung der Differentials und dem dynamischen Radius der Räder ergeben sich die Systemmatrizen zu
 \begin{align}
