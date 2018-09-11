@@ -49,33 +49,33 @@
 \defcounter {refsection}{0}\relax 
 \contentsline {section}{\numberline {3.3}Fisher-Informationsmatrix}{30}{section.3.3}
 \defcounter {refsection}{0}\relax 
-\contentsline {subsection}{\numberline {3.3.1}Berechnung der Fisher-Informationsmatrix im 2. Gang}{32}{subsection.3.3.1}
+\contentsline {subsection}{\numberline {3.3.1}Berechnung der Fisher-Informationsmatrix im 2. Gang}{33}{subsection.3.3.1}
 \defcounter {refsection}{0}\relax 
-\contentsline {subsection}{\numberline {3.3.2}Berechnung der Fisher-Informationsmatrix w\IeC {\"a}hrend der Momenten\IeC {\"u}bergabe}{32}{subsection.3.3.2}
+\contentsline {subsection}{\numberline {3.3.2}Berechnung der Fisher-Informationsmatrix w\IeC {\"a}hrend der Momenten\IeC {\"u}bergabe}{33}{subsection.3.3.2}
 \defcounter {refsection}{0}\relax 
-\contentsline {subsection}{\numberline {3.3.3}Berechnung der Fisher-Informationsmatrix w\IeC {\"a}hrend der Synchronisation}{32}{subsection.3.3.3}
+\contentsline {subsection}{\numberline {3.3.3}Berechnung der Fisher-Informationsmatrix w\IeC {\"a}hrend der Synchronisation}{33}{subsection.3.3.3}
 \defcounter {refsection}{0}\relax 
-\contentsline {chapter}{\numberline {4}Beobachterentwurf}{37}{chapter.4}
+\contentsline {chapter}{\numberline {4}Sch\IeC {\"a}tzverfahren}{39}{chapter.4}
 \defcounter {refsection}{0}\relax 
-\contentsline {section}{\numberline {4.1}Kalman-Filter}{38}{section.4.1}
+\contentsline {section}{\numberline {4.1}Kalman-Filter}{40}{section.4.1}
 \defcounter {refsection}{0}\relax 
-\contentsline {section}{\numberline {4.2}Extented Kalman-Filter}{38}{section.4.2}
+\contentsline {section}{\numberline {4.2}Extented Kalman-Filter}{40}{section.4.2}
 \defcounter {refsection}{0}\relax 
-\contentsline {section}{\numberline {4.3}Unknown Input Observer}{38}{section.4.3}
+\contentsline {section}{\numberline {4.3}Unknown Input Observer}{40}{section.4.3}
 \defcounter {refsection}{0}\relax 
-\contentsline {section}{\numberline {4.4}Extended Unknown Input Observers}{38}{section.4.4}
+\contentsline {section}{\numberline {4.4}Extended Unknown Input Observers}{40}{section.4.4}
 \defcounter {refsection}{0}\relax 
-\contentsline {chapter}{\numberline {5}Zusammenfassung und Ausblick}{39}{chapter.5}
+\contentsline {chapter}{\numberline {5}Zusammenfassung und Ausblick}{41}{chapter.5}
 \defcounter {refsection}{0}\relax 
-\contentsline {chapter}{\numberline {A}Anhang}{41}{appendix.A}
+\contentsline {chapter}{\numberline {A}Anhang}{43}{appendix.A}
 \defcounter {refsection}{0}\relax 
 \setcounter {tocdepth}{0}
 \defcounter {refsection}{0}\relax 
-\contentsline {chapter}{\nonumberline Abbildungsverzeichnis}{43}{chapter*.14}
+\contentsline {chapter}{\nonumberline Abbildungsverzeichnis}{45}{chapter*.14}
 \defcounter {refsection}{0}\relax 
-\contentsline {chapter}{\nonumberline Tabellenverzeichnis}{45}{chapter*.15}
+\contentsline {chapter}{\nonumberline Tabellenverzeichnis}{47}{chapter*.15}
 \defcounter {refsection}{0}\relax 
-\contentsline {chapter}{\nonumberline Literatur}{47}{chapter*.16}
+\contentsline {chapter}{\nonumberline Literatur}{49}{chapter*.16}
 \babel@toc {ngerman}{}
 \babel@toc {ngerman}{}
 \defcounter {refsection}{0}\relax 

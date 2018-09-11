@@ -1,5 +1,5 @@
 \chapter{Sensitivitätsanalyse}\label{ch:Sensitivity}
-In diesem Kapitel wird das in Kapitel \ref{ch:ch2} hergeleitete lineare Modell des Antriebsstrangs auf die Sensitivität verschiedener Parameter und Eingänge untersucht. Damit soll die Relevanz für eine Parameter- und Eingangsschätzung im folgenden Kapitel belegt und unterstrichen werden.
+In diesem Kapitel wird das in Kapitel \ref{ch:ch2} hergeleitete nichtlineare Modell des Antriebsstrangs auf die Sensitivität verschiedener Parameter und Eingänge untersucht. Damit soll die Relevanz für eine Parameter- und Eingangsschätzung im folgenden Kapitel belegt und unterstrichen werden.
 Eine mögliche Definition für eine Sensitivitätsanalyse ist die folgende: \emph{The study of how uncertainty in the output of a model (numerical or otherwise) can be apportioned to different sources of uncertainty in the model input} \cite{Saltelli.2004}.
 Für die Analyse gibt es verschiedene Methoden. Dabei ist die OAT(one-at-a-time)-Methode wohl die einfachste. Dabei wird pro Simulationsdurchlauf lediglich eine Eingangsgröße geändert während alle anderen auf den nominal Werten gehalten werden. Die Methode liefert aber nur eine sehr beschränkte Aussage über den gesamten Eingangsraum. Jedoch kann sie für die Abschätzung einer ersten Untergruppe an relevanten Eingängen hilfreich sein.    
 
@@ -90,7 +90,7 @@ und unter Berücksichtigung der Kettenregel
 \begin{equation}\label{eq:Sens_eq}
 \mathrm{d} \pmb{x}/\mathrm{d} t\,\partial/ \partial p_j = \dot{\pmb{S}}_j= \frac{\partial\pmb{f}(t,\pmb{x}(t,\pmb{p}),\pmb{p})}{\partial \pmb{x}}\,\pmb{S}_j+\frac{\partial\pmb{f}(t,\pmb{x}(t,\pmb{p}),\pmb{p})}{\partial \pmb{p}}+\frac{\partial \pmb{B}(\pmb{p})}{\partial \pmb{p}}\,\pmb{u}(t).
 \end{equation}
-Die Gleichung \eqref{eq:Sens_eq1} kann auch als implizite Berechnung der Sensitivität der zeitlichen Ableitung von $\pmb{x}$ angesehen werden. Da für die Bewertung des Gangwechsels vor allem die Drehzahlbeschleunigungen betrachtet werden, wird im Folgenden der zeitliche Verlauf von $\dot{\pmb{S}}_j$ interpretiert. Dafür werden die Parametersensitivitätsfunktion anhand \eqref{eq:sys_nl23} für $m_\mathrm{veh}$, $k_\mathrm{ss}$, $d_\mathrm{ss}$, $\mu_{38}$ und $\zeta$ gebildet und für den in \ref{sec:Gangwechsel} definierten Schaltvorgang berechnet. Dabei ist der erste Term in \eqref{eq:Sens_eq} unabhängig vom betrachteten Parameter und kann daher pauschal für alle Parameter angegeben werden zu
+Die Gleichung \eqref{eq:Sens_eq1} kann auch als implizite Berechnung der Sensitivität der zeitlichen Ableitung von $\pmb{x}$ angesehen werden. Da für die Bewertung des Gangwechsels vor allem die Drehzahlbeschleunigungen betrachtet werden, wird im Folgenden auch der zeitliche Verlauf von $\dot{\pmb{S}}_j$ interpretiert. Dafür werden die Parametersensitivitätsfunktion anhand \eqref{eq:sys_nl23} für $m_\mathrm{veh}$, $k_\mathrm{ss}$, $d_\mathrm{ss}$, $\mu_{38}$ und $\zeta$ gebildet und für den in \ref{sec:Gangwechsel} definierten Schaltvorgang berechnet. Dabei ist der erste Term in \eqref{eq:Sens_eq} unabhängig vom betrachteten Parameter und kann daher pauschal für alle Parameter angegeben werden zu
 \begin{equation}
 \frac{\partial\pmb{f}(t,\pmb{x}(t,\pmb{p}),\pmb{p})}{\partial \pmb{x}} = \begin{bmatrix} 0 & -0,799\,d_\mathrm{ss} & -1,97\,k_\mathrm{ss} & 1,97\,d_\mathrm{ss} \\  0 & -0,248\,d_\mathrm{ss} & -0,612\,k_\mathrm{ss} & 0,612\,d_\mathrm{ss} \\0 & 0,405 & 0 & -1,0 \\ 0 & \frac{42,6\,d_\mathrm{ss}}{5.69\,m_\mathrm{veh} + 337} & \frac{105\,k_\mathrm{ss}}{569\,m_\mathrm{veh}+337} & -\frac{1052\,d_\mathrm{ss} + 14,7\,\omega_\mathrm{C} + 558\,\partial f_{Roll}/\partial \omega_\mathrm{C}\,m_\mathrm{veh}\,\cos(\zeta)}{56,9\,m_\mathrm{veh} + 3370}\end{bmatrix}
 \end{equation}
@@ -172,11 +172,11 @@ Die Sensitivität von \eqref{eq:sys_nl23} vom Parameter $\zeta$ ergibt sich mit 
 \end{figure}
 
 \subsection{Sensitivität des Zustandes $\pmb{x}$ von $\mu_{38}$}
-Wie in \ref{sec:mod_reib} beschrieben konvergiert \eqref{eq:T_Cl} im Gleitbereich gegen das statische Reibmoment \eqref{eq:T_ClSS}. Somit kann $T_{38}$ in \eqref{eq:uex} ersetzt werden durch
+Wie in \ref{sec:mod_reib} beschrieben konvergiert \eqref{eq:T_Cl} im Gleitbereich gegen das statische Reibmoment \eqref{eq:T_ClSS}. Somit kann $T_{38}$ in \eqref{eq:u_exnl23} ersetzt werden durch
 \begin{equation}
 T_\mathrm{Cl,SS,38} = k_\mathrm{sign}(\Delta \omega_{38},z_{38})\,2\,N_{\mathrm{Disc,38}}\,r_{\mathrm{m},38}\,\mu(p_\mathrm{N,38},T_\mathrm{Oil},\Delta \omega_{38})F_\mathrm{N,38}.
 \end{equation}
-und dann wie oben Sensitvitätsdifferentialgleichung (SDG) bezüglich des Parameters $\mu_{38}$ berechnet werden. Da die Richtung der Reibkraft bekannt ist wird dabei $k_\mathrm{sign}(\Delta \omega_{38},z_{38})$ vernachlässigt. Damit ergibt sich die SDG zu
+und dann wie oben die Sensitvitätsdifferentialgleichung (SDG) bezüglich des Parameters $\mu_{38}$ berechnet werden. Da die Richtung der Reibkraft bekannt ist wird dabei $k_\mathrm{sign}(\Delta \omega_{38},z_{38})$ vernachlässigt. Damit ergibt sich die SDG zu
 \begin{align}
 \dot{\pmb{S}}_{\mu_{38}} = \frac{\partial\pmb{f}(t,\pmb{x}(t,\pmb{p}),\pmb{p})}{\partial \pmb{x}} \pmb{S}_{\mu_{38}}
 + \begin{bmatrix} -5,58\,N_\mathrm{disc,38}\,r_{\mathrm{m},38} \\ 0,0270\,N_\mathrm{disc,38}\,r_{\mathrm{m},38} \\ 0 \\ 0 \end{bmatrix}\,F_\mathrm{N,38}.
@@ -195,7 +195,7 @@ wobei diese Gleichung wie oben beschrieben nur im Gleitbereich mit $\Delta \omeg
 \end{figure}
 
 \section{Fisher-Informationsmatrix}
-Im Abschnitt \ref{sec:para_sens} wurde gezeigt welche Auswirkung Ungenauigkeiten einer Parameter bzw. in den Eingangsgrößen auf die Systemausgänge haben können. Die Fisher-Informationsmatrix liefert mit Hilfe der Sensitivitäten und der Varianz der Messgrößen eine obere Schranke der Genauigkeit der Parameterschätzung. Außerdem können nicht-sensitive Parameter und linear abhängige Grandientenverläufe für bestimmte Parameterkombinationen bestimmt werden \cite{Majer.1998}. Aus diesem Grund wird im Folgenden die Fisher-Informationsmatrix für einen Gangwechsel berechnet um so die Schätzbarkeit der Parameter mit den vorhandenen Messgrößen zu überprüfen. Das Vorgehen orientiert sich an \cite{Majer.1998}. Dabei wird angenommen, dass die Messdaten der $N$ Zeitpunkte um den stochastischen Anteil $\epsilon_i(t_k)$ von den $n$ Systemausgängen abweichen, sodass diese angeben werden können als
+Im Abschnitt \ref{sec:para_sens} wurde gezeigt welche Auswirkung Ungenauigkeiten der Parameter auf die Systemzustände haben. Die Fisher-Informationsmatrix liefert mit Hilfe der Sensitivitäten und der Varianz der Messgrößen eine obere Schranke für die Genauigkeit eines Parameterschätzverfahrens. Außerdem können nicht-sensitive Parameter und linear abhängige Grandientenverläufe für bestimmte Parameterkombinationen bestimmt werden \cite{Majer.1998}. Aus diesem Grund wird im Folgenden die Fisher-Informationsmatrix für einen Gangwechsel berechnet um so die Schätzbarkeit der Parameter mit den vorhandenen Messgrößen zu überprüfen. Das Vorgehen orientiert sich an \cite{Majer.1998}. Dabei wird angenommen, dass die Messdaten der $N$ Zeitpunkte um den stochastischen Anteil $\epsilon_i(t_k)$ von den $n$ Systemausgängen abweichen, sodass diese angeben werden können als
 \begin{equation}\label{eq:stoch_err}
 z_{ik} = y_i(\pmb{x}_0,\pmb{u},\pmb{p}^*,t_k) + \epsilon_i(t_k).
 \end{equation}
@@ -225,7 +225,7 @@ ist. Damit gilt
 \end{equation}
 und für die Elemente der Matrizen, welche die Varianzen bzw. Korrelationen der einzelnen Parameterabweichungen sind
 \begin{equation}
-\sigma_{ijp} \geq s_{ij}
+\sigma_{ijp} \geq s_{ij}.
 \end{equation}
 Das partielle Differential $\frac{\partial\,\mathrm{ln}P(\pmb{p})}{\partial\, \pmb{p}}$ lässt sich mit \eqref{eq:wdf_p} berechnen zu 
 \begin{equation}
@@ -239,7 +239,27 @@ Dabei ist $\left.\frac{\partial y_i}{\partial \pmb{p}}\right|_{\pmb{p}^*,t_k}$ d
 \begin{equation}
 \sigma_{ii}(t_k)=r_i^2\cdot\left(\mathrm{max}\left(y_i(t_k),x_i^\mathrm{min}\right)\right)^2
 \end{equation}
-berechnet. Dabei ist $r_i$ der relative Fehler und $y_i^\mathrm{min}$ der kleinste absolute Fehler, welcher festgelegt wird auf $1\%$ des maximalen Messdatenwertes $z^\mathrm{max}_{ik}$. 
+berechnet. Dabei ist $r_i$ der relative Fehler und $y_i^\mathrm{min}$ der kleinste absolute Fehler, welcher festgelegt wird auf $1\%$ des maximalen Messdatenwertes $z^\mathrm{max}_{ik}$.
+
+Um bewerten zu können ob eine bestimmte Parameterkombination während eines Zeitbereichs genügend genau geschätzt werden kann, wird eine maximal zulässige normierte Streuung definiert. Diese berechnet sich aus der Grenzvarianz des $j$-ten Parameters $\sigma_{jj,m}$ zu 
+\begin{equation}
+\gamma_{j,m} = \sqrt{\sigma_{jj,m}}/p_j.
+\end{equation}
+
+Liefert die Fisher-Informationsmatrix für eine bestimmte Parameterkombination   größere Varianzen oder ist sogar singulär muss ein Parameter aus dem Schätzverfahren eliminiert werden. Um zu analysieren, welcher Parameter die große Streuung verursacht, wird $\pmb{F}$ über die Hauptachsentransformation
+\begin{equation}
+\pmb{D} = \pmb{V}^T\ \pmb{F}\ \pmb{V}
+\end{equation} 
+in Diagonalform gebracht. Dabei besteht $\pmb{V}$ aus den Eigenvektoren zu den jeweiligen Eigenwerten $\lambda_j$ von $\pmb{F}$, welche sich auf der Diagonalen von $\pmb{D}$ befinden. Die Kehrwerte der Eigenwerte sind untere Schranken für die  Varianzen $\sigma_{j,t}$ der unkorrelierten transformierten Parameter und es gilt der Zusammenhang
+\begin{equation}
+\frac{1}{\lambda_j}\leq \sigma_{j,t}.
+\end{equation}
+Der Vektor der transformierten Varianz setzt sich im untransformierten Raum aus den Varianzen in Richtung der Parameter zusammen, was ausgedrückt werden kann durch
+\begin{equation}\label{Pararaum}
+\sigma_{j,t} \pmb{v}_j = \sum_{i=1}^m \sigma_{ij,t} \pmb{e}_i
+\end{equation}
+mit $\pmb{V} = [\pmb{v}_1\; \pmb{v}_2\; \dots \;\pmb{v}_m]$ und den Einheitsvektoren $\pmb{e}_i$. Mit \eqref{Pararaum} kann man die Beeinflussung der Varianzen der transformierten Parameter durch die der untransformierten Parameter gut erkennen und dementsprechend den Einflussreichsten Parameter streichen. Auf diese Weise wird im Folgenden für die einzelnen Schaltphasen die Parameterkombination soweit reduziert bis die Streuung von jedem Parameter kleiner ist als die Grenzstreuung.
+ 
 
 \subsection{Berechnung der Fisher-Informationsmatrix im 2. Gang}
 Die Parameter $k_\mathrm{ss}$, $d_\mathrm{ss}$ und $\mu_{38}$ werden bei der Betrachtung im zweiten Gang von Anfang an vernachlässigt, da aus den Abbildungen \ref{fig:Sens_k}, \ref{fig:Sens_d} und \ref{fig:Sens_mu} ersichtlich ist, dass die Messgrößen in diesem Zustand nicht sensitiv sind für Änderungen dieser Parameter. Daraus folgt direkt, dass diese Parameter mit den gegebenen Messgrößen in diesem Zustand nicht identifizierbar sind. 
@@ -247,5 +267,6 @@ Die Parameter $k_\mathrm{ss}$, $d_\mathrm{ss}$ und $\mu_{38}$ werden bei der Bet
 \subsection{Berechnung der Fisher-Informationsmatrix während der Momentenübergabe}
 
 
+
 \subsection{Berechnung der Fisher-Informationsmatrix während der Synchronisation}
-kein $\mu_{38}$
+kein $\mu_{38}$ 
