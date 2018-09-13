@@ -13,23 +13,39 @@
 \defcounter {refsection}{0}\relax 
 \addvspace {10\p@ }
 \defcounter {refsection}{0}\relax 
+\contentsline {figure}{\numberline {\relax 2.1}{\ignorespaces Schematischer Aufbau des Getriebes.\relax }}{15}{figure.caption.6}
+\defcounter {refsection}{0}\relax 
+\contentsline {figure}{\numberline {\relax 2.2}{\ignorespaces Schematische Darstellung des Abtriebsstrangs\relax }}{22}{figure.caption.7}
+\defcounter {refsection}{0}\relax 
 \addvspace {10\p@ }
 \defcounter {refsection}{0}\relax 
-\contentsline {figure}{\numberline {\relax 3.1}{\ignorespaces Zeitlicher Verlauf der Drehzahlen und Verdrehung der Seitenwellen beim Gangwechsel\relax }}{27}{figure.caption.6}
+\contentsline {figure}{\numberline {\relax 3.1}{\ignorespaces Zeitlicher Verlauf der Drehzahlen und Verdrehung der Seitenwellen beim Gangwechsel\relax }}{27}{figure.caption.8}
 \defcounter {refsection}{0}\relax 
-\contentsline {figure}{\numberline {\relax 3.2}{\ignorespaces Zeitlicher Verlauf der Beschleunigungen und Verdrehungsgeschwindigkeit der Seitenwellen beim Gangwechsel\relax }}{28}{figure.caption.7}
+\contentsline {figure}{\numberline {\relax 3.2}{\ignorespaces Zeitlicher Verlauf der Beschleunigungen und Verdrehungsgeschwindigkeit der Seitenwellen beim Gangwechsel\relax }}{28}{figure.caption.9}
 \defcounter {refsection}{0}\relax 
-\contentsline {figure}{\numberline {\relax 3.3}{\ignorespaces Zeitlicher Verlauf der \IeC {\"u}bertragenen Drehmomenten und der Differenzgeschwindigkeiten an $K_{38}$ und $B_{05}$, des Eingangsmoments $T_{\textrm {In}}$ und des Widerstandsmoments $T_{\textrm {res}}$ beim Gangswechsel.\relax }}{34}{figure.caption.8}
+\contentsline {figure}{\numberline {\relax 3.3}{\ignorespaces Zeitlicher Verlauf der \IeC {\"u}bertragenen Drehmomenten und der Differenzgeschwindigkeiten an $K_{38}$ und $B_{05}$, des Eingangsmoments $T_{\textrm {In}}$ und des Widerstandsmoments $T_{\textrm {res}}$ beim Gangswechsel.\relax }}{34}{figure.caption.10}
 \defcounter {refsection}{0}\relax 
-\contentsline {figure}{\numberline {\relax 3.4}{\ignorespaces Normierte Sensitivit\IeC {\"a}ten der Zust\IeC {\"a}nde und deren Ableitungen von $k_\mathrm {ss}$\relax }}{35}{figure.caption.9}
+\contentsline {figure}{\numberline {\relax 3.4}{\ignorespaces Normierte Sensitivit\IeC {\"a}ten der Zust\IeC {\"a}nde und deren Ableitungen von $k_\mathrm {ss}$\relax }}{35}{figure.caption.11}
 \defcounter {refsection}{0}\relax 
-\contentsline {figure}{\numberline {\relax 3.5}{\ignorespaces Normierte Sensitivit\IeC {\"a}ten der Zust\IeC {\"a}nde und deren Ableitungen von $d_\mathrm {ss}$\relax }}{35}{figure.caption.10}
+\contentsline {figure}{\numberline {\relax 3.5}{\ignorespaces Normierte Sensitivit\IeC {\"a}ten der Zust\IeC {\"a}nde und deren Ableitungen von $d_\mathrm {ss}$\relax }}{35}{figure.caption.12}
 \defcounter {refsection}{0}\relax 
-\contentsline {figure}{\numberline {\relax 3.6}{\ignorespaces Normierte Sensitivit\IeC {\"a}ten der Zust\IeC {\"a}nde und deren Ableitungen von $m_\mathrm {veh}$\relax }}{36}{figure.caption.11}
+\contentsline {figure}{\numberline {\relax 3.6}{\ignorespaces Normierte Sensitivit\IeC {\"a}ten der Zust\IeC {\"a}nde und deren Ableitungen von $m_\mathrm {veh}$\relax }}{36}{figure.caption.13}
 \defcounter {refsection}{0}\relax 
-\contentsline {figure}{\numberline {\relax 3.7}{\ignorespaces Normierte Sensitivit\IeC {\"a}ten der Zust\IeC {\"a}nde und deren Ableitungen von $\zeta $\relax }}{36}{figure.caption.12}
+\contentsline {figure}{\numberline {\relax 3.7}{\ignorespaces Normierte Sensitivit\IeC {\"a}ten der Zust\IeC {\"a}nde und deren Ableitungen von $\zeta $\relax }}{36}{figure.caption.14}
 \defcounter {refsection}{0}\relax 
-\contentsline {figure}{\numberline {\relax 3.8}{\ignorespaces Normierte Sensitivit\IeC {\"a}ten der Zust\IeC {\"a}nde und deren Ableitungen von $\mu _{38}$\relax }}{37}{figure.caption.13}
+\contentsline {figure}{\numberline {\relax 3.8}{\ignorespaces Normierte Sensitivit\IeC {\"a}ten der Zust\IeC {\"a}nde und deren Ableitungen von $\mu _{38}$\relax }}{37}{figure.caption.15}
+\defcounter {refsection}{0}\relax 
+\contentsline {figure}{\numberline {\relax 3.9}{\ignorespaces Streuungen der Fisher-Informationsmatrix f\IeC {\"u}r die simultane Sch\IeC {\"a}tzung von $m$ und $\zeta $ im 2. Gang mit $\mathaccentV {dot}05F{\omega }_\mathrm {C,mes}$ als Messgr\IeC {\"o}\IeC {\ss }e und ohne.\relax }}{37}{figure.caption.16}
+\defcounter {refsection}{0}\relax 
+\contentsline {figure}{\numberline {\relax 3.10}{\ignorespaces Streuungen der Fisher-Informationsmatrix f\IeC {\"u}r die einzelne Sch\IeC {\"a}tzung von $m$ und $\zeta $ im 2. Gang mit $\mathaccentV {dot}05F{\omega }_\mathrm {C,mes}$ als Messgr\IeC {\"o}\IeC {\ss }e und ohne.\relax }}{38}{figure.caption.17}
+\defcounter {refsection}{0}\relax 
+\contentsline {figure}{\numberline {\relax 3.11}{\ignorespaces Streuungen der Fisher-Informationsmatrix f\IeC {\"u}r die simultane Sch\IeC {\"a}tzung von $m$, $\mu _{38}$ und $\zeta $ w\IeC {\"a}hrend der Momenten\IeC {\"u}bergabe mit $\mathaccentV {dot}05F{\omega }_\mathrm {C,mes}$ als Messgr\IeC {\"o}\IeC {\ss }e und ohne.\relax }}{38}{figure.caption.18}
+\defcounter {refsection}{0}\relax 
+\contentsline {figure}{\numberline {\relax 3.12}{\ignorespaces Streuungen der Fisher-Informationsmatrix f\IeC {\"u}r die simultane Sch\IeC {\"a}tzung von $m$, $\mu _{38}$ w\IeC {\"a}hrend der Momenten\IeC {\"u}bergabe mit $\mathaccentV {dot}05F{\omega }_\mathrm {C,mes}$ als Messgr\IeC {\"o}\IeC {\ss }e und ohne.\relax }}{39}{figure.caption.19}
+\defcounter {refsection}{0}\relax 
+\contentsline {figure}{\numberline {\relax 3.13}{\ignorespaces Streuungen der Fisher-Informationsmatrix f\IeC {\"u}r die simultane Sch\IeC {\"a}tzung von $\mu _{38}$ und $\zeta $ w\IeC {\"a}hrend der Momenten\IeC {\"u}bergabe mit $\mathaccentV {dot}05F{\omega }_\mathrm {C,mes}$ als Messgr\IeC {\"o}\IeC {\ss }e und ohne.\relax }}{39}{figure.caption.20}
+\defcounter {refsection}{0}\relax 
+\contentsline {figure}{\numberline {\relax 3.14}{\ignorespaces Streuungen der Fisher-Informationsmatrix f\IeC {\"u}r die simultane Sch\IeC {\"a}tzung von $m$ und $\zeta $ w\IeC {\"a}hrend der Synchronisation mit $\mathaccentV {dot}05F{\omega }_\mathrm {C,mes}$ als Messgr\IeC {\"o}\IeC {\ss }e und ohne.\relax }}{40}{figure.caption.21}
 \defcounter {refsection}{0}\relax 
 \addvspace {10\p@ }
 \defcounter {refsection}{0}\relax 

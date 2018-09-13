@@ -1,7 +1,7 @@
 \chapter{Sensitivitätsanalyse}\label{ch:Sensitivity}
 In diesem Kapitel wird das in Kapitel \ref{ch:ch2} hergeleitete nichtlineare Modell des Antriebsstrangs auf die Sensitivität verschiedener Parameter und Eingänge untersucht. Damit soll die Relevanz für eine Parameter- und Eingangsschätzung im folgenden Kapitel belegt und unterstrichen werden.
 Eine mögliche Definition für eine Sensitivitätsanalyse ist die folgende: \emph{The study of how uncertainty in the output of a model (numerical or otherwise) can be apportioned to different sources of uncertainty in the model input} \cite{Saltelli.2004}.
-Für die Analyse gibt es verschiedene Methoden. Dabei ist die OAT(one-at-a-time)-Methode wohl die einfachste. Dabei wird pro Simulationsdurchlauf lediglich eine Eingangsgröße geändert während alle anderen auf den nominal Werten gehalten werden. Die Methode liefert aber nur eine sehr beschränkte Aussage über den gesamten Eingangsraum. Jedoch kann sie für die Abschätzung einer ersten Untergruppe an relevanten Eingängen hilfreich sein.    
+Für die Analyse gibt es verschiedene Methoden. Dabei ist die OAT(one-at-a-time)-Methode wohl die einfachste. Hier wird pro Simulationsdurchlauf lediglich eine Eingangsgröße geändert während alle anderen auf den nominal Werten gehalten werden. Die Methode liefert aber nur eine sehr beschränkte Aussage über den gesamten Eingangsraum. Jedoch kann sie für die Abschätzung einer ersten Untergruppe an relevanten Eingängen hilfreich sein.    
 
  Die in der Literatur am häufigsten diskutierten Ansätze basieren auf partiellen Ableitungen der Art $\partial y_i/\partial x_i$ wobei $y$ ein beliebiger Ausgang und $x_i$ ein beliebiger Eingang des Systems ist. Ein Eingang kann hierbei auch ein variierender Parameter sein. Dieses Vorgehen wird vor allem bei relativ einfachen, mathematisch wohlbestimmten und stetigen Modellen verwendet. Der Vorteil dabei ist, dass die Sensitvitätsfunktionen sobald sie einmal berechnet sind leicht an Veränderungen anpassbar sind und auch für ähnliche Systeme verwendet werden können \cite{Karnavas.1993}. Jedoch werden die partiellen Ableitung immer in einem bestimmen Arbeitspunkt berechnet d.h. die Aussagen der Sensitvitätsfunktionen gelten für nichtlineare Systeme nur lokal um diesen den Arbeitspunkt. Des weiteren ist es oft sehr schwer oder gar unmöglich die benötigten Ableitungen für komplexe Modelle zu berechnen.
 
@@ -117,7 +117,7 @@ Die Sensitivität von \eqref{eq:sys_nl23} zum Parameter $k_\mathrm{ss}$ ergibt s
 \subsection{Sensitivität des Zustandes $\pmb{x}$ von $d_\mathrm{ss}$}
 Die Sensitivität von \eqref{eq:sys_nl23} vom Parameter $d_\mathrm{ss}$ ergibt sich mit \eqref{eq:Sens_eq} zu
 \begin{align}
-\dot{\pmb{S}}_{d_\mathrm{ss}} = \frac{\partial\pmb{f}(t,\pmb{x}(t,\pmb{p}),\pmb{p})}{\partial \pmb{x}} \pmb{S}_{d_\mathrm{ss}} 
+\pmb{\dot{S}}_{d_\mathrm{ss}} = \frac{\partial\pmb{f}(t,\pmb{x}(t,\pmb{p}),\pmb{p})}{\partial \pmb{x}} \pmb{S}_{d_\mathrm{ss}} 
 + \begin{bmatrix} 1,97\,\omega_\mathrm{C} - 0,799\,\omega_\mathrm{2}\\
                   0,612\,\omega_\mathrm{C} - 0,248\,\omega_\mathrm{2}\\
                                                        0\\
@@ -241,7 +241,7 @@ Dabei ist $\left.\frac{\partial y_i}{\partial \pmb{p}}\right|_{\pmb{p}^*,t_k}$ d
 \end{equation}
 berechnet. Dabei ist $r_i$ der relative Fehler und $y_i^\mathrm{min}$ der kleinste absolute Fehler, welcher festgelegt wird auf $1\%$ des maximalen Messdatenwertes $z^\mathrm{max}_{ik}$.
 
-Um bewerten zu können ob eine bestimmte Parameterkombination während eines Zeitbereichs genügend genau geschätzt werden kann, wird eine maximal zulässige normierte Streuung definiert. Diese berechnet sich aus der Grenzvarianz des $j$-ten Parameters $\sigma_{jj,m}$ zu 
+Um bewerten zu können ob eine bestimmte Parameterkombination während eines Zeitbereichs genügend genau geschätzt werden kann, wird eine maximal zulässige normierte Streuung definiert. Diese berechnet sich aus der normierten Grenzvarianz des $j$-ten Parameters $\sigma_{jj,m}$ zu 
 \begin{equation}
 \gamma_{j,m} = \sqrt{\sigma_{jj,m}}/p_j.
 \end{equation}
@@ -261,12 +261,45 @@ Der Vektor der transformierten Varianz setzt sich im untransformierten Raum aus 
 mit $\pmb{V} = [\pmb{v}_1\; \pmb{v}_2\; \dots \;\pmb{v}_m]$ und den Einheitsvektoren $\pmb{e}_i$. Mit \eqref{Pararaum} kann man die Beeinflussung der Varianzen der transformierten Parameter durch die der untransformierten Parameter gut erkennen und dementsprechend den Einflussreichsten Parameter streichen. Auf diese Weise wird im Folgenden für die einzelnen Schaltphasen die Parameterkombination soweit reduziert bis die Streuung von jedem Parameter kleiner ist als die Grenzstreuung.
  
 
-\subsection{Berechnung der Fisher-Informationsmatrix im 2. Gang}
-Die Parameter $k_\mathrm{ss}$, $d_\mathrm{ss}$ und $\mu_{38}$ werden bei der Betrachtung im zweiten Gang von Anfang an vernachlässigt, da aus den Abbildungen \ref{fig:Sens_k}, \ref{fig:Sens_d} und \ref{fig:Sens_mu} ersichtlich ist, dass die Messgrößen in diesem Zustand nicht sensitiv sind für Änderungen dieser Parameter. Daraus folgt direkt, dass diese Parameter mit den gegebenen Messgrößen in diesem Zustand nicht identifizierbar sind. 
+\subsection{Berechnung der Fisher-Informationsmatrix im 2. Gang $(5,5\, s\leq\, t<6,0\, s )$}
+Die Parameter $k_\mathrm{ss}$, $d_\mathrm{ss}$ und $\mu_{38}$ werden bei der Betrachtung im zweiten Gang von Anfang an vernachlässigt, da aus den Abbildungen \ref{fig:Sens_k}, \ref{fig:Sens_d} und \ref{fig:Sens_mu} ersichtlich ist, dass die Messgrößen in diesem Zustand nicht sensitiv sind für Änderungen dieser Parameter. Daraus folgt direkt, dass diese Parameter mit den gegebenen Messgrößen in diesem Zustand nicht identifizierbar sind.
+
+\begin{figure}[ht]
+  \centering
+ \includegraphics[scale=0.9]{figures/03_Sensitivitaetsanalyse/03_Fisher_Info/Gang2/m_vs_zeta.eps}
+  \caption{Streuungen der Fisher-Informationsmatrix für die simultane Schätzung von $m$ und $\zeta$ im 2. Gang mit $\dot{\omega}_\mathrm{C,mes}$ als Messgröße und ohne.}
+\end{figure} 
+
+\begin{figure}[ht]
+  \centering
+ \includegraphics[scale=0.9]{figures/03_Sensitivitaetsanalyse/03_Fisher_Info/Gang2/m_vs_zeta_einzeln.eps}
+  \caption{Streuungen der Fisher-Informationsmatrix für die einzelne Schätzung von $m$ und $\zeta$ im 2. Gang mit $\dot{\omega}_\mathrm{C,mes}$ als Messgröße und ohne.}
+\end{figure} 
 
 \subsection{Berechnung der Fisher-Informationsmatrix während der Momentenübergabe}
 
+\begin{figure}[ht]
+  \centering
+ \includegraphics[scale=0.9]{figures/03_Sensitivitaetsanalyse/03_Fisher_Info/Muebergabe/m_mu38_zeta.eps}
+  \caption{Streuungen der Fisher-Informationsmatrix für die simultane Schätzung von $m$, $\mu_{38}$ und $\zeta$ während der Momentenübergabe mit $\dot{\omega}_\mathrm{C,mes}$ als Messgröße und ohne.}
+\end{figure} 
 
+\begin{figure}[ht]
+  \centering
+ \includegraphics[scale=0.9]{figures/03_Sensitivitaetsanalyse/03_Fisher_Info/Muebergabe/m_mu38.eps}
+  \caption{Streuungen der Fisher-Informationsmatrix für die simultane Schätzung von $m$, $\mu_{38}$ während der Momentenübergabe mit $\dot{\omega}_\mathrm{C,mes}$ als Messgröße und ohne.}
+\end{figure} 
+
+\begin{figure}[ht]
+  \centering
+ \includegraphics[scale=0.9]{figures/03_Sensitivitaetsanalyse/03_Fisher_Info/Muebergabe/mu38_zeta.eps}
+  \caption{Streuungen der Fisher-Informationsmatrix für die simultane Schätzung von $\mu_{38}$ und $\zeta$ während der Momentenübergabe mit $\dot{\omega}_\mathrm{C,mes}$ als Messgröße und ohne.}
+\end{figure} 
 
 \subsection{Berechnung der Fisher-Informationsmatrix während der Synchronisation}
-kein $\mu_{38}$ 
+
+\begin{figure}[ht]
+  \centering
+ \includegraphics[scale=0.9]{figures/03_Sensitivitaetsanalyse/03_Fisher_Info/Sync/m_zeta_Sync.eps}
+  \caption{Streuungen der Fisher-Informationsmatrix für die simultane Schätzung von $m$ und $\zeta$ während der Synchronisation mit $\dot{\omega}_\mathrm{C,mes}$ als Messgröße und ohne.}
+\end{figure} 

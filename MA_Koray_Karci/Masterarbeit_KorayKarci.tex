@@ -89,7 +89,10 @@
 \usetikzlibrary{arrows.meta}
 \usepgfplotslibrary{patchplots}
 \usepackage{grffile}
-\usepackage{amsmath}
+
+%% um eps Dateien einzubinden
+\usepackage{graphicx}
+\usepackage{import} 
 
 % Bibliography using classical bibtex
 %\bibliographystyle{alphadin}
@@ -100,7 +103,7 @@
 %  comment out the line for bibtex)
 \usepackage[style=numeric,
 						backend=bibtex8,		% or use biber or bibtex?
-						bibencoding=latin1,	% .bib file in latin1 or utf8 encoding?
+						bibencoding=utf8,	% .bib file in latin1 or utf8 encoding?
 						maxbibnames=99			% give full list of authors (up to 99) in bibliography
 						]{biblatex}
 \bibliography{references}

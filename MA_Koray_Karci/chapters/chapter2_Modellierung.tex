@@ -3,28 +3,27 @@ In diesem Kapitel wird ein für die Simulation verwendetes detailliertes Modell 
 
 
 \section{Modellierung des Antriebsstrangs}
-Zur Modellierung des Antriebsstrangs wird die Getriebedynamik mittels der Newton-Euler Gleichungen berechnet. Dazu wird zu Beginn kurz auf die Herleitung dieser Gleichungen eingegangen. Danach werden die Zwangsbedingungen im Getriebe anhand des schematischen Getriebeaufbaus hergeleitet und somit die Getriebedynamik berechnet. Des weiteren wird der Abtriebsstrang um die Elastizitäten der Seitenwellen ergänzt. Durch die zusätzliche Berücksichtigung der zustandsabhängigen Widerstandsmomente am Rad ergibt sich somit ein schwingfähiges nichtlineares System. 
+Zur Modellierung des Antriebsstrangs wird die Getriebedynamik mittels der Newton-Euler Gleichungen berechnet. Dazu wird zu Beginn kurz auf die Herleitung dieser Gleichungen eingegangen \cite{Schiehlen.2017}. Danach werden die Zwangsbedingungen im Getriebe anhand des schematischen Getriebeaufbaus hergeleitet und somit die Getriebedynamik berechnet. Des Weiteren wird der Abtriebsstrang um die Elastizitäten der Seitenwellen ergänzt. Durch die zusätzliche Berücksichtigung der zustandsabhängigen Widerstandsmomente am Rad ergibt sich somit ein schwingfähiges nichtlineares System. 
 
 \subsection{Beschreibung des allgemeinen Newton-Euler-Formalismus}
 Die Position und Orientierung von jedem Körper $i$ eines holonomen Mehrkörpersystems mit $p$ Körpern und $f$ Freiheitsgraden (FHG), kann in Abhängigkeit der verallgemeinerten Koordinaten $\pmb{y}\in \mathbb{R}^f$ angegeben werden mit
 \begin{align}
-\pmb{r}_i &= \pmb{r}_i(\pmb{y},t)\quad i = 1(1)p\\
+\pmb{r}_i &= \pmb{r}_i(\pmb{y},t),\quad i = 1(1)p\\
 \pmb{s}_i &= \pmb{s}_i(\pmb{y},t).
 \end{align}
-Durch die zeitliche Ableitung dieser ergeben sich die translatorischen und rotatorischen Geschwindigkeiten
+Durch die zeitliche Ableitung dieser Gleichungen ergeben sich die translatorischen und rotatorischen Geschwindigkeiten
 \begin{align}\label{vi}
 \pmb{v}_i &=  \dot{\pmb{r}}_i = \frac{\partial\pmb{r}_i}{\partial\pmb{y}}\cdot \dot{\pmb{y}} + \frac{\partial\pmb{r}_i}{\partial\pmb{t}} = \pmb{J}_{Ti}(\pmb{y},t)\cdot \dot{\pmb{y}} + \overline{\pmb{v}}_i(\pmb{y},t)\\\label{omegai}
 \pmb{\omega}_i &=  \dot{\pmb{s}}_i = \frac{\partial\pmb{s}_i}{\partial\pmb{y}}\cdot \dot{\pmb{y}} + \frac{\partial\pmb{s}_i}{\partial\pmb{t}} = \pmb{J}_{Ri}(\pmb{y},t)\cdot \dot{\pmb{y}} + \overline{\pmb{\omega}}_i(\pmb{y},t)
 \end{align}
-mit der Jacobi-Matrix der Translation $\pmb{J}_{Ti}$ und der Rotation $\pmb{J}_{Ri}$. Die lokalen Geschwindigkeitsvektoren $\overline{\pmb{v}}_i(\pmb{y},t)$ und $\overline{\pmb{\omega}}_i(\pmb{y},t)$ treten nur bei Systemen mit rheonomen Bindungen auf. Nach erneuter zeitlicher Ableitung ergeben sich die Beschleunigungen 
+mit den Jacobi-Matrizen der Translation $\pmb{J}_{Ti}$ und der Rotation $\pmb{J}_{Ri}$. Die lokalen Geschwindigkeitsvektoren $\overline{\pmb{v}}_i(\pmb{y},t)$ und $\overline{\pmb{\omega}}_i(\pmb{y},t)$ treten nur bei Systemen mit rheonomen Bindungen auf \cite[S.46]{Schiehlen.2017}. Nach erneuter zeitlicher Ableitung ergeben sich die Beschleunigungen zu
 \begin{align}
 \pmb{a}_i = \dot{\pmb{v}}_i &= \pmb{J}_{Ti} \cdot \ddot{\pmb{y}} + \dot{\pmb{J}}_{Ti} \cdot \dot{\pmb{y}} + \dot{\overline{\pmb{v}}}_i = \pmb{J}_{Ti}(\pmb{y},t) \cdot \ddot{\pmb{y}} + \overline{\pmb{a}}_i(\pmb{y},\dot{\pmb{y}},t)\\
 \pmb{\alpha}_i = \dot{\pmb{\omega}}_i &= \pmb{J}_{Ri} \cdot \ddot{\pmb{y}} + \dot{\pmb{J}}_{Ri} \cdot \dot{\pmb{y}} + \dot{\overline{\pmb{\omega}}}_i = \pmb{J}_{Ri}(\pmb{y},t) \cdot \ddot{\pmb{y}} + \overline{\pmb{\alpha}}_i(\pmb{y},\dot{\pmb{y}},t)\label{alphai}
 \end{align}
 mit den lokalen Beschleunigungsvektoren $\overline{\pmb{a}}_i$ und $ \overline{\pmb{\alpha}}_i$. 
-Des weiteren lassen sich für die Dynamik eines Systems virtuelle Bewegungen definieren. Diese sind willkürliche, infinitesimale Bewegungen des Systems, welche mit den skleronomen und den rheonomen Bindungen verträglich sind. Für virtuelle Bewegungen an holonomen Bindungen gilt
+Des Weiteren lassen sich für die Dynamik eines Systems virtuelle Bewegungen definieren. Diese sind willkürliche, infinitesimale Bewegungen des Systems, welche mit den skleronomen und den rheonomen Bindungen verträglich sind. Für virtuelle Bewegungen an holonomen Bindungen gilt
 \begin{align}
-\delta \pmb{r} &\neq \pmb{0},\\
 \delta \pmb{r} &= \pmb{0},\label{VB0}\\
 \delta t &= 0.
 \end{align} 
@@ -51,22 +50,22 @@ definiert als
 \begin{equation}
 \tilde{\pmb{v}} = \begin{bmatrix} 0 & -v_3 & v_2 \\ v_3 & 0 & -v_1 \\ -v_2 & v_1 & 0 \end{bmatrix}.
 \end{equation}
-Darüber hinaus kann mit den virtuellen Bewegungen aus (\ref{VBr}) und (\ref{VBs}) die virtuelle Arbeit $\delta \pmb{W}$ definiert werden. Da es, wie in (\ref{VB0}) definiert, in Richtung der Bindungen keine virtuellen Bewegungen geben kann, ergibt sich für die virtuelle Arbeit der Reaktionskräfte
+Darüber hinaus kann mit den virtuellen Bewegungen aus (\ref{VBr}) und (\ref{VBs}) die virtuelle Arbeit $\delta \pmb{W}$ definiert werden. Da es, wie in (\ref{VB0}) definiert, in Richtung der Bindungen keine virtuellen Bewegungen geben kann, ergibt sich für die virtuelle Arbeit der Reaktionskräfte zu
 \begin{equation}\label{VA}
 \delta\pmb{W}^r = \sum_{i=1}^p(\pmb{f}_i^r\cdot \delta \pmb{r}_i + \pmb{l}^r_i\cdot\delta\pmb{s}_i)=0.
 \end{equation}
-Mit den Gleichungen \ref{NewtonGl}, \ref{EulerGl} und der beschriebenen Aufteilung der äußeren Kräfte in eingeprägte Kräfte und Reaktionskräfte, folgt aus (\ref{VA}) das d’Alembertsche Prinzip für Mehrkörpersysteme
+Mit den Gleichungen \eqref{NewtonGl}, \eqref{EulerGl} und der beschriebenen Aufteilung der äußeren Kräfte in eingeprägte Kräfte und Reaktionskräfte, folgt aus \eqref{VA} das d’Alembertsche Prinzip für Mehrkörpersysteme
 \begin{equation}\label{VA}
 \sum_{i=1}^p\left[ (m_i\pmb{a}_i-\pmb{f}_i^e)\cdot \delta \pmb{r}_i + (\pmb{I_i}\cdot \pmb{\alpha}_i + \tilde{\pmb{\omega}}\cdot\pmb{I}_i\cdot\pmb{\omega}_i-\pmb{l}^e_i)\cdot\delta\pmb{s}_i\right] =0.
 \end{equation}
 Durch einsetzten der virtuellen Bewegungen (\ref{VBr}) und (\ref{VBs}) ergibt sich daraus
 \begin{equation}
-\delta\pmb{y}\sum_{i=1}^p\left[\pmb{J}^T_{Ti}\cdot(m_i\pmb{a}_i-\pmb{f}_i^e)+ \pmb{J}^T_{Ri}\cdot(\pmb{I_i}\cdot \pmb{\alpha}_i + \tilde{\pmb{\omega}}\cdot\pmb{I}_i\cdot\pmb{\omega}_i-\pmb{l}^e_i)\right]=0.
+\delta\pmb{y}\cdot \sum_{i=1}^p\left[\pmb{J}^T_{Ti}\cdot(m_i\pmb{a}_i-\pmb{f}_i^e)+ \pmb{J}^T_{Ri}\cdot(\pmb{I_i}\cdot \pmb{\alpha}_i + \tilde{\pmb{\omega}}\cdot\pmb{I}_i\cdot\pmb{\omega}_i-\pmb{l}^e_i)\right]=0.
 \end{equation}
-Das einarbeiten der kinematischen Gleichungen (\ref{vi}) -- (\ref{alphai}) in ... führt zur Bewegungsgleichung für holonome Mehrkörpersysteme (MKS) 
+Das Einarbeiten der kinematischen Gleichungen (\ref{vi}) -- (\ref{alphai}) in ... führt zur Bewegungsgleichung für holonome Mehrkörpersysteme (MKS) 
 \begin{align}\label{Bwg_lang}
 \begin{split}
-\sum_{i=1}^p\left[\pmb{J}_{Ti}^T\cdot m_i \cdot \pmb{J}_{Ti} + \pmb{J}_{Ri}^T\cdot \pmb{I}_i \cdot \pmb{J}_{Ri}\right]\ddot{\pmb{y}}+\sum_{i=1}^p\left[\pmb{J}_{Ti}^T\cdot m_i \cdot \overline{\pmb{a}}_i + \pmb{J}^T_{Ri}\cdot\pmb{I}_i\cdot\overline{\pmb{\alpha}}_i+\pmb{J}^T_{Ri}\cdot\tilde{\pmb{\omega}}_i\cdot\pmb{I}_i\cdot\pmb{\omega_i}\right]=\\ \sum_{i=1}^p\left[\pmb{J}^T_{Ti}\cdot\pmb{f}_i^e + \pmb{J}_{Ri}^T\cdot\pmb{I}_i^e\right].
+\underbrace{\sum_{i=1}^p\left[\pmb{J}_{Ti}^T\cdot m_i \cdot \pmb{J}_{Ti} + \pmb{J}_{Ri}^T\cdot \pmb{I}_i \cdot \pmb{J}_{Ri}\right]}_{\pmb{M}(\pmb{y},t)}\ddot{\pmb{y}}+\underbrace{\sum_{i=1}^p\left[\pmb{J}_{Ti}^T\cdot m_i \cdot \overline{\pmb{a}}_i + \pmb{J}^T_{Ri}\cdot\pmb{I}_i\cdot\overline{\pmb{\alpha}}_i+\pmb{J}^T_{Ri}\cdot\tilde{\pmb{\omega}}_i\cdot\pmb{I}_i\cdot\pmb{\omega_i}\right]}_{\pmb{k}(\pmb{y},\dot{\pmb{y}},t)}=\\ \underbrace{\sum_{i=1}^p\left[\pmb{J}^T_{Ti}\cdot\pmb{f}_i^e + \pmb{J}_{Ri}^T\cdot\pmb{I}_i^e\right]}_{\pmb{q}(\pmb{y},\dot{\pmb{y}},t)}.
 \end{split}
 \end{align}
 Darin lässt sich die erste Summe zur Massenmatrix $\pmb{M}(\pmb{y},t)$, die zweite Summe zum Vektor der verallgemeinerten Zentrifugal-- und Coriloriskräfte $\pmb{k}(\pmb{y},\dot{\pmb{y}},t)$ und die dritte Summe zum Vektor der verallgemeinerten Kräfte $\pmb{q}(\pmb{y},\dot{\pmb{y}},t)$ zusammenfassen, wodurch sich (\ref{Bwg_lang}) schreiben lässt als
@@ -75,22 +74,22 @@ Darin lässt sich die erste Summe zur Massenmatrix $\pmb{M}(\pmb{y},t)$, die zwe
 \end{equation} 
   
 \subsection{Beschreibung des Getriebeaufbaus}
-Mit der allgemeinen Bewegungsgleichung für MKS (\ref{Bwg}) kann die Getriebedynamik berechnet werde. Das in dieser Arbeit betrachtete Getriebe besteht im wesentlichen aus vier hintereinander liegenden Umlaufgetrieben. Der schematische Aufbau eines Umlaufgetriebes ist in Abbildung ??? zu sehen. Dieses besteht aus dem Sonnenrad in der Mitte, den darum gleichmäßig verteilten Planetenrädern, welche auf dem Planetenträger drehbar gelagert sind und dem Hohlrad. Der Zusammenhang der einzelnen Drehzahlen ist gegeben durch die beiden Zwangsbedingungen (ZB)
+Mit der allgemeinen Bewegungsgleichung für MKS (\ref{Bwg}) kann die Getriebedynamik berechnet werden. Das in dieser Arbeit betrachtete Getriebe besteht im wesentlichen aus vier hintereinander liegenden Planetengetrieben. Der schematische Aufbau eines Umlaufgetriebes ist in Abbildung \ref{fig:gearbox} zu sehen. Dieses besteht aus dem Sonnenrad in der Mitte, den darum gleichmäßig verteilten Planetenrädern, welche auf dem Planetenträger drehbar gelagert sind und dem Hohlrad. Der Zusammenhang der einzelnen Drehzahlen ist gegeben durch die beiden Zwangsbedingungen (ZB) auf Geschwindigkeitsebene
 \begin{align}
 \mathrm{Sonne - Planeten}:\quad &r_{\mathrm{S},j}\omega_{\mathrm{S},j} - r_{\mathrm{T},j}\omega_{\mathrm{T},j}+ r_{\mathrm{P},j}\omega_{\mathrm{P},j}=0 \\
 \mathrm{Planeten - Hohlrad}:\quad &r_{\mathrm{H},j}\omega_{\mathrm{H},j} - r_{\mathrm{T},j}\omega_{\mathrm{T},j}- r_{\mathrm{P},j}\omega_{\mathrm{P},j}=0
 \end{align}
-mit den Rollradien $r_{S,j}$, $r_{P,j}$, $r_{T,j}$ und $r_{H,j}$ des Sonnenrads, des Planetenrads, des Planententrägers und des Hohlrades im $j$-ten Planetensatz. Entsprechenden gelten die Indizes auch für die Winkelgeschwindigkeiten $\omega_{S,j}$, $\omega_{P,j}$, $\omega_{T,j}$ und $\omega_{H,j}$
-Dabei gilt, dass die Verhältnisse der Rollradien denen der Zähnezahlen einer Zahnradverbindung entsprechen. Der Rollradius des Planetenträger entspricht somit der Summe der Zähnezahl der Sonne $z_{S,j}$ und des Planeten $z_{P,j}$ und es ergibt sich
+mit den Rollradien $r_{S,j}$, $r_{P,j}$, $r_{T,j}$ und $r_{H,j}$ des Sonnenrads, des Planetenrads, des Planententrägers und des Hohlrades im $j$-ten Planetensatz. Entsprechenden gelten die Indizes auch für die Winkelgeschwindigkeiten $\omega_{S,j}$, $\omega_{P,j}$, $\omega_{T,j}$ und $\omega_{H,j}$.
+Dabei gilt, dass die Verhältnisse der Rollradien denen der Zähnezahlen einer Zahnradverbindung entsprechen \cite[S. 114f]{Fischer.2016}. Der Rollradius des Planetenträger entspricht somit der Summe der Zähnezahl der Sonne $z_{S,j}$ und des Planeten $z_{P,j}$ und es ergibt sich
 \begin{align}\label{ZB_zahnS}
-\mathrm{Sonne - Planeten}:\quad &z_{\mathrm{S},j}\omega_\mathrm{S} - (z_{\mathrm{S},j} + z_{\mathrm{P},j})\omega_{\mathrm{T},j}+ z_{\mathrm{P},j}\omega_{\mathrm{P},j}=0 \\ \label{ZB_zahnH}
-\mathrm{Planeten - Hohlrad}:\quad &z_{\mathrm{H},j}\omega_{\mathrm{H},j} - (z_\mathrm{S} + z_{\mathrm{P},j})\omega_{\mathrm{T},j}- z_{P,j}\omega_{\mathrm{P},j}=0.
+\mathrm{Sonne - Planeten}:\quad &z_{\mathrm{S},j}\omega_{\mathrm{S},j} - (z_{\mathrm{S},j} + z_{\mathrm{P},j})\omega_{\mathrm{T},j}+ z_{\mathrm{P},j}\omega_{\mathrm{P},j}=0 \\ \label{ZB_zahnH}
+\mathrm{Planeten - Hohlrad}:\quad &z_{\mathrm{H},j}\omega_{\mathrm{H},j} - (z_{\mathrm{H},j} - z_{\mathrm{P},j})\omega_{\mathrm{T},j}- z_{P,j}\omega_{\mathrm{P},j}=0.
 \end{align}
-Die Größe  $z_{S,j}$ entspricht der Zähnezahl am Hohlrad im $j$-ten Planetensatz. Die Verschaltung der vier Planetensätze zeigt Abbildung ???. Aus den acht Wellen ergeben sich entsprechende acht FHG im des MKS. Vier weitere kommen durch die Planten der einzelnen Planetensätze hinzu. Somit hat des freie MKS $f_{\textrm{free}}=12$ FHG. Unter Berücksichtigung der beiden Zwangsbedinungen (\ref{ZB_zahnS}) und (\ref{ZB_zahnH}) ergibt sich somit die Anzahl der FHG des beschränkten MKS zu
+Die Größe  $z_{H,j}$ entspricht der Zähnezahl am Hohlrad im $j$-ten Planetensatz. Die Verschaltung der vier Planetensätze zeigt Abbildung \ref{fig:gearbox}. Aus den acht Wellen ergeben sich entsprechende acht FHG im des MKS. Vier weitere kommen durch die Planten der einzelnen Planetensätze hinzu. Somit hat des freie MKS $f_{\textrm{free}}=12$ FHG. Unter Berücksichtigung der beiden Zwangsbedinungen (\ref{ZB_zahnS}) und (\ref{ZB_zahnH}) ergibt sich somit die Anzahl der FHG des beschränkten MKS zu
 \begin{equation}
 f=f_{\textrm{free}}-4q = 12-8 = 4
 \end{equation}
-mit der Anzahl der ZB in jedem Planetensatz $q$. Weiterhin ergeben sich durch die ZB an den einzelnen Planetensätzen die Zusammenhänge
+mit der Anzahl der ZB $q$ in jedem Planetensatz. Weiterhin ergeben sich durch die ZB an den einzelnen Planetensätzen die Zusammenhänge
 \begin{subequations}\label{eq:zwangsbedingungen}
 	\begin{align} 
 \mathrm{Planetensatz\ 1}: \quad z_{\mathrm{S},1} \omega_{1}  &= (z_{\mathrm{S},1} + z_\mathrm{P}) \omega_{8} - z_{\mathrm{P},1} \omega_{9}\\
@@ -104,7 +103,7 @@ z_{\mathrm{H},4} \omega_{7}  &= (z_{\mathrm{H},4} - z_\mathrm{P}) \omega_{1} + z
 	\end{align}
 \end{subequations} 
 \\
-Die Gangschaltung erfolgt im Getriebe über jeweils drei Lamellenkupplungen und Lamellenbremsen. Mit Hilfe der Kupplungen lassen sich die Wellen 1 und 8, 8 und 3 und 2 und 7 verkoppeln. Über die drei Bremsen können die Wellen 8, 5 und 6 gegen das Gehäuse abgestützt werden. Um einen Gang zu schalten müssen drei der Schaltelemente betätigt sein. Dadurch verbleibt nur noch ein FHG der Getriebedynamik und es ergibt sich eine eindeutige Übersetzung zwischen Eingangsdrehzahl $\omega_{1}$ und Ausgangsdrehzahl $\omega_2$. Die sich durch die jeweiligen Schaltungen ergebenden Übersetzungen können Tabelle ??? entnommen werden.
+Die Gangschaltung erfolgt im Getriebe über jeweils drei Lamellenkupplungen und Lamellenbremsen. Mit Hilfe der Kupplungen lassen sich die Wellen 1 und 8, 8 und 3 und 2 und 7 verkoppeln. Über die drei Bremsen können die Wellen 8, 5 und 6 gegen das Gehäuse abgestützt werden. Um einen Gang zu schalten müssen drei der Schaltelemente betätigt sein. Dadurch verbleibt nur noch ein FHG der Getriebedynamik und es ergibt sich eine eindeutige Übersetzung zwischen Eingangsdrehzahl $\omega_{1}$ und Ausgangsdrehzahl $\omega_2$. Die sich durch die jeweiligen Schaltungen ergebenden Übersetzungen können Tabelle \ref{tbl:clutches} entnommen werden.
 \begin{table}
 	\caption{Übersetzung und aktive Schaltelemente je Gang.}
 	\label{tbl:clutches}
@@ -130,16 +129,23 @@ Die Gangschaltung erfolgt im Getriebe über jeweils drei Lamellenkupplungen und 
 	\end{tabular} 
 \end{table}
 
+\begin{figure}
+	\centering    % preferable over \begin{center}...\end{center} as the latter includes space before and after the figure 
+	\includegraphics[scale=1]{figures/02_Modellierung/gearbox_schematic_color_with_labels.pdf}
+	\caption{Schematischer Aufbau des Getriebes.}
+	\label{fig:gearbox} % always use \label AFTER \caption
+\end{figure}
+
 \subsection{Anwendung des Newton-Euler-Formalismus}\label{ssec:AnwNE}
 Die Wellen und Planeten rotieren alle nur um eine Achse bzw. bewegen sich nur auf einer Kreisbahn. Daher werden die Orientierungen und Ortsvektoren des einzelnen Körper als skalare angegeben. Die Ortsvektoren werden als Zylinderkoordinaten geschrieben. Somit ergibt sich der Vektor der Orientierungen der einzelnen Wellen und der Planeten zu 
 \begin{equation}
 \pmb{s} = \begin{bmatrix} s_{1}\quad s_{2}\quad \dots \quad s_{12} \end{bmatrix}^T = \begin{bmatrix} \phi_{1}\quad \phi_{2}\quad \dots \quad \phi_{12} \end{bmatrix}^T.
 \end{equation} 
-Die Ortsvektoren der Wellen 1-8 können aufgrund der nicht vorhanden translatorischen Bewegung gleich Null gesetzt werden. Lediglich die Planeten haben durch die Bewegung auf den Planetenträgern um die Drehachse der Wellen~ 1-8 einen translatorischen Anteil. Die Position der Planeten ergibt sich somit aus den entsprechenden Radien der Planetenträgern $r_{T,j}$ und der Orientierung der Planetenträgern. Daraus ergibt sich der Orstvektor des Systems zu
+Die Ortsvektoren der Wellen 1-8 können aufgrund der nicht vorhanden translatorischen Bewegung gleich Null gesetzt werden. Lediglich die Planeten haben durch die Bewegung auf den Planetenträgern um die Drehachse einen translatorischen Anteil. Die Position der Planeten ergibt sich somit aus den entsprechenden Radien der Planetenträgern $r_{T,j}$ und der Orientierung der Planetenträgern. Daraus ergibt sich der Orstvektor des Systems zu
 \begin{equation}
 \pmb{r} = \begin{bmatrix} r_{1}\; r_{2}\; \dots \; r_{12} \end{bmatrix}^T = \begin{bmatrix} 0\; \dots \; 0 \quad r_{T,1}\,\phi_8 \quad r_{T,2}\,\phi_4 \quad r_{T,3}\,\phi_2 \quad r_{T,4}\,\phi_1 \end{bmatrix}^T
 \end{equation}
-Da das MKS $f=4$ FHG hat lässt sich nach \cite{Schiehlen.2017} dieses durch verallgemeinerte Koordinaten $\pmb{y}\in \mathbb{R}^f$ beschreiben. Dabei liegt es nahe, die zu den am Getriebe gemessenen Winkelgeschwindigkeiten gehörigen Winkel $\phi_{1}$, $\phi_{2}$ und $\phi_{8}$ zu verwenden. Zusätzlich soll dazu $\phi_{3}$ verwendet werden. Dadurch ergibt sich der Vektor der verallgemeinerten Koordinaten zu
+Da das MKS $f=4$ FHG hat lässt sich nach \cite{Schiehlen.2017} dieses durch verallgemeinerte Koordinaten $\pmb{y}\in \mathbb{R}^f$ beschreiben. Dabei liegt es nahe, die zu den am Getriebe gemessenen Winkelgeschwindigkeiten gehörigen Winkel $\phi_{1}$, $\phi_{2}$ und $\phi_{8}$ zu verwenden. Zudem wird $\phi_{3}$ als weiterer FHG gewählt. Dadurch ergibt sich der Vektor der verallgemeinerten Koordinaten zu
 \begin{equation}
 \pmb{y} = \begin{bmatrix} \phi_{1}\quad \phi_{2}\quad \phi_{3}\quad \phi_{8} \end{bmatrix}^T.
 \end{equation}
@@ -180,8 +186,7 @@ und der Rotation
 J_\mathrm{R1} & J_\mathrm{R2} & \cdots & J_\mathrm{R12}
 \end{bmatrix}^T,
 \end{equation} 
-welche die einzelnen Jacobi-Matrizen der Körper enthalten. Die Terme $\overline{\pmb{v}}$ und $\overline{\pmb{\omega}}$ verschwinden, da es sich um skleronome Bindungen handelt und die ZB (\ref{eq:zwangsbedingungen}) nicht explizit zeitabhängig sind. Auch die lokalen Beschleunigungsvektoren $\overline{\pmb{a}}$ und $\overline{\pmb{\omega}}$ verschwinden, da $\pmb{J}_\mathrm{T}$ und $\pmb{J}_\mathrm{R}$ zeitlich konstant sind. In der allgemeinen Bewegungsgleichung für holonome MKS (\ref{Bwg}) verschwinden somit die Zentrifugalkräfte in $\pmb{k}(\pmb{y},\dot{\pmb{y}},t)$. Auch die Corioliskräfte verschwinden, da für alle Körper das Inertialsystem als Referenzsystem verwendet wird.%??? siehe TechDyn Seite 78 %
- Im Vektor der verallgemeinerten Kräfte $\pmb{q}(\pmb{y},\dot{\pmb{y}},t)$ werden die eingeprägten Kräfte $\pmb{f}^e_i$ vernachlässigt da die translatorischen Bewegungen im Getriebe sehr klein gegenüber der rotatorischen Bewegungen sind. Somit reduziert sich (\ref{Bwg}) auf
+welche die einzelnen Jacobi-Matrizen der Körper enthalten. Die Terme $\overline{\pmb{v}}$ und $\overline{\pmb{\omega}}$ verschwinden, da es sich um skleronome Bindungen handelt und die ZB (\ref{eq:zwangsbedingungen}) nicht explizit zeitabhängig sind. Auch die lokalen Beschleunigungsvektoren $\overline{\pmb{a}}$ und $\overline{\pmb{\omega}}$ verschwinden, da $\pmb{J}_\mathrm{T}$ und $\pmb{J}_\mathrm{R}$ zeitlich konstant sind. In der allgemeinen Bewegungsgleichung für holonome MKS (\ref{Bwg}) verschwinden somit die Zentrifugalkräfte in $\pmb{k}(\pmb{y},\dot{\pmb{y}},t)$. Auch die Corioliskräfte verschwinden, da für alle Körper das Inertialsystem als Referenzsystem verwendet wird. Im Vektor der verallgemeinerten Kräfte $\pmb{q}(\pmb{y},\dot{\pmb{y}},t)$ werden die eingeprägten Kräfte $\pmb{f}^e_i$ vernachlässigt da die translatorischen Bewegungen im Getriebe sehr klein gegenüber der rotatorischen Bewegungen sind. Somit reduziert sich (\ref{Bwg}) auf
 \begin{equation}
 \pmb{M}(\pmb{y},t)\cdot\ddot{\pmb{y}} = \pmb{q}(\pmb{y},\dot{\pmb{y}},t)
 \end{equation}
@@ -193,7 +198,7 @@ und der Vektor der verallgemeinerten Kräfte als
   \begin{equation}
 \pmb{q}(\pmb{y},\dot{\pmb{y}},t) = \pmb{J}_\mathrm{R}^T\cdot\mathrm{\pmb{l}}^e 
 \end{equation}
-Die eingeprägten Momente sind die von den Schaltelementen aufgebrachten Momente $\mathrm{T}_{\mathrm{B05}}$, $\mathrm{T}_{\mathrm{B06}}$, $\mathrm{T}_{\mathrm{B08}}$, $\mathrm{T}_{\mathrm{K81}}$, $\mathrm{T}_{\mathrm{K38}}$ und $\mathrm{T}_{\mathrm{K27}}$. Desweitern wirken am Getriebeeingang $\mathrm{T}_{\mathrm{In}}$ und am Getriebeausgang $\mathrm{T}_{\mathrm{Out}}$. Damit ergibt sich der Vektor der eingeprägten Momente zu
+Die eingeprägten Momente sind die von den Schaltelementen aufgebrachten Momente $\mathrm{T}_{\mathrm{B05}}$, $\mathrm{T}_{\mathrm{B06}}$, $\mathrm{T}_{\mathrm{B08}}$, $\mathrm{T}_{\mathrm{K81}}$, $\mathrm{T}_{\mathrm{K38}}$ und $\mathrm{T}_{\mathrm{K27}}$. Des Weitern wirken am Getriebeeingang das Moment $\mathrm{T}_{\mathrm{In}}$ und am Getriebeausgang das Moment $\mathrm{T}_{\mathrm{Out}}$. Damit ergibt sich der Vektor der eingeprägten Momente zu
 \begin{equation}\label{eq:le}
 \mathrm{\pmb{l}}^e = \begin{bmatrix} \mathrm{T}_{\mathrm{In}}+\mathrm{T}_{\mathrm{K81}} \\ -\mathrm{T}_{\mathrm{K27}}-\mathrm{T}_{\mathrm{Out}} \\ -\mathrm{T}_{\mathrm{K38}} \\ 0 \\ \mathrm{T}_{\mathrm{B05}} \\ \mathrm{T}_{\mathrm{B06}} \\ \mathrm{T}_{\mathrm{K27}} \\ \mathrm{T}_{\mathrm{B08}}+\mathrm{T}_{\mathrm{K38}}-\mathrm{T}_{\mathrm{K81}} \\ 0 \\ 0 \\ 0 \\ 0 \end{bmatrix}.
 \end{equation}
@@ -227,10 +232,10 @@ Das Eingangsmoment $\mathrm{T}_{\mathrm{In}}$ wird vom Verbrennungsmotor und ein
 	\sigma_{5} &= \frac{z_\mathrm{H,2} z_\mathrm{S,1}}{z_\mathrm{H,1} z_\mathrm{P,2}} \\
 	\sigma_{4} &= \frac{z_\mathrm{H,2} z_\mathrm{S,1}}{z_\mathrm{H,1} z_\mathrm{S,2}}
 \end{align*}
-wobei $J_{1-12}$ die Massenträgheitsmomente der entsprechenden Wellen sind und $m_{\mathrm{P},1-4}$ die gesamt Masse der Planeten eines Planetensatzes. Durch einsetzten von $\pmb{M}$ und \eqref{eq:le} in \eqref{Bwg_lang} ergeben sich die vier Gleichungen der Getriebedynamik
+wobei $J_{1-12}$ die Massenträgheitsmomente der entsprechenden Wellen sind und $m_{\mathrm{P},1-4}$ die Gesamtasse der Planeten eines Planetensatzes. Durch einsetzten von $\pmb{M}$ und \eqref{eq:le} in \eqref{Bwg_lang} ergeben sich die vier Gleichungen der Getriebedynamik
 \begin{subequations} \label{eq:bewegungs_gleichungen}
 	\begin{align}
-		\pmb{M}_{(1,1)} \dot{\omega}_1 + \Vec{M}_{(1,3)} \dot{\omega}_3 +\pmb{M}_{(1,4)} \dot{\omega}_8
+		\pmb{M}_{(1,1)} \dot{\omega}_1 + \pmb{M}_{(1,3)} \dot{\omega}_3 +\pmb{M}_{(1,4)} \dot{\omega}_8
 		&= T_{\mathrm{K81}} +T_{\mathrm{in}} + \sigma_1 T_{\mathrm{K27}}-T_{\mathrm{B05}} {\left(\frac{z_{\mathrm{S,1}} }{z_{\mathrm{H,1}}}+\sigma_{4} \right)}\\
 		%
 		\pmb{M}_{(2,2)} \dot{\omega}_2 + \pmb{M}_{(2,3)} \dot{\omega}_3
@@ -247,7 +252,7 @@ Mit Hilfe der Definition des Eingangsvektors
 \begin{equation}\label{eq:u}
 \pmb{u} = \begin{bmatrix} \mathrm{T}_{\mathrm{In}} \quad \mathrm{T}_{\mathrm{Out}} \quad \mathrm{T}_{\mathrm{K81}} \quad \mathrm{T}_{\mathrm{K38}} \quad \mathrm{T}_{\mathrm{B08}} \quad \mathrm{T}_{\mathrm{B05}} \quad \mathrm{T}_{\mathrm{B06}} \quad \mathrm{T}_{\mathrm{K27}} \end{bmatrix}^T
 \end{equation}
-lassen sich die Gleichungen \eqref{eq:bewegungs_gleichungen} schreiben als
+lassen sich die Gleichungen \eqref{eq:bewegungs_gleichungen} zusammenfassen zu
 \begin{equation}
 \pmb{M}\,\ddot{\pmb{y}} = \tilde{\pmb{B}}\,\pmb{u}.
 \end{equation}
@@ -259,7 +264,7 @@ und der Invertierung von $\pmb{M}$ in die Zustandsraumdarstellung
 \begin{equation}
 \dot{\pmb{x}} = \pmb{M}^{-1}\tilde{\pmb{B}}\,\pmb{u} = \pmb{B}\,\pmb{u}
 \end{equation}
-transformiert werden. In dieser Darstellung ist leicht ersichtlich, dass das System aufgrund der fehlenden Systemmatrix zustandsunabhängig ist.
+transformiert werden. In dieser Darstellung ist leicht ersichtlich, dass das System aufgrund der fehlenden Systemmatrix nicht zustandsabhängig ist.
 
 \subsection{Erweiterung um elastische Seitenwellen}
 Aufgrund der relativ elastischen Seitenwellen kann es im Antriebsstrang zu erheblichen Schwingungen kommen. Um diese bei der Simulation eines Schaltvorgang mit berücksichtigen zu können, soll das in \ref{ssec:AnwNE} hergeleitete Zustandsraummodell um die Elastizitäten erweitert werden. Die Seitenwellen werden dabei als Feder-Dämpfer-Systeme modelliert. Die Kardanwelle wird hingegen als starrer Körper betrachtet. Ein schematischen Aufbau des Antriebsstrangs zeigt Abbildung ???. Zunächst wird der Zustandsvektor um die Verdrehung der Seitenwellen~$\psi$ und die Raddrehzahl~$\omega_\mathrm{C}$ ergänzt, sodass sich der erweiterte Zustandsvektor
@@ -349,6 +354,14 @@ Durch Einsetzten der Zwangsbedingungen in \eqref{eq:zwangsbedingungen_aufgelöst
 \dot{\pmb{x}}_\mathrm{ex,23} = \pmb{f}_{23}(\pmb{x}_\mathrm{ex,23}) + \pmb{B}_\mathrm{ex,nl23}\,\pmb{u}_\mathrm{ex,nl23}.
 \end{equation}
 
+\begin{figure}
+   \centering
+   \def\svgwidth{\columnwidth}
+   \import{figures/02_Modellierung/}{final_drive_with_forces.pdf_tex}
+   \caption{Schematische Darstellung des Abtriebsstrangs}
+   \label{fig:final_drive}
+\end{figure}
+
 
 \section{Modellierung der Reibung an Kupplungen und Bremsen} \label{sec:mod_reib}
 Die im Abschnitt \ref{ssec:AnwNE} eingeführten Momente der Schaltelemente werden über Lamellenkupplungen beziehungsweise -bremsen an den Wellen angebracht. Dabei werden die Lamellenpakete über einen hydraulischen Druck zusammengepresst, sodass zwischen den Flächen Reibkräfte wirken. Solang die aus dem Druck resultierende Normalkraft an Lamellenpaketen nicht ausreicht um die Scheiben gegeneinander abzustützen, wirkt die Reibkraft entgegen der Differnzdrehzahl $\Delta \omega$ der drehenden Scheiben. Ist die Normalkraft groß genug entsteht eine kraftschlüssige Verbindung zwischen Innen- und Außenlamellen. In diesem Fall ist $\Delta \omega = 0$ und der Betrag der Reibkraft entspricht dem der Reaktionskraft und wirkt dieser entgegen.   
@@ -383,7 +396,7 @@ zusammenfassen \cite{Altpeter.1999}.
 Eine Schwäche dieses Modells ist der unstetige Verlauf der Reibkennlinie bei $\Delta \omega=0$. Diese Schwäche kann durch die Annäherung der Reibkennlinie über eine stetige atan-Funktion behoben werden. Dennoch bedarf es weiterhin der Unterscheidung zwischen Haft- und Gleitbereich. Hierfür ist entweder eine variable Zeitschrittweite des Solvers notwendig oder die Definition eines Geschwindigkeitbandes um $\Delta\omega=0$. Des weiteren ist die Reibkraft im Haftbereich von den äußeren Kräften abhängig, welche hier nicht bekannt sind und durch das Modell berechnet werden sollen. Aus diesen Gründen werden im Folgenden dynamische Reibmodelle betrachtet, welche diese Schwächen nicht aufweisen. 
 
 \subsection{Dynamische Reibmodelle}
-Um die dynamischen Reibeffekte vorallem um $\Delta\omega=0$ mit berücksichtigen zu können werden dynamische Reibmodelle benötigt. Einen ersten Ansatz dazu liefert das Reibmodell von Dahl. Dieses beschreibt die dynamischen Reibeffekte für kleine Auslenkungen mit kleinen Federn in den Kontaktbereichen von Körpern und geht anschließend in die Coulombschen-Reibung über\cite{Schroeder.2015}. Die Reibdynamik des Dahlschen-Modells wird definiert durch die Differentialgleichung
+Um die dynamischen Reibeffekte vorallem um $\Delta\omega=0$ mit berücksichtigen zu können werden dynamische Reibmodelle benötigt. Einen ersten Ansatz dazu liefert das Reibmodell von Dahl. Dieses beschreibt die dynamischen Reibeffekte für kleine Auslenkungen mit kleinen Federn in den Kontaktbereichen von Körpern und geht anschließend in die Coulombschen-Reibung über \cite{Schroeder.2015}. Die Reibdynamik des Dahlschen-Modells wird definiert durch die Differentialgleichung
 \begin{equation}
 F_\mathrm{R,Dahl} = \left[\sigma_0\ \vert 1-\frac{F_\mathrm{R,Dahl}}{F_\mathrm{C}}\mathrm{sign}(\Delta\omega)\vert^\beta\ \mathrm{sign}\left( 1-\frac{F_\mathrm{R,Dahl}}{F_\mathrm{C}}\mathrm{sign}(\Delta\omega)\right)\right]\Delta\omega
 \end{equation}
