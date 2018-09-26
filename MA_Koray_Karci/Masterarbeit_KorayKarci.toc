@@ -57,25 +57,27 @@
 \defcounter {refsection}{0}\relax 
 \contentsline {chapter}{\numberline {4}Sch\IeC {\"a}tzverfahren}{41}{chapter.4}
 \defcounter {refsection}{0}\relax 
-\contentsline {section}{\numberline {4.1}Kalman-Filter}{42}{section.4.1}
+\contentsline {section}{\numberline {4.1}Nachweis der struktuellen Identifizierbarkeit}{41}{section.4.1}
 \defcounter {refsection}{0}\relax 
-\contentsline {section}{\numberline {4.2}Extented Kalman-Filter}{42}{section.4.2}
+\contentsline {section}{\numberline {4.2}Beschreibung und Anwendung von Sch\IeC {\"a}tzverfahren}{43}{section.4.2}
 \defcounter {refsection}{0}\relax 
-\contentsline {section}{\numberline {4.3}Unknown Input Observer}{42}{section.4.3}
+\contentsline {section}{\numberline {4.3}Extented Kalman-Filter}{43}{section.4.3}
 \defcounter {refsection}{0}\relax 
-\contentsline {section}{\numberline {4.4}Extended Unknown Input Observers}{42}{section.4.4}
+\contentsline {section}{\numberline {4.4}Unknown Input Observer}{43}{section.4.4}
 \defcounter {refsection}{0}\relax 
-\contentsline {chapter}{\numberline {5}Zusammenfassung und Ausblick}{43}{chapter.5}
+\contentsline {section}{\numberline {4.5}Extended Unknown Input Observers}{43}{section.4.5}
 \defcounter {refsection}{0}\relax 
-\contentsline {chapter}{\numberline {A}Anhang}{45}{appendix.A}
+\contentsline {chapter}{\numberline {5}Zusammenfassung und Ausblick}{45}{chapter.5}
+\defcounter {refsection}{0}\relax 
+\contentsline {chapter}{\numberline {A}Anhang}{47}{appendix.A}
 \defcounter {refsection}{0}\relax 
 \setcounter {tocdepth}{0}
 \defcounter {refsection}{0}\relax 
-\contentsline {chapter}{\nonumberline Abbildungsverzeichnis}{47}{chapter*.22}
+\contentsline {chapter}{\nonumberline Abbildungsverzeichnis}{49}{chapter*.22}
 \defcounter {refsection}{0}\relax 
-\contentsline {chapter}{\nonumberline Tabellenverzeichnis}{49}{chapter*.23}
+\contentsline {chapter}{\nonumberline Tabellenverzeichnis}{51}{chapter*.23}
 \defcounter {refsection}{0}\relax 
-\contentsline {chapter}{\nonumberline Literatur}{51}{chapter*.24}
+\contentsline {chapter}{\nonumberline Literatur}{53}{chapter*.24}
 \babel@toc {ngerman}{}
 \babel@toc {ngerman}{}
 \defcounter {refsection}{0}\relax 

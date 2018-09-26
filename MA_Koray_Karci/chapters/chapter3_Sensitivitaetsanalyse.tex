@@ -194,7 +194,7 @@ wobei diese Gleichung wie oben beschrieben nur im Gleitbereich mit $\Delta \omeg
 \label{fig:Sens_mu}
 \end{figure}
 
-\section{Fisher-Informationsmatrix}
+\section{Fisher-Informationsmatrix}\label{sec:FiIn}
 Im Abschnitt \ref{sec:para_sens} wurde gezeigt welche Auswirkung Ungenauigkeiten der Parameter auf die Systemzustände haben. Die Fisher-Informationsmatrix liefert mit Hilfe der Sensitivitäten und der Varianz der Messgrößen eine obere Schranke für die Genauigkeit eines Parameterschätzverfahrens. Außerdem können nicht-sensitive Parameter und linear abhängige Grandientenverläufe für bestimmte Parameterkombinationen bestimmt werden \cite{Majer.1998}. Aus diesem Grund wird im Folgenden die Fisher-Informationsmatrix für einen Gangwechsel berechnet um so die Schätzbarkeit der Parameter mit den vorhandenen Messgrößen zu überprüfen. Das Vorgehen orientiert sich an \cite{Majer.1998}. Dabei wird angenommen, dass die Messdaten der $N$ Zeitpunkte um den stochastischen Anteil $\epsilon_i(t_k)$ von den $n$ Systemausgängen abweichen, sodass diese angeben werden können als
 \begin{equation}\label{eq:stoch_err}
 z_{ik} = y_i(\pmb{x}_0,\pmb{u},\pmb{p}^*,t_k) + \epsilon_i(t_k).
@@ -259,8 +259,15 @@ Der Vektor der transformierten Varianz setzt sich im untransformierten Raum aus 
 \sigma_{j,t} \pmb{v}_j = \sum_{i=1}^m \sigma_{ij,t} \pmb{e}_i
 \end{equation}
 mit $\pmb{V} = [\pmb{v}_1\; \pmb{v}_2\; \dots \;\pmb{v}_m]$ und den Einheitsvektoren $\pmb{e}_i$. Mit \eqref{Pararaum} kann man die Beeinflussung der Varianzen der transformierten Parameter durch die der untransformierten Parameter gut erkennen und dementsprechend den Einflussreichsten Parameter streichen. Auf diese Weise wird im Folgenden für die einzelnen Schaltphasen die Parameterkombination soweit reduziert bis die Streuung von jedem Parameter kleiner ist als die Grenzstreuung.
- 
-
+Der Vektor der Messgrößen ist dabei definiert als
+\begin{equation}
+\pmb{y}_{ex,23} = \underbrace{\begin{bmatrix} 1 & 0 & 0 & 0\\ 0 & 1 & 0 & 0\\ 0 & 0 & 0 & 1\end{bmatrix}}_{\pmb{C}_\mathrm{M}} \pmb{x}_{ex,23}.
+\end{equation} 
+Des Weiteren wird durch die zusätzliche Berechnung der Fisher-Informationsmatrix unter Berücksichtigung eines erweiterten Messgrößenvektors
+\begin{equation}
+\pmb{y}_{ex,23a} = \begin{bmatrix} \pmb{y}_{ex,23} \\ \dot{w}_\mathrm{C} \end{bmatrix}
+\end{equation}
+geschaut wie sich die zusätzliche Messgröße auf den Betrag der Streuungen auswirkt. Für die Radbeschleunigung $\dot{w}_\mathrm{C}$ wird jedoch eine deutlich höhere Messungenauigkeit angenommen.
 \subsection{Berechnung der Fisher-Informationsmatrix im 2. Gang $(5,5\, s\leq\, t<6,0\, s )$}
 Die Parameter $k_\mathrm{ss}$, $d_\mathrm{ss}$ und $\mu_{38}$ werden bei der Betrachtung im zweiten Gang von Anfang an vernachlässigt, da aus den Abbildungen \ref{fig:Sens_k}, \ref{fig:Sens_d} und \ref{fig:Sens_mu} ersichtlich ist, dass die Messgrößen in diesem Zustand nicht sensitiv sind für Änderungen dieser Parameter. Daraus folgt direkt, dass diese Parameter mit den gegebenen Messgrößen in diesem Zustand nicht identifizierbar sind.
 

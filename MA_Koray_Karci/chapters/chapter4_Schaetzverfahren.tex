@@ -1,0 +1,90 @@
+\chapter{Schätzverfahren}\label{ch:ch3}
+Im vorherigen Kapitel wurde mit der Fisher-Informationsmatrix die Identifizierbarkeit der Parameter in Abhängigkeit der Messinformationen analysiert. Im Gegensatz dazu wird in diesem Kapitel im ersten Schritt die strukturelle Identifizierbarkeit der Parameter nachgewiesen. Dieser Nachweis ist unabhängig von Messinformationen und wird mit Hilfe der Überprüfung Beobachtbarkeit des im Zustandsvektor um die Parameter erweiterten Systems \eqref{eq:sys_nl23} durchgeführt.
+
+\section{Nachweis der struktuellen Identifizierbarkeit}
+Um die strukturelle Identifizierbarkeit der Parameter zu zeigen wird der Zustandsvektor des Modells \eqref{eq:sys_nl23} um den Parametervektor $\pmb{p} = [m_\mathrm{veh}\; \mu_{38}\; \mu_{05}\; \zeta]^T$ wie in \cite[S. 445ff]{Bohn.2016} beschrieben erweitert und auf Beobachtbarkeit überprüft. Unter zusätzlicher Berücksichtigung der Ausgangsgrößen (???) unter Vernachlässigung der Messunsicherheiten $\pmb{\epsilon}(t)$ kann das erweiterte Modell kann somit geschrieben werden als
+\begin{align}\label{eq:sys_nl23p}
+\begin{split}
+\underbrace{\begin{bmatrix}\dot{\pmb{x}}_\mathrm{ex,23} \\ \dot{\pmb{p}}\end{bmatrix}}_{\pmb{\dot{x}}_\mathrm{23p}} &= \underbrace{\begin{bmatrix} \pmb{f}_{23}(\pmb{x}_\mathrm{ex,23},\pmb{p}) \\\pmb{w}_p(t) \end{bmatrix}}_{\pmb{f}_{23p}(\pmb{x}_\mathrm{23p})} + \underbrace{\begin{bmatrix} \pmb{B}_\mathrm{ex,nl23}(\pmb{p}) \\ \pmb{0} \end{bmatrix}}_{\pmb{B}_\mathrm{23p}(\pmb{x}_\mathrm{23p})}\, \pmb{u}_\mathrm{ex,nl23}\\
+\pmb{y}_\mathrm{ex,23} &= \underbrace{\begin{bmatrix} \pmb{C}_\mathrm{M}& \pmb{0} \end{bmatrix}}_{\pmb{C}_\mathrm{M,p}}\ \underbrace{\begin{bmatrix}\pmb{x}_\mathrm{ex,23} \\ \pmb{p}\end{bmatrix}}_{\pmb{x}_{23p}}
+\end{split}
+\end{align}
+wobei $\pmb{w}_p(t) = [w_{p,1}(t)\, \dots \, w_{p,m}(t)]$ das Prozessrauschen der Parameter berücksichtigt. Mit $w_{p,j}(t) \neq 0$ wird der entsprechende Parameter als nicht konstante Größe angesehen, wobei die Dynamik als Brownsche Bewegung (Random Walk) modelliert wird \cite[S. 447]{Bohn.2016}. Dieses System mit dem soll nun auf Beobachtbarkeit überprüft werden. Die Beobachtbarkeit eines allgemeines nichtlineares System 
+\begin{align}\label{eq:general_nl}
+\begin{split}
+\pmb{\dot{x}} &= \pmb{f}(\pmb{x},\pmb{u}),\quad \pmb{x}(t_0) = \pmb{x}_0\\
+\pmb{y} &= \pmb{g}(\pmb{x},\pmb{u})
+\end{split}
+\end{align}
+mit $\pmb{x} \in D_{\pmb{x}} \subseteq \mathbb{R}^n,\;\pmb{u} \in C_{\pmb{u}} \subseteq C^{n-1}$ und $\pmb{y} \in \mathbb{R}^r$ ist in \cite{Adamy.2018} wie folgt definiert: \emph{Sind dann alle Anfangsvektoren $\pmb{x}_0 \in D_{\pmb{x}}$ aus der Kenntnis von $\pmb{u}(t)$ und $\pmb{y}(t)$ in einem Zeitintervall $[t_0, t_1 < \infty]$ für alle $\pmb{u} \in C_{\pmb{u}}$ eindeutig bestimmbar, so heißt das System beobachtbar.} Des Weiteren wird das schwächere Kriterium, die schwache Beobachtbarkeit, definiert als: \emph{Sind dann alle Anfangsvektoren $\pmb{x}_0 \in D_{\pmb{x}}$  in einer Umgebung}
+\begin{equation}\label{eq:U_Obs}
+ U = \lbrace\pmb{x}_0 \in \mathbb{R}^n \vert\; \Vert \pmb{x}_0-\pmb{x}_A \Vert < \rho\rbrace
+\end{equation}
+\emph{eines Punktes $\pmb{x}_A \in D_{\pmb{x}}$ aus der Kenntnis von $\pmb{u}(t)$ und $\pmb{y}(t)$ in einem Zeitintervall $[t_0, t_1 < \infty]$ für alle $\pmb{u} \in C_{\pmb{u}}$ eindeutig bestimmbar, so heißt das System schwach beobachtbar, wenn dies für alle $\pmb{x}_A \in D_{\pmb{x}}$ möglich ist.}
+Diese beiden Eigenschaften werden ,wie in \cite{Adamy.2018} beschrieben, mit Hilfe der $n-1$ totalen Ableitungen des Ausgangsvektors $\pmb{y}$ überprüft. Diese lassen sich berechnen zu 
+\begin{align*}
+\pmb{\dot{y}} &= \frac{\partial \pmb{g}}{\partial \pmb{x}}\pmb{f}(\pmb{x},\pmb{u}) + \frac{\partial \pmb{g}}{\partial \pmb{u}}\pmb{\dot{u}} = \pmb{h}_1(\pmb{x},\pmb{u},\pmb{\dot{u}})\\
+\pmb{\ddot{y}} &= \frac{\partial  \pmb{h}_1}{\partial \pmb{x}}\pmb{f}(\pmb{x},\pmb{u}) + \frac{\partial \pmb{h}_1}{\partial \pmb{u}}\pmb{\dot{u}} + \frac{\partial \pmb{h}_1}{\partial \pmb{\dot{u}}}\pmb{\ddot{u}} = \pmb{h}_2(\pmb{x},\pmb{u},\pmb{\dot{u}},\pmb{\ddot{u}})\\
+\pmb{\dddot{y}} &= \frac{\partial  \pmb{h}_2}{\partial \pmb{x}}\pmb{f}(\pmb{x},\pmb{u}) + \frac{\partial \pmb{h}_2}{\partial \pmb{u}}\pmb{\dot{u}} + \frac{\partial \pmb{h}_2}{\partial \pmb{\dot{u}}}\pmb{\ddot{u}} + \frac{\partial \pmb{h}_2}{\partial \pmb{\ddot{u}}}\pmb{\dddot{u}} = \pmb{h}_3(\pmb{x},\pmb{u},\pmb{\dot{u}},\pmb{\ddot{u}},\pmb{\dddot{u}})\\
+& \qquad \qquad \qquad \qquad \vdots \\
+\pmb{y}^{(n-1)} &= \frac{\partial \pmb{h}_{n-2}}{\partial \pmb{x}}\pmb{f}(\pmb{x},\pmb{u}) + \sum^{n-1}_{i=1}\frac{\partial \pmb{h}_{n-2}}{\partial \pmb{u}^{(i-1)}}\pmb{u}^{(i)} = \pmb{h}_{n-1}(\pmb{x},\pmb{u},\pmb{\dot{u}},\dots,\pmb{u}^{(n-1)})
+\end{align*}
+und können zur Abbildung
+\begin{equation}\label{eq:Abb_ztox}
+\pmb{z} = \begin{bmatrix}\pmb{y} \\ \pmb{\dot{y}} \\ \pmb{\dot{y}} \\ \vdots \\ \pmb{y}^{(n-1)} \end{bmatrix} = \begin{bmatrix} \pmb{g}(\pmb{x},\pmb{u}) \\ \pmb{h}_1(\pmb{x},\pmb{u},\pmb{\dot{u}})\\\pmb{h}_2(\pmb{x},\pmb{u},\pmb{\dot{u}},\pmb{\ddot{u}})\\ \vdots \\ \pmb{h}_{n-1}(\pmb{x},\pmb{u},\pmb{\dot{u}},\dots,\pmb{u}^{(n-1)}) \end{bmatrix} = \pmb{q}(\pmb{x},\pmb{u},\pmb{\dot{u}},\dots,\pmb{u}^{(n-1)})
+\end{equation}
+zusammengefasst werden. Ist weiterhin \eqref{eq:Abb_ztox} eindeutig nach $\pmb{x}$ auflösbar, sodass
+\begin{equation}\label{eq:Abb_ztox_inv}
+\pmb{x} = \pmb{q}^{-1}(\pmb{z},\pmb{u},\pmb{\dot{u}},\dots,\pmb{u}^{(n-1)})
+\end{equation}
+existiert, dann ist \eqref{eq:general_nl} beobachtbar. Ist die inverse Abbildung \eqref{eq:Abb_ztox_inv} nicht oder nur sehr schwer berechenbar, kann die schwache Beobachtbarkeit mit Hilfe der Entwicklung der Taylor-Reihe
+\begin{equation}\label{eq:Abb_ztox_taylor}
+\pmb{z} = \pmb{q}(\pmb{x}_A) + \left.\frac{\partial\ \pmb{q}(\pmb{x})}{\partial \pmb{x}}\right|_{\pmb{x}=\pmb{x}_A}\cdot (\pmb{x}-\pmb{x}_A)+\mathrm{Restglied}
+\end{equation}
+ um den Arbeitspunkt $\pmb{x}_\mathrm{A}$ gezeigt werden \cite{Adamy.2018}. Unter Vernachlässigung des Restglieds in \eqref{eq:Abb_ztox_taylor} ist die Gleichung genau dann nach $\pmb{x}$ auflösbar, wenn die Jacobi-Matrix
+\begin{equation}\label{eq:dq_dx}
+\pmb{Q}(\pmb{x}_A) = \left.\frac{\partial\ \pmb{q}(\pmb{x})}{\partial \pmb{x}}\right|_{\pmb{x}=\pmb{x}_A} = \begin{bmatrix}\frac{\partial \pmb{g}(\pmb{x},\pmb{u})}{\partial \pmb{x}} \\ \frac{\partial \pmb{h}_1(\pmb{x},\pmb{u},\pmb{\dot{u}})}{\partial \pmb{x}} \\ \frac{\partial \pmb{h}_2(\pmb{x},\pmb{u},\pmb{\dot{u}},\pmb{\ddot{u}})}{\partial \pmb{x}}\\ \vdots \\ \frac{\partial \pmb{h}_{(n-1)}(\pmb{x},\pmb{u},\pmb{\dot{u}},\pmb{\ddot{u}},\dots,\pmb{u}^{(n-1)})}{\partial \pmb{x}} \end{bmatrix}_{\pmb{x}=\pmb{x}_A}
+\end{equation}
+den Rang $n$ hat. In diesem Fall kann die Beobachtbarkeit in der Umgebung \eqref{eq:U_Obs} gezeigt werden und somit die schwache Beobachtbarkeit von \eqref{eq:general_nl}.
+
+Da die Berechnung der inversen Abbildung \eqref{eq:Abb_ztox_inv} für das erweiterte System \eqref{eq:sys_nl23p} sehr schwer ist, wird hier lediglich die schwache Beobachtbarkeit nachgewiesen. Aufgrund der schwachen Nichtlinearitäten und der geringen Änderung von $\pmb{x}_\mathrm{23p}$ während des Beobachtungszeitraums, genügt diese den Anforderungen in dieser Arbeit.
+
+Die ersten drei Einträge von $\pmb{q}$  berechnen sich für das System \eqref{eq:sys_nl23p} zu
+\begin{align}
+\pmb{q}_1(\pmb{x}_\mathrm{23p}) &= \pmb{C}_{23p}\pmb{x}_\mathrm{23p}\\
+\pmb{q}_2(\pmb{x}_\mathrm{23p}) &= \pmb{C}_{23p}\pmb{f}_\mathrm{23p}(\pmb{x}_\mathrm{23p}) + \pmb{C}_{23p}\pmb{B}_\mathrm{23p}(\pmb{x}_\mathrm{23p})\pmb{u}_\mathrm{ex,nl23}\\ 
+\pmb{q}_3(\pmb{x}_\mathrm{23p}) &= \frac{\partial \left[\pmb{C}_{23p}\:\pmb{f}_\mathrm{23p}(\pmb{x}_\mathrm{23p}) + \pmb{C}_{23p}\:\pmb{B}_\mathrm{23p}(\pmb{x}_\mathrm{23p})\:\pmb{u}_\mathrm{ex,nl23}\right]}{\partial \pmb{x}_\mathrm{23p}}\left[\pmb{f}_\mathrm{23p}(\pmb{x}_\mathrm{23p}) + \pmb{B}_\mathrm{23p}(\pmb{x}_\mathrm{23p})\:\pmb{u}_\mathrm{ex,nl23}\right]\\
+&+ \pmb{C}_{23p}\:\pmb{B}_\mathrm{23p}(\pmb{x}_\mathrm{23p})\:\pmb{u}_\mathrm{ex,nl23}. \nonumber
+\end{align}
+und können in dem Vektor
+\begin{equation}
+\pmb{q}_{123}(\pmb{x}_\mathrm{23p}) = \begin{bmatrix} \pmb{q}_1(\pmb{x}_\mathrm{23p})\\\pmb{q}_2(\pmb{x}_\mathrm{23p})\\\pmb{q}_3(\pmb{x}_\mathrm{23p})
+\end{bmatrix}
+\end{equation}
+zusammengefasst werden. Nun kann gezeigt werden, dass für alle Arbeitspunkte $\pmb{x}_\mathrm{23p,A}$ und Eingänge $\pmb{u}_\mathrm{ex,nl23}$ gilt 
+\begin{equation}
+\mathrm{rang}\left(\pmb{Q}_{123}(\pmb{x}_\mathrm{23p,A})\right) = \mathrm{rang}\left(\left.\frac{\partial\ \pmb{q}_{123}(\pmb{x}_\mathrm{23p,A})}{\partial \pmb{x}}\right|_{\pmb{x}=\pmb{x}_A}\right) = 8.
+\end{equation}
+Da $\pmb{q}_{123}(\pmb{x}_\mathrm{23p})$ ein Untervektorraum von $\pmb{q}(\pmb{x}_\mathrm{23p})$ bildet, folgt 
+\begin{equation}
+\mathrm{rang}\left(\pmb{q}(\pmb{x}_\mathrm{23p})\right) \geq \mathrm{rang}\left(\pmb{q}_{123}(\pmb{x}_\mathrm{23p})\right)
+\end{equation}
+und somit die schwache Beobachtbarkeit von \eqref{eq:sys_nl23p} um jeden Arbeitspunkt $\pmb{x}_\mathrm{23p,A}$.
+
+\section{Beschreibung und Anwendung von Schätzverfahren}
+
+\section{Extented Kalman-Filter}
+Wie oben beschrieben soll aufgrund der zeitvariablen Parameter und der nichtlinearen Regelstrecke ein erweitertes Kalman-Filter (EKF) zur Schätzung der Parameter verwendet werden. Zu diesem Zweck wird das EKF als Beobachter der Zustände des erweiterten Systems \eqref{eq:sys_nl23p} eingesetzt. Zur Implementierung der Gleichungen auf den digitalen Steuergeräten des Fahrzeugs ist es notwendig, die Beschreibung des Systems im diskreten Zeitbereich darzustellen.
+
+Beim Entwurf des KF wird von allgemeinen einem linearen zeitdiskreten stochastischen System 
+\begin{equation}
+\pmb{x}(k+1) = \pmb{A}_d\ \pmb{x}(k) + \pmb{A}_d
+\end{equation}
+
+
+\section{Unknown Input Observer}
+\section{Extended Unknown Input Observers}
+
+
+
+
