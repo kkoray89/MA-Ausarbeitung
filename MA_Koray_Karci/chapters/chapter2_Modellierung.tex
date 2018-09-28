@@ -141,7 +141,7 @@ Die Wellen und Planeten rotieren alle nur um eine Achse bzw. bewegen sich nur au
 \begin{equation}
 \pmb{s} = \begin{bmatrix} s_{1}\quad s_{2}\quad \dots \quad s_{12} \end{bmatrix}^T = \begin{bmatrix} \phi_{1}\quad \phi_{2}\quad \dots \quad \phi_{12} \end{bmatrix}^T.
 \end{equation} 
-Die Ortsvektoren der Wellen 1-8 können aufgrund der nicht vorhanden translatorischen Bewegung gleich Null gesetzt werden. Lediglich die Planeten haben durch die Bewegung auf den Planetenträgern um die Drehachse einen translatorischen Anteil. Die Position der Planeten ergibt sich somit aus den entsprechenden Radien der Planetenträgern $r_{T,j}$ und der Orientierung der Planetenträgern. Daraus ergibt sich der Orstvektor des Systems zu
+Die Ortsvektoren der Wellen 1-8 können aufgrund der nicht vorhanden translatorischen Bewegung gleich Null gesetzt werden. Lediglich die Planeten haben durch die Bewegung auf den Planetenträgern um die Drehachse einen translatorischen Anteil. Die Position der Planeten ergibt sich somit aus den entsprechenden Radien der Planetenträgern $r_{T,j}$ und der Orientierung der Planetenträgern. Damit kann der Orstvektor des Systems geschrieben werden als
 \begin{equation}
 \pmb{r} = \begin{bmatrix} r_{1}\; r_{2}\; \dots \; r_{12} \end{bmatrix}^T = \begin{bmatrix} 0\; \dots \; 0 \quad r_{T,1}\,\phi_8 \quad r_{T,2}\,\phi_4 \quad r_{T,3}\,\phi_2 \quad r_{T,4}\,\phi_1 \end{bmatrix}^T
 \end{equation}
@@ -271,61 +271,62 @@ Aufgrund der relativ elastischen Seitenwellen kann es im Antriebsstrang zu erheb
 \begin{equation}
 \pmb{x}_\mathrm{ex} = \begin{bmatrix} \omega_1 \\ \omega_2 \\ \omega_3 \\ \omega_8 \\ \phi \\ \omega_\mathrm{C} \end{bmatrix}
 \end{equation}
-ergibt. Wie in Abbildung ??? veranschaulicht, ergibt sich die $\phi$ aus der Differenz der Verdrehung am linken Schnittufer der Seitenweillen $\phi_\mathrm{ss,p}$ und der des Rades $\phi_\mathrm{C}$, am rechten Schnittufer. Unter Berücksichtigung der starren Kardanwelle ergibt sich somit für die Verdrehung der Seitenwellen
+ergibt. Wie in Abbildung \ref{fig:final_drive} veranschaulicht, ergibt sich die Verdrehung $\phi$ aus der Differenz der Verdrehung am linken Schnittufer der Seitenwellen $\phi_\mathrm{ss,p}$ und der des Rades $\phi_\mathrm{C}$, am rechten Schnittufer. Unter Berücksichtigung der starren Kardanwelle berechnet sich somit für die Verdrehung der Seitenwellen zu
 \begin{equation}
-\phi = \frac{\phi_2}{i_{\mathrm{D}}} - \phi_\mathrm{C}
+\phi = \frac{\phi_2}{i_{\mathrm{D}}} - \phi_\mathrm{C},
 \end{equation}  
 wobei $i_{\mathrm{D}}$ die Übersetzungen des Differentials angibt. Entsprechend gilt der Zusammenhang auch für die Winkelgeschwindigkeiten
 \begin{equation}\label{eq:dynphi}
 \dot{\phi} = \frac{\omega_2}{i_{\mathrm{D}}} - \omega_\mathrm{C}.
 \end{equation}
-Des weiteren kann am Rad das Momentengleichgewicht
+Des Weiteren kann am Rad das Momentengleichgewicht
 \begin{equation}\label{eq:MggRad}
-I^\mathrm{eff}_\mathrm{C}\,\dot{\omega}_\mathrm{C} = 2\,T_\mathrm{ss} - T_\mathrm{res}
+I^\mathrm{eff}_\mathrm{C}\,\dot{\omega}_\mathrm{C} = 2\,T_\mathrm{ss} - T_\mathrm{res},
 \end{equation}
 aufgestellt werden. Das effektive Massenträgheitsmomentes des Rads $I^\mathrm{eff}_\mathrm{C}$ setzt sich wie folgt zusammen
 \begin{equation}
 I^\mathrm{eff}_\mathrm{C} = I_\mathrm{ss} + m_\mathrm{C}\,r_\mathrm{dyn}.
 \end{equation}
-Dabei ist $I_\mathrm{ss}$ das Massenträgheitsmoment einer Seitenwelle, $m_\mathrm{C}$ die Masse des Rads und $r_\mathrm{dyn}$ der dynamische Radradius. Desweiteren ist $T_\mathrm{ss}$ das von den Seitenwellen übertragene Moment und kann mit dem Steifigkeitskoeffizient $k_\mathrm{ss}$ und dem Dämpfungskoeffizient $d_\mathrm{ss}$ berechnet werden zu
+Dabei ist $I_\mathrm{ss}$ das Massenträgheitsmoment einer Seitenwelle, $m_\mathrm{C}$ die Masse des Rads und $r_\mathrm{dyn}$ der dynamische Radradius. Das Moment $T_\mathrm{ss}$ ist das von den Seitenwellen übertragene Moment und kann mit dem Steifigkeitskoeffizient $k_\mathrm{ss}$ und dem Dämpfungskoeffizient $d_\mathrm{ss}$ berechnet werden zu
 \begin{equation}\label{eq:Tss}
-T_\mathrm{ss} = k_\mathrm{ss}\left(\frac{\phi_2}{i_{\mathrm{D}}} - \phi_\mathrm{C}\right) + d_\mathrm{ss}\left(\frac{\omega_2}{i_{\mathrm{D}}} - \omega_\mathrm{C}\right).
+T_\mathrm{ss} = k_\mathrm{ss}\left(\frac{\phi_2}{i_{\mathrm{D}}} - \phi_\mathrm{C}\right) + d_\mathrm{ss}\left(\frac{\omega_2}{i_{\mathrm{D}}} - \omega_\mathrm{C}\right) = k_\mathrm{ss} \phi + d_\mathrm{ss} \dot{\phi}.
 \end{equation}
-Das Widerstandsmoment berechnet sich als Summe der berücksichtigten äußeren Widerstände zu
+Das Fahrwiderstandsmoment $T_\mathrm{res}$ berechnet sich als Summe der berücksichtigten äußeren Fahrwiderstände zu
 \begin{equation}\label{eq:Tres}
 T_\mathrm{res} = r_\mathrm{dyn}\left(F_\mathrm{r}(v) + F_\mathrm{ad}(v) + F_\mathrm{g}\right). 
 \end{equation}
 Die berücksichtigten Widerstände sind der Rollwiderstand $F_\mathrm{r}(v)$, der Luftwiderstand $F_\mathrm{ad}(v)$ und die Hangabtriebskraft $F_\mathrm{g}$ und werden wie folgt berechnet
-\begin{subequations}
+\begin{subequations}\label{eq:Fr_Fas_Fg}
 \begin{align}
-F_\mathrm{r}(v) &= v \cdot f_\mathrm{Roll}(v)\cdot \cos\left(\zeta\right)\cdot m_\mathrm{veh}\cdot g \\
-F_\mathrm{ad}(v) &= \frac{1}{2}\cdot v^2\cdot\rho_\mathrm{Air}\cdot c_\mathrm{W}\cdot A_\mathrm{front}\\
+F_\mathrm{r}(v) &= v \cdot f_\mathrm{Roll}(v)\cdot \cos\left(\zeta\right)\cdot m_\mathrm{veh}\cdot g, \\
+F_\mathrm{ad}(v) &= \frac{1}{2}\cdot v^2\cdot\rho_\mathrm{Air}\cdot c_\mathrm{W}\cdot A_\mathrm{front},\\
 F_\mathrm{g} &= \sin\left(\zeta \right)\cdot m_\mathrm{veh}\cdot g.
 \end{align}
 \end{subequations}
 Dabei ist $v = \omega_\mathrm{C}\,r_\mathrm{dyn}$ die Fahrzeuggeschwindigkeit, $f_\mathrm{Roll}(v)$ der von der Geschwindigkeit abhängige Faktor
 des Rollwiderstands, $\zeta$ die Steigung der Straße in rad, $g$ die Erdbeschleunigung, $\rho_\mathrm{Air}$ die Luftdichte, $c_\mathrm{W}$ der Widerstandsbeiwert des Fahrzeugs, $A_\mathrm{front}$ die Frontfläche des
 Fahrzeugs und $m_\mathrm{veh}$ die Gesamtmasse des Fahrzeugs \cite[S.~3ff]{Naunheimer.2007}.
-Durch Einsetzten von \eqref{eq:Tss} und \eqref{eq:Tres} in \eqref{eq:MggRad} und anschließender Auflösung nach $\dot{\omega}_\mathrm{C}$ erhält man die Dynamik des Rades
+Das Einsetzten von \eqref{eq:Tss} und \eqref{eq:Tres} in \eqref{eq:MggRad} und anschließender Auflösung nach $\dot{\omega}_\mathrm{C}$ führt auf die Dynamik des Rades
 \begin{equation}\label{eq:dynwc}
 \dot{\omega}_\mathrm{C} = \left[ 2\,\left(k_\mathrm{ss}\left(\frac{\phi_2}{i_{\mathrm{D}}} - \phi_\mathrm{C}\right) + d_\mathrm{ss}\left(\frac{\omega_2}{i_{\mathrm{D}}} - \omega_\mathrm{C}\right)\right) - r_\mathrm{dyn}\left(F_\mathrm{r}(v) + F_\mathrm{ad}(v) + F_\mathrm{g}\right)\right]/I^\mathrm{eff}_\mathrm{C}.
 \end{equation}
-Aufgrund der starren Verbindung von Welle 2, der Kardanwelle und des Differentials, werden die Massenträgheitsmomente dieser Bauteile zusammengefasst zu
+Aufgrund der angenommenen starren Verbindung von Welle 2, der Kardanwelle und des Differentials, werden die Massenträgheitsmomente dieser Bauteile zusammengefasst zu
 \begin{equation}
-J^\mathrm{eff}_2 = J_2 + J^\mathrm{eff}_\mathrm{cs} + \frac{J^\mathrm{eff}_\mathrm{cs}}{i_\mathrm{D}^2}
+J^\mathrm{eff}_2 = J_2 + J^\mathrm{eff}_\mathrm{cs} + \frac{J^\mathrm{eff}_\mathrm{ss}}{i_\mathrm{D}^2},
 \end{equation}
-wobei in das effektive Massenträgheitsmoment der Kardanwelle $J^\mathrm{eff}_\mathrm{cs} = J_\mathrm{cs} + 0,5\,J_\mathrm{D}$ die eine Hälfte des Massenträgheitsmoments des Differentials miteinbezogen wird. Die andere Hälfte wird aufgrund der Drehzahldifferenz nach dem Differential mit dem Massenträgheitsmoment der zweiten Seitenwelle $J^\mathrm{eff}_\mathrm{ss} =  0,5\,J_\mathrm{D} + J_\mathrm{ss}$ zusammen gefasst. Für das erweiterte System wird $J_2$ in $\pmb{M}(2,2)$ dann durch $J^\mathrm{eff}_2$ ersetzt. Des weiteren wird in Abbildung ??? ersichtlich, dass für das Ausgangsmoment 
-\begin{equation}
+wobei in das effektive Massenträgheitsmoment der Kardanwelle $J^\mathrm{eff}_\mathrm{cs} = J_\mathrm{cs} + 0,5\,J_\mathrm{D}$ die eine Hälfte des Massenträgheitsmoments des Differentials miteinbezogen wird. Die andere Hälfte wird aufgrund der Drehzahldifferenz nach dem Differential mit dem Massenträgheitsmoment der zweiten Seitenwelle $J^\mathrm{eff}_\mathrm{ss} =  0,5\,J_\mathrm{D} + J_\mathrm{ss}$ zusammen gefasst. Für das erweiterte System wird $J_2$ in $\pmb{M}(2,2)$ dann durch $J^\mathrm{eff}_2$ ersetzt. Des Weiteren wird in Abbildung \ref{fig:final_drive} ersichtlich, dass für das Ausgangsmoment 
+\begin{equation}\label{eq:Tout}
 T_\mathrm{out} = \frac{2\,T_\mathrm{ss}}{i_\mathrm{D}} = \frac{2}{i_\mathrm{D}}\,\left[ k_\mathrm{ss}\left(\frac{\phi_2}{i_{\mathrm{D}}} - \phi_\mathrm{C}\right) + d_\mathrm{ss}\left(\frac{\omega_2}{i_{\mathrm{D}}} - \omega_\mathrm{C}\right)\right]
 \end{equation}
 gilt und dieses in \eqref{eq:le} dementsprechend ersetzt werden kann.
 
-Zu beachten ist hier, dass $v(\omega_\mathrm{C})$ zustandsabhängig ist und sowohl in $F_\mathrm{r}(v)$ als auch in $F_\mathrm{ad}(v)$ nichtlinear eingeht, wodurch das gesamt System nichtlinear wird. Auch die Eingangsgröße $\zeta(t)$ geht nichtlinear in die Widerstand ein. Damit lässt sich das erweiterte Modell mit 
+Zu beachten ist hier, dass $v(\omega_\mathrm{C})$ zustandsabhängig ist und sowohl in $F_\mathrm{r}(v)$ als auch in $F_\mathrm{ad}(v)$ nichtlinear eingeht, wodurch das Gesamtsystem nichtlinear wird. Auch die Störgröße $\zeta(t)$ geht nichtlinear in die Widerstände ein. Damit lässt sich das erweiterte Modell mit 
 den Gleichungen \eqref{eq:dynphi} und \eqref{eq:dynwc} in der Form 
 \begin{equation}\label{eq:sys_nl}
 \dot{\pmb{x}}_\mathrm{ex} = \pmb{f}(\pmb{x}_\mathrm{ex}) + \pmb{B}_\mathrm{ex,nl}\,\pmb{u}_\mathrm{ex,nl}
 \end{equation}
 schreiben.
+
 
 Da in den weiteren Betrachtungen die Dynamik des Getriebes während eines Gangwechsels analysiert wird, kann das Modell auf zwei Gänge reduziert werden. In dieser Arbeit sind dies die Gänge Zwei und Drei. Wie Tabelle \ref{tbl:clutches} entnommen werden kann, sind die Schaltelemete B08 und K27 während beiden Gängen geöffnet daher gilt  
 \begin{subequations}
@@ -427,3 +428,53 @@ Die Normalkraft $F_\mathrm{N}$ ergibt sich aus $p_\mathrm{N}$ und der Fläche de
 
 Mit $z_\mathrm{SS} = T_\mathrm{Cl,SS}/\sigma_0$ und $\lim_{z \rightarrow z_\mathrm{SS}}\alpha(z)=1$ konvergiert \eqref{eq:T_Cl} im Gleitbereich ($\Delta \omega \neq 0$) gegen $T_\mathrm{Cl,SS}$. 
 
+\section{Beschreibung eines Gangwechsels}\label{sec:Gangwechsel}
+Bei einem Gangwechsel wird durch die Betätigung von Schaltelementen die Übersetzung des Getriebes geändert. Dies soll zum einen in jedem Fall möglichst ohne für den Fahrer spürbare unerwünschte Beschleunigungen am Getriebeabtrieb passieren. Zum anderen soll der Gangwechsel aber auch so schnell wie möglich und ohne Momentenunterbrechung vollzogen werden. Es besteht also eine Zielkonflikt zwischen den Komfortansprüchen des Fahrers und der Dauer eines Schaltvorgangs. 
+
+Grundsätzlich wird ein Gangwechsel auf zwei Ebenen unterschieden. Zum einen die Richtung der Übersetzung $i_\mathrm{Gang}$. Bei einer Hochschaltung wird $i_\mathrm{Gang}$ kleiner und entsprechend bei einer Rückschaltung größer. Zum anderen die Richtung des Antriebsmoments am Getriebeeingang. Ist dieses positiv spricht man von einer Zugschaltung bei negativem Antriebsmoment von einer Schubschaltung \cite{Fischer.2016}.
+In dieser Arbeit werden die Betrachtungen auf eine Zug-Hoch-Schaltung zwischen dem zweitem und dem dritten Gang reduziert. Dies hat zum einen den Grund, dass in diesen Gängen der Drehmomentenwandler überbrückt und die Trennkupplung geschlossen ist, sodass deren Dynamik vernachlässigt werden kann. Zum anderen ist dies eine häufige Schaltung im Fahrzeugbetrieb. Die Erkenntnisse können jedoch auch auf andere Gangwechsel übertragen werden.
+
+Bei dem in dieser Arbeit betrachteten Getriebe wird ein Gangwechsel mittels der Schließung und der simultanen Öffnung einer Bremse bzw. Kupplung realisiert. Bei der Schaltung zwischen dem zweiten und dritten Gang sind dies die Bremse $B_\mathrm{05}$ und die Kupplung $K_\mathrm{38}$. Der Gangwechsel wird in die vier Phasen 2. Gang, Momentenübergabe, Drehzahlsynchronisation und 3. Gang eingeteilt. Die Abbildungen \ref{fig:Gang23_Geschw}-\ref{fig:Gang23_Tandw} zeigen die vier Phasen des Gangwechsels der zur Auswertung der Sensitivitäten im Folgenden verwendet wird.
+
+Im 2. Gang ist die Kupplung $K_\mathrm{38}$ geschlossen und überträgt das volle Antriebsmoment. Die Differenzdrehzahl $\Delta \omega_{38}$ der Wellen 3 und 8 ist somit gleich Null. Die Bremse $B_\mathrm{05}$ ist geöffnet und überträgt kein Drehmoment. Vor dem Gangwechsel wird die Kupplung $K_\mathrm{38}$ durch eine Reduzierung des anliegenden Drucks ins Schleifen gebracht, sodass sich an der Kupplung eine minimale Drehzahldifferenz ergibt. Dadurch wirkt an den Scheiben der Kupplung die Gleitreibung, welche somit der Reaktionskraft an den Kupplungen entspricht. Der Betrag der Geleitreibung kann, wie in \ref{sec:mod_reib} beschrieben, mit dem Reibungskoeffizient und der Normalkraft berechnet werden.
+
+Somit kann während der Momentenübergabe das Drehmoment an $K_\mathrm{38}$ abgesenkt werden, während gleichzeitig $B_\mathrm{05}$ mit Hilfe einer Vorsteuerung derart geschlossenen wird, dass stets das volle Antriebsmoment übertragen wird und $K_\mathrm{38}$ im Schleifen gehalten wird. Die Herleitung einer derartigen Vorsteuerung kann \cite{Weber.2018} entnommen werden.    
+  
+Wenn $K_\mathrm{38}$ vollständig geöffnet ist d.h. kein Drehmoment mehr übertragen wird beginnt die Drehzahlsynchronisation. Diese kann auf zwei Arten vollzogen werden. Zum einen kann das Drehmoment an $B_\mathrm{05}$ überhöht werden, wodurch die Differenzdrehzahl $\Delta \omega_{05}$ auf Null gebracht wird und die Antriebsdrehzahl abgesenkt wird. Eine weitere Möglichkeit, die sich besonders bei Hybridgetrieben anbietet, ist die Drehzahlsynchronisation mittels einer Absenkung des Antriebsmomentes herzustellen. Mit einer E-Maschine kann die Absetzung dabei schneller und genauer vollzogen werden, als mit einem Verbrennungsmotor. Bei dem in dieser Arbeit betrachteten Gangwechsel werden beide Möglichkeiten gleichzeitig genutzt.
+
+Am Ende der Drehzahlsynchronisation ist $\Delta \omega_{05}=0$ und die Getriebeübersetzung $i_\textrm{Gang}$ in \ref{fig:Gang23_Geschw} liegt auf dem Niveau des dritten Gangs.
+
+\begin{figure}[h]
+\centering
+\newlength\fheight 
+\setlength\fheight{8cm}
+\newlength\fwidth 
+\setlength\fwidth{13cm}
+\input{figures/03_Sensitivitaetsanalyse/01_Gangwechsel/Gang23_Geschw.tex}
+\caption{Zeitlicher Verlauf der Drehzahlen und Verdrehung der Seitenwellen beim Gangwechsel}
+\label{fig:Gang23_Geschw}
+\end{figure}
+
+\begin{figure}[h]
+\centering
+\newlength\aheight 
+\setlength\aheight{8cm}
+\newlength\awidth 
+\setlength\awidth{13cm}
+\input{figures/03_Sensitivitaetsanalyse/01_Gangwechsel/Gang23_Besch.tex}
+\caption{Zeitlicher Verlauf der Beschleunigungen und Verdrehungsgeschwindigkeit der Seitenwellen  beim Gangwechsel}
+\label{fig:Gang23_Besch}
+\end{figure}
+
+\begin{figure}[h]
+\centering
+\newlength\bheight 
+\setlength\bheight{16cm}
+\newlength\bwidth 
+\setlength\bwidth{13cm}
+\input{figures/03_Sensitivitaetsanalyse/01_Gangwechsel/Gang23_Tandw.tex}
+\caption{Zeitlicher Verlauf der übertragenen Drehmomenten und der Differenzgeschwindigkeiten an $K_{38}$ und $B_{05}$, des Eingangsmoments $T_{\textrm{In}}$ und des Widerstandsmoments $T_{\textrm{res}}$ beim Gangswechsel.}
+\label{fig:Gang23_Tandw}
+\end{figure}
+
+\newpage

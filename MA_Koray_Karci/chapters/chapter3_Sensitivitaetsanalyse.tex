@@ -3,75 +3,26 @@ In diesem Kapitel wird das in Kapitel \ref{ch:ch2} hergeleitete nichtlineare Mod
 Eine mögliche Definition für eine Sensitivitätsanalyse ist die folgende: \emph{The study of how uncertainty in the output of a model (numerical or otherwise) can be apportioned to different sources of uncertainty in the model input} \cite{Saltelli.2004}.
 Für die Analyse gibt es verschiedene Methoden. Dabei ist die OAT(one-at-a-time)-Methode wohl die einfachste. Hier wird pro Simulationsdurchlauf lediglich eine Eingangsgröße geändert während alle anderen auf den nominal Werten gehalten werden. Die Methode liefert aber nur eine sehr beschränkte Aussage über den gesamten Eingangsraum. Jedoch kann sie für die Abschätzung einer ersten Untergruppe an relevanten Eingängen hilfreich sein.    
 
- Die in der Literatur am häufigsten diskutierten Ansätze basieren auf partiellen Ableitungen der Art $\partial y_i/\partial x_i$ wobei $y$ ein beliebiger Ausgang und $x_i$ ein beliebiger Eingang des Systems ist. Ein Eingang kann hierbei auch ein variierender Parameter sein. Dieses Vorgehen wird vor allem bei relativ einfachen, mathematisch wohlbestimmten und stetigen Modellen verwendet. Der Vorteil dabei ist, dass die Sensitvitätsfunktionen sobald sie einmal berechnet sind leicht an Veränderungen anpassbar sind und auch für ähnliche Systeme verwendet werden können \cite{Karnavas.1993}. Jedoch werden die partiellen Ableitung immer in einem bestimmen Arbeitspunkt berechnet d.h. die Aussagen der Sensitvitätsfunktionen gelten für nichtlineare Systeme nur lokal um diesen den Arbeitspunkt. Des weiteren ist es oft sehr schwer oder gar unmöglich die benötigten Ableitungen für komplexe Modelle zu berechnen.
+ Die in der Literatur am häufigsten diskutierten Ansätze basieren auf partiellen Ableitungen der Art $\partial y_i/\partial x_i$ wobei $y$ ein beliebiger Ausgang und $x_i$ ein beliebiger Eingang des Systems ist. Ein Eingang kann hierbei auch ein variierender Parameter sein. Dieses Vorgehen wird vor allem bei relativ einfachen, mathematisch wohlbestimmten und stetigen Modellen verwendet. Der Vorteil dabei ist, dass die Sensitvitätsfunktionen sobald sie einmal berechnet sind leicht an Veränderungen anpassbar sind und auch für ähnliche Systeme verwendet werden können \cite{Karnavas.1993}. Jedoch werden die partiellen Ableitung immer in einem bestimmen Arbeitspunkt berechnet d.h. die Aussagen der Sensitvitätsfunktionen gelten für nichtlineare Systeme nur lokal um diesen den Arbeitspunkt. Des Weiteren ist es oft sehr schwer oder gar unmöglich die benötigten Ableitungen für komplexe Modelle zu berechnen.
 
 Eine Alternative zur Berechnung der partiellen Ableitungen sind globale Methoden. Hierbei werden die Modelleingänge stochstisch varriert, woraus sich nach vielen Simulationen eine Strichprobe für die Modellausgänge ergibt. Dieses Methode der mehrfachen Simulation wird auch Monte-Carlo-Methode genannt. Wie der Name schon sagt ist der grundlegende Vorteil dabei, dass durch eine genügend große Stichprobe eine globale Aussage zur Sensitivität gegeben werden kann. Des weiteren erlaubt die Methode auch Aussagen über die verkoppelte Wirkung von Eingangsänderungen ohne spezielles Vorwissen über die Struktur des Modells. Der entscheidende Nachteil liegt je nach Stichprobengröße und Komplexität des Modells in der Rechenzeit.      
 
-Aufgrund stetigen Charakters von \eqref{eq:sys_nl23} werden für diese Arbeit die partiellen Ableitungen für die Sensitivitätsanalyse verwendet.
+Aufgrund des stetigen Charakters von \eqref{eq:sys_nl23} werden für diese Arbeit die partiellen Ableitungen für die Sensitivitätsanalyse verwendet.
 Hierfür wird zuerst ein idealer Schaltvorgang beschrieben um die Sensitivitätsfunktionen in verschieden Schaltphasen auswerten zu können. Des weiteren werden die Ergebnisse der Sensitivitätsanalyse für die Berechnung der Fisher-Informationsmatrix genutzt. Diese liefert eine Abschätzung für die erreichbare Genauigkeit einer Parameterschätzung.
    
-\section{Beschreibung eines Gangwechsels}\label{sec:Gangwechsel}
-Bei einem Gangwechsel wird durch die Betätigung von Schaltelementen die Übersetzung des Getriebes geändert. Dies soll zum einen in jedem Fall möglichst ohne für den Fahrer spürbare unerwünschte Beschleunigungen am Getriebeabtrieb passieren. Zum anderen soll der Gangwechsel aber auch so schnell wie möglich und ohne Momentenunterbrechung vollzogen werden. Es besteht also eine Zielkonflikt zwischen den Komfortansprüchen des Fahrers und der Dauer eines Schaltvorgangs. 
 
-Grundsätzlich wird ein Gangwechsel auf zwei Ebenen unterschieden. Zum einen die Richtung der Übersetzung $i_\mathrm{Gang}$. Bei einer Hochschaltung wird $i_\mathrm{Gang}$ kleiner und entsprechend bei einer Rückschaltung größer. Zum anderen die Richtung des Antriebsmoments am Getriebeeingang. Ist dieses positiv spricht man von einer Zugschaltung bei negativem Antriebsmoment von einer Schubschaltung \cite{Fischer.2016}.
-In dieser Arbeit werden die Betrachtungen auf eine Zug-Hoch-Schaltung zwischen dem zweitem und dem dritten Gang reduziert. Dies hat zum einen den Grund, dass in diesen Gängen der Drehmomentenwandler überbrückt und die Trennkupplung geschlossen ist, sodass deren Dynamik vernachlässigt werden kann. Zum anderen ist dies eine häufige Schaltung im Fahrzeugbetrieb. Die Erkenntnisse können jedoch auch auf andere Gangwechsel übertragen werden.
-
-Bei dem in dieser Arbeit betrachteten Getriebe wird ein Gangwechsel mittels der Schließung und der simultanen Öffnung einer Bremse bzw. Kupplung realisiert. Bei der Schaltung zwischen dem zweiten und dritten Gang sind dies die Bremse $B_\mathrm{05}$ und die Kupplung $K_\mathrm{38}$. Der Gangwechsel wird in die vier Phasen 2. Gang, Momentenübergabe, Drehzahlsynchronisation und 3. Gang eingeteilt. Die Abbildungen \ref{fig:Gang23_Geschw}-\ref{fig:Gang23_Tandw} zeigen die vier Phasen des Gangwechsels der zur Auswertung der Sensitivitäten im Folgenden verwendet wird.
-
-Im 2. Gang ist die Kupplung $K_\mathrm{38}$ geschlossen und überträgt das volle Antriebsmoment. Die Differenzdrehzahl $\Delta \omega_{38}$ der Wellen 3 und 8 ist somit gleich Null. Die Bremse $B_\mathrm{05}$ ist geöffnet und überträgt kein Drehmoment. Vor dem Gangwechsel wird die Kupplung $K_\mathrm{38}$ durch eine Reduzierung des anliegenden Drucks ins Schleifen gebracht, sodass sich an der Kupplung eine minimale Drehzahldifferenz ergibt. Dadurch wirkt an den Scheiben der Kupplung die Gleitreibung, welche somit der Reaktionskraft an den Kupplungen entspricht. Der Betrag der Geleitreibung kann, wie in \ref{sec:mod_reib} beschrieben, mit dem Reibungskoeffizient und der Normalkraft berechnet werden.
-
-Somit kann während der Momentenübergabe das Drehmoment an $K_\mathrm{38}$ abgesenkt werden, während gleichzeitig $B_\mathrm{05}$ mit Hilfe einer Vorsteuerung derart geschlossenen wird, dass stets das volle Antriebsmoment übertragen wird und $K_\mathrm{38}$ im Schleifen gehalten wird. Die Herleitung einer derartigen Vorsteuerung kann \cite{Weber.2018} entnommen werden.    
-  
-Wenn $K_\mathrm{38}$ vollständig geöffnet ist d.h. kein Drehmoment mehr übertragen wird beginnt die Drehzahlsynchronisation. Diese kann auf zwei Arten vollzogen werden. Zum einen kann das Drehmoment an $B_\mathrm{05}$ überhöht werden, wodurch die Differenzdrehzahl $\Delta \omega_{05}$ auf Null gebracht wird und die Antriebsdrehzahl abgesenkt wird. Eine weitere Möglichkeit, die sich besonders bei Hybridgetrieben anbietet, ist die Drehzahlsynchronisation mittels einer Absenkung des Antriebsmomentes herzustellen. Mit einer E-Maschine kann die Absetzung dabei schneller und genauer vollzogen werden, als mit einem Verbrennungsmotor. Bei dem in dieser Arbeit betrachteten Gangwechsel werden beide Möglichkeiten gleichzeitig genutzt.
-
-Am Ende der Drehzahlsynchronisation ist $\Delta \omega_{05}=0$ und die Getriebeübersetzung $i_\textrm{Gang}$ in \ref{fig:Gang23_Geschw} liegt auf dem Niveau des dritten Gangs.
-
-\begin{figure}[h]
-\centering
-\newlength\fheight 
-\setlength\fheight{8cm}
-\newlength\fwidth 
-\setlength\fwidth{13cm}
-\input{figures/03_Sensitivitaetsanalyse/01_Gangwechsel/Gang23_Geschw.tex}
-\caption{Zeitlicher Verlauf der Drehzahlen und Verdrehung der Seitenwellen beim Gangwechsel}
-\label{fig:Gang23_Geschw}
-\end{figure}
-
-\begin{figure}[h]
-\centering
-\newlength\aheight 
-\setlength\aheight{8cm}
-\newlength\awidth 
-\setlength\awidth{13cm}
-\input{figures/03_Sensitivitaetsanalyse/01_Gangwechsel/Gang23_Besch.tex}
-\caption{Zeitlicher Verlauf der Beschleunigungen und Verdrehungsgeschwindigkeit der Seitenwellen  beim Gangwechsel}
-\label{fig:Gang23_Besch}
-\end{figure}
-
-\begin{figure}[h]
-\centering
-\newlength\bheight 
-\setlength\bheight{16cm}
-\newlength\bwidth 
-\setlength\bwidth{13cm}
-\input{figures/03_Sensitivitaetsanalyse/01_Gangwechsel/Gang23_Tandw.tex}
-\caption{Zeitlicher Verlauf der übertragenen Drehmomenten und der Differenzgeschwindigkeiten an $K_{38}$ und $B_{05}$, des Eingangsmoments $T_{\textrm{In}}$ und des Widerstandsmoments $T_{\textrm{res}}$ beim Gangswechsel.}
-\label{fig:Gang23_Tandw}
-\end{figure}
-
-\newpage
 \section{Anwendung der Parametersitivitätsanalyse}\label{sec:para_sens}
 Wie einleitend erläutert werden die Sensitiviäten in dieser Arbeit mittels partiellen Differentialen berechnet. Nach \cite{Hearne.1985} ist für ein nichtlineares System erster Ordnung
 \begin{equation}
-\mathrm{d} x_i/\mathrm{d} t = f_i(\pmb{x},\pmb{p},\pmb{u})\quad i=1,2,\,\dots\, ,n 
+\dot{\pmb{x}}_i = f_i(\pmb{x},\pmb{p},\pmb{u})\quad i=1,2,\,\dots\, ,n 
 \end{equation}
 mit dem Zustandsvektor $\pmb{x} = [x_1, x_2,\, \dots\, ,x_n]^T$, dem Parametervektor $\pmb{p} = [p_1, p_2,\, \dots\, ,p_m]^T$, dem Eingangsvektor $\pmb{u} = [u_1, u_2,\, \dots\, ,p_l]^T$ und der differenzierbaren Funktion $f_i$ die absolute Parametersensitivitätsfunktion definiert als
 \begin{equation}\label{eq:abs_psens}
-S_{ij} = \partial x_i/\partial p_j \quad i=1,2,\,\dots\, ,n \quad j=1,2,\,\dots\, ,m.
+S_{ij} = \frac{\partial x_i}{\partial p_j} \quad i=1,2,\,\dots\, ,n \quad j=1,2,\,\dots\, ,m.
 \end{equation}
 Die entsprechende normalisierte Parametersensitivitätsfunktion ist 
 \begin{equation}
-S_{\mathrm{N},ij} = \frac{\partial x_i}{\partial p_j}\, \frac{p_{j0}}{x_{i0}} = \frac{\partial x_{\mathrm{N},i}}{p_{\mathrm{N},j}}
+S_{\mathrm{N},ij} = \frac{\partial x_i}{\partial p_j}\, \frac{p_{j0}}{x_{i0}} = \frac{\partial x_{\mathrm{N},i}}{\partial p_{\mathrm{N},j}}
 \end{equation}
 mit den normalisierten Zuständen $x_{\mathrm{N},i}$ und Parametern $p_{\mathrm{N},j}$, dem Nominalwert $p_{j0}$ des Parametern $p_{j}$ und dem Nominalwert $x_{i0}$ des  Zustandes $x_{i}$, welcher definiert wird als
 \begin{equation}
@@ -88,19 +39,23 @@ gegeben. Wendet man \eqref{eq:abs_psens} auf diese Gleichung an erhält man
 \end{equation}
 und unter Berücksichtigung der Kettenregel
 \begin{equation}\label{eq:Sens_eq}
-\mathrm{d} \pmb{x}/\mathrm{d} t\,\partial/ \partial p_j = \dot{\pmb{S}}_j= \frac{\partial\pmb{f}(t,\pmb{x}(t,\pmb{p}),\pmb{p})}{\partial \pmb{x}}\,\pmb{S}_j+\frac{\partial\pmb{f}(t,\pmb{x}(t,\pmb{p}),\pmb{p})}{\partial \pmb{p}}+\frac{\partial \pmb{B}(\pmb{p})}{\partial \pmb{p}}\,\pmb{u}(t).
+\frac{\partial}{\partial p_j}\frac{\mathrm{d} \pmb{x}}{\mathrm{d} t} = \dot{\pmb{S}}_j= \frac{\partial\pmb{f}(t,\pmb{x}(t,\pmb{p}),\pmb{p})}{\partial \pmb{x}}\,\pmb{S}_j+\frac{\partial\pmb{f}(t,\pmb{x}(t,\pmb{p}),\pmb{p})}{\partial \pmb{p}}+\frac{\partial \pmb{B}(\pmb{p})}{\partial \pmb{p}}\,\pmb{u}(t).
 \end{equation}
-Die Gleichung \eqref{eq:Sens_eq1} kann auch als implizite Berechnung der Sensitivität der zeitlichen Ableitung von $\pmb{x}$ angesehen werden. Da für die Bewertung des Gangwechsels vor allem die Drehzahlbeschleunigungen betrachtet werden, wird im Folgenden auch der zeitliche Verlauf von $\dot{\pmb{S}}_j$ interpretiert. Dafür werden die Parametersensitivitätsfunktion anhand \eqref{eq:sys_nl23} für $m_\mathrm{veh}$, $k_\mathrm{ss}$, $d_\mathrm{ss}$, $\mu_{38}$ und $\zeta$ gebildet und für den in \ref{sec:Gangwechsel} definierten Schaltvorgang berechnet. Dabei ist der erste Term in \eqref{eq:Sens_eq} unabhängig vom betrachteten Parameter und kann daher pauschal für alle Parameter angegeben werden zu
+Die Gleichung \eqref{eq:Sens_eq1} kann auch als implizite Berechnung der Sensitivität der zeitlichen Ableitung von $\pmb{x}$ angesehen werden. Da für die Bewertung des Gangwechsels vor allem die Drehzahlbeschleunigungen betrachtet werden, wird im Folgenden auch der zeitliche Verlauf von $\dot{\pmb{S}}_j$ interpretiert. Dafür werden die Parametersensitivitätsfunktion anhand \eqref{eq:sys_nl23} für $m_\mathrm{veh}$, $k_\mathrm{ss}$, $d_\mathrm{ss}$, $\mu_{38}$ und $\zeta$ gebildet und für den in \ref{sec:Gangwechsel} definierten Schaltvorgang berechnet. Dabei ist der erste Term in \eqref{eq:Sens_eq} für alle Fälle gleich und kann daher pauschal für alle Parameter angegeben werden zu
 \begin{equation}
-\frac{\partial\pmb{f}(t,\pmb{x}(t,\pmb{p}),\pmb{p})}{\partial \pmb{x}} = \begin{bmatrix} 0 & -0,799\,d_\mathrm{ss} & -1,97\,k_\mathrm{ss} & 1,97\,d_\mathrm{ss} \\  0 & -0,248\,d_\mathrm{ss} & -0,612\,k_\mathrm{ss} & 0,612\,d_\mathrm{ss} \\0 & 0,405 & 0 & -1,0 \\ 0 & \frac{42,6\,d_\mathrm{ss}}{5.69\,m_\mathrm{veh} + 337} & \frac{105\,k_\mathrm{ss}}{569\,m_\mathrm{veh}+337} & -\frac{1052\,d_\mathrm{ss} + 14,7\,\omega_\mathrm{C} + 558\,\partial f_{Roll}/\partial \omega_\mathrm{C}\,m_\mathrm{veh}\,\cos(\zeta)}{56,9\,m_\mathrm{veh} + 3370}\end{bmatrix}
+\begin{split}
+\pmb{J}_\mathrm{p}(t,\pmb{x}(t,\pmb{p}),\pmb{p})) &= \frac{\partial\pmb{f}(t,\pmb{x}(t,\pmb{p}),\pmb{p})}{\partial \pmb{x}}\\
+ &= \begin{bmatrix} 0 & -0,799\,d_\mathrm{ss} & -1,97\,k_\mathrm{ss} & 1,97\,d_\mathrm{ss} \\  0 & -0,248\,d_\mathrm{ss} & -0,612\,k_\mathrm{ss} & 0,612\,d_\mathrm{ss} \\0 & 0,405 & 0 & -1,0 \\ 0 & \frac{42,6\,d_\mathrm{ss}}{5.69\,m_\mathrm{veh} + 337} & \frac{105\,k_\mathrm{ss}}{569\,m_\mathrm{veh}+337} & -\frac{1052\,d_\mathrm{ss} + 14,7\,\omega_\mathrm{C} + 558\,\partial f_{Roll}/\partial \omega_\mathrm{C}\,m_\mathrm{veh}\,\cos(\zeta)}{56,9\,m_\mathrm{veh} + 3370}\end{bmatrix}
+\end{split}
 \end{equation}
 
 \subsection{Sensitivität des Zustandes $\pmb{x}$ von $k_\mathrm{ss}$}
 Die Sensitivität von \eqref{eq:sys_nl23} zum Parameter $k_\mathrm{ss}$ ergibt sich mit \eqref{eq:Sens_eq} zu 
 \begin{align}
-\dot{\pmb{S}}_{k_\mathrm{ss}} = \frac{\partial\pmb{f}(t,\pmb{x}(t,\pmb{p}),\pmb{p})}{\partial \pmb{x}} \pmb{S}_{k_\mathrm{ss}} 
+\dot{\pmb{S}}_{k_\mathrm{ss}} = \left. \pmb{J}_\mathrm{p}(t,\pmb{x}(t,\pmb{p}),\pmb{p}))\right|_{\pmb{p}=\pmb{p}_0} \pmb{S}_{k_\mathrm{ss}} 
 + \begin{bmatrix} -1,97\,\phi \\ -0,612\,\phi \\ 0 \\ \frac{105\,\phi}{5,69\,m_\mathrm{veh} + 337} \end{bmatrix}.
 \end{align}
+In Abbildung \ref{fig:Sens_k} sind die Sensitivitäten der Zustände und deren Ableitungen zu $k_\mathrm{ss}$ abgebildet. Für $t<6\,s$ sind die Sensitivitäten alle bis auf $\frac{\partial \phi_\mathrm{N}}{\partial k_\mathrm{ss,N}}$ gleich Null, da hier $a_\mathrm{C}$ und somit $\phi$ konstant sind hat $k_\mathrm{ss}$ keine Auswirkung auf die Zustände und deren Ableitungen. Lediglich auf $\phi$ hat $k_\mathrm{ss}$ bei gleichbleibender Beschleunigung einen Einfluss. Dieser direkte Zusammenhang ist in \eqref{eq:Tout} leicht ersichtlich. Auch im weiteren Verlauf hat $k_\mathrm{ss}$ nur auf $\phi$ einen signifikanten Einfluss. Dieser Einfluss hängt maßgeblich vom Ausgangsmoment $T_\mathrm{out}$ des Getriebes ab. Damit lässt sich auch die geringere Sensitivität $\frac{\partial \phi_\mathrm{N}}{\partial k_\mathrm{ss,N}}$ nach dem Schaltvorgang erklären, da hier Aufgrund der niedrigeren Getriebeübersetzung $T_\mathrm{out}$ kleiner ist. Die relativ großen Schwingungen in allen Größen von $\dot{\pmb{S}}_{k_\mathrm{ss}}$ für $t>7\,s$ lassen sich auf das abrupte schließen von $B_{05}$ zurück führen. Dieses führt, wie in Abbildung \ref{fig:Gang23_Tandw} zu sehen, zu einem schnellen Abfallen von $T_\mathrm{K05}$ was zu Schwingungen im gesamten Antriebsstrang führt. Die Art der Schwingungen wiederum hängt maßgeblich von $k_\mathrm{ss}$ und $d_\mathrm{ss}$ ab. 
 
 \begin{figure}
 \centering
@@ -116,13 +71,14 @@ Die Sensitivität von \eqref{eq:sys_nl23} zum Parameter $k_\mathrm{ss}$ ergibt s
 
 \subsection{Sensitivität des Zustandes $\pmb{x}$ von $d_\mathrm{ss}$}
 Die Sensitivität von \eqref{eq:sys_nl23} vom Parameter $d_\mathrm{ss}$ ergibt sich mit \eqref{eq:Sens_eq} zu
-\begin{align}
-\pmb{\dot{S}}_{d_\mathrm{ss}} = \frac{\partial\pmb{f}(t,\pmb{x}(t,\pmb{p}),\pmb{p})}{\partial \pmb{x}} \pmb{S}_{d_\mathrm{ss}} 
+\begin{align}\label{eq:sens_d}
+\pmb{\dot{S}}_{d_\mathrm{ss}} = \left. \pmb{J}_\mathrm{p}(t,\pmb{x}(t,\pmb{p}),\pmb{p}))\right|_{\pmb{p}=\pmb{p}_0} \pmb{S}_{d_\mathrm{ss}} 
 + \begin{bmatrix} 1,97\,\omega_\mathrm{C} - 0,799\,\omega_\mathrm{2}\\
                   0,612\,\omega_\mathrm{C} - 0,248\,\omega_\mathrm{2}\\
                                                        0\\
  \frac{1052\,d_\mathrm{ss}}{56,9\,m_\mathrm{veh} + 3370}\,\omega_\mathrm{C}\end{bmatrix}.
 \end{align}
+In Abbildung \ref{fig:Sens_d} sind die Sensitivitäten der Zustände und deren Ableitungen zu $d_\mathrm{ss}$ abgebildet. Diese sind für den gesamten Auswertungszeitraum gegenüber den anderen Parametersensitivitäten sehr gering. Dies liegt vor allem daran, dass der Nominalwert $d_\mathrm{ss,0}$, mit dem \eqref{eq:sens_d} ausgewertet wurde viel kleiner gegenüber $k_\mathrm{ss,0}$ ist und somit einen viel geringeren Einfluss auf die Zustände hat. Die niedrige Sensitivität führt dazu, dass $d_\mathrm{ss}$ durch die Messung von $\pmb{x}$ oder $\pmb{\dot{x}}$ im Folgenden nicht schätzbar ist.
 
 \begin{figure}
 \centering
@@ -137,10 +93,13 @@ Die Sensitivität von \eqref{eq:sys_nl23} vom Parameter $d_\mathrm{ss}$ ergibt s
 
 \subsection{Sensitivität des Zustandes $\pmb{x}$ von $m_\mathrm{veh}$}
 Die Sensitivität von \eqref{eq:sys_nl23} vom Parameter $m_\mathrm{veh}$ ergibt sich mit \eqref{eq:Sens_eq} zu
-\begin{align}
-&\dot{\pmb{S}}_{m_\mathrm{veh}} = \frac{\partial\pmb{f}(t,\pmb{x}(t,\pmb{p}),\pmb{p})}{\partial \pmb{x}} \pmb{S}_{m_\mathrm{veh}} \\
-&+ \begin{bmatrix} 0 \\ 0 \\ 0 \\ -\frac{5,72\cdot 10^{-6}\,\sin(\zeta) + 5,99\cdot 10^{-8}\,\phi\,k_\mathrm{ss} + 2,42\cdot 10^{-8}\,d_\mathrm{ss}\,\omega_2 - 5,99\cdot 10^{-8}\,\omega_\mathrm{C} - 4,18\cdot 10^{-10}\,\omega_\mathrm{C}^2 + 1,88\cdot 10^{-6}\,f_\mathrm{Roll}\,\omega_\mathrm{C}\,\cos(\zeta)}{(5.69\,m_\mathrm{veh} + 337)^2}\end{bmatrix}.
-\end{align}
+\begin{equation}
+\begin{split}
+&\dot{\pmb{S}}_{m_\mathrm{C}} = \left. \pmb{J}_\mathrm{p}(t,\pmb{x}(t,\pmb{p}),\pmb{p}))\right|_{\pmb{p}=\pmb{p}_0} \pmb{S}_{m_\mathrm{C}} \\
+&+ \begin{bmatrix} 0 \\ 0 \\ 0 \\ -\frac{10^{-8}(5,72\cdot 10^{2}\,\sin(\zeta) + 5,99\,\phi\,k_\mathrm{ss} + 2,42\,d_\mathrm{ss}\,\omega_2 - 5,99\,\omega_\mathrm{C} - 4,18\cdot 10^{-2}\,\omega_\mathrm{C}^2 + 1,88\cdot 10^{2}\,f_\mathrm{Roll}\,\omega_\mathrm{C}\,\cos(\zeta))}{(5.69\,m_\mathrm{veh} + 337)^2}\end{bmatrix}.
+\end{split}
+\end{equation}
+Aufgrund der Widerstandsmomenten welche in \eqref{eq:Fr_Fas_Fg} definiert sind, ist $\pmb{S}_{m_\mathrm{C}}$ auch von der Fahrbahnsteigung $\zeta$ abhängig. In Abbildung \ref{fig:Sens_m} sind die Sensitivitäten der Zustände und deren Ableitungen zu $d_\mathrm{ss}$ abgebildet. Aus den Sensitivitätsverläufen der Ableitungen der Drehzahlen $\omega_1$, $\omega_2$ und $\omega_\mathrm{C}$ wird vor allem der direkte Bezug zu $a_\mathrm{C}$ ersichtlich. Beim Abfallen von $a_\mathrm{C}$ sinkt auch der Betrag der Sensitvitäten. Dieser Zusammenhang ergibt sich aus \eqref{eq:dynwc}, wo $m_\mathrm{C}$ in $I_\mathrm{C}^\mathrm{eff}$ eingeht. Folglich ergibt sich auch das Abfallen der Sensitivitätsverläufe von $\omega_1$, $\omega_2$ und $\omega_\mathrm{C}$, da eine positive Änderung der Masse eine Drehzahlabnahme zur Folge hätte und umgekehrt. Die positive Sensitivität $\frac{\partial \phi_\mathrm{N}}{\partial m_\mathrm{C,N}}$ lässt sich darauf zurückführen, dass das mit einer Erhöhung von $m_\mathrm{C}$ die Trägheit im Abtriebsstrang steigen würde und während der Beschleunigung das Widerstandsmoment, was zur positiven Verdrehung der Seitenwelle führen würde. Zusätzlich würde dabei auch $T_\mathrm{res}$ steigen was den Effekt noch verstärkt. Des Weiteren lässt sich am Schwingen aller Einträge von $\dot{\pmb{S}}_{m_\mathrm{C}}$ für $t>7\, s$ auch erkennen, dass die Schwingungen im Antriebsstrang beim abrupten schließen von $B_{05}$ auch von $m_\mathrm{C}$ abhängen.
 
 \begin{figure}
 \centering
@@ -149,17 +108,18 @@ Die Sensitivität von \eqref{eq:sys_nl23} vom Parameter $m_\mathrm{veh}$ ergibt 
 \newlength\mwidth 
 \setlength\mwidth{13cm}
 \input{figures/03_Sensitivitaetsanalyse/02_Sensitivitaet/Sens_m.tex}
-\caption{Normierte Sensitivitäten der Zustände und deren Ableitungen von $m_\mathrm{veh}$}
+\caption{Normierte Sensitivitäten der Zustände und deren Ableitungen von $m_\mathrm{C}$}
 \label{fig:Sens_m}
 \end{figure}
 
 \subsection{Sensitivität des Zustandes $\pmb{x}$ von $\zeta$}
 Die Sensitivität von \eqref{eq:sys_nl23} vom Parameter $\zeta$ ergibt sich mit \eqref{eq:Sens_eq} zu
 \begin{align}
-\dot{\pmb{S}}_{\zeta} = \frac{\partial\pmb{f}(t,\pmb{x}(t,\pmb{p}),\pmb{p})}{\partial \pmb{x}} \pmb{S}_{\zeta}
+\dot{\pmb{S}}_{\zeta} = \left. \pmb{J}_\mathrm{p}(t,\pmb{x}(t,\pmb{p}),\pmb{p}))\right|_{\pmb{p}=\pmb{p}_0} \pmb{S}_{\zeta}
 + \begin{bmatrix} 0 \\ 0 \\ 0 \\ \frac{-m_\mathrm{veh}\,(170\,\cos(\zeta) - 55,8\,f_\mathrm{Roll}\,\omega_\mathrm{C}\,\sin(\zeta))}{5,69\,m_\mathrm{veh} + 337}\end{bmatrix}.
 \end{align}
-
+In Abbildung \ref{fig:Sens_z} sind die Sensitivitäten der Zustände und deren Ableitungen zu $\zeta$ abgebildet. Die Sensitivitätsverläufe der Drehzahlen fallen alle nahezu konstant ab. Die Änderung in den Ableitungen ergibt sich bei den Drehzahlen durch die Änderung von $F_\mathrm{r}$ in Abhängigkeit der Fahrzeuggeschwindigkeit $v$. Während eine positive Änderung von $\zeta$ die Rollreibung $F_\mathrm{r}$ reduziert und somit dabei die Drehzahlen steigen, hat die Änderung bei $F_\mathrm{inc}$ den gegenteiligen Effekt. Durch die steigende Geschwindigkeit wird nun $F_\mathrm{r}$ größer und somit der drehzahlerhöhende Effekt durch eine Änderung von $\zeta$ verstärkt.
+ 
 \begin{figure}
 \centering
 \newlength\zheight 
@@ -168,30 +128,54 @@ Die Sensitivität von \eqref{eq:sys_nl23} vom Parameter $\zeta$ ergibt sich mit 
 \setlength\zwidth{13cm}
 \input{figures/03_Sensitivitaetsanalyse/02_Sensitivitaet/Sens_z.tex}
 \caption{Normierte Sensitivitäten der Zustände und deren Ableitungen von $\zeta$}
-\label{fig:Sens_m}
+\label{fig:Sens_z}
 \end{figure}
 
-\subsection{Sensitivität des Zustandes $\pmb{x}$ von $\mu_{38}$}
+
+\subsection{Sensitivität des Zustandes $\pmb{x}$ von $\mu_{38}$}\label{ssec:sens_mue38}
 Wie in \ref{sec:mod_reib} beschrieben konvergiert \eqref{eq:T_Cl} im Gleitbereich gegen das statische Reibmoment \eqref{eq:T_ClSS}. Somit kann $T_{38}$ in \eqref{eq:u_exnl23} ersetzt werden durch
 \begin{equation}
-T_\mathrm{Cl,SS,38} = k_\mathrm{sign}(\Delta \omega_{38},z_{38})\,2\,N_{\mathrm{Disc,38}}\,r_{\mathrm{m},38}\,\mu(p_\mathrm{N,38},T_\mathrm{Oil},\Delta \omega_{38})F_\mathrm{N,38}.
+T_\mathrm{Cl,SS,38} = k_\mathrm{sign}(\Delta \omega_{38},z_{38})\,2\,N_{\mathrm{Disc,38}}\,r_{\mathrm{m},38}\,\mu_{38}\, F_\mathrm{N,38}.
 \end{equation}
 und dann wie oben die Sensitvitätsdifferentialgleichung (SDG) bezüglich des Parameters $\mu_{38}$ berechnet werden. Da die Richtung der Reibkraft bekannt ist wird dabei $k_\mathrm{sign}(\Delta \omega_{38},z_{38})$ vernachlässigt. Damit ergibt sich die SDG zu
 \begin{align}
-\dot{\pmb{S}}_{\mu_{38}} = \frac{\partial\pmb{f}(t,\pmb{x}(t,\pmb{p}),\pmb{p})}{\partial \pmb{x}} \pmb{S}_{\mu_{38}}
+\dot{\pmb{S}}_{\mu_{38}} = \left. \pmb{J}_\mathrm{p}(t,\pmb{x}(t,\pmb{p}),\pmb{p}))\right|_{\pmb{p}=\pmb{p}_0} \pmb{S}_{\mu_{38}}
 + \begin{bmatrix} -5,58\,N_\mathrm{disc,38}\,r_{\mathrm{m},38} \\ 0,0270\,N_\mathrm{disc,38}\,r_{\mathrm{m},38} \\ 0 \\ 0 \end{bmatrix}\,F_\mathrm{N,38}.
 \end{align}
-wobei diese Gleichung wie oben beschrieben nur im Gleitbereich mit $\Delta \omega_{38}\neq 0$ gültig ist.
-
+wobei diese Gleichung wie oben beschrieben nur im Gleitbereich mit $\Delta \omega_{38}\neq 0$ gültig ist. In Abbildung \ref{fig:Sens_mu38} sind die Sensitivitäten der Zustände und deren Ableitungen zu $\mu_{38}$ abgebildet. Da im betrachteten Schaltvorgang, wie in Abbildung \ref{fig:Gang23_Tandw} zu sehen, erst ab $t \approx 5,9\, s$ die Kupplung $K_{38}$ öffnet, also $\Delta \omega_{38}\neq 0$ ist, sind die Sensitivitäten erst ab dieser Zeit gültig. Für eine positive Änderung von $\mu_{38}$ würde das übertragbare Drehmoment $T_\mathrm{K38}$ zwar steigen, jedoch bleiben die Lastmomente gleich. Daher ergibt sich bei den Drehzahlen nur eine sehr geringe Sensitivität. Nur bei $\omega_1$ liegt die Sensitivität im Promillebereich. Zur Schätzung von $\mu_{38}$ ist eine die Messung von $\omega_1$ also essentiell. Hier nimmt die Sensitivitätänderung in Abhängigkeit vom Übertragen Moment an der Kupplung ab. Sobald die Kupplung ganz geöffnet ist hat $\mu_{38}$ offensichtlich keinen Einfluss mehr auf die Zustände.
 \begin{figure}
 \centering
 \newlength\muheight 
 \setlength\muheight{8cm}
 \newlength\muwidth 
 \setlength\muwidth{13cm}
-\input{figures/03_Sensitivitaetsanalyse/02_Sensitivitaet/Sens_mu.tex}
+\input{figures/03_Sensitivitaetsanalyse/02_Sensitivitaet/Sens_mu38.tex}
 \caption{Normierte Sensitivitäten der Zustände und deren Ableitungen von $\mu_{38}$}
-\label{fig:Sens_mu}
+\label{fig:Sens_mu38}
+\end{figure}
+
+\subsection{Sensitivität des Zustandes $\pmb{x}$ von $\mu_{05}$}
+Analog zu \ref{ssec:sens_mue38} kann auch $T_{05}$ in \eqref{eq:u_exnl23} im Gleitbereich durch
+\begin{equation}
+T_\mathrm{Cl,SS,05} = k_\mathrm{sign}(\Delta \omega_{05},z_{05})\,2\,N_{\mathrm{Disc,05}}\,r_{\mathrm{m},05}\,\mu(p_\mathrm{N,05},T_\mathrm{Oil},\Delta \omega_{05})F_\mathrm{N,05}
+\end{equation}
+ersetzt werden. Damit lässt sich entsprechend \eqref{eq:Sens_eq} die SDG für $\mu_{05}$ berechnen zu
+\begin{align}\label{eq:Sens_mue05}
+\dot{\pmb{S}}_{\mu_{05}} = \left. \pmb{J}_\mathrm{p}(t,\pmb{x}(t,\pmb{p}),\pmb{p}))\right|_{\pmb{p}=\pmb{p}_0} \pmb{S}_{\mu_{05}}
++ \begin{bmatrix} -34,1\,N_\mathrm{disc,05}\,r_{\mathrm{m},05} \\ -4.81\,N_\mathrm{disc,05}\,r_{\mathrm{m},05} \\ 0 \\ 0 \end{bmatrix}\,F_\mathrm{N,05}.
+\end{align}
+In Abbildung \ref{fig:Sens_mu05} sind die Sensitivitäten der Zustände und deren Ableitungen zu $\mu_{05}$ abgebildet. Vor der Momentenübergabe hat $\mu_{05}$ aufgrund der offenen Bremse $B_{05}$ keinen Einfluss auf die Zustände. Ab dann hat eine Änderung von $\mu_{05}$ den größten Einfluss auf $\omega_1$. Im Vergleich zu $\mu_{38}$ hat $\mu_{05}$ jedoch auch eine relativ große Wirkung auf $\omega_2$. Dies liegt an der niedrigeren Übersetzung vom Zahnrad 5 auf das Zahnrad 2. Dadurch hat eine Änderung von $\mu_{05}$ und damit $T_{05}$ eine größere Drehzahländerung von $\omega_2$ zur Folge. Dieser Effekt überträgt sich dann auch auf $\omega_C$. Ein Vergleich vom Verlauf von $\frac{\partial \dot{\omega}_\mathrm{1,N}}{\partial \mu_\mathrm{05,N}}$ und $T_\mathrm{B05}$ zeigt, dass auch diese Sensitivität vom übertragenen Moment an der entsprechenden Bremse abhängt. Ab $t\approx 6,98\;s$ ist $\omega_5 = 0$, wodurch \eqref{eq:Sens_mue05} und damit die Sensitvitätsverläufe ab diesem Zeitpunkt nicht gültig sind. 
+
+
+\begin{figure}
+\centering
+\newlength\muuheight 
+\setlength\muuheight{8cm}
+\newlength\muuwidth 
+\setlength\muuwidth{13cm}
+\input{figures/03_Sensitivitaetsanalyse/02_Sensitivitaet/Sens_mu05.tex}
+\caption{Normierte Sensitivitäten der Zustände und deren Ableitungen von $\mu_{05}$}
+\label{fig:Sens_mu05}
 \end{figure}
 
 \section{Fisher-Informationsmatrix}\label{sec:FiIn}
@@ -199,7 +183,7 @@ Im Abschnitt \ref{sec:para_sens} wurde gezeigt welche Auswirkung Ungenauigkeiten
 \begin{equation}\label{eq:stoch_err}
 z_{ik} = y_i(\pmb{x}_0,\pmb{u},\pmb{p}^*,t_k) + \epsilon_i(t_k).
 \end{equation}
-Dabei ist $z_{ik}$ der $i$-te gemessene Ausgang zum Zeitpunkt $t_k$ und $y_i$ die $i$-te Messgröße in Abhängigkeit des Anfangszustands $\pmb{x}_0$, des Eingangs $\pmb{u}$, dem exakten Parametervektor $\pmb{p}^*$ zum Zeitpunkt $t_k$. Stochastische Systemstörungen und Messfehler der Eingangsgrößen werden vernachlässigt, sodass $\epsilon_i(t_k)$ nur nicht-modellierte Effekte und Meßfehler berücksichtigt. Des Weiteren wird angenommen, dass die Fehler  $\epsilon_i(t_k) = \epsilon_{ik}$ statistisch unabhängig sind, eine Normalverteilung mit dem Mittelwert Null vorliegt und der Fehler einer Messgröße zum Zeitpunkt $t_k$ unabhängig vom Fehler am Zeitpunkt $t_{k+1}$ ist. Damit lässt sich die Wahrscheinlichkeitsdichtefunktion für die Fehler $\pmb{\epsilon} = [\pmb{\epsilon}_1^T,\dots,\pmb{\epsilon}_N^T]^T$ und $\pmb{\epsilon}_k = [\epsilon_{1k},\dots,\epsilon_{nk}]^T$ berechnen zu
+Dabei ist $z_{ik}$ der $i$-te gemessene Ausgang zum Zeitpunkt $t_k$ und $y_i$ die $i$-te Ausgangsgröße in Abhängigkeit des Anfangszustands $\pmb{x}_0$, des Eingangs $\pmb{u}$, dem exakten Parametervektor $\pmb{p}^*$ zum Zeitpunkt $t_k$. Stochastische Systemstörungen und Messfehler der Eingangsgrößen werden vernachlässigt, sodass $\epsilon_i(t_k)$ nur nicht-modellierte Effekte und Meßfehler berücksichtigt. Des Weiteren wird angenommen, dass die Fehler  $\epsilon_i(t_k) = \epsilon_{ik}$ statistisch unabhängig sind, eine Normalverteilung mit dem Mittelwert Null vorliegt und der Fehler einer Messgröße zum Zeitpunkt $t_k$ unabhängig vom Fehler am Zeitpunkt $t_{k+1}$ ist. Damit lässt sich die Wahrscheinlichkeitsdichtefunktion für die Fehler $\pmb{\epsilon} = [\pmb{\epsilon}_1^T,\dots,\pmb{\epsilon}_N^T]^T$ und $\pmb{\epsilon}_k = [\epsilon_{1k},\dots,\epsilon_{nk}]^T$ berechnen zu
 \begin{equation}\label{eq:wdf_eps}
 P(\pmb{\epsilon}) = (2\, \pi)^{-\frac{n\,N}{2}}\prod^N_{k=1}\left(\mathrm{det}\,\pmb{C}(t_k)\right)^{-1/2}\mathrm{exp}\left(-\frac{1}{2}\sum^N_{k=1}\sum^n_{i=1}\frac{\epsilon^2_{ik}}{\sigma^2_{ik}}\right).
 \end{equation}
@@ -241,7 +225,7 @@ Dabei ist $\left.\frac{\partial y_i}{\partial \pmb{p}}\right|_{\pmb{p}^*,t_k}$ d
 \end{equation}
 berechnet. Dabei ist $r_i$ der relative Fehler und $y_i^\mathrm{min}$ der kleinste absolute Fehler, welcher festgelegt wird auf $1\%$ des maximalen Messdatenwertes $z^\mathrm{max}_{ik}$.
 
-Um bewerten zu können ob eine bestimmte Parameterkombination während eines Zeitbereichs genügend genau geschätzt werden kann, wird eine maximal zulässige normierte Streuung definiert. Diese berechnet sich aus der normierten Grenzvarianz des $j$-ten Parameters $\sigma_{jj,m}$ zu 
+Um bewerten zu können ob eine bestimmte Parameterkombination während eines Zeitbereichs genügend genau geschätzt werden kann, wird eine maximal zulässige normierte Streuung $\gamma_\mathrm{g}$ definiert. Diese Streuung berechnet sich aus der normierten Grenzvarianz des $j$-ten Parameters $\sigma_{jj,m}$ zu 
 \begin{equation}
 \gamma_{j,m} = \sqrt{\sigma_{jj,m}}/p_j.
 \end{equation}
@@ -258,55 +242,82 @@ Der Vektor der transformierten Varianz setzt sich im untransformierten Raum aus 
 \begin{equation}\label{Pararaum}
 \sigma_{j,t} \pmb{v}_j = \sum_{i=1}^m \sigma_{ij,t} \pmb{e}_i
 \end{equation}
-mit $\pmb{V} = [\pmb{v}_1\; \pmb{v}_2\; \dots \;\pmb{v}_m]$ und den Einheitsvektoren $\pmb{e}_i$. Mit \eqref{Pararaum} kann man die Beeinflussung der Varianzen der transformierten Parameter durch die der untransformierten Parameter gut erkennen und dementsprechend den Einflussreichsten Parameter streichen. Auf diese Weise wird im Folgenden für die einzelnen Schaltphasen die Parameterkombination soweit reduziert bis die Streuung von jedem Parameter kleiner ist als die Grenzstreuung.
+mit $\pmb{V} = [\pmb{v}_1\; \pmb{v}_2\; \dots \;\pmb{v}_m]$ und den Einheitsvektoren $\pmb{e}_i$. Mit \eqref{Pararaum} kann man die Beeinflussung der Varianzen der transformierten Parameter durch die der untransformierten Parameter gut erkennen und dementsprechend den Einflussreichsten Parameter streichen. Auf diese Weise wird im Folgenden für die einzelnen Schaltphasen die Parameterkombination soweit reduziert bis die Streuung von jedem Parameter kleiner ist als die Grenzstreuung. Diese wird hier auf $\gamma_{G}=10\%$ festgelegt.
 Der Vektor der Messgrößen ist dabei definiert als
-\begin{equation}
+\begin{equation}\label{eq:yex23}
 \pmb{y}_{ex,23} = \underbrace{\begin{bmatrix} 1 & 0 & 0 & 0\\ 0 & 1 & 0 & 0\\ 0 & 0 & 0 & 1\end{bmatrix}}_{\pmb{C}_\mathrm{M}} \pmb{x}_{ex,23}.
 \end{equation} 
 Des Weiteren wird durch die zusätzliche Berechnung der Fisher-Informationsmatrix unter Berücksichtigung eines erweiterten Messgrößenvektors
 \begin{equation}
 \pmb{y}_{ex,23a} = \begin{bmatrix} \pmb{y}_{ex,23} \\ \dot{w}_\mathrm{C} \end{bmatrix}
 \end{equation}
-geschaut wie sich die zusätzliche Messgröße auf den Betrag der Streuungen auswirkt. Für die Radbeschleunigung $\dot{w}_\mathrm{C}$ wird jedoch eine deutlich höhere Messungenauigkeit angenommen.
-\subsection{Berechnung der Fisher-Informationsmatrix im 2. Gang $(5,5\, s\leq\, t<6,0\, s )$}
-Die Parameter $k_\mathrm{ss}$, $d_\mathrm{ss}$ und $\mu_{38}$ werden bei der Betrachtung im zweiten Gang von Anfang an vernachlässigt, da aus den Abbildungen \ref{fig:Sens_k}, \ref{fig:Sens_d} und \ref{fig:Sens_mu} ersichtlich ist, dass die Messgrößen in diesem Zustand nicht sensitiv sind für Änderungen dieser Parameter. Daraus folgt direkt, dass diese Parameter mit den gegebenen Messgrößen in diesem Zustand nicht identifizierbar sind.
+untersucht wie sich die zusätzliche Messgröße auf den Betrag der Streuungen auswirkt. Für die Radbeschleunigung $\dot{w}_\mathrm{C}$ wird jedoch eine deutlich höhere Messungenauigkeit angenommen. Für die Berechnung der prozentualen Streuungen $\gamma_k$ und $\gamma_d$ der Parameter $k_\mathrm{ss}$ und $d_\mathrm{ss}$ ergeben sich schon für die separate Schätzung über den gesamten Schaltvorgang sehr große Werte. Daher werden diese Parameter im Folgenden nicht mehr berücksichtigt. Die Werte der Streuungen können Abbildung \ref{fig:Streuung_k_d} entnommen werden.
+
+\begin{figure}[ht]
+  \centering
+ \includegraphics[scale=0.9]{figures/03_Sensitivitaetsanalyse/03_Fisher_Info/d_k_separately.eps}
+  \caption{Streuungen aus Fisher-Informationsmatrix für die separate Schätzung von $k_\mathrm{ss}$ und $d_\mathrm{ss}$ über den gesamten Schaltvorgang mit $\dot{\omega}_\mathrm{C,mes}$ als Messgröße und ohne.}
+  \label{fig:Streuung_k_d}
+  \end{figure} 
+
+\subsection{Berechnung der Fisher-Informationsmatrix im 2. Gang $(5,5\, s\leq\, t<6,0\, s )$}\label{ssec:FI2Gang}
+Der Parameter $\mu_{38}$ wird bei der Betrachtung im zweiten Gang von Anfang an vernachlässigt. Da in diesem Zeitraum die Kupplung $K_{38}$ vollständig geschlossen ist und somit $\omega_{38} = 0$, können die Sensitivitäten zu $\mu_{38}$ in diesem Zeitraum nicht berücksichtigt werden. Auch der Paramter $\mu_{05}$ hat in dieser Phase aufgrund der offenen Bremse $B_{05}$ keine Einfluss und wird daher vernachlässigt. Die Streuungen $\gamma_{\zeta}$ und $\gamma_{m_\mathrm{C}}$ aus der Fisher-Informationsmatrix für eine simultane Schätzung der übrigen beiden Parameter zeigt Abbildung \ref{fig:Gang2_m_z_sim}. Diese sind Aufgrund der ähnlichen Sensitivitätsverläufe der Messgrößen in Abbildung \ref{fig:Sens_m} und \ref{fig:Sens_z} sowohl ohne als auch mit der Messung von $\dot{\omega}_\mathrm{C}$ exorbitant hoch. Anders gesagt haben die beiden Parameter während einer gleichförmigen Beschleunigung die gleiche Wirkung auf die Zustände. Die simultane Schätzung der beiden Parameter mit den vorhandenen Messgrößen würde in diesem Zeitraum also keinen Sinn machen. Im Gegenteil dazu zeigt Abbildung \ref{fig:Gang2_m_z_sep}, dass die Streuungen für eine separate Schätzung von $m_\mathrm{C}$ und $\zeta$ sehr gering sind. Da die hohen Sensitivitäten der Messgrößen in $\pmb{y}_\mathrm{ex,23}$ schon zu sehr großen Einträgen in  $\pmb{F}$ führen, hat die zusätzliche Messung von $\dot{\omega}_\mathrm{C}$ hier keinen großen Einfluss mehr auf den Betrag der Streuungen.
+
 
 \begin{figure}[ht]
   \centering
  \includegraphics[scale=0.9]{figures/03_Sensitivitaetsanalyse/03_Fisher_Info/Gang2/m_vs_zeta.eps}
-  \caption{Streuungen der Fisher-Informationsmatrix für die simultane Schätzung von $m$ und $\zeta$ im 2. Gang mit $\dot{\omega}_\mathrm{C,mes}$ als Messgröße und ohne.}
+  \caption{Streuungen aus Fisher-Informationsmatrix für die simultane Schätzung von $m$ und $\zeta$ im 2. Gang mit $\dot{\omega}_\mathrm{C,mes}$ als Messgröße und ohne.} \label{fig:Gang2_m_z_sim}
 \end{figure} 
 
 \begin{figure}[ht]
   \centering
  \includegraphics[scale=0.9]{figures/03_Sensitivitaetsanalyse/03_Fisher_Info/Gang2/m_vs_zeta_einzeln.eps}
-  \caption{Streuungen der Fisher-Informationsmatrix für die einzelne Schätzung von $m$ und $\zeta$ im 2. Gang mit $\dot{\omega}_\mathrm{C,mes}$ als Messgröße und ohne.}
+  \caption{Streuungen aus Fisher-Informationsmatrix für die einzelne Schätzung von $m$ und $\zeta$ im 2. Gang mit $\dot{\omega}_\mathrm{C,mes}$ als Messgröße und ohne.}\label{fig:Gang2_m_z_sep}
 \end{figure} 
 
-\subsection{Berechnung der Fisher-Informationsmatrix während der Momentenübergabe}
+\subsection{Berechnung der Fisher-Informationsmatrix während der Momentenübergabe $(6\, s\leq\, t<6,5\, s )$}\label{ssec:FIMÜ}
+
+Während der Momentenübergabe befindet sich $K_{38}$ und $B_{05}$ im Gleitbereich. Somit können die Sensitivitäten zu $\mu_{38}$ und $\mu_{05}$ nun auch mit berücksichtigt werden.
+In Abbildung \ref{fig:MÜ_m_mu38_mue05_zeta} sind die Beträge der Streuungen $\gamma_{m_\mathrm{C}}$, $\gamma_{\mu_{38}}$, $\gamma_{\mu_{05}}$ und $\gamma_{\zeta}$  und  veranschaulicht. Hier liegen vor allem die Streuungen $\gamma_{\zeta}$  und $\gamma_\mathrm{m}$ ohne die Messung von $\dot{\omega}_\mathrm{C}$ sehr hoch. Jedoch deutlich derer im 2. Gang. Dies hat den Grund, dass nun eine Änderung der Beschleunigung vorliegt. Während der Einfluss von $\zeta$ beschleunigungsunabhängig ist, wirkt sich die Trägheit von $m_\mathrm{C}$ maßgeblich auf die Beschleunigung aus. Somit sind die Sensitivitätsverläufe der Messgrößen zu $m_\mathrm{C}$ und $\zeta$ nun unterschiedlich. Eine deutlich geringer Streuung ergibt sich unter der Berücksichtigung von $\dot{\omega}_\mathrm{C}$. Trotzdem liegt auch hier $\gamma_{\zeta}$ für eine praktische Anwendung noch zu hoch. Daher macht es Sinn, die Schätzung während der Momentenübergabe auf die Kombination von $m_\mathrm{C}$, $\mu_{38}$ und $\mu_{05}$ oder $\zeta$, $\mu_{38}$ und $\mu_{38}$ zu beschränken. Die sich daraus ergebenden Streuungen können Abbildung \ref{fig:MÜ_m_mu_sim} und \ref{fig:MÜ_z_mu_sim} entnommen werden. Wie in \ref{ssec:FI2Gang} führt auch hier eine separate Schätzung von $m_\mathrm{C}$ und $\zeta$ zu deutlich kleineren Streuungen. Diese liegen nun für beide Parameterkombinationen auch ohne der Berücksichtigung von $\dot{\omega}_\mathrm{C}$ unter der Grenzstreuung $\gamma_\mathrm{G}$.
 
 \begin{figure}[ht]
   \centering
- \includegraphics[scale=0.9]{figures/03_Sensitivitaetsanalyse/03_Fisher_Info/Muebergabe/m_mu38_zeta.eps}
-  \caption{Streuungen der Fisher-Informationsmatrix für die simultane Schätzung von $m$, $\mu_{38}$ und $\zeta$ während der Momentenübergabe mit $\dot{\omega}_\mathrm{C,mes}$ als Messgröße und ohne.}
-\end{figure} 
-
-\begin{figure}[ht]
-  \centering
- \includegraphics[scale=0.9]{figures/03_Sensitivitaetsanalyse/03_Fisher_Info/Muebergabe/m_mu38.eps}
-  \caption{Streuungen der Fisher-Informationsmatrix für die simultane Schätzung von $m$, $\mu_{38}$ während der Momentenübergabe mit $\dot{\omega}_\mathrm{C,mes}$ als Messgröße und ohne.}
+ \includegraphics[scale=0.9]{figures/03_Sensitivitaetsanalyse/03_Fisher_Info/Muebergabe/m_mu38_mue05_zeta.eps}
+  \caption{Streuungen aus Fisher-Informationsmatrix für die simultane Schätzung von $m$, $\mu_{38}$, $\mu_{38}$ und $\zeta$ während der Momentenübergabe mit $\dot{\omega}_\mathrm{C,mes}$ als Messgröße und ohne.}\label{fig:MÜ_m_mu38_mue05_zeta}
 \end{figure} 
 
 \begin{figure}[ht]
   \centering
- \includegraphics[scale=0.9]{figures/03_Sensitivitaetsanalyse/03_Fisher_Info/Muebergabe/mu38_zeta.eps}
-  \caption{Streuungen der Fisher-Informationsmatrix für die simultane Schätzung von $\mu_{38}$ und $\zeta$ während der Momentenübergabe mit $\dot{\omega}_\mathrm{C,mes}$ als Messgröße und ohne.}
+ \includegraphics[scale=0.9]{figures/03_Sensitivitaetsanalyse/03_Fisher_Info/Muebergabe/m_mu38_mue05.eps}
+  \caption{Streuungen aus Fisher-Informationsmatrix für die simultane Schätzung von $m$, $\mu_{38}$ und $\mu_{05}$ während der Momentenübergabe mit $\dot{\omega}_\mathrm{C,mes}$ als Messgröße und ohne.}\label{fig:MÜ_m_mu_sim}
 \end{figure} 
-
-\subsection{Berechnung der Fisher-Informationsmatrix während der Synchronisation}
 
 \begin{figure}[ht]
   \centering
- \includegraphics[scale=0.9]{figures/03_Sensitivitaetsanalyse/03_Fisher_Info/Sync/m_zeta_Sync.eps}
-  \caption{Streuungen der Fisher-Informationsmatrix für die simultane Schätzung von $m$ und $\zeta$ während der Synchronisation mit $\dot{\omega}_\mathrm{C,mes}$ als Messgröße und ohne.}
+ \includegraphics[scale=0.9]{figures/03_Sensitivitaetsanalyse/03_Fisher_Info/Muebergabe/mu38_mue05_zeta.eps}
+  \caption{Streuungen aus Fisher-Informationsmatrix für die simultane Schätzung von $\mu_{38}$, $\mu_{05}$ und $\zeta$ während der Momentenübergabe mit $\dot{\omega}_\mathrm{C,mes}$ als Messgröße und ohne.}\label{fig:MÜ_z_mu_sim}
 \end{figure} 
+
+\subsection{Berechnung der Fisher-Informationsmatrix während der Synchronisation $(6,5\, s\leq\, t<7,0\, s )$}
+Während der Synchronisation ist die Kupplung $K_{38}$ geöffnet. Der Parameter $\mu_{38}$ hat somit keinen Einfluss mehr auf die Zustände und wird daher in dieser Phase vernachlässigt. Die Beträge der Streuungen $\gamma_{m_\mathrm{C}}$, $\gamma_{\mu_{05}}$ und $\gamma_{\zeta}$ sind in Abbildung \ref{fig:m_mue05_zeta_Sync} dargestellt. Wie in \ref{ssec:FI2Gang} und \ref{ssec:FIMÜ} liegen auch hier die Werte von $\gamma_{m_\mathrm{C}}$ und $\gamma_{\zeta}$ für eine simultane Schätzung sehr hoch. Jedoch können die Streuungen mit Hilfe der Messung von $\dot{\omega}_\mathrm{C}$ wieder signifikant  gesenkt werden. In diesem Fall wären alle Streuungen schon kleiner als $\gamma_\mathrm{G}$. Werden $m_\mathrm{C}$ und $\zeta$ separat geschätzt können die Streuungen, wie in \ref{fig:m_mue05_Sync} und \ref{fig:mue05_zeta_Sync} veranschaulicht, noch weiter gesenkt werden. Hier hat vor allem die Berücksichtigung von $\dot{\omega}_\mathrm{C}$ einen positiven Einfluss auf $\gamma_{m_\mathrm{C}}$.
+
+\begin{figure}[ht]
+  \centering
+ \includegraphics[scale=0.9]{figures/03_Sensitivitaetsanalyse/03_Fisher_Info/Sync/m_mue05_zeta_Sync.eps}
+  \caption{Streuungen aus Fisher-Informationsmatrix für die simultane Schätzung von $m$, $\mu_{05}$ und $\zeta$ während der Synchronisation mit $\dot{\omega}_\mathrm{C,mes}$ als Messgröße und ohne.}\label{fig:m_mue05_zeta_Sync}
+\end{figure} 
+
+\begin{figure}[ht]
+  \centering
+ \includegraphics[scale=0.9]{figures/03_Sensitivitaetsanalyse/03_Fisher_Info/Sync/m_mue05_Sync.eps}
+  \caption{Streuungen aus Fisher-Informationsmatrix für die simultane Schätzung von $m$ und $\mu_{05}$ während der Synchronisation mit $\dot{\omega}_\mathrm{C,mes}$ als Messgröße und ohne.}
+  \label{fig:m_mue05_Sync}
+\end{figure}
+
+\begin{figure}[ht]
+  \centering
+ \includegraphics[scale=0.9]{figures/03_Sensitivitaetsanalyse/03_Fisher_Info/Sync/mue05_zeta_Sync.eps}
+  \caption{Streuungen aus Fisher-Informationsmatrix für die simultane Schätzung von $\mu_{05}$ und $\zeta$ während der Synchronisation mit $\dot{\omega}_\mathrm{C,mes}$ als Messgröße und ohne.}
+  \label{fig:mue05_zeta_Sync}
+\end{figure}

@@ -17,35 +17,43 @@
 \defcounter {refsection}{0}\relax 
 \contentsline {figure}{\numberline {\relax 2.2}{\ignorespaces Schematische Darstellung des Abtriebsstrangs\relax }}{22}{figure.caption.7}
 \defcounter {refsection}{0}\relax 
+\contentsline {figure}{\numberline {\relax 2.3}{\ignorespaces Zeitlicher Verlauf der Drehzahlen und Verdrehung der Seitenwellen beim Gangwechsel\relax }}{26}{figure.caption.8}
+\defcounter {refsection}{0}\relax 
+\contentsline {figure}{\numberline {\relax 2.4}{\ignorespaces Zeitlicher Verlauf der Beschleunigungen und Verdrehungsgeschwindigkeit der Seitenwellen beim Gangwechsel\relax }}{27}{figure.caption.9}
+\defcounter {refsection}{0}\relax 
+\contentsline {figure}{\numberline {\relax 2.5}{\ignorespaces Zeitlicher Verlauf der \IeC {\"u}bertragenen Drehmomenten und der Differenzgeschwindigkeiten an $K_{38}$ und $B_{05}$, des Eingangsmoments $T_{\textrm {In}}$ und des Widerstandsmoments $T_{\textrm {res}}$ beim Gangswechsel.\relax }}{28}{figure.caption.10}
+\defcounter {refsection}{0}\relax 
 \addvspace {10\p@ }
 \defcounter {refsection}{0}\relax 
-\contentsline {figure}{\numberline {\relax 3.1}{\ignorespaces Zeitlicher Verlauf der Drehzahlen und Verdrehung der Seitenwellen beim Gangwechsel\relax }}{27}{figure.caption.8}
+\contentsline {figure}{\numberline {\relax 3.1}{\ignorespaces Normierte Sensitivit\IeC {\"a}ten der Zust\IeC {\"a}nde und deren Ableitungen von $k_\mathrm {ss}$\relax }}{32}{figure.caption.11}
 \defcounter {refsection}{0}\relax 
-\contentsline {figure}{\numberline {\relax 3.2}{\ignorespaces Zeitlicher Verlauf der Beschleunigungen und Verdrehungsgeschwindigkeit der Seitenwellen beim Gangwechsel\relax }}{28}{figure.caption.9}
+\contentsline {figure}{\numberline {\relax 3.2}{\ignorespaces Normierte Sensitivit\IeC {\"a}ten der Zust\IeC {\"a}nde und deren Ableitungen von $d_\mathrm {ss}$\relax }}{32}{figure.caption.12}
 \defcounter {refsection}{0}\relax 
-\contentsline {figure}{\numberline {\relax 3.3}{\ignorespaces Zeitlicher Verlauf der \IeC {\"u}bertragenen Drehmomenten und der Differenzgeschwindigkeiten an $K_{38}$ und $B_{05}$, des Eingangsmoments $T_{\textrm {In}}$ und des Widerstandsmoments $T_{\textrm {res}}$ beim Gangswechsel.\relax }}{34}{figure.caption.10}
+\contentsline {figure}{\numberline {\relax 3.3}{\ignorespaces Normierte Sensitivit\IeC {\"a}ten der Zust\IeC {\"a}nde und deren Ableitungen von $m_\mathrm {C}$\relax }}{33}{figure.caption.13}
 \defcounter {refsection}{0}\relax 
-\contentsline {figure}{\numberline {\relax 3.4}{\ignorespaces Normierte Sensitivit\IeC {\"a}ten der Zust\IeC {\"a}nde und deren Ableitungen von $k_\mathrm {ss}$\relax }}{35}{figure.caption.11}
+\contentsline {figure}{\numberline {\relax 3.4}{\ignorespaces Normierte Sensitivit\IeC {\"a}ten der Zust\IeC {\"a}nde und deren Ableitungen von $\zeta $\relax }}{34}{figure.caption.14}
 \defcounter {refsection}{0}\relax 
-\contentsline {figure}{\numberline {\relax 3.5}{\ignorespaces Normierte Sensitivit\IeC {\"a}ten der Zust\IeC {\"a}nde und deren Ableitungen von $d_\mathrm {ss}$\relax }}{35}{figure.caption.12}
+\contentsline {figure}{\numberline {\relax 3.5}{\ignorespaces Normierte Sensitivit\IeC {\"a}ten der Zust\IeC {\"a}nde und deren Ableitungen von $\mu _{38}$\relax }}{35}{figure.caption.15}
 \defcounter {refsection}{0}\relax 
-\contentsline {figure}{\numberline {\relax 3.6}{\ignorespaces Normierte Sensitivit\IeC {\"a}ten der Zust\IeC {\"a}nde und deren Ableitungen von $m_\mathrm {veh}$\relax }}{36}{figure.caption.13}
+\contentsline {figure}{\numberline {\relax 3.6}{\ignorespaces Normierte Sensitivit\IeC {\"a}ten der Zust\IeC {\"a}nde und deren Ableitungen von $\mu _{05}$\relax }}{36}{figure.caption.16}
 \defcounter {refsection}{0}\relax 
-\contentsline {figure}{\numberline {\relax 3.7}{\ignorespaces Normierte Sensitivit\IeC {\"a}ten der Zust\IeC {\"a}nde und deren Ableitungen von $\zeta $\relax }}{36}{figure.caption.14}
+\contentsline {figure}{\numberline {\relax 3.7}{\ignorespaces Streuungen aus Fisher-Informationsmatrix f\IeC {\"u}r die separate Sch\IeC {\"a}tzung von $k_\mathrm {ss}$ und $d_\mathrm {ss}$ \IeC {\"u}ber den gesamten Schaltvorgang mit $\mathaccentV {dot}05F{\omega }_\mathrm {C,mes}$ als Messgr\IeC {\"o}\IeC {\ss }e und ohne.\relax }}{39}{figure.caption.17}
 \defcounter {refsection}{0}\relax 
-\contentsline {figure}{\numberline {\relax 3.8}{\ignorespaces Normierte Sensitivit\IeC {\"a}ten der Zust\IeC {\"a}nde und deren Ableitungen von $\mu _{38}$\relax }}{37}{figure.caption.15}
+\contentsline {figure}{\numberline {\relax 3.8}{\ignorespaces Streuungen aus Fisher-Informationsmatrix f\IeC {\"u}r die simultane Sch\IeC {\"a}tzung von $m$ und $\zeta $ im 2. Gang mit $\mathaccentV {dot}05F{\omega }_\mathrm {C,mes}$ als Messgr\IeC {\"o}\IeC {\ss }e und ohne.\relax }}{40}{figure.caption.18}
 \defcounter {refsection}{0}\relax 
-\contentsline {figure}{\numberline {\relax 3.9}{\ignorespaces Streuungen der Fisher-Informationsmatrix f\IeC {\"u}r die simultane Sch\IeC {\"a}tzung von $m$ und $\zeta $ im 2. Gang mit $\mathaccentV {dot}05F{\omega }_\mathrm {C,mes}$ als Messgr\IeC {\"o}\IeC {\ss }e und ohne.\relax }}{37}{figure.caption.16}
+\contentsline {figure}{\numberline {\relax 3.9}{\ignorespaces Streuungen aus Fisher-Informationsmatrix f\IeC {\"u}r die einzelne Sch\IeC {\"a}tzung von $m$ und $\zeta $ im 2. Gang mit $\mathaccentV {dot}05F{\omega }_\mathrm {C,mes}$ als Messgr\IeC {\"o}\IeC {\ss }e und ohne.\relax }}{41}{figure.caption.19}
 \defcounter {refsection}{0}\relax 
-\contentsline {figure}{\numberline {\relax 3.10}{\ignorespaces Streuungen der Fisher-Informationsmatrix f\IeC {\"u}r die einzelne Sch\IeC {\"a}tzung von $m$ und $\zeta $ im 2. Gang mit $\mathaccentV {dot}05F{\omega }_\mathrm {C,mes}$ als Messgr\IeC {\"o}\IeC {\ss }e und ohne.\relax }}{38}{figure.caption.17}
+\contentsline {figure}{\numberline {\relax 3.10}{\ignorespaces Streuungen aus Fisher-Informationsmatrix f\IeC {\"u}r die simultane Sch\IeC {\"a}tzung von $m$, $\mu _{38}$, $\mu _{38}$ und $\zeta $ w\IeC {\"a}hrend der Momenten\IeC {\"u}bergabe mit $\mathaccentV {dot}05F{\omega }_\mathrm {C,mes}$ als Messgr\IeC {\"o}\IeC {\ss }e und ohne.\relax }}{42}{figure.caption.20}
 \defcounter {refsection}{0}\relax 
-\contentsline {figure}{\numberline {\relax 3.11}{\ignorespaces Streuungen der Fisher-Informationsmatrix f\IeC {\"u}r die simultane Sch\IeC {\"a}tzung von $m$, $\mu _{38}$ und $\zeta $ w\IeC {\"a}hrend der Momenten\IeC {\"u}bergabe mit $\mathaccentV {dot}05F{\omega }_\mathrm {C,mes}$ als Messgr\IeC {\"o}\IeC {\ss }e und ohne.\relax }}{38}{figure.caption.18}
+\contentsline {figure}{\numberline {\relax 3.11}{\ignorespaces Streuungen aus Fisher-Informationsmatrix f\IeC {\"u}r die simultane Sch\IeC {\"a}tzung von $m$, $\mu _{38}$ und $\mu _{05}$ w\IeC {\"a}hrend der Momenten\IeC {\"u}bergabe mit $\mathaccentV {dot}05F{\omega }_\mathrm {C,mes}$ als Messgr\IeC {\"o}\IeC {\ss }e und ohne.\relax }}{42}{figure.caption.21}
 \defcounter {refsection}{0}\relax 
-\contentsline {figure}{\numberline {\relax 3.12}{\ignorespaces Streuungen der Fisher-Informationsmatrix f\IeC {\"u}r die simultane Sch\IeC {\"a}tzung von $m$, $\mu _{38}$ w\IeC {\"a}hrend der Momenten\IeC {\"u}bergabe mit $\mathaccentV {dot}05F{\omega }_\mathrm {C,mes}$ als Messgr\IeC {\"o}\IeC {\ss }e und ohne.\relax }}{39}{figure.caption.19}
+\contentsline {figure}{\numberline {\relax 3.12}{\ignorespaces Streuungen aus Fisher-Informationsmatrix f\IeC {\"u}r die simultane Sch\IeC {\"a}tzung von $\mu _{38}$, $\mu _{05}$ und $\zeta $ w\IeC {\"a}hrend der Momenten\IeC {\"u}bergabe mit $\mathaccentV {dot}05F{\omega }_\mathrm {C,mes}$ als Messgr\IeC {\"o}\IeC {\ss }e und ohne.\relax }}{43}{figure.caption.22}
 \defcounter {refsection}{0}\relax 
-\contentsline {figure}{\numberline {\relax 3.13}{\ignorespaces Streuungen der Fisher-Informationsmatrix f\IeC {\"u}r die simultane Sch\IeC {\"a}tzung von $\mu _{38}$ und $\zeta $ w\IeC {\"a}hrend der Momenten\IeC {\"u}bergabe mit $\mathaccentV {dot}05F{\omega }_\mathrm {C,mes}$ als Messgr\IeC {\"o}\IeC {\ss }e und ohne.\relax }}{39}{figure.caption.20}
+\contentsline {figure}{\numberline {\relax 3.13}{\ignorespaces Streuungen aus Fisher-Informationsmatrix f\IeC {\"u}r die simultane Sch\IeC {\"a}tzung von $m$, $\mu _{05}$ und $\zeta $ w\IeC {\"a}hrend der Synchronisation mit $\mathaccentV {dot}05F{\omega }_\mathrm {C,mes}$ als Messgr\IeC {\"o}\IeC {\ss }e und ohne.\relax }}{43}{figure.caption.23}
 \defcounter {refsection}{0}\relax 
-\contentsline {figure}{\numberline {\relax 3.14}{\ignorespaces Streuungen der Fisher-Informationsmatrix f\IeC {\"u}r die simultane Sch\IeC {\"a}tzung von $m$ und $\zeta $ w\IeC {\"a}hrend der Synchronisation mit $\mathaccentV {dot}05F{\omega }_\mathrm {C,mes}$ als Messgr\IeC {\"o}\IeC {\ss }e und ohne.\relax }}{40}{figure.caption.21}
+\contentsline {figure}{\numberline {\relax 3.14}{\ignorespaces Streuungen aus Fisher-Informationsmatrix f\IeC {\"u}r die simultane Sch\IeC {\"a}tzung von $m$ und $\mu _{05}$ w\IeC {\"a}hrend der Synchronisation mit $\mathaccentV {dot}05F{\omega }_\mathrm {C,mes}$ als Messgr\IeC {\"o}\IeC {\ss }e und ohne.\relax }}{44}{figure.caption.24}
+\defcounter {refsection}{0}\relax 
+\contentsline {figure}{\numberline {\relax 3.15}{\ignorespaces Streuungen aus Fisher-Informationsmatrix f\IeC {\"u}r die simultane Sch\IeC {\"a}tzung von $\mu _{05}$ und $\zeta $ w\IeC {\"a}hrend der Synchronisation mit $\mathaccentV {dot}05F{\omega }_\mathrm {C,mes}$ als Messgr\IeC {\"o}\IeC {\ss }e und ohne.\relax }}{44}{figure.caption.25}
 \defcounter {refsection}{0}\relax 
 \addvspace {10\p@ }
 \defcounter {refsection}{0}\relax 

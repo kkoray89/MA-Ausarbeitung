@@ -1,4 +1,4 @@
-This is pdfTeX, Version 3.14159265-2.6-1.40.19 (MiKTeX 2.9.6700 64-bit) (preloaded format=pdflatex 2018.7.20)  22 AUG 2018 14:35
+This is pdfTeX, Version 3.14159265-2.6-1.40.19 (MiKTeX 2.9.6700 64-bit) (preloaded format=pdflatex 2018.7.20)  27 SEP 2018 10:14
 entering extended mode
 **./chapter3_Sensitivitaetsanalyse.tex
 (chapter3_Sensitivitaetsanalyse.tex
@@ -99,7 +99,7 @@ Missing character: There is no l in font nullfont!
 <write> ...g: Reference `ch:ch2' on page \thepage 
                                                   \space undefined\on@line .
 l.2 ...em Kapitel wird das in Kapitel \ref{ch:ch2}
-                                                   hergeleitete lineare Mode...
+                                                   hergeleitete nichtlineare...
 The control sequence at the end of the top line
 of your error message was never \def'ed. If you have
 misspelled it (e.g., `\hobx'), type `I' and the correct
@@ -121,6 +121,11 @@ Missing character: There is no t in font nullfont!
 Missing character: There is no e in font nullfont!
 Missing character: There is no t in font nullfont!
 Missing character: There is no e in font nullfont!
+Missing character: There is no n in font nullfont!
+Missing character: There is no i in font nullfont!
+Missing character: There is no c in font nullfont!
+Missing character: There is no h in font nullfont!
+Missing character: There is no t in font nullfont!
 Missing character: There is no l in font nullfont!
 Missing character: There is no i in font nullfont!
 Missing character: There is no n in font nullfont!
@@ -487,11 +492,10 @@ Missing character: There is no s in font nullfont!
 Missing character: There is no t in font nullfont!
 Missing character: There is no e in font nullfont!
 Missing character: There is no . in font nullfont!
-Missing character: There is no D in font nullfont!
-Missing character: There is no a in font nullfont!
-Missing character: There is no b in font nullfont!
-Missing character: There is no e in font nullfont!
+Missing character: There is no H in font nullfont!
 Missing character: There is no i in font nullfont!
+Missing character: There is no e in font nullfont!
+Missing character: There is no r in font nullfont!
 Missing character: There is no w in font nullfont!
 Missing character: There is no i in font nullfont!
 Missing character: There is no r in font nullfont!
@@ -2602,7 +2606,7 @@ Type  H <return>  for immediate help.
  ...                                              
                                                   
 l.10 A
-      ufgrund des linearen und stetigen Charakters von \eqref{eq:sys_linex} ...
+      ufgrund stetigen Charakters von \eqref{eq:sys_nl23} werden für diese ...
 
 You're in trouble here.  Try typing  <return>  to proceed.
 If that doesn't work, type  X <return>  to quit.
@@ -2612,20 +2616,6 @@ Missing character: There is no u in font nullfont!
 Missing character: There is no f in font nullfont!
 Missing character: There is no g in font nullfont!
 Missing character: There is no r in font nullfont!
-Missing character: There is no u in font nullfont!
-Missing character: There is no n in font nullfont!
-Missing character: There is no d in font nullfont!
-Missing character: There is no d in font nullfont!
-Missing character: There is no e in font nullfont!
-Missing character: There is no s in font nullfont!
-Missing character: There is no l in font nullfont!
-Missing character: There is no i in font nullfont!
-Missing character: There is no n in font nullfont!
-Missing character: There is no e in font nullfont!
-Missing character: There is no a in font nullfont!
-Missing character: There is no r in font nullfont!
-Missing character: There is no e in font nullfont!
-Missing character: There is no n in font nullfont!
 Missing character: There is no u in font nullfont!
 Missing character: There is no n in font nullfont!
 Missing character: There is no d in font nullfont!
@@ -2651,8 +2641,8 @@ Missing character: There is no v in font nullfont!
 Missing character: There is no o in font nullfont!
 Missing character: There is no n in font nullfont!
 ! Undefined control sequence.
-l.10 ...inearen und stetigen Charakters von \eqref
-                                                  {eq:sys_linex} werden für...
+l.10 Aufgrund stetigen Charakters von \eqref
+                                            {eq:sys_nl23} werden für diese ...
 The control sequence at the end of the top line
 of your error message was never \def'ed. If you have
 misspelled it (e.g., `\hobx'), type `I' and the correct
@@ -2669,12 +2659,12 @@ Missing character: There is no s in font nullfont!
 <inserted text> 
                 $
 l.10 ...und stetigen Charakters von \eqref{eq:sys_
-                                                  linex} werden für diese A...
+                                                  nl23} werden für diese Ar...
 I've inserted a begin-math/end-math symbol since I think
 you left one out. Proceed, with fingers crossed.
 
 ! Extra }, or forgotten $.
-l.10 ...etigen Charakters von \eqref{eq:sys_linex}
+l.10 ...tetigen Charakters von \eqref{eq:sys_nl23}
                                                    werden für diese Arbeit ...
 I've deleted a group-closing symbol because it seems to be
 spurious, as in `$x}$'. But perhaps the } is legitimate and
@@ -2691,7 +2681,7 @@ LaTeX Warning: Command \" invalid in math mode on input line 10.
 ! Please use \mathaccent for accents in math mode.
 \add@accent ...@spacefactor \spacefactor }\accent 
                                                   #1 #2\egroup \spacefactor ...
-l.10 ...akters von \eqref{eq:sys_linex} werden fü
+l.10 ...rakters von \eqref{eq:sys_nl23} werden fü
                                                   r diese Arbeit die partiel...
 I'm changing \accent to \mathaccent here; wish me luck.
 (Accents are not the same in formulas as they are in text.)
@@ -2699,7 +2689,7 @@ I'm changing \accent to \mathaccent here; wish me luck.
 ! Missing { inserted.
 <to be read again> 
                    \edef 
-l.10 ...akters von \eqref{eq:sys_linex} werden fü
+l.10 ...rakters von \eqref{eq:sys_nl23} werden fü
                                                   r diese Arbeit die partiel...
 A left brace was mandatory here, so I've put one in.
 You might want to delete and/or insert some corrections
@@ -2709,7 +2699,7 @@ so that I will find a matching right brace soon.
 ! You can't use `\spacefactor' in math mode.
 \add@accent ...}\accent #1 #2\egroup \spacefactor 
                                                   \accent@spacefactor 
-l.10 ...akters von \eqref{eq:sys_linex} werden fü
+l.10 ...rakters von \eqref{eq:sys_nl23} werden fü
                                                   r diese Arbeit die partiel...
 Sorry, but I'm not programmed to handle this case;
 I'll just pretend that you didn't ask for it.
@@ -2806,16 +2796,16 @@ LaTeX Warning: Command \" invalid in math mode on input line 11.
 ! Please use \mathaccent for accents in math mode.
 \add@accent ...@spacefactor \spacefactor }\accent 
                                                   #1 #2\egroup \spacefactor ...
-l.11 ...n verschieden Schaltphasen auswerten zukö
-                                                  nnen. Des weiteren wird mi...
+l.11 ... verschieden Schaltphasen auswerten zu kö
+                                                  nnen. Des weiteren werden ...
 I'm changing \accent to \mathaccent here; wish me luck.
 (Accents are not the same in formulas as they are in text.)
 
 ! You can't use `\spacefactor' in math mode.
 \add@accent ...}\accent #1 #2\egroup \spacefactor 
                                                   \accent@spacefactor 
-l.11 ...n verschieden Schaltphasen auswerten zukö
-                                                  nnen. Des weiteren wird mi...
+l.11 ... verschieden Schaltphasen auswerten zu kö
+                                                  nnen. Des weiteren werden ...
 Sorry, but I'm not programmed to handle this case;
 I'll just pretend that you didn't ask for it.
 If you're in the wrong mode, you might be able to
@@ -2827,7 +2817,49 @@ LaTeX Warning: Command \" invalid in math mode on input line 11.
 ! Please use \mathaccent for accents in math mode.
 \add@accent ...@spacefactor \spacefactor }\accent 
                                                   #1 #2\egroup \spacefactor ...
-l.11 ...der Fisher-Informationsmatrix eine Abschä
+l.11 ...ren werden die Ergebnisse der Sensitivitä
+                                                  tsanalyse für die Berechn...
+I'm changing \accent to \mathaccent here; wish me luck.
+(Accents are not the same in formulas as they are in text.)
+
+! You can't use `\spacefactor' in math mode.
+\add@accent ...}\accent #1 #2\egroup \spacefactor 
+                                                  \accent@spacefactor 
+l.11 ...ren werden die Ergebnisse der Sensitivitä
+                                                  tsanalyse für die Berechn...
+Sorry, but I'm not programmed to handle this case;
+I'll just pretend that you didn't ask for it.
+If you're in the wrong mode, you might be able to
+return to the right one by typing `I}' or `I$' or `I\par'.
+
+
+LaTeX Warning: Command \" invalid in math mode on input line 11.
+
+! Please use \mathaccent for accents in math mode.
+\add@accent ...@spacefactor \spacefactor }\accent 
+                                                  #1 #2\egroup \spacefactor ...
+l.11 ...e Ergebnisse der Sensitivitätsanalyse fü
+                                                  r die Berechnung der Fishe...
+I'm changing \accent to \mathaccent here; wish me luck.
+(Accents are not the same in formulas as they are in text.)
+
+! You can't use `\spacefactor' in math mode.
+\add@accent ...}\accent #1 #2\egroup \spacefactor 
+                                                  \accent@spacefactor 
+l.11 ...e Ergebnisse der Sensitivitätsanalyse fü
+                                                  r die Berechnung der Fishe...
+Sorry, but I'm not programmed to handle this case;
+I'll just pretend that you didn't ask for it.
+If you're in the wrong mode, you might be able to
+return to the right one by typing `I}' or `I$' or `I\par'.
+
+
+LaTeX Warning: Command \" invalid in math mode on input line 11.
+
+! Please use \mathaccent for accents in math mode.
+\add@accent ...@spacefactor \spacefactor }\accent 
+                                                  #1 #2\egroup \spacefactor ...
+l.11 ...matrix genutzt. Diese liefert eine Abschä
                                                   tzung für die erreichbare...
 I'm changing \accent to \mathaccent here; wish me luck.
 (Accents are not the same in formulas as they are in text.)
@@ -2835,7 +2867,7 @@ I'm changing \accent to \mathaccent here; wish me luck.
 ! You can't use `\spacefactor' in math mode.
 \add@accent ...}\accent #1 #2\egroup \spacefactor 
                                                   \accent@spacefactor 
-l.11 ...der Fisher-Informationsmatrix eine Abschä
+l.11 ...matrix genutzt. Diese liefert eine Abschä
                                                   tzung für die erreichbare...
 Sorry, but I'm not programmed to handle this case;
 I'll just pretend that you didn't ask for it.
@@ -2848,7 +2880,7 @@ LaTeX Warning: Command \" invalid in math mode on input line 11.
 ! Please use \mathaccent for accents in math mode.
 \add@accent ...@spacefactor \spacefactor }\accent 
                                                   #1 #2\egroup \spacefactor ...
-l.11 ...r-Informationsmatrix eine Abschätzung fü
+l.11 ...nutzt. Diese liefert eine Abschätzung fü
                                                   r die erreichbare Genauigk...
 I'm changing \accent to \mathaccent here; wish me luck.
 (Accents are not the same in formulas as they are in text.)
@@ -2856,7 +2888,7 @@ I'm changing \accent to \mathaccent here; wish me luck.
 ! You can't use `\spacefactor' in math mode.
 \add@accent ...}\accent #1 #2\egroup \spacefactor 
                                                   \accent@spacefactor 
-l.11 ...r-Informationsmatrix eine Abschätzung fü
+l.11 ...nutzt. Diese liefert eine Abschätzung fü
                                                   r die erreichbare Genauigk...
 Sorry, but I'm not programmed to handle this case;
 I'll just pretend that you didn't ask for it.
@@ -2869,16 +2901,16 @@ LaTeX Warning: Command \" invalid in math mode on input line 11.
 ! Please use \mathaccent for accents in math mode.
 \add@accent ...@spacefactor \spacefactor }\accent 
                                                   #1 #2\egroup \spacefactor ...
-l.11 ...für die erreichbare Genauigkeit der Schä
-                                                  tzungen geliefert.
+l.11 ...reichbare Genauigkeit einer Parameterschä
+                                                  tzung.
 I'm changing \accent to \mathaccent here; wish me luck.
 (Accents are not the same in formulas as they are in text.)
 
 ! You can't use `\spacefactor' in math mode.
 \add@accent ...}\accent #1 #2\egroup \spacefactor 
                                                   \accent@spacefactor 
-l.11 ...für die erreichbare Genauigkeit der Schä
-                                                  tzungen geliefert.
+l.11 ...reichbare Genauigkeit einer Parameterschä
+                                                  tzung.
 Sorry, but I'm not programmed to handle this case;
 I'll just pretend that you didn't ask for it.
 If you're in the wrong mode, you might be able to
@@ -2912,14 +2944,16 @@ Missing character: There is no � in font cmex10!
 Missing character: There is no � in font cmex10!
 Missing character: There is no � in font cmex10!
 Missing character: There is no � in font cmex10!
+Missing character: There is no � in font cmex10!
+Missing character: There is no � in font cmex10!
 
 Overfull \hbox (20.0pt too wide) in paragraph at lines 10--12
 []
  []
 
 
-Overfull \hbox (1655.94557pt too wide) in paragraph at lines 10--12
-[]\OML/cmm/m/it/10 inexwerdenf[]$ 
+Overfull \hbox (1932.58069pt too wide) in paragraph at lines 10--12
+[]\OML/cmm/m/it/10 l\/cmr/m/n/10 23\OML/cmm/m/it/10 werdenf[]$ 
  []
 
 ! Undefined control sequence.
@@ -6487,11 +6521,26 @@ Type  H <return>  for immediate help.
  ...                                              
                                                   
 l.29 \begin{figure}
-                   
+                   [h]
 Your command was ignored.
 Type  I <command> <return>  to replace it with another command,
 or  <return>  to continue without it.
 
+
+! LaTeX Error: Missing \begin{document}.
+
+See the LaTeX manual or LaTeX Companion for explanation.
+Type  H <return>  for immediate help.
+ ...                                              
+                                                  
+l.29 \begin{figure}[
+                    h]
+You're in trouble here.  Try typing  <return>  to proceed.
+If that doesn't work, type  X <return>  to quit.
+
+Missing character: There is no [ in font nullfont!
+Missing character: There is no h in font nullfont!
+Missing character: There is no ] in font nullfont!
 \fheight=\skip41
 \fwidth=\skip42
 
